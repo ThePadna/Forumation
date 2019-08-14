@@ -10,11 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
 
+use App\Models\User;
 Route::get('test', function() {
-    return view("test");
+    $users = User::all();
+    return View::make('test')->with('users', $users);
 });
