@@ -13,9 +13,4 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-use App\Models\User;
-Route::get('test', function() {
-    $users = User::all();
-    return View::make('test')->with('users', $users);
-});
+Route::get('forum/{page}', "ForumController@showThreads");
