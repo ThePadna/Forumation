@@ -1,10 +1,14 @@
 <html>
-@foreach($threads as $thread)
-    <div id="{{ $thread->id }}" class="thread" style="height:{{$thread->posts}}%; width:{{$thread->posts}}%; background-color:gray;">
-        <h1 class="thread-title" style="font-size:{{$thread->posts}};"> {{ $thread->title }} </h1>
-        <h2 class="thread-op" style="font-size:{{$thread->posts / 2}};"> Submitted by {{ $thread->op }} </h2>
-    </div>
-@endforeach
+<div id="container">
+<canvas id="threads" style="width:100%; height:500px;" />
+</div>
+<script>
+var canv = document.getElementById("threads");
+var ctx = canv.getContext("2d");
+ctx.lineWidth = (40 / this.size);
+ctx.fillStyle = 'black;';
+ctx.fillRect(0, 0, 800, 800);
+</script>
 <style>
 html, body {
     height: 100%;
@@ -12,14 +16,21 @@ html, body {
     border: 0;
     margin: 0;
 }
-h1 {
-    color:#0000CD;
+#container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  display: flex;
 }
-.thread-op {
-    font-style: italic;
-}
-.thread {
-    border: 1px solid red;
+#threads {
+  margin: auto;
+  width: 10em;
+  height: 5em;
+  background-color: white;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, .4);
 }
 </style>
 </html>
