@@ -1,14 +1,18 @@
 <html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
 @foreach($threads as $t)
 <div id="wrapper">
 <div id="threads">
 <a href="/threads/{{$t->id}}">
 <div id="thread">
 <div id="title">
-<p> {{$t->title}} we dwr wwwdwdw dw wdwd wd wd wd w</p>
+<p> {{$t->title}}</p>
 </div>
 <div id="op">
-<p> Submitted by <span> {{$t->op}} </span> </p>
+<p> Submitted by &nbsp;<span> <span class="glyphicon glyphicon-user"> </span> {{$t->op}} &nbsp;  <span class="glyphicon glyphicon-fire">&nbsp;{{floor($t->posts)}}<span class="glyphicon glyphicon-envelope"> </span> </span></i></p>
 </div>
 </div>
 </a>

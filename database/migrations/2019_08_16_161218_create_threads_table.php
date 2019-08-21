@@ -17,7 +17,7 @@ class CreateThreadsTable extends Migration
             $table->bigIncrements('id');
             $table->string('op', 32)->unique();
             $table->string('title', 300)->unique();
-            $table->decimal('posts');
+            $table->decimal("posts");
             $table->timestamps();
         });
     }
