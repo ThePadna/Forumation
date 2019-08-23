@@ -3,9 +3,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
-@foreach($threads as $t)
 <div id="wrapper">
 <div id="threads">
+@foreach($threads as $t)
 <a href="/threads/{{$t->id}}">
 <div id="thread">
 <div id="title">
@@ -16,10 +16,36 @@
 </div>
 </div>
 </a>
-</div>
-</div>
 @endforeach
+</div>
+<div id="pgbtnwrapper">
+<div id="prevpage">
+  <span class="glyphicon glyphicon-chevron-left" />
+</div>
+<div id="nextpage">
+  <span class="glyphicon glyphicon-chevron-right" />
+</div>
+</div>
+</div>
 <style>
+#pgbtnwrapper {
+  display: flex;
+  align-items: center;
+}
+#prevpage,#nextpage {
+  vertical-align: middle;
+  font-size: 100px;
+}
+#prevpage {
+  position: fixed;
+  left: 0;
+  font-size: 100px;
+}
+#nextpage {
+  position: fixed;
+  right: 0;
+  font-size: 100px;
+}
 span {
   font-style: italic;
 }
