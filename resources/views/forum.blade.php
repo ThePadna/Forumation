@@ -29,56 +29,51 @@
 </div>
 <style>
 #pgbtnwrapper {
-  display: flex;
-  align-items: center;
 }
 #prevpage,#nextpage {
-  vertical-align: middle;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  position: fixed;
+  opacity: 0.8;
+  color: #0a0f0f;
   font-size: 100px;
 }
 #prevpage {
-  position: fixed;
-  left: 0;
+  left: 50px;
   font-size: 100px;
 }
 #nextpage {
-  position: fixed;
-  right: 0;
+  right: 50px;
   font-size: 100px;
 }
 span {
   font-style: italic;
 }
 body {
-  background-color:#cc9900;
+  background-color: white;
 }
 a {
   text-decoration: none;
 }
 #wrapper {
-  text-align:center;
-  display:flex;
+  text-align: center;
+  display: flex;
   justify-content: center;
 }
 #op>p {
-  font-size: 10px;
+  font-size: 15px;
 }
 #title>p {
+  border-radius: 25px;
   font-size: 30px;
-}
-p {
   color: black;
-  background-color: white;
-  border: 3px;
-  border-radius: 3px;
-  height: 20s%;
-  width: 500px;
+  font-weight: bold;
 }
 #thread {
-  margin-top: 10px;
-  border: 5px solid black;
-  border-radius: 10px;
-  background-color:  #ffff66;
+  margin-bottom: 15px;
+}
+#threads {
 }
 </style>
 </html>
