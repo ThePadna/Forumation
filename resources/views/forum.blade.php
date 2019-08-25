@@ -1,3 +1,4 @@
+
 <html>
 <head>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -18,18 +19,18 @@
 </a>
 @endforeach
 </div>
-<div id="pgbtnwrapper">
+<a href="/forum/{{$page < 2 ? 1 : $page - 1}}">
 <div id="prevpage">
   <span class="glyphicon glyphicon-chevron-left" />
 </div>
+</a>
+<a href="/forum/{{$page + 1}}">
 <div id="nextpage">
   <span class="glyphicon glyphicon-chevron-right" />
 </div>
-</div>
+</a>
 </div>
 <style>
-#pgbtnwrapper {
-}
 #prevpage,#nextpage {
   position: relative;
   top: 50%;

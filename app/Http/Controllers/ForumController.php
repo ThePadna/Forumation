@@ -16,6 +16,6 @@ class ForumController extends Controller
     public function showThreads($page) {
         $skipAmt = $page > 1 ? $page * 9 : 0;
         $threads = Thread::latest()->skip($skipAmt)->take(15)->get();
-        return view("forum", ["threads" => $threads]);
+        return view("forum", ["threads" => $threads, "page" => $page]);
     }
 }
