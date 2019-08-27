@@ -2,14 +2,14 @@
 
 <head>
 
-    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Yellowtail|Saira+Stencil+One&display=swap" rel="stylesheet"> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
 </head>
 <div id="header">
-<h1 id="title"> Forumation! </h1>
+<h1 id="title"> Forumation </h1>
 </div>
 <div id="carousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -21,22 +21,19 @@
         <div class="carousel-item active">
             <img src="{{URL::to('/')}}/img/image1.jpg" class="d-block w-100 img-fluid" alt="...">
             <div class="carousel-caption d-none d-md-block">
-                <h5>First slide label</h5>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                <h5 style="color: white;">Elegance</h5>
             </div>
         </div>
         <div class="carousel-item">
             <img src="{{URL::to('/')}}/img/image2.jpg" class="d-block w-100 img-fluid" alt="...">
             <div class="carousel-caption d-none d-md-block">
-                <h5>Second slide label</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <h5>Highly Customizable</h5>
             </div>
         </div>
         <div class="carousel-item">
             <img src="{{URL::to('/')}}/img/image3.jpg" class="d-block w-100 img-fluid" alt="...">
             <div class="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                <h5>Completely Free</h5>
             </div>
         </div>
     </div>
@@ -51,17 +48,20 @@
 </div>
 <div id="footer">
 <div class="row">
-    <div class="col-sm-3" style="background-color:yellow;">
+    <div class="col-sm-3" style="">
     <i class="fa fa-file-code"></i>
     <p> Source </p>
     </div>
-    <div class="col-sm-3" style="background-color:pink;">
-      <p> FAQ </p>
+    <div class="col-sm-3" style="">
+    <i class="far fa-question-circle"></i>
+      <p> F.A.Q. </p>
     </div>
-    <div class="col-sm-3" style="background-color:red;">
+    <div class="col-sm-3" style="">
+    <i class="fas fa-laptop"></i>
         <p> Demo </p>
     </div>
-    <div class="col-sm-3" style="background-color:green;">
+    <div class="col-sm-3" style="">
+    <i class="fas fa-info"></i>
         <p> Guide </p>
     </div>
   </div>
@@ -77,7 +77,7 @@ body {
 }
 #header, #carousel, #footer {
   width: 100%;
-  background: yellow;
+  background: #006699;
   display: table-row;
 }
 .row {
@@ -87,9 +87,14 @@ body {
 }
 i {
     font-size: 100px;
+    margin-bottom: 5px;
 }
 .col-sm-3 {
+    color: white;
     text-align: center;
+    font-family: 'Yellowtail', cursive;
+    font-weight: bold;
+    font-size: 25px;
 }
 #footer {
     height: 100%;
@@ -108,20 +113,18 @@ body {
 }
 
 #carousel {
-    border: 20px solid white;
-    border-left: 0;
-    border-right: 0;
     position: relative;
     width: 100%;
     height: 600px;
 }
 #title {
+    color: white;
     font-size: 75px;
     text-align: center;
     position: relative;
     top: 50%;
     transform: translateY(-50%);
-    font-family: 'Permanent Marker', cursive;
+    font-family: 'Yellowtail', cursive;
 }
 </style>
 
