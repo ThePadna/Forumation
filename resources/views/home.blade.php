@@ -6,9 +6,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
 </head>
 <div id="header">
-    <h1> Forumation! </h1>
+<h1 id="title"> Forumation! </h1>
 </div>
 <div id="carousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -51,7 +52,8 @@
 <div id="footer">
 <div class="row">
     <div class="col-sm-3" style="background-color:yellow;">
-      <p> Source </p>
+    <i class="fa fa-file-code"></i>
+    <p> Source </p>
     </div>
     <div class="col-sm-3" style="background-color:pink;">
       <p> FAQ </p>
@@ -65,12 +67,32 @@
   </div>
 </div>
 <style>
+html, body {
+  height: 100%;
+  width: 100%;
+}
+body {
+  display: table;
+  margin: 0;
+}
+#header, #carousel, #footer {
+  width: 100%;
+  background: yellow;
+  display: table-row;
+}
+.row {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+i {
+    font-size: 100px;
+}
 .col-sm-3 {
     text-align: center;
 }
 #footer {
-    width: 100%;
-    height: 20%;
+    height: 100%;
 }
 
 body {
@@ -82,19 +104,7 @@ body {
 }
 
 #header {
-    text-align: center;
-}
-
-
-#header h1 {
-    font-size: 100px;
-    font-family: 'Permanent Marker', cursive;
-}
-
-#center-page {
-    width: 100%;
-    height: 40%;
-    background-color: gray;
+    height: 12%;
 }
 
 #carousel {
@@ -104,6 +114,14 @@ body {
     position: relative;
     width: 100%;
     height: 600px;
+}
+#title {
+    font-size: 75px;
+    text-align: center;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Permanent Marker', cursive;
 }
 </style>
 
