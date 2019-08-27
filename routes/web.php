@@ -14,3 +14,7 @@ Route::get('/', function () {
     return view('home');
 });
 Route::get('forum/{page}', "ForumController@showThreads");
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -2,14 +2,14 @@
 
 <head>
 
-<link href="https://fonts.googleapis.com/css?family=Yellowtail|Saira+Stencil+One&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Yellowtail|Saira+Stencil+One&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
 </head>
 <div id="header">
-<h1 id="title"> Forumation </h1>
+    <h1 id="title"> Forumation </h1>
 </div>
 <div id="carousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -47,48 +47,56 @@
     </a>
 </div>
 <div id="footer">
-<div class="row">
-    <div class="col-sm-3" style="">
-    <i class="fa fa-file-code"></i>
-    <p> Source </p>
+    <div class="row">
+        <div class="col-sm-3" style="">
+            <i class="fa fa-file-code"></i>
+            <p> Source </p>
+        </div>
+        <div class="col-sm-3" style="">
+            <i class="far fa-question-circle"></i>
+            <p> F.A.Q. </p>
+        </div>
+        <div class="col-sm-3" style="">
+            <i class="fas fa-laptop"></i>
+            <p> Demo </p>
+        </div>
+        <div class="col-sm-3" style="">
+            <i class="fas fa-info"></i>
+            <p> Guide </p>
+        </div>
     </div>
-    <div class="col-sm-3" style="">
-    <i class="far fa-question-circle"></i>
-      <p> F.A.Q. </p>
-    </div>
-    <div class="col-sm-3" style="">
-    <i class="fas fa-laptop"></i>
-        <p> Demo </p>
-    </div>
-    <div class="col-sm-3" style="">
-    <i class="fas fa-info"></i>
-        <p> Guide </p>
-    </div>
-  </div>
 </div>
 <style>
-html, body {
-  height: 100%;
-  width: 100%;
-}
+html,
 body {
-  display: table;
-  margin: 0;
+    height: 100%;
+    width: 100%;
 }
-#header, #carousel, #footer {
-  width: 100%;
-  background: #006699;
-  display: table-row;
+
+body {
+    display: table;
+    margin: 0;
 }
+
+#header,
+#carousel,
+#footer {
+    width: 100%;
+    background: #006699;
+    display: table-row;
+}
+
 .row {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
 }
+
 i {
     font-size: 100px;
     margin-bottom: 5px;
 }
+
 .col-sm-3 {
     color: white;
     text-align: center;
@@ -96,6 +104,7 @@ i {
     font-weight: bold;
     font-size: 25px;
 }
+
 #footer {
     height: 100%;
 }
@@ -117,6 +126,7 @@ body {
     width: 100%;
     height: 600px;
 }
+
 #title {
     color: white;
     font-size: 75px;
