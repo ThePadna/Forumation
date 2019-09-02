@@ -69,21 +69,15 @@
 <style>
 html,
 body {
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
-
-body {
-    display: table;
-    margin: 0;
-}
-
-#header,
-#carousel,
-#footer {
-    width: 100%;
-    background: #006699;
-    display: table-row;
+#header {
+    height: 25vh;
+    width: 100vw;
+    text-align: center;
 }
 
 .row {
@@ -94,7 +88,7 @@ body {
 
 i {
     font-size: 100px;
-    margin-bottom: 5px;
+    margin-bottom: 1vh;
 }
 
 .col-sm-3 {
@@ -106,7 +100,8 @@ i {
 }
 
 #footer {
-    height: 100%;
+    height: 25vh;
+    width: 100vw;
 }
 
 body {
@@ -114,22 +109,18 @@ body {
 }
 
 .carousel-item img {
-    max-height: 600px;
-}
-
-#header {
-    height: 12%;
+    max-height: 50vh;
 }
 
 #carousel {
     position: relative;
-    width: 100%;
-    height: 600px;
+    width: 100vw;
+    height: 50vh;
 }
 
 #title {
     color: white;
-    font-size: 75px;
+    font-size: 10vh;
     text-align: center;
     position: relative;
     top: 50%;
