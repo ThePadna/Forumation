@@ -72,9 +72,10 @@ body {
     height: 100vh;
     width: 100vw;
     overflow-x: hidden;
-    overflow-y: hidden;
+    overflow-y: hidden;s
 }
 #header {
+    background-color: #014952;
     height: 25vh;
     width: 100vw;
     text-align: center;
@@ -102,6 +103,7 @@ i {
 #footer {
     height: 25vh;
     width: 100vw;
+    background-color: #0a4f57;
 }
 
 body {
@@ -119,6 +121,7 @@ body {
 }
 
 #title {
+    background-color: #0a4f57;
     color: white;
     font-size: 10vh;
     text-align: center;
