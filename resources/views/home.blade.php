@@ -49,20 +49,34 @@
 <div id="footer">
     <div class="row">
         <div class="col-sm-3" style="">
-            <i class="fa fa-file-code"></i>
-            <p> Source </p>
+            <a href="https://github.com/ThePadna/Forumation">
+                <i class="fa fa-file-code"></i>
+                <p> Source </p>
+            </a>
         </div>
+
+
         <div class="col-sm-3" style="">
-            <i class="far fa-question-circle"></i>
-            <p> F.A.Q. </p>
+            <a href="/faq">
+                <i class="far fa-question-circle"></i>
+                <p> F.A.Q. </p>
+            </a>
         </div>
+
+
         <div class="col-sm-3" style="">
-            <i class="fas fa-laptop"></i>
-            <p> Demo </p>
+            <a href="/forum/1">
+                <i class="fas fa-laptop"></i>
+                <p> Demo </p>
+            </a>
         </div>
+
+
         <div class="col-sm-3" style="">
-            <i class="fas fa-info"></i>
-            <p> Guide </p>
+            <a href="/guide">
+                <i class="fas fa-info"></i>
+                <p> Guide </p>
+            </a>
         </div>
     </div>
 </div>
@@ -72,8 +86,14 @@ body {
     height: 100vh;
     width: 100vw;
     overflow-x: hidden;
-    overflow-y: hidden;s
+    overflow-y: hidden;
 }
+
+a, a:hover {
+    color: inherit;
+    text-decoration: none;
+}
+
 #header {
     background-color: #014952;
     height: 25vh;
