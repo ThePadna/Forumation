@@ -1,12 +1,12 @@
-
-<html>
+@extends('forum_layout')
+@section('content')
 <head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <div id="wrapper">
 <div id="threads">
-@foreach($threads as $t)
+@foreach($category as $c)
 <a href="/threads/{{$t->id}}">
 <div id="thread">
 <div id="title">
@@ -77,4 +77,4 @@ a {
 #threads {
 }
 </style>
-</html>
+@stop

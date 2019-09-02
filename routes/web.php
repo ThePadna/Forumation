@@ -13,7 +13,7 @@
 Route::get('/', function () {
     return view('home');
 });
-Route::get('forum/{page}', "ForumController@showThreads");
+Route::get('forum/{category}/{page}', "ForumController@showThreads");
 
 Auth::routes();
 

@@ -16,6 +16,11 @@ class ForumController extends Controller
     public function showThreads($page) {
         $skipAmt = $page > 1 ? $page * 9 : 0;
         $threads = Thread::latest()->skip($skipAmt)->take(15)->get();
-        return view("forum", ["threads" => $threads, "page" => $page]);
+        $categories = Category::All();
+        return view("forum", ["categories" => $categories, "threads" => $threads, "page" => $page]);
+    }
+
+    public function showCategories() {
+        return view("forum", ["categories" => Category::All()]);
     }
 }
