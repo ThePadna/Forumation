@@ -12,13 +12,13 @@ class ForumController extends Controller
      * Show the threads for the given page.
      * 
      * @param int $page
-     * @param string $category
+     * @param int $categoryId
      * @return Response
      */
-    public function showThreads($category, $page) {
+    public function showThreads($categoryId, $page) {
         $skipAmt = $page > 1 ? $page * 9 : 0;
-        $threads = Thread::latest()->where('category', $category)->skip($skipAmt)->take(15)->get();
-        return view("threads", ["category" => $category, "threads" => $threads, "page" => $page]);
+        $threads = Thread::latest()->where('categoryId', $categoryId)->skip($skipAmt)->take(15)->get();
+        return view("threads", ["category" => Category::All()->firstWhere('id', $categoryId), "threads" => $threads, "page" => $page]);
     }
 
      /**
