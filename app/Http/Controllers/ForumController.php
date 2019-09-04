@@ -17,8 +17,7 @@ class ForumController extends Controller
      */
     public function showThreads($category, $page) {
         $skipAmt = $page > 1 ? $page * 9 : 0;
-        $threads = Thread::latest()->skip($skipAmt)->take(15)->get();
-        $categories = Category::All();
+        $threads = Thread::latest()->where('category', $category)->skip($skipAmt)->take(15)->get();
         return view("threads", ["category" => $category, "threads" => $threads, "page" => $page]);
     }
 
