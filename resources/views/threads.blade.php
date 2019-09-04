@@ -6,7 +6,7 @@
 </head>
 <div id="wrapper">
 <div id="threads">
-@foreach($thread as $t)
+@foreach($threads as $t)
 <a href="/threads/{{$t->id}}">
 <div id="thread">
 <div id="title">
