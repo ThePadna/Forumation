@@ -65,7 +65,7 @@
 
 
         <div class="col-sm-3" style="">
-            <a href="/forum/1">
+            <a href="/forum">
                 <i class="fas fa-laptop"></i>
                 <p> Demo </p>
             </a>
