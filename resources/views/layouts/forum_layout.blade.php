@@ -1,21 +1,29 @@
 <html>
 
 <head>
+    <link href="https://fonts.googleapis.com/css?family=Yellowtail|Saira+Stencil+One&display=swap" rel="stylesheet">
     <div id="auth">
     @guest
+        <p>
         <a href="{{ route('login') }}">{{ __('Login') }}</a>@if (Route::has('register')) | <a href="{{ route('register') }}">{{ __('Register') }}</a>
+        </p>
     @endif
     @else
-            {{ Auth::user()->name }}
+            <p> 
+            Logged in as {{ Auth::user()->name }}
             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 {{ __('Logout') }}
             </a>
+            </p>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
     @endguest
-    </div>
 </head>
+</div>
+    <div id="header">
+    <h1 id="title"> Forumation </h1>
+    </div>
 
 @yield('content')
 <style>
@@ -27,11 +35,32 @@ body {
     overflow-y: hidden;
 }
 #auth {
-    font-size: 25px;
+    border-radius: 10px 10px 0 0;
+    position: fixed;
+    opacity: 0.5;
+    font-size: 20px;
+    height: 5vh;
+    width: 15vw;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #014952;
+}
+p {
+    color: darkgray;
+    text-align: center;
+}
+#header {
+    background-color: #014952;
+    height: 25vh;
+    width: 100vw;
+    text-align: center;
+}
+#title {
     position: relative;
-    height: 2.5vh;
-    width: 10vw;
-    float: right;
+    font-family: 'Yellowtail', cursive;
+    top: 50%;
+    transform: translateY(-50%);
 }
 </style>
 </html>
