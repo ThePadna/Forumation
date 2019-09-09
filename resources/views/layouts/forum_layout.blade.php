@@ -37,10 +37,10 @@ body {
 #auth {
     border-radius: 10px 10px 0 0;
     position: fixed;
-    opacity: 0.5;
+    opacity: 0.7;
     font-size: 20px;
     height: 5vh;
-    width: 15vw;
+    width: 25vw;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
@@ -52,13 +52,14 @@ p {
 }
 #header {
     background-color: #014952;
-    height: 25vh;
+    height: 15vh;
     width: 100vw;
     text-align: center;
 }
 #title {
     position: relative;
     font-family: 'Yellowtail', cursive;
+    font-size: 50px;
     top: 50%;
     transform: translateY(-50%);
 }
