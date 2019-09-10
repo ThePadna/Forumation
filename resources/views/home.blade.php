@@ -48,31 +48,25 @@
 </div>
 <div id="footer">
     <div class="row">
-        <div class="col-sm-3" style="">
+        <div class="col-sm-3">
             <a href="https://github.com/ThePadna/Forumation">
                 <i class="fa fa-file-code"></i>
                 <p> Source </p>
             </a>
         </div>
-
-
-        <div class="col-sm-3" style="">
+        <div class="col-sm-3">
             <a href="/faq">
                 <i class="far fa-question-circle"></i>
                 <p> F.A.Q. </p>
             </a>
         </div>
-
-
-        <div class="col-sm-3" style="">
+        <div class="col-sm-3">
             <a href="/forum">
                 <i class="fas fa-laptop"></i>
                 <p> Demo </p>
             </a>
         </div>
-
-
-        <div class="col-sm-3" style="">
+        <div class="col-sm-3">
             <a href="/guide">
                 <i class="fas fa-info"></i>
                 <p> Guide </p>
@@ -89,7 +83,8 @@ body {
     overflow-y: hidden;
 }
 
-a, a:hover {
+a,
+a:hover {
     color: inherit;
     text-decoration: none;
 }
