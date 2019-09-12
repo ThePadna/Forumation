@@ -1,12 +1,7 @@
 <html>
 
 <head>
-
-    <link href="https://fonts.googleapis.com/css?family=Yellowtail|Saira+Stencil+One&display=swap" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/home.css')}}">
 </head>
 <div id="header">
     <h1 id="title"> Forumation </h1>
@@ -74,77 +69,5 @@
         </div>
     </div>
 </div>
-<style>
-html,
-body {
-    height: 100vh;
-    width: 100vw;
-    overflow-x: hidden;
-    overflow-y: hidden;
-}
-
-a,
-a:hover {
-    color: inherit;
-    text-decoration: none;
-}
-
-#header {
-    background-color: #014952;
-    height: 25vh;
-    width: 100vw;
-    text-align: center;
-}
-
-.row {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-i {
-    font-size: 100px;
-    margin-bottom: 1vh;
-}
-
-.col-sm-3 {
-    color: white;
-    text-align: center;
-    font-family: 'Yellowtail', cursive;
-    font-weight: bold;
-    font-size: 25px;
-}
-
-#footer {
-    height: 25vh;
-    width: 100vw;
-    background-color: #0a4f57;
-}
-
-body {
-    background-color: #669999;
-}
-
-.carousel-item img {
-    max-height: 50vh;
-}
-
-#carousel {
-    position: relative;
-    width: 100vw;
-    height: 50vh;
-}
-
-#title {
-    background-color: #0a4f57;
-    color: white;
-    font-size: 10vh;
-    text-align: center;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    font-family: 'Yellowtail', cursive;
-}
-</style>
 
 </html>
