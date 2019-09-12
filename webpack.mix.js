@@ -11,4 +11,5 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.sass('resources/sass/categories.scss', 'public/css');
+mix.sass('resources/sass/categories.scss', 'public/css')
+.sass('resources/sass/forum_layout.scss', 'public/css');
