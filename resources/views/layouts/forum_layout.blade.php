@@ -19,11 +19,12 @@
                 @csrf
             </form>
     @endguest
-</head>
 </div>
     <div id="header">
     <h1 id="title"> Forumation </h1>
     </div>
-
+</head>
+<div id="container">
 @yield('content')
+</div>
 </html>

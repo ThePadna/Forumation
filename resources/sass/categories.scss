@@ -1,6 +1,11 @@
 @import 'variables';
 @import 'libs';
 
-h1 {
-    color: green;
+#category {
+    i {
+        display: inline;
+    }
+    p {
+        display: inline;
+    }
 }
