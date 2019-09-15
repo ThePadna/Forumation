@@ -29,4 +29,16 @@ class ForumController extends Controller
     public function showCategories() {
         return view("categories", ["categories" => Category::All()]);
     }
+
+    /**
+     * Post a new category to the database.
+     * 
+     * @param Request $request
+     */
+    public function postCategory(Request $request) {
+        $categoryName = $request->input('categoryname');
+        $category = new Category();
+        $category->name = $categoryName;
+        $category->save();
+    }
 }

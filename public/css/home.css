@@ -1,4 +1,4 @@
-@import url(https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js);@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);@import url(https://fonts.googleapis.com/css?family=Yellowtail|Saira+Stencil+One&display=swap);html,
+@import url(https://code.jquery.com/jquery-3.4.1.min.js);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js);@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);@import url(https://fonts.googleapis.com/css?family=Yellowtail|Saira+Stencil+One&display=swap);html,
 body {
   height: 100vh;
   width: 100vw;

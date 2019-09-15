@@ -13,10 +13,8 @@
 Route::get('/', function () {
     return view('home');
 });
+Route::post('/postcategory', 'ForumController@postCategory');
 Route::get('forum/{category}/{page}', 'ForumController@showThreads');
-
 Route::get('forum', 'ForumController@showCategories');
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
