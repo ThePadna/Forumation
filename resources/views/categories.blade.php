@@ -6,9 +6,9 @@
         @if(sizeof($categories) < 1) <h1> No Categories found. </h1>
             @else
             @foreach($categories as $c)
-            <a href="/category/{{$c->id}}">
-                <div id="category" class="drop-zone" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
-                    <p categoryId="{{$c->id}}" class="drop-zone"> {{$c->name}}</p>
+            <a categoryId="{{$c->id}}" href="/category/{{$c->id}}">
+                <div id="category" class="drop-zone" draggable="true">
+                    <p categoryId="{{$c->id}}"> {{$c->name}}</p>
                     @auth
                     <i class="far fa-edit"></i>
                     <i class="fas fa-trash"></i>
@@ -57,14 +57,18 @@ var $categoryFormOpener = $('#categoryFormOpener').click(() => {
     $categoryFormOpener.hide();
 });
 document.addEventListener("dragstart", function(event) {
+  var categoryId = event.target.getAttribute("categoryId");
   console.log("Drag");
+  event.dataTransfer.setData("id", categoryId);
 }, false);
 document.addEventListener("drop", function(event) {
   event.preventDefault();
   event.target.style.background = "white";
-  console.log("drop");
-  var id = event.target.getAttribute("categoryId");
-  console.log(id);
+  var droppedId = event.dataTransfer.getData("id");
+  var node = event.target.nodeName;
+  var targetId = null;
+  if(node.localeCompare("P") === 0) targetId = event.target.parentElement.parentElement.getAttribute("categoryId");
+  else if(node.localeCompare("DIV") == 0) targetId = event.target.parentElement.getAttribute("categoryId");
 }, false);
 document.addEventListener("dragover", function(event) {
   event.preventDefault();
