@@ -8,7 +8,7 @@
             @foreach($categories as $c)
             <a href="/category/{{$c->id}}">
                 <div id="category" class="drop-zone" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
-                    <p class="drop-zone"> {{$c->name}}</p>
+                    <p categoryId="{{$c->id}}" class="drop-zone"> {{$c->name}}</p>
                     @auth
                     <i class="far fa-edit"></i>
                     <i class="fas fa-trash"></i>
@@ -63,6 +63,8 @@ document.addEventListener("drop", function(event) {
   event.preventDefault();
   event.target.style.background = "white";
   console.log("drop");
+  var id = event.target.getAttribute("categoryId");
+  console.log(id);
 }, false);
 document.addEventListener("dragover", function(event) {
   event.preventDefault();
