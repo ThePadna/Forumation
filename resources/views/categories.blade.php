@@ -6,7 +6,7 @@
         @if(sizeof($categories) < 1) <h1> No Categories found. </h1>
             @else
             @foreach($categories as $c)
-            <a categoryId="{{$c->id}}" href="/category/{{$c->id}}">
+            <a categoryId="{{$c->id}}" href="/category/{{$c->name}}">
                 <div id="category" class="drop-zone" draggable="true">
                     <p categoryId="{{$c->id}}"> {{$c->name}}</p>
                     @auth
@@ -56,19 +56,22 @@ var $categoryFormOpener = $('#categoryFormOpener').click(() => {
     $form.show();
     $categoryFormOpener.hide();
 });
+var dragged;
 document.addEventListener("dragstart", function(event) {
-  var categoryId = event.target.getAttribute("categoryId");
-  console.log("Drag");
-  event.dataTransfer.setData("id", categoryId);
+  dragged = event.target;
 }, false);
 document.addEventListener("drop", function(event) {
   event.preventDefault();
   event.target.style.background = "white";
-  var droppedId = event.dataTransfer.getData("id");
   var node = event.target.nodeName;
-  var targetId = null;
-  if(node.localeCompare("P") === 0) targetId = event.target.parentElement.parentElement.getAttribute("categoryId");
-  else if(node.localeCompare("DIV") == 0) targetId = event.target.parentElement.getAttribute("categoryId");
+  var targetElement;
+  if(node.localeCompare("P") === 0) targetElement = event.target.parentElement.parentElement;
+  else if(node.localeCompare("DIV") == 0) targetElement = event.target.parentElement;
+  var targetInnerHTML = targetElement.innerHTML, targetHREF = targetElement.href;
+  targetElement.innerHTML = dragged.innerHTML;
+  dragged.innerHTML = targetInnerHTML
+  targetElement.href = dragged.href;
+  dragged.href = targetHREF;
 }, false);
 document.addEventListener("dragover", function(event) {
   event.preventDefault();
