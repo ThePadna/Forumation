@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Thread;
 use App\Models\Category;
+use Illuminate\Support\Facades\DB;
+
 
 class ForumController extends Controller
 {
@@ -50,8 +52,12 @@ class ForumController extends Controller
     public function categorySwitchId(Request $request) {
         $id1 = $request->input('draggedId');
         $id2 = $request->input('targetId');
-        $categories = Category::All();
-        $categories->firstWhere('id', $id1)->id = $id2;
-        $categories->firstWhere('id', $id2)->id = $id1;
+        $cat1 = Category::find($id1);
+        $cat2 = Category::find($id2);
+        $cat1name = $cat1->name;
+        $cat1->name = $cat2->name;
+        $cat1->save();
+        $cat2->name = $cat1name;
+        $cat2->save();
     }
 }

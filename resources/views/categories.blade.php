@@ -41,9 +41,9 @@ $form.submit((e) => {
         url: 'postcategory',
         headers: {'X-CSRF-TOKEN': '{{csrf_token()}}'},
         data: $form.serialize(),
-        success: function (data) {
+        success: function(res) {
             console.log('Submission was successful.');
-            alert(data);
+            alert(res);
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log('An error occurred.');
@@ -72,20 +72,17 @@ document.addEventListener("drop", function(event) {
   dragged.innerHTML = targetInnerHTML
   targetElement.href = dragged.href;
   dragged.href = targetHREF;
+  console.log("Dragged: " + dragged.getAttribute("categoryId") + " target: " + targetElement.getAttribute("categoryId"));
   $.ajax({
         type: "POST",
         url: 'categoryswitchid',
-        headers: {
-          'X-CSRF-TOKEN' : '{{csrf_token()}}',
-          'Content-Type' : 'application/json'
-        },
+        headers: {'X-CSRF-TOKEN' : '{{csrf_token()}}'},
         data: {
-          "draggedId" : dragged.getAttribute("categoryId"),
-          "targetId" : targetElement.getAttribute("categoryId")
+          'draggedId': targetElement.getAttribute("categoryId"),
+	        'targetId': dragged.getAttribute("categoryId")
         },
-        success: function (data) {
-            console.log('Submission was successful.');
-            alert(data);
+        success: function(res) {
+            alert(res);
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log('An error occurred.');
