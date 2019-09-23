@@ -38,7 +38,7 @@ $form.submit((e) => {
     e.preventDefault();
     $.ajax({
         type: "POST",
-        url: '/postcategory',
+        url: 'postcategory',
         headers: {'X-CSRF-TOKEN': '{{csrf_token()}}'},
         data: $form.serialize(),
         success: function (data) {
@@ -72,6 +72,27 @@ document.addEventListener("drop", function(event) {
   dragged.innerHTML = targetInnerHTML
   targetElement.href = dragged.href;
   dragged.href = targetHREF;
+  $.ajax({
+        type: "POST",
+        url: 'categoryswitchid',
+        headers: {
+          'X-CSRF-TOKEN' : '{{csrf_token()}}',
+          'Content-Type' : 'application/json'
+        },
+        data: {
+          "draggedId" : dragged.getAttribute("categoryId"),
+          "targetId" : targetElement.getAttribute("categoryId")
+        },
+        success: function (data) {
+            console.log('Submission was successful.');
+            alert(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log('An error occurred.');
+            console.log(errorThrown);
+            console.log(jqXHR);
+        },
+    });
 }, false);
 document.addEventListener("dragover", function(event) {
   event.preventDefault();

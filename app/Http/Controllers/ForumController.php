@@ -41,4 +41,17 @@ class ForumController extends Controller
         $category->name = $categoryName;
         $category->save();
     }
+
+    /**
+     * Switch IDs of categories on the database.
+     * 
+     * @param Request $request
+     */
+    public function categorySwitchId(Request $request) {
+        $id1 = $request->input('draggedId');
+        $id2 = $request->input('targetId');
+        $categories = Category::All();
+        $categories->firstWhere('id', $id1)->id = $id2;
+        $categories->firstWhere('id', $id2)->id = $id1;
+    }
 }
