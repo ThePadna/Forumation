@@ -1,5 +1,7 @@
 @import 'variables';
 @import 'libs';
+@import url('https://fonts.googleapis.com/css?family=Alegreya|Saira+Stencil+One&display=swap');
+
 
 #category {
     i {
@@ -7,5 +9,59 @@
     }
     p {
         display: inline;
+    }
+}
+
+.popup-form {
+    border: 1px solid black;
+    height: 20vh;
+    width: 30vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:#014952;
+    text-align: center;
+    .form-exit {
+        float: right;
+        position: relative;
+        font-size: 3vh;
+        top: 1vh;
+        right: 1vh;
+    }
+    .form-exit:hover {
+        color: red;
+    }
+    .form-header {
+        border: 1px solid black;
+        width: 100%;
+        height: 30%;
+        opacity: 0.8;
+        background: white;
+        h1 {
+            font-size: 4vh;
+        }
+    }
+    .form-container {
+        height: 70%;
+        width: 100%;
+        form {
+            input {
+                width: 70%;
+                border: 1px solid black;
+                border-radius: 5px;
+            }
+            button {
+                border: 1px solid black;
+                width: 30%;
+                height: 30%;
+                margin-top: 3%;
+                border-radius: 5px;
+            }
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
     }
 }
