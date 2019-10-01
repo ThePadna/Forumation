@@ -1,19 +1,20 @@
 /**
- * Gain reference to category creator form and hide it in anticipation for button press.
+ * Gain reference to forms and hide them in anticipation for button press.
  */
-var $form = $('#addCategoryForm');
-$form.hide();
+var $addCategoryForm = $('#addCategoryForm'), $delCategoryForm = $('#delCategoryForm');
+$addCategoryForm.hide();
+$delCategoryForm.hide();
 
 /**
  * Request to post new category when form is submitted.
  */
-$form.submit((e) => {
+$addCategoryForm.submit((e) => {
     e.preventDefault();
     $.ajax({
         type: "POST",
         url: 'postcategory',
         headers: {'X-CSRF-TOKEN': '{{csrf_token()}}'},
-        data: $form.serialize(),
+        data: $addCategoryForm.serialize(),
         success: function(res) {
             console.log('Submission was successful.');
             alert(res);
@@ -27,11 +28,33 @@ $form.submit((e) => {
 });
 
 /**
+ * Request to delete category when form is submitted.
+ */
+$delCategoryForm.submit((e) => {
+  e.preventDefault();
+  $.ajax({
+      type: "POST",
+      url: 'delcategory',
+      headers: {'X-CSRF-TOKEN': '{{csrf_token()}}'},
+      data: $delCategoryForm.serialize(),
+      success: function(res) {
+          console.log('Submission was successful.');
+          alert(res);
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+          console.log('An error occurred.');
+          console.log(errorThrown);
+          console.log(jqXHR);
+      },
+  });
+});
+
+/**
  * Open category creator form on button press.
  */
 $('#categoryFormOpener').on('click', (e) => {
-    $form.show();
-    $categoryFormOpener.hide();
+    $addCategoryForm.show();
+    $('#categoryFormOpener').hide();
 });
 
 /**
@@ -98,7 +121,26 @@ document.addEventListener("dragleave", function(event) {
 /**
  *
  */
-$('#edit-category').on('click', (e) => {
-  e.preventDefault();
+$('.edit-category').on('click', (e) => {
+  $id = $(e.target).parent().parent().attr('categoryId');
 
 })
+
+/**
+ * 
+ */
+$('.form-exit').on('click', (e) => {
+  $addCategoryForm.hide();
+  $('#categoryFormOpener').show();
+});
+
+/**
+ * 
+ */
+$('.del-category').on('click', (e) => {
+  e.preventDefault();
+  var $h2 = $delCategoryForm.find('h2');
+  console.log($h2.html());
+  $h2.text($h2.text().replace("%c", $(e.target).parent().parent().attr('categoryName')));
+  $delCategoryForm.show();
+});

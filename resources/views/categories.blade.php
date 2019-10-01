@@ -6,13 +6,13 @@
         @if(sizeof($categories) < 1) <h1> No Categories found. </h1>
             @else
             @foreach($categories as $c)
-            <a class="category-hyperlink" categoryId="{{$c->id}}" href="/category/{{$c->name}}">
-                <div class="category" class="drop-zone" draggable="true">
+            <a class="category-hyperlink" categoryName="{{$c->name}}" categoryId="{{$c->id}}" href="/category/{{$c->name}}">
+                <div class="category drop-zone" draggable="true">
                     <p categoryId="{{$c->id}}"> {{$c->name}}</p>
                     @auth
                     @if(Auth::user()->role == "admin")
-                    <i id="edit-category" class="far fa-edit"></i>
-                    <i id="del-category" class="fas fa-trash"></i>
+                    <i class="edit-category far fa-edit"></i>
+                    <i class="del-category fas fa-trash"></i>
                     @endif
                     @endauth
                 </div>
@@ -32,6 +32,20 @@
                     <form>
                         <input id="categoryTitle" type="text" name="categoryname" />
                         <button id="categoryFormCloser"> Add Category </button>
+                    </form>
+                </div>
+            </div>
+            <div id="delCategoryForm" class="popup-form">
+                <div class="form-header">
+                    <div class="form-exit">
+                        <i id="exit-icon" class="fas fa-times"></i>
+                    </div>
+                    <h1> Delete Category </h1>
+                </div>
+                <div class="form-container">
+                    <form>
+                        <h2> Delete Category '%c'? </h2>
+                        <button id="categoryFormCloser"> Confirm Deletion </button>
                     </form>
                 </div>
             </div>
