@@ -2,16 +2,19 @@
 @import 'libs';
 @import url('https://fonts.googleapis.com/css?family=Alegreya|Saira+Stencil+One&display=swap');
 
-
-#category {
-    i {
+#categories {
+    width: 100%;
+    height: 85vh;
+    .category>p,i {
         display: inline;
     }
-    p {
-        display: inline;
+    .category-hyperlink {
+        width: 50vw;
+        .category {
+            text-align: center;
+        }
     }
 }
-
 .popup-form {
     border: 1px solid black;
     height: 20vh;

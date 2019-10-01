@@ -6,8 +6,8 @@
         @if(sizeof($categories) < 1) <h1> No Categories found. </h1>
             @else
             @foreach($categories as $c)
-            <a categoryId="{{$c->id}}" href="/category/{{$c->name}}">
-                <div id="category" class="drop-zone" draggable="true">
+            <a class="category-hyperlink" categoryId="{{$c->id}}" href="/category/{{$c->name}}">
+                <div class="category" class="drop-zone" draggable="true">
                     <p categoryId="{{$c->id}}"> {{$c->name}}</p>
                     @auth
                     @if(Auth::user()->role == "admin")
