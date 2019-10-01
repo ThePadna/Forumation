@@ -130,7 +130,7 @@ $('.edit-category').on('click', (e) => {
  * 
  */
 $('.form-exit').on('click', (e) => {
-  $addCategoryForm.hide();
+  $('.popup-form').hide();
   $('#categoryFormOpener').show();
 });
 
