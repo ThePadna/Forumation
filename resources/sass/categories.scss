@@ -5,12 +5,12 @@
 #categories {
     width: 100%;
     height: 85vh;
-    .category>p,i {
+    .drop-zone>p,i {
         display: inline;
     }
     .category-hyperlink {
         width: 50vw;
-        .category {
+        .drop-zone {
             text-align: center;
         }
     }
@@ -49,6 +49,10 @@
         height: 70%;
         width: 100%;
         form {
+            h2 {
+                font-size: 2.5vh;
+                color: white;
+            }
             input {
                 width: 70%;
                 border: 1px solid black;

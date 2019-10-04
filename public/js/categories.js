@@ -1,9 +1,10 @@
 /**
  * Gain reference to forms and hide them in anticipation for button press.
  */
-var $addCategoryForm = $('#addCategoryForm'), $delCategoryForm = $('#delCategoryForm');
+var $addCategoryForm = $('#addCategoryForm'), $delCategoryForm = $('#delCategoryForm'), $editCategoryForm = $('#editCategoryForm');
 $addCategoryForm.hide();
 $delCategoryForm.hide();
+$editCategoryForm.hide();
 
 /**
  * Request to post new category when form is submitted.
@@ -13,7 +14,7 @@ $addCategoryForm.submit((e) => {
     $.ajax({
         type: "POST",
         url: 'postcategory',
-        headers: {'X-CSRF-TOKEN': '{{csrf_token()}}'},
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf"]').attr('content')},
         data: $addCategoryForm.serialize(),
         success: function(res) {
             console.log('Submission was successful.');
@@ -35,7 +36,29 @@ $delCategoryForm.submit((e) => {
   $.ajax({
       type: "POST",
       url: 'delcategory',
-      headers: {'X-CSRF-TOKEN': '{{csrf_token()}}'},
+      headers: {'X-CSRF-TOKEN': $('meta[name="csrf"]').attr('content')},
+      data: $delCategoryForm.serialize(),
+      success: function(res) {
+          console.log('Submission was successful.');
+          alert(res);
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+          console.log('An error occurred.');
+          console.log(errorThrown);
+          console.log(jqXHR);
+      },
+  });
+});
+
+/**
+ * Request to edit category when form is submitted.
+ */
+$editCategoryForm.submit((e) => {
+  e.preventDefault();
+  $.ajax({
+      type: "POST",
+      url: 'editcategory',
+      headers: {'X-CSRF-TOKEN': $('meta[name="csrf"]').attr('content')},
       data: $delCategoryForm.serialize(),
       success: function(res) {
           console.log('Submission was successful.');
@@ -103,7 +126,7 @@ document.addEventListener("drop", function(event) {
  */
 document.addEventListener("dragenter", function(event) {
   if(event.target.className == "drop-zone") {
-    event.target.style.background = "gray";
+    event.target.style.background = "black";
   }
 
 }, false);
@@ -117,7 +140,6 @@ document.addEventListener("dragleave", function(event) {
   }
 
 }, false);
-
 /**
  *
  */
@@ -143,4 +165,14 @@ $('.del-category').on('click', (e) => {
   console.log($h2.html());
   $h2.text($h2.text().replace("%c", $(e.target).parent().parent().attr('categoryName')));
   $delCategoryForm.show();
+});
+
+/**
+ * 
+ */
+$('.edit-category').on('click', (e) => {
+  e.preventDefault();
+  var $categoryName = $(e.target).parent().parent().attr('categoryName');
+  $editCategoryForm.find('input').val($categoryName);
+  $editCategoryForm.show();
 });

@@ -7,7 +7,7 @@
             @else
             @foreach($categories as $c)
             <a class="category-hyperlink" categoryName="{{$c->name}}" categoryId="{{$c->id}}" href="/category/{{$c->name}}">
-                <div class="category drop-zone" draggable="true">
+                <div class="drop-zone" ondragover="event.preventDefault()" draggable="true">
                     <p categoryId="{{$c->id}}"> {{$c->name}}</p>
                     @auth
                     @if(Auth::user()->role == "admin")
@@ -30,7 +30,7 @@
                 </div>
                 <div class="form-container">
                     <form>
-                        <input id="categoryTitle" type="text" name="categoryname" />
+                        <input id="categoryTitle" type="text" />
                         <button id="categoryFormCloser"> Add Category </button>
                     </form>
                 </div>
@@ -46,6 +46,20 @@
                     <form>
                         <h2> Delete Category '%c'? </h2>
                         <button id="categoryFormCloser"> Confirm Deletion </button>
+                    </form>
+                </div>
+            </div>
+            <div id="editCategoryForm" class="popup-form">
+                <div class="form-header">
+                    <div class="form-exit">
+                        <i id="exit-icon" class="fas fa-times"></i>
+                    </div>
+                    <h1> Edit Category </h1>
+                </div>
+                <div class="form-container">
+                    <form>
+                        <input id="categoryTitle" type="text"/>
+                        <button id="categoryFormCloser"> Confirm Edit </button>
                     </form>
                 </div>
             </div>
