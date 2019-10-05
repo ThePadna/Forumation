@@ -38,11 +38,10 @@ class ForumController extends Controller
      * @param Request $request
      */
     public function postCategory(Request $request) {
-        //$categoryName = $request->input('categoryTitle');
-        //$category = new Category();
-        //$category->name = $categoryName;
-        //$category->save();
-        return Input::all();
+        $categoryName = $request->input('categoryName');
+        $category = new Category();
+        $category->name = $categoryName;
+        $category->save();
     }
 
     /**

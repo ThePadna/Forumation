@@ -11,20 +11,20 @@ $editCategoryForm.hide();
  */
 $addCategoryForm.submit((e) => {
     e.preventDefault();
+    $categoryName = $addCategoryForm.find('input[name="categoryname"]').val();
     $.ajax({
-        type: "POST",
-        url: 'postcategory',
-        headers: {'X-CSRF-TOKEN': $('meta[name="csrf"]').attr('content')},
-        data: $addCategoryForm.serialize(),
-        success: function(res) {
-            console.log('Submission was successful.');
-            alert(res);
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log('An error occurred.');
-            console.log(errorThrown);
-            console.log(jqXHR);
-        },
+      type: "POST",
+      url: 'postcategory',
+      headers: {'X-CSRF-TOKEN' : $('meta[name="csrf"]').attr('content')},
+      data: {'categoryName': $categoryName},
+      success: function(res) {
+        window.location.reload();
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+          console.log('An error occurred.');
+          console.log(errorThrown);
+          console.log(jqXHR);
+      },
     });
 });
 

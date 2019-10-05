@@ -30,7 +30,7 @@
                 </div>
                 <div class="form-container">
                     <form>
-                        <input id="categoryTitle" type="text" />
+                        <input id="categoryTitle" type="text" name="categoryname"/>
                         <button id="categoryFormCloser"> Add Category </button>
                     </form>
                 </div>
@@ -58,7 +58,7 @@
                 </div>
                 <div class="form-container">
                     <form>
-                        <input id="categoryTitle" type="text"/>
+                        <input type="text" name="categoryname"/>
                         <button id="categoryFormCloser"> Confirm Edit </button>
                     </form>
                 </div>
