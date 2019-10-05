@@ -60,4 +60,26 @@ class ForumController extends Controller
         $cat2->name = $cat1name;
         $cat2->save();
     }
+
+    /**
+     * Delete a category on the database.
+     * 
+     * @param Request $request
+     */
+    public function delCategory(Request $request) {
+        
+    }
+
+    /**
+     * Edit a category's name on the database.
+     * 
+     * @param Request $request
+     */
+    public function editCategory(Request $request) {
+        $old = $request->input('categoryName');
+        $new = $request->input('newCategoryName');
+        $cat = Category::where('name', $old)->first();
+        $cat->name = $new;
+        $cat->save();
+    }
 }

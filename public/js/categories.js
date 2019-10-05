@@ -1,3 +1,5 @@
+var $prevClickedEditCategoryName;
+
 /**
  * Gain reference to forms and hide them in anticipation for button press.
  */
@@ -33,14 +35,13 @@ $addCategoryForm.submit((e) => {
  */
 $delCategoryForm.submit((e) => {
   e.preventDefault();
+  $categoryName = $delCategoryForm.find('input[name="categoryname"]').val();
   $.ajax({
       type: "POST",
       url: 'delcategory',
       headers: {'X-CSRF-TOKEN': $('meta[name="csrf"]').attr('content')},
-      data: $delCategoryForm.serialize(),
+      data: {'categoryName': $categoryName},
       success: function(res) {
-          console.log('Submission was successful.');
-          alert(res);
       },
       error: function (jqXHR, textStatus, errorThrown) {
           console.log('An error occurred.');
@@ -55,14 +56,14 @@ $delCategoryForm.submit((e) => {
  */
 $editCategoryForm.submit((e) => {
   e.preventDefault();
+  $categoryName = $editCategoryForm.find('input[name="categoryname"]').val();
+  console.log("null?" + this.$prevClickedEditCategoryName);
   $.ajax({
       type: "POST",
       url: 'editcategory',
       headers: {'X-CSRF-TOKEN': $('meta[name="csrf"]').attr('content')},
-      data: $delCategoryForm.serialize(),
+      data: {'categoryName': this.$prevClickedEditCategoryName, 'newCategoryName': $categoryName},
       success: function(res) {
-          console.log('Submission was successful.');
-          alert(res);
       },
       error: function (jqXHR, textStatus, errorThrown) {
           console.log('An error occurred.');
@@ -138,15 +139,7 @@ document.addEventListener("dragleave", function(event) {
   if(event.target.className == "drop-zone") {
     event.target.style.background = "white";
   }
-
 }, false);
-/**
- *
- */
-$('.edit-category').on('click', (e) => {
-  $id = $(e.target).parent().parent().attr('categoryId');
-
-})
 
 /**
  * 
@@ -172,7 +165,7 @@ $('.del-category').on('click', (e) => {
  */
 $('.edit-category').on('click', (e) => {
   e.preventDefault();
-  var $categoryName = $(e.target).parent().parent().attr('categoryName');
-  $editCategoryForm.find('input').val($categoryName);
+  this.$prevClickedEditCategoryName = $(e.target).parent().parent().attr('categoryName');
+  $editCategoryForm.find('input').val(this.$prevClickedEditCategoryName);
   $editCategoryForm.show();
 });
