@@ -144,7 +144,7 @@ document.addEventListener("dragleave", function(event) {
 }, false);
 
 /**
- * 
+ * Hide form instance and show hidden button(s).
  */
 $('.form-exit').on('click', (e) => {
   $('.popup-form').hide();
@@ -152,7 +152,8 @@ $('.form-exit').on('click', (e) => {
 });
 
 /**
- * 
+ * Set file scope var for use in ajax request.
+ * Replace placeholder value with clicked category name.
  */
 $('.del-category').on('click', (e) => {
   e.preventDefault();
@@ -163,7 +164,7 @@ $('.del-category').on('click', (e) => {
 });
 
 /**
- * 
+ * Fill form's input with old category ready to edit.
  */
 $('.edit-category').on('click', (e) => {
   e.preventDefault();
