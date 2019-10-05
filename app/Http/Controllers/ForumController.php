@@ -67,7 +67,9 @@ class ForumController extends Controller
      * @param Request $request
      */
     public function delCategory(Request $request) {
-        
+        $categoryName = $request->input('categoryName');
+        Category::where('name', $categoryName)->delete();
+        return $categoryName;
     }
 
     /**

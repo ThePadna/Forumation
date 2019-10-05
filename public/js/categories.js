@@ -1,4 +1,4 @@
-var $prevClickedEditCategoryName;
+var $prevClickedEditCategoryName, $prevClickedDelCategoryName;
 
 /**
  * Gain reference to forms and hide them in anticipation for button press.
@@ -35,13 +35,14 @@ $addCategoryForm.submit((e) => {
  */
 $delCategoryForm.submit((e) => {
   e.preventDefault();
-  $categoryName = $delCategoryForm.find('input[name="categoryname"]').val();
   $.ajax({
       type: "POST",
       url: 'delcategory',
       headers: {'X-CSRF-TOKEN': $('meta[name="csrf"]').attr('content')},
-      data: {'categoryName': $categoryName},
+      data: {'categoryName': this.$prevClickedDelCategoryName},
       success: function(res) {
+        window.location.reload();
+        console.log(res);
       },
       error: function (jqXHR, textStatus, errorThrown) {
           console.log('An error occurred.');
@@ -64,6 +65,7 @@ $editCategoryForm.submit((e) => {
       headers: {'X-CSRF-TOKEN': $('meta[name="csrf"]').attr('content')},
       data: {'categoryName': this.$prevClickedEditCategoryName, 'newCategoryName': $categoryName},
       success: function(res) {
+        window.location.reload();
       },
       error: function (jqXHR, textStatus, errorThrown) {
           console.log('An error occurred.');
@@ -154,9 +156,9 @@ $('.form-exit').on('click', (e) => {
  */
 $('.del-category').on('click', (e) => {
   e.preventDefault();
+  this.$prevClickedDelCategoryName = $(e.target).parent().parent().attr('categoryName');
   var $h2 = $delCategoryForm.find('h2');
-  console.log($h2.html());
-  $h2.text($h2.text().replace("%c", $(e.target).parent().parent().attr('categoryName')));
+  $h2.text($h2.text().replace("%c", this.$prevClickedDelCategoryName));
   $delCategoryForm.show();
 });
 
