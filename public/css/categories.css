@@ -10,6 +10,18 @@
   font-size: 200%;
 }
 
+#categories p {
+  margin-right: 1vh;
+}
+
+#categories .drop-zone > i:hover {
+  color: white;
+}
+
+#categories .drop-zone > i {
+  font-size: 150%;
+}
+
 #categories .category-hyperlink {
   color: black;
   text-decoration: none;

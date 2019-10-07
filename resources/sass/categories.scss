@@ -10,6 +10,15 @@
         display: inline;
         font-size: 200%;
     }
+    p {
+        margin-right: 1vh;
+    }
+    .drop-zone>i:hover {
+        color: white;
+    }
+    .drop-zone>i {
+        font-size: 150%;
+    }
     .category-hyperlink {
         color: black;
         text-decoration: none;
