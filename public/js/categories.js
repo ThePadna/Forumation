@@ -14,6 +14,7 @@ $editCategoryForm.hide();
 $addCategoryForm.submit((e) => {
     e.preventDefault();
     $categoryName = $addCategoryForm.find('input[name="categoryname"]').val();
+    $addCategoryForm.find('input[name="categoryname"]').val("");
     $.ajax({
       type: "POST",
       url: 'postcategory',

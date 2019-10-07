@@ -6,6 +6,8 @@ html,
 body {
     height: 100vh;
     width: 100vw;
+    overflow-x: hidden;
+    background: red;
 }
 #auth {
     border-radius: 10px 10px 0 0;
@@ -28,6 +30,7 @@ body {
     height: 15vh;
     width: 100vw;
     text-align: center;
+    margin-bottom: 1vh;
 }
 #title {
     position: relative;

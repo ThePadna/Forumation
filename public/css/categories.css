@@ -1,19 +1,42 @@
-@import url(https://code.jquery.com/jquery-3.4.1.min.js);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js);@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);@import url(https://fonts.googleapis.com/css?family=Alegreya|Saira+Stencil+One&display=swap);#categories {
-  width: 100%;
+@import url(https://code.jquery.com/jquery-3.4.1.min.js);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js);@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);@import url(https://fonts.googleapis.com/css?family=Alegreya|Grenze&display=swap);#categories {
+  width: 100vw;
   height: 85vh;
+  text-align: center;
 }
 
 #categories .drop-zone > p,
 #categories i {
   display: inline;
+  font-size: 200%;
 }
 
 #categories .category-hyperlink {
+  color: black;
+  text-decoration: none;
+  outline: none;
   width: 50vw;
 }
 
 #categories .category-hyperlink .drop-zone {
+  font-family: "Grenze";
+  position: relative;
+  margin-bottom: 1vh;
   text-align: center;
+  background: #014952;
+  border: 5px solid black;
+  width: 70%;
+  left: 50vw;
+  transform: translateX(-50%);
+}
+
+#categories #categoryFormOpener {
+  font-size: 10vh;
+  text-align: center;
+  color: #014952;
+}
+
+#categories #categoryFormOpener:hover {
+  cursor: pointer;
 }
 
 .popup-form {
@@ -31,7 +54,7 @@
 .popup-form .form-exit {
   float: right;
   position: relative;
-  font-size: 3vh;
+  font-size: 2vh;
   top: 1vh;
   right: 1vh;
 }
