@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 class ForumController extends Controller
 {
     /**
-     * Show the threads for the given page.
+     * Show threads of category by $categoryId and the $page of that category.
      * 
      * @param int $page
      * @param int $categoryId
@@ -20,7 +20,7 @@ class ForumController extends Controller
     public function showThreads($categoryId, $page) {
         $skipAmt = $page > 1 ? $page * 9 : 0;
         $threads = Thread::latest()->where('categoryId', $categoryId)->skip($skipAmt)->take(15)->get();
-        return view("threads", ["category" => Category::All()->firstWhere('id', $categoryId), "threads" => $threads, "page" => $page]);
+        return view("category", ["category" => Category::All()->firstWhere('id', $categoryId), "threads" => $threads, "page" => $page]);
     }
 
      /**

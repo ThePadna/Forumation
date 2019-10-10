@@ -17,7 +17,7 @@ Route::post('postcategory', 'ForumController@postCategory');
 Route::post('categoryswitchid', 'ForumController@categorySwitchId');
 Route::post('delcategory', 'ForumController@delCategory');
 Route::post('editcategory', 'ForumController@editCategory');
-Route::get('forum/{category}/{page}', 'ForumController@showThreads');
+Route::get('forum/{category}/{page}', 'ForumController@showCategory');
 Route::get('forum', 'ForumController@showCategories');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
