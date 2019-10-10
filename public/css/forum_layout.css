@@ -32,7 +32,7 @@ body {
   margin-bottom: 1vh;
 }
 
-#title {
+#header #title {
   position: relative;
   font-family: "Yellowtail", cursive;
   font-size: 50px;

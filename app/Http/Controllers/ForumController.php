@@ -17,7 +17,7 @@ class ForumController extends Controller
      * @param string $categoryName
      * @return Response
      */
-    public function showCategory($categoryId, $page) {
+    public function showCategory($categoryName, $page) {
         $skipAmt = $page > 1 ? $page * 9 : 0;
         $threads = Thread::latest()->where('categoryName', $categoryName)->skip($skipAmt)->take(15)->get();
         return view("category", ["category" => Category::All()->firstWhere('name', $categoryName), "threads" => $threads, "page" => $page]);
