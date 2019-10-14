@@ -84,4 +84,13 @@ class ForumController extends Controller
         $cat->name = $new;
         $cat->save();
     }
+
+    /**
+     * Show the form to submit a new Thread on current category.
+     * 
+     * @param Request $request
+     */
+    public function showThreadPostForm(Request $request) {
+        return view('post');
+    }
 }

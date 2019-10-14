@@ -21,7 +21,9 @@
     @endguest
 </div>
     <div id="header">
+    <a href="/forum">
     <h1 id="title"> Forumation </h1>
+    </a>
     </div>
 </head>
 <div id="container">

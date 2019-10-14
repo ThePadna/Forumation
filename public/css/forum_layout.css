@@ -32,7 +32,16 @@ body {
   margin-bottom: 1vh;
 }
 
+#header a {
+  text-decoration: none;
+}
+
+#header a:hover {
+  text-decoration: none;
+}
+
 #header #title {
+  color: white;
   position: relative;
   font-family: "Yellowtail", cursive;
   font-size: 50px;
