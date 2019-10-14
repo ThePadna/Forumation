@@ -1,5 +1,16 @@
 @import 'variables';
 @import 'libs';
+
+#postThread {
+    left: 0;
+    position: absolute;
+    width: 5vw;
+    height: 5vh;
+    h1 {
+        font-size: 2vh;
+    }
+}
+
 #prevpage,
 #nextpage {
     position: relative;
@@ -14,11 +25,13 @@
 #prevpage {
     left: 50px;
     font-size: 100px;
+    color: #014952;
 }
 
 #nextpage {
     right: 50px;
     font-size: 100px;
+    color: #014952;
 }
 
 span {
