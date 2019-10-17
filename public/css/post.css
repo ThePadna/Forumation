@@ -17,6 +17,7 @@
 }
 
 #wrapper input,
+#wrapper textarea,
 #wrapper button {
   position: relative;
   left: 50%;

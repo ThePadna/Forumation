@@ -4,8 +4,8 @@
 <div id="wrapper">
     <div id="post">
     <form>
-        <input id="threadTitle" type="text" /> <br />
-        <input id="threadText" type="text" /> <br />
+        <input id="threadTitle" type="text" placeholder="The title of your post" /> <br />
+        <textarea id="threadText" cols="50" rows="10"></textarea> <br />
         <button id="postThread"> POST </button>
     </form>
 </div>
