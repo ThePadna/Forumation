@@ -13,6 +13,7 @@
 Route::get('/', function () {
     return view('home');
 });
+Route::post('postthread', 'ForumController@postThread');
 Route::post('postcategory', 'ForumController@postCategory');
 Route::post('categoryswitchid', 'ForumController@categorySwitchId');
 Route::post('delcategory', 'ForumController@delCategory');

@@ -93,4 +93,13 @@ class ForumController extends Controller
     public function showThreadPostForm(Request $request) {
         return view('post');
     }
+
+    /**
+     * Post a thread to desired category.
+     * 
+     * @param Request $request
+     */
+    public function postThread(Request $request) {
+        
+    }
 }

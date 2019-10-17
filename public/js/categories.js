@@ -23,10 +23,8 @@ $addCategoryForm.submit((e) => {
       success: function(res) {
         window.location.reload();
       },
-      error: function (jqXHR, textStatus, errorThrown) {
-          console.log('An error occurred.');
-          console.log(errorThrown);
-          console.log(jqXHR);
+      error: function(xhr, ajaxOptions, thrownError) {
+        console.log("Error occured during AJAX request, error code: " + xhr.status);
       },
     });
 });
@@ -45,10 +43,8 @@ $delCategoryForm.submit((e) => {
         window.location.reload();
         console.log(res);
       },
-      error: function (jqXHR, textStatus, errorThrown) {
-          console.log('An error occurred.');
-          console.log(errorThrown);
-          console.log(jqXHR);
+      error: function(xhr, ajaxOptions, thrownError) {
+        console.log("Error occured during AJAX request, error code: " + xhr.status);
       },
   });
 });
@@ -68,10 +64,8 @@ $editCategoryForm.submit((e) => {
       success: function(res) {
         window.location.reload();
       },
-      error: function (jqXHR, textStatus, errorThrown) {
-          console.log('An error occurred.');
-          console.log(errorThrown);
-          console.log(jqXHR);
+      error: function(xhr, ajaxOptions, thrownError) {
+        console.log("Error occured during AJAX request, error code: " + xhr.status);
       },
   });
 });
@@ -116,10 +110,8 @@ document.addEventListener("drop", function(event) {
         'draggedId': targetElement.getAttribute("categoryId"),
         'targetId': dragged.getAttribute("categoryId")
       },
-      error: function (jqXHR, textStatus, errorThrown) {
-          console.log('An error occurred.');
-          console.log(errorThrown);
-          console.log(jqXHR);
+      error: function(xhr, ajaxOptions, thrownError) {
+        console.log("Error occured during AJAX request, error code: " + xhr.status);
       },
     });
   }
