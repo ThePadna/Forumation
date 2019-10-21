@@ -10,31 +10,7 @@
         </form>
     </div>
 </div>
-<meta name="csrf" content="{{csrf_token()}}">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
-<script>
-var $form = $('form');
-$form.submit((e) => {
-    e.preventDefault();
-    var $title = $form.find('input[name=threadTitle]').val();
-    var $text = $form.find('textarea[name=threadText]').val();
-    $.ajax({
-        type: 'POST',
-        url: 'postthread',
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf"]').attr('content')
-        },
-        data: {
-            'title': $title,
-            'text': $text
-        },
-        success: function(res) {
-            console.log("success");
-        },
-        error: function(xhr, ajaxOptions, thrownError) {
-            console.log("Error occured during AJAX request, error code: " + xhr.status);
-        },
-    });
-});
-</script>
+<meta name="csrf" content="{{csrf_token()}}">
+<script src="{{asset('js/post.js')}}"> </script>
 @stop

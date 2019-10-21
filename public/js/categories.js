@@ -17,7 +17,7 @@ $addCategoryForm.submit((e) => {
     $addCategoryForm.find('input[name="categoryname"]').val("");
     $.ajax({
       type: "POST",
-      url: 'postcategory',
+      url: '/postcategory',
       headers: {'X-CSRF-TOKEN' : $('meta[name="csrf"]').attr('content')},
       data: {'categoryName': $categoryName},
       success: function(res) {
@@ -28,7 +28,6 @@ $addCategoryForm.submit((e) => {
       },
     });
 });
-
 /**
  * Request to delete category when form is submitted.
  */
@@ -36,7 +35,7 @@ $delCategoryForm.submit((e) => {
   e.preventDefault();
   $.ajax({
       type: "POST",
-      url: 'delcategory',
+      url: '/delcategory',
       headers: {'X-CSRF-TOKEN': $('meta[name="csrf"]').attr('content')},
       data: {'categoryName': this.$prevClickedDelCategoryName},
       success: function(res) {
@@ -58,7 +57,7 @@ $editCategoryForm.submit((e) => {
   console.log("null?" + this.$prevClickedEditCategoryName);
   $.ajax({
       type: "POST",
-      url: 'editcategory',
+      url: '/editcategory',
       headers: {'X-CSRF-TOKEN': $('meta[name="csrf"]').attr('content')},
       data: {'categoryName': this.$prevClickedEditCategoryName, 'newCategoryName': $categoryName},
       success: function(res) {
@@ -104,7 +103,7 @@ document.addEventListener("drop", function(event) {
     dragged.href = targetHREF;
     $.ajax({
       type: "POST",
-      url: 'categoryswitchid',
+      url: '/categoryswitchid',
       headers: {'X-CSRF-TOKEN' : $('meta[name="csrf"]').attr('content')},
       data: {
         'draggedId': targetElement.getAttribute("categoryId"),
