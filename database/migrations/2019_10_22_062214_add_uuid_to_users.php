@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateThreadsTable extends Migration
+class AddUuidToUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateThreadsTable extends Migration
      */
     public function up()
     {
-        Schema::create('threads', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('op', 36)->unique();
-            $table->string('title', 300)->unique();
-            $table->decimal("posts");
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('uuid', 36);
         });
     }
 
@@ -29,6 +25,8 @@ class CreateThreadsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('threads');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('uuid');
+        });
     }
 }

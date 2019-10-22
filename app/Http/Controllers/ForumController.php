@@ -38,7 +38,7 @@ class ForumController extends Controller
      * @param Request $request
      */
     public function postCategory(Request $request) {
-        $categoryName = $request->input('categoryName');
+        $categoryName = $request->input('categoryTitle');
         $category = new Category();
         $category->name = $categoryName;
         $category->save();
@@ -100,6 +100,10 @@ class ForumController extends Controller
      * @param Request $request
      */
     public function postThread(Request $request) {
+        $title = $request->input('threadTitle');
+        $text = $request->input('threadText');
+        $thread = new Thread();
+        $thread->title = $title;
         
     }
 }

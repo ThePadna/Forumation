@@ -13,15 +13,16 @@ $editCategoryForm.hide();
  */
 $addCategoryForm.submit((e) => {
     e.preventDefault();
-    $categoryName = $addCategoryForm.find('input[name="categoryname"]').val();
-    $addCategoryForm.find('input[name="categoryname"]').val("");
+    $title = $addCategoryForm.find('input[name="categoryTitle"]').val();
+    $addCategoryForm.find('input[name="categoryTitle"]').val("");
     $.ajax({
       type: "POST",
       url: '/postcategory',
       headers: {'X-CSRF-TOKEN' : $('meta[name="csrf"]').attr('content')},
-      data: {'categoryName': $categoryName},
+      data: {"categoryTitle": $title},
       success: function(res) {
         window.location.reload();
+        console.log(res);
       },
       error: function(xhr, ajaxOptions, thrownError) {
         console.log("Error occured during AJAX request, error code: " + xhr.status);
@@ -54,7 +55,6 @@ $delCategoryForm.submit((e) => {
 $editCategoryForm.submit((e) => {
   e.preventDefault();
   $categoryName = $editCategoryForm.find('input[name="categoryname"]').val();
-  console.log("null?" + this.$prevClickedEditCategoryName);
   $.ajax({
       type: "POST",
       url: '/editcategory',

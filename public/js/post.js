@@ -5,7 +5,7 @@ $form.submit((e) => {
       type: "POST",
       url: '/postthread',
       headers: {'X-CSRF-TOKEN': $('meta[name="csrf"]').attr('content')},
-      data: {"test": "data"},
+      data: $form.serialize(),
       success: function(res) {
         window.location.reload();
         console.log(res);

@@ -34,7 +34,7 @@
                 </div>
                 <div class="form-container">
                     <form>
-                        <input id="categoryTitle" type="text" name="categoryname" />
+                        <input id="categoryTitle" type="text" name="categoryTitle" />
                         <button id="categoryFormCloser"> Add Category </button>
                     </form>
                 </div>
