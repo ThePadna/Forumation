@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Thread;
 use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 
 
@@ -102,8 +103,15 @@ class ForumController extends Controller
     public function postThread(Request $request) {
         $title = $request->input('threadTitle');
         $text = $request->input('threadText');
+        $userUUID = Auth::user()->uuid;
         $thread = new Thread();
         $thread->title = $title;
-        
+        $thread->op = $userUUID;
+        $thread->save();
+        $op = new Post();
+        $op->thread = $thread->id;
+        $op->contents = $text;
+        $op->user = $userUUID;
+        $op->save();
     }
 }

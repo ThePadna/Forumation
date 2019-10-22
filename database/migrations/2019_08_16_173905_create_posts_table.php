@@ -17,7 +17,7 @@ class CreatePostsTable extends Migration
             $table->bigIncrements('id');
             $table->string("contents", 5000);
             $table->decimal("thread");
-            $table->string("user", 32);
+            $table->string("user", 36);
             $table->timestamps();
         });
     }
