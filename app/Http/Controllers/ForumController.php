@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Thread;
 use App\Models\Category;
 use App\Models\Post;
@@ -91,23 +92,28 @@ class ForumController extends Controller
      * 
      * @param Request $request
      */
-    public function showThreadPostForm(Request $request) {
-        return view('post');
+    public function showThreadPostForm(Request $request, $category) {
+        return view('post', ['categoryName' => $category]);
     }
 
     /**
      * Post a thread to desired category.
      * 
      * @param Request $request
+     * @param String $categoryName
      */
     public function postThread(Request $request) {
         $title = $request->input('threadTitle');
         $text = $request->input('threadText');
+        $category = $request->input('categoryName');
         $userUUID = Auth::user()->uuid;
         $thread = new Thread();
         $thread->title = $title;
         $thread->op = $userUUID;
+        $thread->posts = 1;
+        $thread->categoryName = $category;
         $thread->save();
+        return $request->path();
         $op = new Post();
         $op->thread = $thread->id;
         $op->contents = $text;
