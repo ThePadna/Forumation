@@ -1,9 +1,6 @@
 @extends('layouts/forum_layout')
 @section('content')
 <link rel="stylesheet" href="{{asset('css/categories.css')}}">
-<button id="testbutton">
-    Nuke button
-</button>
 <div id="wrapper">
     <div id="categories">
         @if(sizeof($categories) < 1) <h1> No Categories found. </h1>
