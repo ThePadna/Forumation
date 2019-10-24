@@ -71,7 +71,6 @@ class ForumController extends Controller
     public function delCategory(Request $request) {
         $categoryName = $request->input('categoryName');
         Category::where('name', $categoryName)->delete();
-        return $categoryName;
     }
 
     /**
@@ -91,6 +90,7 @@ class ForumController extends Controller
      * Show the form to submit a new Thread on current category.
      * 
      * @param Request $request
+     * @return Response
      */
     public function showThreadPostForm(Request $request, $category) {
         return view('post', ['categoryName' => $category]);
@@ -120,4 +120,16 @@ class ForumController extends Controller
         $op->user = $userUUID;
         $op->save();
     }
+
+    /**
+     * Show thread for $threadId
+     * 
+     * @param Request $request
+     * @param String $categoryName
+     * @param int $threadId
+     * @return Response
+     */
+     public function showThread(Request $request, $categoryName, $threadId) {
+         //return posts
+     }
 }

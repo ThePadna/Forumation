@@ -17,7 +17,7 @@
                     <p> {{$t->title}}</p>
                 </div>
                 <div id="op">
-                    <p> Latest post by &nbsp; <i class="far fa-user"></i> x ago </p>
+                    <p> Latest post by &nbsp; <i class="far fa-user"></i> {{$t->op}} x ago </p>
                 </div>
             </div>
         </a>
