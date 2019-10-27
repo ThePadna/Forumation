@@ -11,7 +11,7 @@
     @endauth
     <div id="threads">
         @foreach($threads as $t)
-        <a href="/threads/{{$t->id}}">
+        <a href="thread/{{$t->id}}">
             <div id="thread">
                 <div id="title">
                     <p> {{$t->title}}</p>

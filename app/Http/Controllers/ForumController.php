@@ -130,6 +130,7 @@ class ForumController extends Controller
      * @return Response
      */
      public function showThread(Request $request, $categoryName, $threadId) {
-         //return posts
+         $posts = Post::where('thread', $threadId);
+         return view('thread', ['posts' => $posts]);
      }
 }
