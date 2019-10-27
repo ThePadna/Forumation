@@ -106,17 +106,17 @@ class ForumController extends Controller
         $title = $request->input('threadTitle');
         $text = $request->input('threadText');
         $category = $request->input('categoryName');
-        $userUUID = Auth::user()->uuid;
+        $userId = Auth::user()->id;
         $thread = new Thread();
         $thread->title = $title;
-        $thread->op = $userUUID;
+        $thread->op = $userId;
         $thread->posts = 1;
         $thread->categoryName = $category;
         $thread->save();
         $op = new Post();
         $op->thread = $thread->id;
         $op->contents = $text;
-        $op->user = $userUUID;
+        $op->user = $userId;
         $op->save();
     }
 

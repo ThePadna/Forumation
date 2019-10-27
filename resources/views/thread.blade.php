@@ -3,7 +3,7 @@
 <div id="wrapper">
 @foreach($posts as $p)
 <div class="post">
-<h1> {{$p->user}} </h1>
+<h1> {{App\User::find($p->user)->name}} </h1>
 <p> {{$p->contents}}</p>
 </div>
 @endforeach
