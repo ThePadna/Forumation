@@ -113,7 +113,6 @@ class ForumController extends Controller
         $thread->posts = 1;
         $thread->categoryName = $category;
         $thread->save();
-        return $request->path();
         $op = new Post();
         $op->thread = $thread->id;
         $op->contents = $text;
@@ -130,7 +129,7 @@ class ForumController extends Controller
      * @return Response
      */
      public function showThread(Request $request, $categoryName, $threadId) {
-         $posts = Post::where('thread', $threadId);
+         $posts = Post::where('thread', $threadId)->get();
          return view('thread', ['posts' => $posts]);
      }
 }

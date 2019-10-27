@@ -16,7 +16,7 @@
 var $form = $('form');
 $form.submit((e) => {
   e.preventDefault();
-  var $text = $form.find('input[name="threadText"]').val();
+  var $text = $form.find('textarea[name="threadText"]').val();
   var $title = $form.find('input[name="threadTitle"]').val();
   $.ajax({
       type: "POST",
