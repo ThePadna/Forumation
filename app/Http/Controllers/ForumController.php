@@ -118,6 +118,7 @@ class ForumController extends Controller
         $op->contents = $text;
         $op->user = $userId;
         $op->save();
+        return $thread->id;
     }
 
     /**
