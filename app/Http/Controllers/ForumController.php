@@ -22,7 +22,19 @@ class ForumController extends Controller
     public function showCategory($categoryName, $page) {
         $skipAmt = $page > 1 ? $page * 9 : 0;
         $threads = Thread::latest()->where('categoryName', $categoryName)->skip($skipAmt)->take(15)->get();
-        return view("category", ["category" => Category::All()->firstWhere('name', $categoryName), "threads" => $threads, "page" => $page]);
+        $posts = [];
+        foreach($threads as $t) {
+            $id = $t->id;
+            foreach(Post::where('thread', $id) as $p) {
+                $post = $posts[$id];
+                if($post != null) {
+                    $time = Carbon::parse($p->created_at);
+                    $timeCompare = Carbon::parse($post->created_at);
+                    if($time->gt($timeCompare)) $posts[$t->id] = $post;
+                } else $posts[$id] = $p;
+            }
+        }
+        return view("category", ["category" => Category::All()->firstWhere('name', $categoryName), "threads" => $threads, "page" => $page, "posts" => $posts]);
     }
 
      /**

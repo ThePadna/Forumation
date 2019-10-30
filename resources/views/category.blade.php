@@ -17,7 +17,17 @@
                     <p> {{$t->title}}</p>
                 </div>
                 <div id="op">
-                    <p> Latest post by &nbsp; <i class="far fa-user"></i> {{$t->op}} x ago </p>
+                @php
+                $id = $t->id;
+                $time = null;
+                $op = null;
+                if(array_key_exists($id, $posts)) {
+                    $post = $posts[$id];
+                    $time = $post->created_at;
+                    $op = $post->user;
+                }
+                @endphp
+                    <p> Latest post by &nbsp; <i class="far fa-user"></i> {{App\User::find($t->op)->name}} at {{$time}}</p>
                 </div>
             </div>
         </a>
