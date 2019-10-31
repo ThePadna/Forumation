@@ -25,9 +25,9 @@ class ForumController extends Controller
         $posts = [];
         foreach($threads as $t) {
             $id = $t->id;
-            foreach(Post::where('thread', $id) as $p) {
-                $post = $posts[$id];
-                if($post != null) {
+            foreach(Post::where('thread', $id)->get() as $p) {
+                if(array_key_exists($id, $posts)) {
+                    $post = $posts[$t->id];
                     $time = Carbon::parse($p->created_at);
                     $timeCompare = Carbon::parse($post->created_at);
                     if($time->gt($timeCompare)) $posts[$t->id] = $post;
