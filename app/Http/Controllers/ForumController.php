@@ -22,7 +22,7 @@ class ForumController extends Controller
      */
     public function showCategory($categoryName, $page) {
         $skipAmt = $page > 1 ? $page * 9 : 0;
-        $threads = Thread::latest()->where('categoryName', $categoryName)->skip($skipAmt)->take(15)->get();
+        $threads = Thread::latest()->where('categoryName', $categoryName)->skip($skipAmt)->take(9)->get();
         $posts = [];
         foreach($threads as $t) {
             $id = $t->id;
@@ -142,8 +142,9 @@ class ForumController extends Controller
      * @param int $threadId
      * @return Response
      */
-     public function showThread(Request $request, $categoryName, $threadId) {
-         $posts = Post::where('thread', $threadId)->get();
+     public function showThread(Request $request, $categoryName, $threadId, $page) {
+         $skipAmt = $page > 1 ? $page * 9 : 0;
+         $posts = Post::where('thread', $threadId)->skip($skipAmt)->take(9)->get();
          return view('thread', ['posts' => $posts]);
      }
 }

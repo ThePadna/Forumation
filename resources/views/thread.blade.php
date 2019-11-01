@@ -1,5 +1,6 @@
 @extends('layouts/forum_layout')
 @section('content')
+<link rel="stylesheet" href="{{asset('css/thread.css')}}">
 <div id="wrapper">
 @foreach($posts as $p)
 <div class="post">

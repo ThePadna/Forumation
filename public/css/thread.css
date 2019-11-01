@@ -1,0 +1,14 @@
+@import url(https://code.jquery.com/jquery-3.4.1.min.js);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js);@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);#wrapper {
+  text-align: center;
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+}
+
+.post {
+  position: relative;
+  width: 90%;
+  border: 1px solid black;
+  margin-bottom: 1%;
+}
+
