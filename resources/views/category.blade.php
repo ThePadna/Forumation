@@ -26,8 +26,15 @@
                     $time = $post->created_at;
                     $op = $post->user;
                 }
+                $timeDisplay = $time->diffAsCarbonInterval(Carbon\Carbon::now());
+                $formatAs = null;
+                if($timeDisplay->s != 0) $formatAs = "s"; 
+                if($timeDisplay->h != 0) $formatAs = "h"; 
+                if($timeDisplay->d != 0) $formatAs = "d"; 
+                if($timeDisplay->m != 0) $formatAs = "m"; 
+                if($timeDisplay->y != 0) $formatAs = "y"; 
                 @endphp
-                    <p> Latest post by &nbsp; <i class="far fa-user"></i> {{App\User::find($t->op)->name}} at {{$time}}</p>
+                    <p> Latest post by &nbsp; <i class="far fa-user"></i> {{App\User::find($t->op)->name}} {{$timeDisplay->format("%" . $formatAs)}}{{$formatAs}} ago</p>
                 </div>
             </div>
         </a>

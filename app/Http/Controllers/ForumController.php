@@ -8,6 +8,7 @@ use App\Models\Thread;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 
 class ForumController extends Controller
@@ -34,7 +35,7 @@ class ForumController extends Controller
                 } else $posts[$id] = $p;
             }
         }
-        return view("category", ["category" => Category::All()->firstWhere('name', $categoryName), "threads" => $threads, "page" => $page, "posts" => $posts]);
+        return view("category", ["category" => Category::All()->firstWhere('name', $categoryName), "threads" => $threads, "page" => $page, "posts" => $posts, "now" => Carbon::now()]);
     }
 
      /**
