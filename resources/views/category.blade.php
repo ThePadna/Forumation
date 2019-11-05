@@ -12,11 +12,11 @@
     <div id="threads">
         @foreach($threads as $t)
         <a href="thread/{{$t->id}}/1">
-            <div id="thread">
-                <div id="title">
+            <div class="thread">
+                <div class="title">
                     <p> {{$t->title}}</p>
                 </div>
-                <div id="op">
+                <div class="op">
                 @php
                 $id = $t->id;
                 $time = null;

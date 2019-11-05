@@ -3,14 +3,24 @@
 
 #wrapper {
     text-align: center;
-    border: 1px solid red;
-    display: flex;
-    justify-content: center;
 }
 
-.post {
+.row {
+    width: 50%;
     position: relative;
-    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.col-sm-2 {
     border: 1px solid black;
-    margin-bottom: 1%;
+    height: 20vh;
+    p {
+        position: relative;
+        top: 20vh;
+    }
+}
+.col-sm-10 {
+    word-break: break-all;
+    float: left;
+    border: 1px solid red;
 }
