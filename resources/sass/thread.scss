@@ -9,7 +9,8 @@
     width: 50%;
     position: relative;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-55%);
+    margin-bottom: 1%;
 }
 .col-sm-2 {
     border: 1px solid black;
@@ -21,6 +22,10 @@
 }
 .col-sm-10 {
     word-break: break-all;
-    float: left;
     border: 1px solid red;
+}
+
+#postReply {
+    width: 40vw;
+    height: 20vh;
 }

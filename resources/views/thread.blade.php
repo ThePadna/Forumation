@@ -14,8 +14,10 @@
         </div>
     </div>
     @endforeach
+    @auth
     @if($isLastPage)
-    <h1> last page lul <h1>
+    <textarea id="postReply" name="postReply"> </textarea>
     @endif
+    @endauth
 </div>
 @stop
