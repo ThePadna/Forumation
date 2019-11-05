@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 use App\Models\Thread;
 use App\Models\Category;
 use App\Models\Post;
@@ -145,6 +146,9 @@ class ForumController extends Controller
      public function showThread(Request $request, $categoryName, $threadId, $page) {
          $skipAmt = $page > 1 ? $page * 9 : 0;
          $posts = Post::where('thread', $threadId)->skip($skipAmt)->take(9)->get();
-         return view('thread', ['posts' => $posts]);
+         $isLastPage = false;
+         $lastPostIndex = sizeof($posts);
+         if(!User::where('id', $posts[--$lastPostIndex]->id)->exists()) $isLastPage = true;
+         return view('thread', ['posts' => $posts, 'isLastPage' => $isLastPage]);
      }
 }

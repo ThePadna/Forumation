@@ -14,5 +14,8 @@
         </div>
     </div>
     @endforeach
+    @if($isLastPage)
+    <h1> last page lul <h1>
+    @endif
 </div>
 @stop
