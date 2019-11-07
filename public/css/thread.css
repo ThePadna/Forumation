@@ -1,17 +1,12 @@
-@import url(https://code.jquery.com/jquery-3.4.1.min.js);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js);@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);#wrapper {
-  text-align: center;
-}
-
-.row {
+@import url(https://code.jquery.com/jquery-3.4.1.min.js);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js);@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);.row {
   width: 50%;
   position: relative;
   left: 50%;
-  transform: translateX(-55%);
+  transform: translateX(-50%);
   margin-bottom: 1%;
 }
 
 .col-sm-2 {
-  border: 1px solid black;
   height: 20vh;
 }
 
@@ -22,11 +17,24 @@
 
 .col-sm-10 {
   word-break: break-all;
-  border: 1px solid red;
 }
 
-#postReply {
-  width: 40vw;
+#replyForm * {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#replyForm textarea {
+  margin-bottom: 2%;
+  width: 35vw;
   height: 20vh;
+}
+
+#replyForm button {
+  display: block;
+  color: gray;
+  width: 4vw;
+  height: 4vh;
 }
 

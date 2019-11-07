@@ -1,19 +1,14 @@
 @import 'variables';
 @import 'libs';
 
-#wrapper {
-    text-align: center;
-}
-
 .row {
     width: 50%;
     position: relative;
     left: 50%;
-    transform: translateX(-55%);
+    transform: translateX(-50%);
     margin-bottom: 1%;
 }
 .col-sm-2 {
-    border: 1px solid black;
     height: 20vh;
     p {
         position: relative;
@@ -22,10 +17,23 @@
 }
 .col-sm-10 {
     word-break: break-all;
-    border: 1px solid red;
 }
 
-#postReply {
-    width: 40vw;
-    height: 20vh;
+#replyForm {
+    * {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    textarea {
+        margin-bottom: 2%;
+        width: 35vw;
+        height: 20vh;
+    }
+    button {
+        display: block;
+        color: gray;
+        width: 4vw;
+        height: 4vh;
+    }
 }
