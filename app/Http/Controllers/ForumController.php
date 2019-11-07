@@ -149,6 +149,21 @@ class ForumController extends Controller
          $isLastPage = false;
          $lastPostIndex = sizeof($posts);
          if(!User::where('id', $posts[--$lastPostIndex]->id)->exists()) $isLastPage = true;
-         return view('thread', ['posts' => $posts, 'isLastPage' => $isLastPage]);
+         return view('thread', ['posts' => $posts, 'isLastPage' => $isLastPage, 'thread' => $threadId]);
      }
+     
+     /**
+      * Post reply to $thread
+      *
+      * @param Request $request
+      * @param int $threadId
+      * @return Response
+      */
+      public function postReply(Request $request) {
+          $post = new Post();
+          $post->thread = $request->input('thread');
+          $post->user = Auth::user()->id;
+          $post->contents = $request->input('text');
+          $post->save();
+      }
 }

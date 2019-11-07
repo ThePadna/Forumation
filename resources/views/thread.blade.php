@@ -16,16 +16,15 @@
     @endforeach
     @auth
     @if($isLastPage)
-    <div id="replyForm">
-        <form>
-            <textarea id="replyText" name="replyText" placeholder="What are your thoughts?"></textarea>
-            <button id="postReply"> POST </button>
-        </form>
-    </div>
+    <form id="replyForm">
+        <textarea id="replyText" name="replyText" placeholder="What are your thoughts?"></textarea>
+        <button id="postReply"> POST </button>
+    </form>
     @endif
     @endauth
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 <meta name="csrf" content="{{csrf_token()}}">
+<meta name="thread" content="{{$thread}}">
 <script src="{{asset('js/thread.js')}}"> </script>
 @stop
