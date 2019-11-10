@@ -9,11 +9,16 @@
     margin-bottom: 1%;
 }
 .col-sm-2 {
-    height: 20vh;
     p {
         position: relative;
-        top: 20vh;
+        left: 50%;
+        transform: translateX(-50%);
     }
+    img {
+        width: 15vh;
+        height: 15vh;
+    }
+    margin-bottom: 3%;
 }
 .col-sm-10 {
     word-break: break-all;

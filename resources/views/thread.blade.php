@@ -6,12 +6,14 @@
     <div id="container">
         <div class="row">
             <div id="test" class="col-sm-2">
+                <img src="{{asset('img/profilepic.png')}}">
                 <p> {{App\User::find($p->user)->name}} </p>
             </div>
             <div class="col-sm-10">
                 {{$p->contents}}
             </div>
         </div>
+        <hr />
     </div>
     @endforeach
     @auth

@@ -7,12 +7,18 @@
 }
 
 .col-sm-2 {
-  height: 20vh;
+  margin-bottom: 3%;
 }
 
 .col-sm-2 p {
   position: relative;
-  top: 20vh;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.col-sm-2 img {
+  width: 15vh;
+  height: 15vh;
 }
 
 .col-sm-10 {
