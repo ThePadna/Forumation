@@ -166,4 +166,15 @@ class ForumController extends Controller
           $post->contents = $request->input('text');
           $post->save();
       }
+      /**
+       * Show user profile page
+       * 
+       * @param int $userId
+       * @return Response
+       */
+      public function showUserProfile(Request $request, $userId) {
+          $user = User::find($userId);
+          if($user == null) return view('404');
+          return view('profile', ['user' => $user]);
+      }
 }
