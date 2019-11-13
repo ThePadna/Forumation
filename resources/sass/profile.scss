@@ -1,23 +1,27 @@
 @import 'variables';
 @import 'libs';
 
-#profileheader>* {
+#profileheader {
+    * {
     position: relative;
     left: 50%;
     text-align: center;
     transform: translateX(-50%);
+    }
+    h1 {
+        margin-bottom: 5%;
+    }
 }
 
-#nav {
-    width: auto;
-    display: inline-block;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    * {
-        width: 4vw;
-        height: 2vw;
-        background: $color-scheme;
-        border: 1px solid black;
+.row {
+    div {
+        height: 40vh;
+        p {
+            font-size: 800%;
+            color: $color-scheme;
+        }
+        * {
+            text-align: center;
+        }
     }
 }

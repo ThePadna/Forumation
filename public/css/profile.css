@@ -1,22 +1,24 @@
-@import url(https://code.jquery.com/jquery-3.4.1.min.js);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js);@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);#profileheader > * {
+@import url(https://code.jquery.com/jquery-3.4.1.min.js);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js);@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);#profileheader * {
   position: relative;
   left: 50%;
   text-align: center;
   transform: translateX(-50%);
 }
 
-#nav {
-  width: auto;
-  display: inline-block;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+#profileheader h1 {
+  margin-bottom: 5%;
 }
 
-#nav * {
-  width: 4vw;
-  height: 2vw;
-  background: #014952;
-  border: 1px solid black;
+.row div {
+  height: 40vh;
+}
+
+.row div p {
+  font-size: 800%;
+  color: #014952;
+}
+
+.row div * {
+  text-align: center;
 }
 
