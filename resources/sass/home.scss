@@ -7,16 +7,16 @@ body {
     width: 100vw;
     overflow-x: hidden;
     overflow-y: hidden; 
-    background-color: #669999;
+    background-color: $color-scheme;
 }
 
 #header {
-    background-color: #014952;
+    background-color: $color-scheme;
     height: 25vh;
     width: 100vw;
     text-align: center;
     #title {
-        background-color: #0a4f57;
+        background-color: $color-scheme;
         color: white;
         font-size: 10vh;
         text-align: center;
@@ -29,7 +29,7 @@ body {
 #footer {
     height: 25vh;
     width: 100vw;
-    background-color: #0a4f57;
+    background-color: $color-scheme;
     .row {
         position: relative;
         top: 50%;
