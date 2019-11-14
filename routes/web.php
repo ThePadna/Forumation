@@ -20,7 +20,7 @@ Route::post('/categoryswitchid', 'ForumController@categorySwitchId');
 Route::post('/delcategory', 'ForumController@delCategory');
 Route::post('/editcategory', 'ForumController@editCategory');
 Route::get('/forum/profile/{user}', 'ForumController@showUserProfile');
-Route::get('/forum/profile/{user}/edit', '');
+Route::get('/forum/profile/{user}/edit', 'UserController@editProfile');
 Route::get('/forum/category/{category}/thread/{thread}/{page}', 'ForumController@showThread');
 Route::get('/forum/category/{category}/post', 'ForumController@showThreadPostForm');
 Route::get('/forum/category/{category}/{page}', 'ForumController@showCategory');
