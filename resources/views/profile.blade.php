@@ -2,8 +2,9 @@
 @section('content')
 <link rel="stylesheet" href="{{asset('css/profile.css')}}">
 <div id="profileheader">
-    <img src="{{asset('img/profilepic.png')}}" />
+    <img id="profilepic" src="{{asset('img/profilepic.png')}}" />
     <h1> {{$user->name}} </h1>
+    <div id="editprofilepic"><i class="fas fa-wrench"></i></div>
 </div>
 <div id="container">
     <div class="row">
@@ -21,4 +22,10 @@
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
+@auth
+@if(Auth::user()->id == $user->id)
+<script src="{{asset('js/profile_auth.js')}}"> </script>
+@endif
+@endauth
 @stop

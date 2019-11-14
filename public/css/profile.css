@@ -1,11 +1,29 @@
-@import url(https://code.jquery.com/jquery-3.4.1.min.js);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js);@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);#profileheader * {
+@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js);@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);#profileheader {
+  display: inline-block;
   position: relative;
   left: 50%;
-  text-align: center;
   transform: translateX(-50%);
 }
 
+#profileheader #uploadpic {
+  position: absolute;
+  top: 50%;
+}
+
+#profileheader #editprofilepic {
+  position: absolute;
+  font-size: 350%;
+  top: 0;
+  left: 0;
+  opacity: 0.3;
+}
+
+#profileheader #editprofilepic:hover {
+  opacity: 1;
+}
+
 #profileheader h1 {
+  color: black;
   margin-bottom: 5%;
 }
 

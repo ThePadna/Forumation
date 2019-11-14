@@ -2,13 +2,26 @@
 @import 'libs';
 
 #profileheader {
-    * {
-    position: relative;
+    display: inline-block;
+    position: relative;        
     left: 50%;
-    text-align: center;
     transform: translateX(-50%);
+    #uploadpic {
+        position: absolute;
+        top: 50%;
+    }
+    #editprofilepic {
+        position: absolute;
+        font-size: 350%;
+        top: 0;
+        left: 0;
+        opacity: 0.3;
+    }
+    #editprofilepic:hover {
+        opacity: 1;
     }
     h1 {
+        color: black;
         margin-bottom: 5%;
     }
 }
