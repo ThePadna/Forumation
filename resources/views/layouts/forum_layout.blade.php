@@ -10,7 +10,7 @@
     @endif
     @else
             <p> 
-            Logged in as {{ Auth::user()->name }}
+            Logged in as <a style="color:white;" href="/forum/profile/{{Auth::user()->id}}">{{ Auth::user()->name }}</a>
             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 {{ __('Logout') }}
             </a>

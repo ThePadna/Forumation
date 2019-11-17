@@ -1,0 +1,30 @@
+@import 'variables';
+@import 'libs';
+
+#container {
+    #profilepic, #pic, #update {
+        display: block;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    #update {
+        margin-top: 1%;
+    }
+    input[type="file"] {
+        width: 11vw;
+    }
+    #namechanger {
+        margin-top: 1%;
+        display: inline-block;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        h1 {
+            font-size: 1vw;
+        }
+        * {
+            display: inline-block;
+        }
+    }
+}

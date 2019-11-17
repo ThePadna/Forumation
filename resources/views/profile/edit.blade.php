@@ -2,8 +2,20 @@
 @section('content')
 @auth
 @if(Auth::user()->id == $user->id)
+<link rel="stylesheet" href="{{asset('css/edit.css')}}">
+<div id="container">
+<form id="updateProfile">
+<img id="profilepic" src="{{asset('img/profilepic.png')}}" />
+<input id="pic" type="file" />
+<div id="namechanger">
+<h1> Profile Name </h1>
+<input id="username" type="text" placeholder="{{$user->name}}" />
+</div>
+<button id="update"> UPDATE </button>
+</form>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 <script src="{{asset('js/profile_edit.js')}}"> </script>
-<h1> form.. </h1>
 @else
 <h1> You do not have priveleges to edit this profile. </h1>
 @endif

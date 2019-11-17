@@ -6,23 +6,19 @@
     position: relative;        
     left: 50%;
     transform: translateX(-50%);
-    #uploadpic {
-        position: absolute;
-        top: 50%;
+    * {
+        h1 {
+            text-align: center;
+        }
+        display: block;
+        position: relative;
+        margin: 0;
+        padding: 0;
+        left: 50%;
+        transform: translateX(-50%);
     }
-    #editprofilepic {
-        position: absolute;
-        font-size: 350%;
-        top: 0;
-        left: 0;
-        opacity: 0.3;
-    }
-    #editprofilepic:hover {
-        opacity: 1;
-    }
-    h1 {
-        color: black;
-        margin-bottom: 5%;
+    input[type="file"] {
+        width: 75%;
     }
 }
 

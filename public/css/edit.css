@@ -1,0 +1,33 @@
+@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js);@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);#container #profilepic,
+#container #pic,
+#container #update {
+  display: block;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#container #update {
+  margin-top: 1%;
+}
+
+#container input[type=file] {
+  width: 11vw;
+}
+
+#container #namechanger {
+  margin-top: 1%;
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#container #namechanger h1 {
+  font-size: 1vw;
+}
+
+#container #namechanger * {
+  display: inline-block;
+}
+
