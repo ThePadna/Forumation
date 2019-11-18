@@ -2,6 +2,7 @@
 @section('content')
 <link rel="stylesheet" href="{{asset('css/profile.css')}}">
 <div id="profileheader">
+    <a href="/forum/profile/{{$user->id}}/edit"> <p id="editBtn"> [Edit Profile] </p> </a>
     <div id="profilepicdiv">
         <img id="profilepic" src="{{asset('img/profilepic.png')}}" />
     </div>

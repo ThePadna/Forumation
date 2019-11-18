@@ -5,6 +5,10 @@
   transform: translateX(-50%);
 }
 
+#profileheader #editBtn {
+  text-align: center;
+}
+
 #profileheader * {
   display: block;
   position: relative;

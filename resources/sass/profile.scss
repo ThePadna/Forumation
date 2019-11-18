@@ -6,6 +6,9 @@
     position: relative;        
     left: 50%;
     transform: translateX(-50%);
+    #editBtn {
+        text-align: center;
+    }
     * {
         h1 {
             text-align: center;
