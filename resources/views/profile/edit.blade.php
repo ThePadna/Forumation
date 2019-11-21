@@ -16,7 +16,6 @@
 </div>
 <meta name="csrf" content="{{csrf_token()}}">
 <meta name="userId" content="{{$user->id}}">
-<script> console.log({{base64_decode($user->avatar)}}); </script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 <script src="{{asset('js/profile_edit.js')}}"> </script>
 @else

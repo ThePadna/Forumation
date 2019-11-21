@@ -7,6 +7,11 @@
   transform: translateX(-50%);
 }
 
+#container #profilepic {
+  height: 30vh;
+  width: 30vh;
+}
+
 #container #update {
   margin-top: 1%;
 }
