@@ -1,12 +1,13 @@
-let $pic_changed = null, $name_changed = null;
 let $usernameInp = $('#username');
+let $picInp = $('#profilepic');
 
 $('form').submit((e) => {
     e.preventDefault(); 
-    console.log("ready to send user " + $usernameInp.val());
     var formData = new FormData();
-    formData.append("username", $usernameInp.val());
-    formData.append("pic", $pic_changed);
+    let $name = $usernameInp.val();
+    if($name != null) formData.append("username", $usernameInp.val());
+    let $src = $picInp.attr('src');
+    if($src != null) formData.append("pic", $src);
     $.ajax({
         type: "POST",
         url: '/forum/profile/' + $('meta[name="userId"]').attr('content') + '/edit/updateprofile',
@@ -22,17 +23,10 @@ $('form').submit((e) => {
         },
       });
 });
-
 $('#pic').change((e) => {
-    var reader = new FileReader();
-    reader.onload = function(e) {
-        $('#profilepic').attr('src', e.target.result);
-    }
-    reader.readAsDataURL(e.target.files[0]);
-    this.$pic_changed = e.target.files[0];
-});
-
-$usernameInp.change((e) => {
-    $name_changed = $usernameInp.val();
-    if(($usernameInp.val()).length == 0) $name_changed = null;
+  var reader = new FileReader();
+  reader.onload = function(e) {
+      $('#profilepic').attr('src', e.target.result);
+  }
+  reader.readAsDataURL(e.target.files[0]);
 });

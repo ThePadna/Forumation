@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{{asset('css/edit.css')}}">
 <div id="container">
 <form id="updateProfile">
-<img id="profilepic" src="{{asset('img/profilepic.png')}}" />
+<img id="profilepic" src="{{base64_decode($user->avatar)}}" />
 <input id="pic" type="file" />
 <div id="namechanger">
 <h1> Profile Name </h1>
@@ -16,6 +16,7 @@
 </div>
 <meta name="csrf" content="{{csrf_token()}}">
 <meta name="userId" content="{{$user->id}}">
+<script> console.log({{base64_decode($user->avatar)}}); </script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 <script src="{{asset('js/profile_edit.js')}}"> </script>
 @else

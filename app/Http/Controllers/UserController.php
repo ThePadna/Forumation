@@ -30,6 +30,8 @@ class UserController extends Controller
         $username = $request->input('username');
         $user = User::find($userId);
         if($file != null) {
+            $b64 = base64_encode($file);
+            $user->avatar = $b64;
         }
         if($username != null) {
             $user->name = $username;
