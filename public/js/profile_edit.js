@@ -17,6 +17,7 @@ $('form').submit((e) => {
         contentType: false,
         success: function(res) {
           console.log(res);
+          window.location = "/forum/profile/" + $('meta[name="userId"]').attr('content');
         },
         error: function(xhr, ajaxOptions, thrownError) {
           console.log("Error occured during AJAX request, error code: " + xhr.status);

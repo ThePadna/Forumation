@@ -6,12 +6,18 @@
     position: relative;        
     left: 50%;
     transform: translateX(-50%);
+    #profilepic {
+        width: $avatar-width;
+        height: $avatar-height;
+        border: 1px solid black;
+    }
     #editBtn {
         text-align: center;
     }
     * {
         h1 {
             text-align: center;
+            margin-bottom: 10vh;
         }
         display: block;
         position: relative;

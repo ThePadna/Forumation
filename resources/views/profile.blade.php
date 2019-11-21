@@ -4,7 +4,7 @@
 <div id="profileheader">
     <a href="/forum/profile/{{$user->id}}/edit"> <p id="editBtn"> [Edit Profile] </p> </a>
     <div id="profilepicdiv">
-        <img id="profilepic" src="{{asset('img/profilepic.png')}}" />
+        <img id="profilepic" src="{{base64_decode($user->avatar)}}" />
     </div>
     <div id="profilenamediv">
             <h1> {{$user->name}} </h1>

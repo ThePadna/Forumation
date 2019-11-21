@@ -5,6 +5,12 @@
   transform: translateX(-50%);
 }
 
+#profileheader #profilepic {
+  width: 30vh;
+  height: 30vh;
+  border: 1px solid black;
+}
+
 #profileheader #editBtn {
   text-align: center;
 }
@@ -20,6 +26,7 @@
 
 #profileheader * h1 {
   text-align: center;
+  margin-bottom: 10vh;
 }
 
 #profileheader input[type=file] {

@@ -8,6 +8,7 @@
 }
 
 #container #profilepic {
+  border: 1px solid black;
   height: 30vh;
   width: 30vh;
 }
