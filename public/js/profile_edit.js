@@ -1,6 +1,6 @@
+
 let $usernameInp = $('#username');
 let $picInp = $('#profilepic');
-
 $('form').submit((e) => {
     e.preventDefault(); 
     var formData = new FormData();

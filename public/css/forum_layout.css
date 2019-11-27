@@ -5,25 +5,20 @@ body {
   overflow-x: hidden;
 }
 
-#auth {
-  border-radius: 10px 10px 0 0;
-  position: fixed;
-  opacity: 0.7;
+.auth {
+  color: gray !important;
+  opacity: 0.5;
+  position: relative;
   font-size: 20px;
-  height: 5vh;
-  width: 25vw;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #014952;
+  top: 20%;
 }
 
-#auth p {
-  color: darkgray;
-  text-align: center;
+.auth #username {
+  color: white !important;
 }
 
 #header {
+  display: block;
   background-color: #014952;
   height: 15vh;
   width: 100vw;

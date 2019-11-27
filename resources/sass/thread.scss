@@ -1,12 +1,26 @@
 @import 'variables';
 @import 'libs';
+@import url('https://fonts.googleapis.com/css?family=Baskerville');
 
 .row {
     width: 50%;
     position: relative;
-    left: 50%;
+    left: 45%;
     transform: translateX(-50%);
     margin-bottom: 1%;
+}
+#titleContainer {
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    #threadTitle {
+        font-size: 2.5vh;
+        text-align: center;
+    }
+    hr {
+        border-top: 0.1vh solid black;
+    }
 }
 .col-sm-2 {
     p {
@@ -17,11 +31,27 @@
     img {
         width: 15vh;
         height: 15vh;
+        border: 1px solid black;
     }
     margin-bottom: 3%;
+    margin-right: 2%;
 }
-.col-sm-10 {
+.col-sm-8 {
     word-break: break-all;
+    font-family: 'Baskerville';
+}
+#stats {
+    * {
+    left: 0;
+    display: inline;
+    }
+}
+
+.col-sm-1 {
+    height: 20vh;
+    width: 1px;
+    margin-left: 1vh;
+    border-left: 1px solid black;
 }
 
 #replyForm {

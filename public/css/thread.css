@@ -1,13 +1,30 @@
-@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js);@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);.row {
+@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js);@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);@import url(https://fonts.googleapis.com/css?family=Baskerville);.row {
   width: 50%;
   position: relative;
-  left: 50%;
+  left: 45%;
   transform: translateX(-50%);
   margin-bottom: 1%;
 }
 
+#titleContainer {
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#titleContainer #threadTitle {
+  font-size: 2.5vh;
+  text-align: center;
+}
+
+#titleContainer hr {
+  border-top: 0.1vh solid black;
+}
+
 .col-sm-2 {
   margin-bottom: 3%;
+  margin-right: 2%;
 }
 
 .col-sm-2 p {
@@ -19,10 +36,24 @@
 .col-sm-2 img {
   width: 15vh;
   height: 15vh;
+  border: 1px solid black;
 }
 
-.col-sm-10 {
+.col-sm-8 {
   word-break: break-all;
+  font-family: "Baskerville";
+}
+
+#stats * {
+  left: 0;
+  display: inline;
+}
+
+.col-sm-1 {
+  height: 20vh;
+  width: 1px;
+  margin-left: 1vh;
+  border-left: 1px solid black;
 }
 
 #replyForm * {

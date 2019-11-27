@@ -28,6 +28,7 @@ class UserController extends Controller
     public function updateProfile(Request $request, $userId) {
         $file = $request->input('pic');
         $username = $request->input('username');
+        return $username;
         $user = User::find($userId);
         if($file != null) {
             $b64 = base64_encode($file);

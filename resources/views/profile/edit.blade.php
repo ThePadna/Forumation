@@ -17,7 +17,7 @@
 <meta name="csrf" content="{{csrf_token()}}">
 <meta name="userId" content="{{$user->id}}">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
-<script src="{{asset('js/profile_edit.js')}}"> </script>
+<script type="javascript" src="{{asset('js/profile_edit.js')}}"> </script>
 @else
 <h1> You do not have priveleges to edit this profile. </h1>
 @endif

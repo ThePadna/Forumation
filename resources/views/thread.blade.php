@@ -2,14 +2,28 @@
 @section('content')
 <link rel="stylesheet" href="{{asset('css/thread.css')}}">
 <div id="wrapper">
+    <div id="titleContainer">
+        <p id="threadTitle"> {{$thread->title}} </p>
+        <hr />
+    </div>
     @foreach($posts as $p)
+    @php
+    $user = App\User::find($p->user);
+    @endphp
     <div id="container">
         <div class="row">
             <div id="test" class="col-sm-2">
-                <img src="{{asset('img/profilepic.png')}}">
-                <p> {{App\User::find($p->user)->name}} </p>
+                <img src="{{base64_decode($user->avatar)}}">
+                <p> {{$user->name}} </p>
+                <div id="stats">
+                    <p> 77  <i class="fas fa-star"></i></p>
+                    <p> 21 <i class="fas fa-comments"></i> </p>
+                </div>
             </div>
-            <div class="col-sm-10">
+            <div class="col-sm-1">
+                <hr />
+            </div>
+            <div class="col-sm-8">
                 {{$p->contents}}
             </div>
         </div>
