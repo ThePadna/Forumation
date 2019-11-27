@@ -1,11 +1,11 @@
-
-let $usernameInp = $('#username');
+let $usernameInp = $('#usernameInput');
 let $picInp = $('#profilepic');
 $('form').submit((e) => {
     e.preventDefault(); 
     var formData = new FormData();
     let $name = $usernameInp.val();
-    if($name != null) formData.append("username", $usernameInp.val());
+    console.log("name;" + $name);
+    if($name != null) formData.append("username", $name);
     let $src = $picInp.attr('src');
     if($src != null) formData.append("pic", $src);
     $.ajax({
@@ -16,7 +16,6 @@ $('form').submit((e) => {
         processData: false,
         contentType: false,
         success: function(res) {
-          console.log(res);
           window.location = "/forum/profile/" + $('meta[name="userId"]').attr('content');
         },
         error: function(xhr, ajaxOptions, thrownError) {
