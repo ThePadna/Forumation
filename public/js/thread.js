@@ -4,7 +4,7 @@
 $replyForm = $('#replyForm');
 $replyForm.submit((e) => {
     e.preventDefault();
-    $text = $replyForm.find('textarea[name="replyText"]').val();
+    $text = $replyForm.find('#replyText').val();
     $.ajax({
         type: "POST",
         url: '/postreply',
