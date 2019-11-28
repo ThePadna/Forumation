@@ -147,10 +147,11 @@ class ForumController extends Controller
          $skipAmt = $page > 1 ? $page * 9 : 0;
          $posts = Post::where('thread', $threadId)->skip($skipAmt)->take(9)->get();
          $isLastPage = false;
-         $lastPostIndex = sizeof($posts);
          $thread = Thread::find($threadId);
-         if(!User::where('id', $posts[--$lastPostIndex]->id)->exists()) $isLastPage = true;
-         return view('thread', ['posts' => $posts, 'isLastPage' => $isLastPage, 'thread' => $thread]);
+         $postsSize = sizeof($posts);
+         if($postsSize == 0) return view('404');
+         if($postsSize < 9) $isLastPage = true;
+         return view('thread', ['page' => $page, 'posts' => $posts, 'isLastPage' => $isLastPage, 'thread' => $thread]);
      }
      
      /**

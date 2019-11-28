@@ -38,6 +38,18 @@
     </form>
     @endif
     @endauth
+    @if($page > 1)
+    <a href="{{$page < 2 ? 1 : $page - 1}}">
+        <div id="prevpage">
+            <i class="fas fa-long-arrow-alt-left"></i>
+        </div>
+    </a>
+    @endif
+    <a href="{{$page + 1}}">
+        <div id="nextpage">
+            <i class="fas fa-long-arrow-alt-right"></i>
+        </div>
+    </a>
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 <meta name="csrf" content="{{csrf_token()}}">
