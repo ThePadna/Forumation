@@ -149,9 +149,9 @@ class ForumController extends Controller
          $isLastPage = false;
          $thread = Thread::find($threadId);
          $postsSize = sizeof($posts);
-         if($postsSize == 0) return view('404');
+         $empty = ($postsSize == 0);
          if($postsSize < 9) $isLastPage = true;
-         return view('thread', ['page' => $page, 'posts' => $posts, 'isLastPage' => $isLastPage, 'thread' => $thread]);
+         return view('thread', ['empty' => $empty, 'page' => $page, 'posts' => $posts, 'isLastPage' => $isLastPage, 'thread' => $thread]);
      }
      
      /**

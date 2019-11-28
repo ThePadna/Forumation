@@ -75,24 +75,34 @@
     }
 }
 #prevpage,
-#nextpage {
+#nextpage,
+#lastpage {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
     position: fixed;
     opacity: 0.8;
-    color: #0a0f0f;
-    font-size: 100px;
+    color: $color-scheme;
+    font-size: 10vh;
 }
 
 #prevpage {
     left: 50px;
-    font-size: 100px;
-    color: #014952;
+}
+
+
+#lastpage {
+    top: 60% !important;
+    right: 50px;
+    font-size: 5vh !important;
 }
 
 #nextpage {
     right: 50px;
-    font-size: 100px;
-    color: #014952;
+}
+
+#empty {
+    text-align: center;
+    font-size: 5vh;
+    color: $color-scheme;
 }

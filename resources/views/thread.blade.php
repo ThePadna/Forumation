@@ -30,6 +30,9 @@
         <hr />
     </div>
     @endforeach
+    @if($empty)
+    <p id="empty"> There are no new posts at this time on this topic. :( </p>
+    @endif
     @auth
     @if($isLastPage)
     <form id="replyForm">
@@ -45,9 +48,16 @@
         </div>
     </a>
     @endif
+    @if(!$isLastPage)
     <a href="{{$page + 1}}">
         <div id="nextpage">
             <i class="fas fa-long-arrow-alt-right"></i>
+        </div>
+    </a>
+    @endif
+    <a href="{{$page + 1}}">
+        <div id="lastpage">
+            <i class="fas fa-fast-forward"></i>
         </div>
     </a>
 </div>
