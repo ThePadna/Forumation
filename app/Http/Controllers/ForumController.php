@@ -144,14 +144,15 @@ class ForumController extends Controller
      * @return Response
      */
      public function showThread(Request $request, $categoryName, $threadId, $page) {
+         $postCount = Post::where('thread', $threadId)->get()->count();
+         $lastPage = floor(($postCount / 9));
          $skipAmt = $page > 1 ? $page * 9 : 0;
          $posts = Post::where('thread', $threadId)->skip($skipAmt)->take(9)->get();
-         $isLastPage = false;
+         $isLastPage = ($page == $lastPage);
          $thread = Thread::find($threadId);
          $postsSize = sizeof($posts);
          $empty = ($postsSize == 0);
-         if($postsSize < 9) $isLastPage = true;
-         return view('thread', ['empty' => $empty, 'page' => $page, 'posts' => $posts, 'isLastPage' => $isLastPage, 'thread' => $thread]);
+         return view('thread', ['lastPage' => $lastPage, 'empty' => $empty, 'page' => $page, 'posts' => $posts, 'isLastPage' => $isLastPage, 'thread' => $thread]);
      }
      
      /**

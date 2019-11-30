@@ -54,12 +54,12 @@
             <i class="fas fa-long-arrow-alt-right"></i>
         </div>
     </a>
-    @endif
-    <a href="{{$page + 1}}">
+    <a href="{{$lastPage}}">
         <div id="lastpage">
             <i class="fas fa-fast-forward"></i>
         </div>
     </a>
+    @endif
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 <meta name="csrf" content="{{csrf_token()}}">
