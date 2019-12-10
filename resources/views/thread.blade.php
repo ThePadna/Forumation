@@ -34,7 +34,7 @@
     <p id="empty"> There are no new posts at this time on this topic. :( </p>
     @endif
     @auth
-    @if($isLastPage)
+    @if($isLastPage || $empty)
     <form id="replyForm">
         <textarea id="replyText" name="replyText" placeholder="What are your thoughts?"></textarea>
         <button id="postReply"> POST </button>

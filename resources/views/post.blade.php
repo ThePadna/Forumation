@@ -28,7 +28,7 @@ $form.submit((e) => {
         'categoryName': '{{$categoryName}}'
         },
       success: function(res) {
-        window.location.replace("/forum/category/{{$categoryName}}/thread/" + res);
+        window.location.replace("/forum/category/{{$categoryName}}/thread/" + res + "/1");
       },
       error: function(xhr, ajaxOptions, thrownError) {
         console.log("Error occured during AJAX request, error code: " + xhr.status);

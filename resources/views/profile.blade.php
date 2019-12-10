@@ -12,17 +12,17 @@
 </div>
 <div id="container">
     <div class="row">
-        <div class="col-sm-4">
+        <div id="posts" class="col-sm-4">
             <h1 class="title"> Posts </h1>
-            <p class="counter"> 50 </p>
+            <p class="counter"> {{$posts}} </p>
         </div>
-        <div class="col-sm-4">
+        <div id="threads" class="col-sm-4">
             <h1 class="title"> Threads </h1>
-            <p class="counter"> 50 </p>
+            <p class="counter"> {{$threads}} </p>
         </div>
-        <div class="col-sm-4">
+        <div id="score" class="col-sm-4">
             <h1 class="title"> Score </h1>
-            <p class="counter"> 50 </p>
+            <p class="counter"> {{$score + 1}} </p>
         </div>
     </div>
 </div>
@@ -30,6 +30,7 @@
 @auth
 @if(Auth::user()->id == $user->id)
 <script src="{{asset('js/profile_auth.js')}}"> </script>
+<meta name=
 <meta name="username" content="{{$user->name}}">
 @endif
 @endauth
