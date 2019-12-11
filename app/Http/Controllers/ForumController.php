@@ -21,9 +21,9 @@ class ForumController extends Controller
      * @param string $categoryName
      * @return Response
      */
-    public function showCategory($categoryName, $page) {
+    public function showCategory($categoryId, $page) {
         $skipAmt = $page > 1 ? $page * 9 : 0;
-        $threads = Thread::latest()->where('categoryName', $categoryName)->skip($skipAmt)->take(9)->get();
+        $threads = Thread::latest()->where('categoryId', $categoryId)->skip($skipAmt)->take(9)->get();
         $posts = [];
         foreach($threads as $t) {
             $id = $t->id;
@@ -36,7 +36,7 @@ class ForumController extends Controller
                 } else $posts[$id] = $p;
             }
         }
-        return view("category", ["category" => Category::All()->firstWhere('name', $categoryName), "threads" => $threads, "page" => $page, "posts" => $posts, "now" => Carbon::now()]);
+        return view("category", ["category" => Category::All()->firstWhere('id', $categoryId), "threads" => $threads, "page" => $page, "posts" => $posts, "now" => Carbon::now()]);
     }
 
      /**
@@ -107,7 +107,7 @@ class ForumController extends Controller
      * @return Response
      */
     public function showThreadPostForm(Request $request, $category) {
-        return view('post', ['categoryName' => $category]);
+        return view('post', ['categoryId' => $category]);
     }
 
     /**
@@ -119,13 +119,13 @@ class ForumController extends Controller
     public function postThread(Request $request) {
         $title = $request->input('threadTitle');
         $text = $request->input('threadText');
-        $category = $request->input('categoryName');
+        $category = $request->input('categoryId');
         $userId = Auth::user()->id;
         $thread = new Thread();
         $thread->title = $title;
         $thread->op = $userId;
         $thread->posts = 1;
-        $thread->categoryName = $category;
+        $thread->categoryId = $category;
         $thread->save();
         $op = new Post();
         $op->thread = $thread->id;
@@ -148,7 +148,7 @@ class ForumController extends Controller
          $lastPage = floor(($postCount / 9));
          $skipAmt = $page > 1 ? $page * 9 : 0;
          $posts = Post::where('thread', $threadId)->skip($skipAmt)->take(9)->get();
-         $isLastPage = ($page == $lastPage);
+         $isLastPage = ($page >= $lastPage);
          $thread = Thread::find($threadId);
          $postsSize = sizeof($posts);
          $empty = ($postsSize == 0);

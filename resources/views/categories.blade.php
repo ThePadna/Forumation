@@ -7,7 +7,7 @@
             @else
             @foreach($categories as $c)
             <a class="category-hyperlink" categoryName="{{$c->name}}" categoryId="{{$c->id}}"
-                href="forum/category/{{$c->name}}/1">
+                href="forum/category/{{$c->id}}/1">
                 <div class="drop-zone" ondragover="event.preventDefault()" draggable="true">
                     <p categoryId="{{$c->id}}"> {{$c->name}}</p>
                     @auth

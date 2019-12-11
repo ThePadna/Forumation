@@ -2,11 +2,18 @@
 @import 'libs';
 
 #postThread {
-    left: 0;
     position: absolute;
-    width: 5vw;
-    height: 5vh;
+    right: 0;
+    bottom: 0;
+    * {
+        color: black;
+        opacity: 0.9;
+    }
     h1 {
+        text-align: center;
+        font-size: 3vh;
+    }
+    i {
         font-size: 2vh;
     }
 }
@@ -25,13 +32,13 @@
 #prevpage {
     left: 50px;
     font-size: 100px;
-    color: #014952;
+    color: $color-scheme;
 }
 
 #nextpage {
     right: 50px;
     font-size: 100px;
-    color: #014952;
+    color: $color-scheme;
 }
 
 span {
@@ -55,14 +62,20 @@ a:hover {
 }
 
 .op>p {
-    font-size: 15px;
+    font-size: 2vh;
 }
 
-.title>p {
-    border-radius: 25px;
-    font-size: 30px;
-    color: black;
-    font-weight: bold;
+.row {
+    * {
+        color: black;
+    }
+    h1 {
+        font-size: 3vh;
+    }
+    p {
+        color: $color-scheme;
+        font-size: 2vh;
+    }
 }
 
 .thread {

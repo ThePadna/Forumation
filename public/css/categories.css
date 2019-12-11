@@ -34,7 +34,7 @@
   position: relative;
   margin-bottom: 1vh;
   text-align: center;
-  background: #014952;
+  background: #ff3333;
   border: 5px solid black;
   width: 70%;
   left: 50vw;
@@ -44,7 +44,7 @@
 #categories #categoryFormOpener {
   font-size: 10vh;
   text-align: center;
-  color: #014952;
+  color: #ff3333;
 }
 
 #categories #categoryFormOpener:hover {
@@ -59,7 +59,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #014952;
+  background-color: #ff3333;
   text-align: center;
 }
 
