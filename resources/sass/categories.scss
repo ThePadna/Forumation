@@ -2,9 +2,22 @@
 @import 'libs';
 @import url('https://fonts.googleapis.com/css?family=Alegreya|Grenze&display=swap');
 
+.row-indicator {
+    font-size: 3vh;
+}
 .header {
     font-size: 3vh;
     color: $color-scheme;
+}
+.description {
+    font-size: 2vh !important;
+    color: gray;
+}
+.recentTitle {
+    font-size: 2vh;
+}
+.recentPoster {
+    font-size: 1.5vh;
 }
 #categories {
     text-align: center;

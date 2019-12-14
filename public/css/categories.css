@@ -1,6 +1,23 @@
-@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js);@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);@import url(https://fonts.googleapis.com/css?family=Alegreya|Grenze&display=swap);.header {
+@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js);@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);@import url(https://fonts.googleapis.com/css?family=Alegreya|Grenze&display=swap);.row-indicator {
+  font-size: 3vh;
+}
+
+.header {
   font-size: 3vh;
   color: #ff3333;
+}
+
+.description {
+  font-size: 2vh !important;
+  color: gray;
+}
+
+.recentTitle {
+  font-size: 2vh;
+}
+
+.recentPoster {
+  font-size: 1.5vh;
 }
 
 #categories {

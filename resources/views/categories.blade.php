@@ -6,9 +6,20 @@
         <div class="row">
             @if(sizeof($categories) < 1) <h1> No Categories found. </h1>
                 @else
+                <div id="title" class="col-sm-8">
+                    <p class="row-indicator"> Category</p>
+                </div>
+                <div id="recentlyUpdated" class="col-sm-2">
+                    <p class="row-indicator"> Recently Updated </p>
+                </div>
+                <div id="threads" class="col-sm-1">
+                    <p class="row-indicator"> Threads </p>
+                </div>
                 @foreach($categories as $c)
                 <div id="title" class="drop-zone col-sm-8" ondragover="event.preventDefault()" draggable="true">
                     <p categoryId="{{$c->id}}"> {{$c->name}}</p>
+                    <br />
+                    <p class="description"> Example description</p>
                     @auth
                     @if(Auth::user()->role == "admin")
                     <i class="edit-category far fa-edit"></i>
@@ -17,13 +28,11 @@
                     @endauth
                 </div>
                 <div id="recentlyUpdated" class="col-sm-2">
-                    <p class="header"> Latest post</p>
-                    <p> Why is my dog.. </p>
-                    </p> Ixinon, 35m ago </p>
+                    <p class="recentTitle"> Why is my dog.. </p>
+                    <p class="recentPoster"> Ixinon, 35m ago </p>
                 </div>
                 <div id="threads" class="col-sm-1">
-                <p class="header"> Threads </p>
-                <p> 305 </p>
+                    <p> 305 </p>
                 </div>
                 @endforeach
                 @endif
