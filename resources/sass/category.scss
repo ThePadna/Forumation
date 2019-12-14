@@ -3,10 +3,10 @@
 
 #postThread {
     position: absolute;
-    right: 0;
-    bottom: 0;
+    top: 7.5vh;
+    right: 7.5vh;
     * {
-        color: black;
+        color: white;
         opacity: 0.9;
     }
     h1 {
@@ -66,6 +66,10 @@ a:hover {
 }
 
 .row {
+    hr {
+        border-bottom: 0.1vh solid black;
+        width: 75%;
+    }
     * {
         color: black;
     }

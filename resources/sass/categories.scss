@@ -2,9 +2,11 @@
 @import 'libs';
 @import url('https://fonts.googleapis.com/css?family=Alegreya|Grenze&display=swap');
 
+.header {
+    font-size: 3vh;
+    color: $color-scheme;
+}
 #categories {
-    width: 100vw;
-    height: 85vh;
     text-align: center;
     .drop-zone>p,i {
         display: inline;

@@ -1,11 +1,11 @@
 @import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js);@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);#postThread {
   position: absolute;
-  right: 0;
-  bottom: 0;
+  top: 7.5vh;
+  right: 7.5vh;
 }
 
 #postThread * {
-  color: black;
+  color: white;
   opacity: 0.9;
 }
 
@@ -63,6 +63,11 @@ a:hover {
 
 .op > p {
   font-size: 2vh;
+}
+
+.row hr {
+  border-bottom: 0.1vh solid black;
+  width: 75%;
 }
 
 .row * {
