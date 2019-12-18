@@ -81,9 +81,10 @@
                 </form>
             </div>
         </div>
-        <a>
-            <i id="categoryFormOpener" class="far fa-plus-square"></i>
-        </a>
+        <div id="categoryFormOpener">
+            <i class="fas fa-plus"></i>
+            <h1> Post new thread </h1>
+        </div>
         @endif
         @endauth
     </div>
