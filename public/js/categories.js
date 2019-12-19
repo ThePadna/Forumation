@@ -1,12 +1,52 @@
 var $prevClickedEditCategoryName, $prevClickedDelCategoryName;
 
+var addCategoryFormHTML = `<div id="addCategoryForm" class="popup-form">
+<div class="form-header">
+    <div class="form-exit">
+        <i id="exit-icon" class="fas fa-times"></i>
+    </div>
+    <h1> New Category </h1>
+</div>
+<div class="form-container">
+    <form>
+        <input id="categoryTitle" type="text" name="categoryTitle" />
+        <button id="categoryFormCloser"> Add Category </button>
+    </form>
+</div>
+</div>`;
+var editCategoryFormHTML = `<div id="editCategoryForm" class="popup-form">
+<div class="form-header">
+    <div class="form-exit">
+        <i id="exit-icon" class="fas fa-times"></i>
+    </div>
+    <h1> Edit Category </h1>
+</div>
+<div class="form-container">
+    <form>
+        <input type="text" name="categoryname" />
+        <button id="categoryFormCloser"> Confirm Edit </button>
+    </form>
+</div>
+</div>`;
+var delCategoryFormHTML = `<div id="delCategoryForm" class="popup-form">
+<div class="form-header">
+    <div class="form-exit">
+        <i id="exit-icon" class="fas fa-times"></i>
+    </div>
+    <h1> Delete Category </h1>
+</div>
+<div class="form-container">
+    <form>
+        <h2> Delete Category '%c'? </h2>
+        <button id="categoryFormCloser"> Confirm Deletion </button>
+    </form>
+</div>
+</div>`;
+
 /**
  * Gain reference to forms and hide them in anticipation for button press.
  */
 var $addCategoryForm = $('#addCategoryForm'), $delCategoryForm = $('#delCategoryForm'), $editCategoryForm = $('#editCategoryForm');
-$addCategoryForm.hide();
-$delCategoryForm.hide();
-$editCategoryForm.hide();
 
 /**
  * Request to post new category when form is submitted.
@@ -73,8 +113,8 @@ $editCategoryForm.submit((e) => {
  * Open category creator form on button press.
  */
 $('#categoryFormOpener').on('click', (e) => {
-    $addCategoryForm.show();
-    $('#categoryFormOpener').hide();
+    $('#categories').append(addCategoryFormHTML);
+    this.registerFormExitHandler();
 });
 
 /**
@@ -136,23 +176,22 @@ document.addEventListener("dragleave", function(event) {
 }, false);
 
 /**
- * Hide form instance and show hidden button(s).
+ * Register click handler every time we append form to DOM.
  */
-$('.form-exit').on('click', (e) => {
-  $('.popup-form').hide();
-  $('#categoryFormOpener').show();
-});
-
+function registerFormExitHandler() {
+  $('.form-exit').on('click', (e) => {
+    $('.popup-form').remove();
+  });
+}
 /**
  * Set file scope var for use in ajax request.
  * Replace placeholder value with clicked category name.
  */
 $('.del-category').on('click', (e) => {
   e.preventDefault();
-  this.$prevClickedDelCategoryName = $(e.target).parent().parent().attr('categoryName');
-  var $h2 = $delCategoryForm.find('h2');
-  $h2.text($h2.text().replace("%c", this.$prevClickedDelCategoryName));
-  $delCategoryForm.show();
+  this.$prevClickedDelCategoryName = $(e.target).parent().children()[0].innerHTML;
+  $('#categories').append(delCategoryFormHTML.replace("%c", this.$prevClickedDelCategoryName.trim()));
+  this.registerFormExitHandler();
 });
 
 /**
@@ -160,7 +199,7 @@ $('.del-category').on('click', (e) => {
  */
 $('.edit-category').on('click', (e) => {
   e.preventDefault();
-  this.$prevClickedEditCategoryName = $(e.target).parent().parent().attr('categoryName');
-  $editCategoryForm.find('input').val(this.$prevClickedEditCategoryName);
-  $editCategoryForm.show();
+  this.$prevClickedDelCategoryName = $(e.target).parent().children()[0].innerHTML;
+  $('#categories').append(editCategoryFormHTML.replace("%c", this.$prevClickedDelCategoryName.trim()));
+  this.registerFormExitHandler();
 });
