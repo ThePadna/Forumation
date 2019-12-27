@@ -47,14 +47,16 @@ var delCategoryFormHTML = `<div id="delCategoryForm" class="popup-form">
  * Gain reference to forms and hide them in anticipation for button press.
  * Initialize them with #initForms before submission
  */
-var $addCategoryForm,
-    $delCategoryForm,
-    $editCategoryForm;
+var $addCategoryForm, $delCategoryForm, $editCategoryForm;
 function initForms() {
-    $addCategoryForm = $('#addCategoryForm');
-    $delCategoryForm = $('#delCategoryForm');
-    $editCategoryForm = $('#editCategoryForm');
+    $addCategoryForm = $("#addCategoryForm");
+    $delCategoryForm = $("#delCategoryForm");
+    $editCategoryForm = $("#editCategoryForm");
 }
+$("[data-link]").click(function() {
+    window.location.href = $(this).attr("data-link");
+    return false;
+});
 /**
  * Listen for form submission
  * Request to post new category when form is submitted.

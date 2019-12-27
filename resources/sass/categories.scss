@@ -1,7 +1,9 @@
 @import 'variables';
 @import 'libs';
 @import url('https://fonts.googleapis.com/css?family=Alegreya|Grenze&display=swap');
-
+body {
+    min-width: 750px;
+}
 #categoryFormOpener {
     position: absolute;
     top: 7.5vh;
@@ -26,10 +28,6 @@
     font-size: 3vh;
     color: $color-scheme;
 }
-.description {
-    font-size: 2vh !important;
-    color: gray;
-}
 .recentTitle {
     font-size: 2vh;
 }
@@ -38,15 +36,49 @@
 }
 #categories {
     text-align: center;
-    .drop-zone>p,i {
-        display: inline;
-        font-size: 200%;
+    #edit-icons {
+    }
+    #threads {
+        p {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+    #recentlyUpdated {
+        .recentPoster,.recentTitle {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+    #title {
+        .catTitle,.description {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        #editIcons {
+            font-size: 2vw;
+            margin-right: 30vw;
+        }
     }
     p {
         margin-right: 1vh;
+        margin: 0;
+    }
+    .catTitle {
+        font-size: 250%;
+    }
+    .description {
+        font-size: 150% !important;
+        color: gray;
+    }
+    .recentTitle,.recentPoster {
+        font-size: 100%;
     }
     .drop-zone>i:hover {
-        color: white;
+        color: gray;
     }
     .drop-zone>i {
         font-size: 150%;

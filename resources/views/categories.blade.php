@@ -6,32 +6,29 @@
         <div class="row">
             @if(sizeof($categories) < 1) <h1> No Categories found. </h1>
                 @else
-                <div id="title" class="col-sm-8">
+                <div id="title" class="col-8">
                     <p class="row-indicator"> Category</p>
                 </div>
-                <div id="recentlyUpdated" class="col-sm-2">
+                <div id="recentlyUpdated" class="col-2">
                     <p class="row-indicator"> Recently Updated </p>
                 </div>
-                <div id="threads" class="col-sm-1">
+                <div id="threads" class="col-1">
                     <p class="row-indicator"> Threads </p>
                 </div>
                 @foreach($categories as $c)
-                <div id="title" class="drop-zone col-sm-8" ondragover="event.preventDefault()" draggable="true">
-                    <p class="catTitle" categoryId="{{$c->id}}"> {{$c->name}}</p>
-                    <br />
-                    <p class="description"> Example description</p>
-                    @auth
-                    @if(Auth::user()->role == "admin")
-                    <i class="edit-category far fa-edit"></i>
-                    <i class="del-category fas fa-trash"></i>
-                    @endif
-                    @endauth
+                <div id="title" class="drop-zone col-8" ondragover="event.preventDefault()" draggable="true">
+                    <p class="catTitle" categoryId="{{$c->id}}"> {{$c->name}} </p>
+                    <p class="description"> Example Description </p>
+                    <div id="editIcons">
+                        <i id="firstEdit" class="edit-category far fa-edit"></i>
+                        <i class="del-category fas fa-trash"></i>
+                    </div>
                 </div>
-                <div id="recentlyUpdated" class="col-sm-2">
+                <div id="recentlyUpdated" class="col-2">
                     <p class="recentTitle"> Why is my dog.. </p>
                     <p class="recentPoster"> Ixinon, 35m ago </p>
                 </div>
-                <div id="threads" class="col-sm-1">
+                <div id="threads" class="col-1">
                     <p> 305 </p>
                 </div>
                 @endforeach
