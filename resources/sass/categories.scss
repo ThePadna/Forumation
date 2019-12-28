@@ -36,8 +36,6 @@ body {
 }
 #categories {
     text-align: center;
-    #edit-icons {
-    }
     #threads {
         p {
             position: relative;
@@ -52,7 +50,14 @@ body {
             transform: translateY(-50%);
         }
     }
+    a {
+        color: black;
+    }
+    i:hover {
+        color: red;
+    }
     #title {
+        text-decoration: none;
         .catTitle,.description {
             position: relative;
             top: 50%;

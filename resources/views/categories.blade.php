@@ -16,14 +16,14 @@
                     <p class="row-indicator"> Threads </p>
                 </div>
                 @foreach($categories as $c)
-                <div id="title" class="drop-zone col-8" ondragover="event.preventDefault()" draggable="true">
+                <a href="forum/category/{{$c->id}}/1" id="title" class="drop-zone col-8" ondragover="event.preventDefault()" draggable="true">
                     <p class="catTitle" categoryId="{{$c->id}}"> {{$c->name}} </p>
                     <p class="description"> Example Description </p>
                     <div id="editIcons">
                         <i id="firstEdit" class="edit-category far fa-edit"></i>
                         <i class="del-category fas fa-trash"></i>
                     </div>
-                </div>
+                </a>
                 <div id="recentlyUpdated" class="col-2">
                     <p class="recentTitle"> Why is my dog.. </p>
                     <p class="recentPoster"> Ixinon, 35m ago </p>
@@ -38,7 +38,7 @@
         @if(Auth::user()->role == "admin")
         <div id="categoryFormOpener">
             <i class="fas fa-plus"></i>
-            <h1> Post new thread </h1>
+            <h1> Post new Category </h1>
         </div>
         @endif
         @endauth

@@ -56,6 +56,18 @@
   transform: translateY(-50%);
 }
 
+#categories a {
+  color: black;
+}
+
+#categories i:hover {
+  color: red;
+}
+
+#categories #title {
+  text-decoration: none;
+}
+
 #categories #title .catTitle,
 #categories #title .description {
   position: relative;
