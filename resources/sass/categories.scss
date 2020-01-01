@@ -53,7 +53,7 @@ body {
     a {
         color: black;
     }
-    i:hover {
+    #editCat:hover,#delCat:hover {
         color: red;
     }
     #title {
@@ -66,6 +66,8 @@ body {
         #editIcons {
             font-size: 2vw;
             margin-right: 30vw;
+            position: relative;
+            bottom: 5vh;
         }
     }
     p {
@@ -81,12 +83,6 @@ body {
     }
     .recentTitle,.recentPoster {
         font-size: 100%;
-    }
-    .drop-zone>i:hover {
-        color: gray;
-    }
-    .drop-zone>i {
-        font-size: 150%;
     }
     .category-hyperlink {
         color: black;

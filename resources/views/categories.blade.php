@@ -16,12 +16,13 @@
                     <p class="row-indicator"> Threads </p>
                 </div>
                 @foreach($categories as $c)
-                <a href="forum/category/{{$c->id}}/1" id="title" class="drop-zone col-8" ondragover="event.preventDefault()" draggable="true">
-                    <p class="catTitle" categoryId="{{$c->id}}"> {{$c->name}} </p>
-                    <p class="description"> Example Description </p>
+                <a href="/forum/category/{{$c->id}}/1" id="title" categoryId="{{$c->id}}" class="drop-zone col-8"
+                    ondragover="event.preventDefault()" draggable="true">
+                    <p class="catTitle"> {{$c->name}} </p>
+                    <p class="description"> {{$c->desc}} </p>
                     <div id="editIcons">
-                        <i id="firstEdit" class="edit-category far fa-edit"></i>
-                        <i class="del-category fas fa-trash"></i>
+                        <i id="editCat" class="edit-category far fa-edit"></i>
+                        <i id="delCat" class="del-category fas fa-trash"></i>
                     </div>
                 </a>
                 <div id="recentlyUpdated" class="col-2">

@@ -55,8 +55,10 @@ class ForumController extends Controller
      */
     public function postCategory(Request $request) {
         $categoryName = $request->input('categoryTitle');
+        $categoryDesc = $request->input('categoryDesc');
         $category = new Category();
         $category->name = $categoryName;
+        $category->desc = $categoryDesc;
         $category->save();
     }
 

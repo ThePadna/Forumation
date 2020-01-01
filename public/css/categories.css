@@ -60,7 +60,8 @@
   color: black;
 }
 
-#categories i:hover {
+#categories #editCat:hover,
+#categories #delCat:hover {
   color: red;
 }
 
@@ -78,6 +79,8 @@
 #categories #title #editIcons {
   font-size: 2vw;
   margin-right: 30vw;
+  position: relative;
+  bottom: 5vh;
 }
 
 #categories p {
@@ -97,14 +100,6 @@
 #categories .recentTitle,
 #categories .recentPoster {
   font-size: 100%;
-}
-
-#categories .drop-zone > i:hover {
-  color: gray;
-}
-
-#categories .drop-zone > i {
-  font-size: 150%;
 }
 
 #categories .category-hyperlink {

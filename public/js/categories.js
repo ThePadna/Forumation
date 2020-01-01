@@ -9,7 +9,8 @@ var addCategoryFormHTML = `<div id="addCategoryForm" class="popup-form">
 </div>
 <div class="form-container">
     <form>
-        <input id="categoryTitle" type="text" name="categoryTitle" />
+        <input id="categoryTitle" type="text" name="categoryTitle" placeholder="Category Name" />
+        <input id="categoryDesc" type="text" name="categoryDesc" placeholder="Description" />
         <button id="categoryFormCloser"> Add Category </button>
     </form>
 </div>
@@ -63,15 +64,14 @@ $("[data-link]").click(function() {
  */
 function registerAddFormSubmitListener() {
     $addCategoryForm.submit(e => {
-        console.log("umit");
         e.preventDefault();
         $title = $addCategoryForm.find('input[name="categoryTitle"]').val();
-        $addCategoryForm.find('input[name="categoryTitle"]').val("");
+        $desc = $addCategoryForm.find('input[name="categoryDesc"]').val();
         $.ajax({
             type: "POST",
             url: "/postcategory",
             headers: { "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content") },
-            data: { categoryTitle: $title },
+            data: { categoryTitle: $title, categoryDesc: $desc },
             success: function(res) {
                 window.location.reload();
             },
@@ -153,83 +153,65 @@ $("#categoryFormOpener").on("click", e => {
 /**
  * Acquire dragged element in object for use in future events.
  */
-var dragged;
-document.addEventListener(
-    "dragstart",
-    function(event) {
-        dragged = event.target;
-    },
-    false
-);
+var $dragged;
+var $dragging = false;
+$('.drop-zone').bind('dragstart', function() {
+    $dragged = $(this);
+    $dragging = true;
+});
+$('.drop-zone').on('mouseup', function(e) {
+    console.log($dragging);
+    if($dragging)
+    e.preventDefault();
+});
+
+$('.drop-zone').on('click', function(e) {
+    console.log($dragging);
+    if($dragging)
+    e.preventDefault();
+});
 
 /**
  * Request to switch category IDs when category dropped on another category.
  */
-document.addEventListener(
-    "drop",
-    function(event) {
-        event.preventDefault();
-        if (event.target.className == "drop-zone") {
-            event.target.style.background = "white";
-            var node = event.target.nodeName;
-            var targetElement;
-            if (node.localeCompare("P") === 0)
-                targetElement = event.target.parentElement.parentElement;
-            else if (node.localeCompare("DIV") == 0)
-                targetElement = event.target.parentElement;
-            var targetInnerHTML = targetElement.innerHTML,
-                targetHREF = targetElement.href;
-            targetElement.innerHTML = dragged.innerHTML;
-            dragged.innerHTML = targetInnerHTML;
-            targetElement.href = dragged.href;
-            dragged.href = targetHREF;
-            $.ajax({
-                type: "POST",
-                url: "/categoryswitchid",
-                headers: {
-                    "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
-                },
-                data: {
-                    draggedId: targetElement.getAttribute("categoryId"),
-                    targetId: dragged.getAttribute("categoryId")
-                },
-                error: function(xhr, ajaxOptions, thrownError) {
-                    console.log(
-                        "Error occured during AJAX request, error code: " +
-                            xhr.status
-                    );
-                }
-            });
+$(".drop-zone").bind("drop", function() {
+    console.log("dropping");
+    $dragging = false;
+    $target = $(this);
+    $.ajax({
+        type: "POST",
+        url: "/categoryswitchid",
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
+        },
+        data: {
+            draggedId: $target.attr("categoryId"),
+            targetId: $dragged.attr("categoryId")
+        },
+        success: function(res) {
+            window.location.reload();
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+            console.log(
+                "Error occured during AJAX request, error code: " +
+                    xhr.status
+            );
         }
-    },
-    false
-);
+    });
+});
+/**
+ * Change colour of target element when dragging over with other element.
+ */
+$(".drop-zone").bind("dragover", function() {
+    $(this).css("background", "red");
+});
 
 /**
- * Set target zone to distinguishable colour on enter.
+ * Reset colour of target element when exiting with drag.
  */
-document.addEventListener(
-    "dragenter",
-    function(event) {
-        if (event.target.className == "drop-zone") {
-            event.target.style.background = "black";
-        }
-    },
-    false
-);
-
-/**
- * Set target zone back to original colour after leaving.
- */
-document.addEventListener(
-    "dragleave",
-    function(event) {
-        if (event.target.className == "drop-zone") {
-            event.target.style.background = "white";
-        }
-    },
-    false
-);
+$(".drop-zone").bind("dragleave", function() {
+    $(this).css("background", "white");
+});
 
 /**
  * Register click handler every time we append form to DOM.
@@ -246,6 +228,7 @@ function registerFormExitHandler() {
 $(".del-category").on("click", e => {
     e.preventDefault();
     this.$prevClickedDelCategoryName = $(e.target)
+        .parent()
         .parent()
         .children()[0].innerHTML;
     $("#categories").append(
