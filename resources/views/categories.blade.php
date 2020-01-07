@@ -18,12 +18,21 @@
                 @foreach($categories as $c)
                 <a href="/forum/category/{{$c->id}}/1" id="title" categoryId="{{$c->id}}" class="drop-zone col-8"
                     ondragover="event.preventDefault()" draggable="true">
-                    <p class="catTitle"> {{$c->name}} </p>
-                    <p class="description"> {{$c->desc}} </p>
-                    <div id="editIcons">
-                        <i id="editCat" class="edit-category far fa-edit"></i>
-                        <i id="delCat" class="del-category fas fa-trash"></i>
+                    <div class="catTitleWrapper">
+                        <div class="edit-btn">
+                            <i class="edit-category far fa-edit"></i>
+                            <i class="del-category fas fa-trash"></i>
+                        </div>
+                        <div class="catTitle">
+                            <p> {{$c->name}} </p>
+                        </div>
+                        <div class="switch-btn">
+                            <i class="fas fa-arrow-up"></i>
+                            <i class="fas fa-arrow-down"></i>
+                        </div>
                     </div>
+                    <p class="description"> {{$c->desc}} </p>
+
                 </a>
                 <div id="recentlyUpdated" class="col-2">
                     <p class="recentTitle"> Why is my dog.. </p>

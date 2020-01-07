@@ -57,30 +57,39 @@
 }
 
 #categories a {
+  pointer-events: none;
   color: black;
 }
 
-#categories #editCat:hover,
-#categories #delCat:hover {
-  color: red;
-}
-
 #categories #title {
-  text-decoration: none;
+  border: 1px solid red;
 }
 
-#categories #title .catTitle,
+#categories #title .catTitleWrapper > * {
+  display: inline-block;
+  position: relative;
+}
+
+#categories #title .edit-btn,
+#categories #title .switch-btn {
+  font-size: 3.5vh;
+}
+
+#categories #title .catTitle {
+  width: 50%;
+  font-size: 5vh;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  word-break: break-all;
+}
+
 #categories #title .description {
+  word-break: break-all;
+  width: 50%;
+  border: 1px solid blue;
+  left: 50%;
   position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-#categories #title #editIcons {
-  font-size: 2vw;
-  margin-right: 30vw;
-  position: relative;
-  bottom: 5vh;
+  transform: translateX(-50%);
 }
 
 #categories p {

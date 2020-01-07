@@ -43,7 +43,6 @@ var delCategoryFormHTML = `<div id="delCategoryForm" class="popup-form">
     </form>
 </div>
 </div>`;
-
 /**
  * Gain reference to forms and hide them in anticipation for button press.
  * Initialize them with #initForms before submission
@@ -109,6 +108,7 @@ function registerDelFormSubmitListener() {
     });
 }
 
+
 /**
  * Listen for form submission
  * Request to edit category when form is submitted.
@@ -149,28 +149,6 @@ $("#categoryFormOpener").on("click", e => {
     this.initForms();
     this.registerAddFormSubmitListener();
 });
-
-/**
- * Acquire dragged element in object for use in future events.
- */
-var $dragged;
-var $dragging = false;
-$('.drop-zone').bind('dragstart', function() {
-    $dragged = $(this);
-    $dragging = true;
-});
-$('.drop-zone').on('mouseup', function(e) {
-    console.log($dragging);
-    if($dragging)
-    e.preventDefault();
-});
-
-$('.drop-zone').on('click', function(e) {
-    console.log($dragging);
-    if($dragging)
-    e.preventDefault();
-});
-
 /**
  * Request to switch category IDs when category dropped on another category.
  */

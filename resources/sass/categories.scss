@@ -51,23 +51,32 @@ body {
         }
     }
     a {
+        pointer-events: none;
         color: black;
     }
-    #editCat:hover,#delCat:hover {
-        color: red;
-    }
     #title {
-        text-decoration: none;
-        .catTitle,.description {
+        border: 1px solid red;
+        .catTitleWrapper>* {
+            display: inline-block;
             position: relative;
-            top: 50%;
-            transform: translateY(-50%);
         }
-        #editIcons {
-            font-size: 2vw;
-            margin-right: 30vw;
+        .edit-btn,.switch-btn {
+            font-size: 3.5vh;
+        }
+        .catTitle {
+            width: 50%;
+            font-size: 5vh;
+            margin-left: 10vw;
+            margin-right: 10vw;
+            word-break: break-all;
+        }
+        .description {
+            word-break: break-all;
+            width: 50%;
+            border: 1px solid blue;
+            left: 50%;
             position: relative;
-            bottom: 5vh;
+            transform: translateX(-50%);
         }
     }
     p {
