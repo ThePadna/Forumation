@@ -20,15 +20,15 @@
                     ondragover="event.preventDefault()" draggable="true">
                     <div class="catTitleWrapper">
                         <div class="edit-btn">
-                            <i class="edit-category far fa-edit"></i>
-                            <i class="del-category fas fa-trash"></i>
+                            <i id="edit" class="edit-category far fa-edit"></i>
+                            <i id="del" class="del-category fas fa-trash"></i>
                         </div>
                         <div class="catTitle">
                             <p> {{$c->name}} </p>
                         </div>
                         <div class="switch-btn">
-                            <i class="fas fa-arrow-up"></i>
-                            <i class="fas fa-arrow-down"></i>
+                            <i id="up" class="fas fa-arrow-up"></i>
+                            <i id="down" class="fas fa-arrow-down"></i>
                         </div>
                     </div>
                     <p class="description"> {{$c->desc}} </p>

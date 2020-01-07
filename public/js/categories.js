@@ -149,6 +149,10 @@ $("#categoryFormOpener").on("click", e => {
     this.initForms();
     this.registerAddFormSubmitListener();
 });
+
+/**
+ * Listen for clicks on switch arrows.
+ */
 /**
  * Request to switch category IDs when category dropped on another category.
  */
