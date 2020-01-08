@@ -97,7 +97,9 @@ class ForumController extends Controller
     public function editCategory(Request $request) {
         $old = $request->input('categoryName');
         $new = $request->input('newCategoryName');
+        $desc = $request->input('description');
         $cat = Category::where('name', $old)->first();
+        $cat->desc = $desc;
         $cat->name = $new;
         $cat->save();
     }

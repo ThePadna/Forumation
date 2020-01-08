@@ -55,7 +55,10 @@ body {
         text-decoration: none;
     }
     #title {
-        border: 1px solid red;
+        hr {
+            border-bottom: 0.1vh solid black;
+            width: 75%;
+        }
         .catTitleWrapper>* {
             display: inline-block;
             position: relative;

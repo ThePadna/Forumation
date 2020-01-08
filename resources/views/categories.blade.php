@@ -24,15 +24,15 @@
                             <i id="del" class="del-category fas fa-trash"></i>
                         </div>
                         <div class="catTitle">
-                            <p> {{$c->name}} </p>
+                            <p id="name"> {{$c->name}} </p>
                         </div>
                         <div class="switch-btn">
                             <i id="up" class="fas fa-arrow-up"></i>
                             <i id="down" class="fas fa-arrow-down"></i>
                         </div>
                     </div>
-                    <p class="description"> {{$c->desc}} </p>
-
+                    <p id="desc"> {{$c->desc}} </p>
+                    <hr />
                 </a>
                 <div id="recentlyUpdated" class="col-2">
                     <p class="recentTitle"> Why is my dog.. </p>

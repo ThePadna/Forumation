@@ -1,4 +1,4 @@
-var $prevClickedEditCategoryName, $prevClickedDelCategoryName;
+var $prevClickedEditCategoryDesc, $prevClickedDelCategoryName;
 
 var addCategoryFormHTML = `<div id="addCategoryForm" class="popup-form">
 <div class="form-header">
@@ -9,7 +9,7 @@ var addCategoryFormHTML = `<div id="addCategoryForm" class="popup-form">
 </div>
 <div class="form-container">
     <form>
-        <input id="categoryTitle" type="text" name="categoryTitle" placeholder="Category Name" />
+        <input id="categoryTitle" type="text" name="categoryTitle" placeholder="Category Name">
         <input id="categoryDesc" type="text" name="categoryDesc" placeholder="Description" />
         <button id="categoryFormCloser"> Add Category </button>
     </form>
@@ -24,7 +24,8 @@ var editCategoryFormHTML = `<div id="editCategoryForm" class="popup-form">
 </div>
 <div class="form-container">
     <form>
-        <input type="text" name="categoryname" />
+        <input type="text" name="categoryname" value="%c" />
+        <input type="text" name="description" value="%d" />
         <button id="categoryFormCloser"> Confirm Edit </button>
     </form>
 </div>
@@ -53,10 +54,6 @@ function initForms() {
     $delCategoryForm = $("#delCategoryForm");
     $editCategoryForm = $("#editCategoryForm");
 }
-$("[data-link]").click(function() {
-    window.location.href = $(this).attr("data-link");
-    return false;
-});
 /**
  * Listen for form submission
  * Request to post new category when form is submitted.
@@ -119,12 +116,16 @@ function registerEditFormSubmitListener() {
         $categoryName = $editCategoryForm
             .find('input[name="categoryname"]')
             .val();
+        $description = $editCategoryForm
+            .find('input[name="description"]')
+            .val();
         $.ajax({
             type: "POST",
             url: "/editcategory",
             headers: { "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content") },
             data: {
-                categoryName: this.$prevClickedEditCategoryName,
+                categoryName: this.$prevClickedDelCategoryName,
+                description: $description,
                 newCategoryName: $categoryName
             },
             success: function(res) {
@@ -212,7 +213,8 @@ $(".del-category").on("click", e => {
     this.$prevClickedDelCategoryName = $(e.target)
         .parent()
         .parent()
-        .children()[0].innerHTML;
+        .find('#name')
+        .text();
     $("#categories").append(
         delCategoryFormHTML.replace(
             "%c",
@@ -230,12 +232,23 @@ $(".del-category").on("click", e => {
 $(".edit-category").on("click", e => {
     e.preventDefault();
     this.$prevClickedDelCategoryName = $(e.target)
-        .parent()
-        .children()[0].innerHTML;
+    .parent()
+    .parent()
+    .find('#name')
+    .text();
+    this.$prevClickedEditCategoryDesc = $(e.target)
+    .parent()
+    .parent()
+    .parent()
+    .find('#desc')
+    .text();
     $("#categories").append(
         editCategoryFormHTML.replace(
             "%c",
             this.$prevClickedDelCategoryName.trim()
+        ).replace( 
+            "%d",
+            this.$prevClickedEditCategoryDesc.trim()
         )
     );
     this.registerFormExitHandler();
