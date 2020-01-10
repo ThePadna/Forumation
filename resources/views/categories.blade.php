@@ -27,8 +27,8 @@
                             <p id="name"> {{$c->name}} </p>
                         </div>
                         <div class="switch-btn">
-                            <i id="up" class="fas fa-arrow-up"></i>
-                            <i id="down" class="fas fa-arrow-down"></i>
+                            <i id="up" class="up-arrow fas fa-arrow-up"></i>
+                            <i id="down" class="down-arrow fas fa-arrow-down"></i>
                         </div>
                     </div>
                     <p id="desc"> {{$c->desc}} </p>

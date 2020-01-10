@@ -150,52 +150,6 @@ $("#categoryFormOpener").on("click", e => {
     this.initForms();
     this.registerAddFormSubmitListener();
 });
-
-/**
- * Listen for clicks on switch arrows.
- */
-/**
- * Request to switch category IDs when category dropped on another category.
- */
-$(".drop-zone").bind("drop", function() {
-    console.log("dropping");
-    $dragging = false;
-    $target = $(this);
-    $.ajax({
-        type: "POST",
-        url: "/categoryswitchid",
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
-        },
-        data: {
-            draggedId: $target.attr("categoryId"),
-            targetId: $dragged.attr("categoryId")
-        },
-        success: function(res) {
-            window.location.reload();
-        },
-        error: function(xhr, ajaxOptions, thrownError) {
-            console.log(
-                "Error occured during AJAX request, error code: " +
-                    xhr.status
-            );
-        }
-    });
-});
-/**
- * Change colour of target element when dragging over with other element.
- */
-$(".drop-zone").bind("dragover", function() {
-    $(this).css("background", "red");
-});
-
-/**
- * Reset colour of target element when exiting with drag.
- */
-$(".drop-zone").bind("dragleave", function() {
-    $(this).css("background", "white");
-});
-
 /**
  * Register click handler every time we append form to DOM.
  */
@@ -203,6 +157,80 @@ function registerFormExitHandler() {
     $(".form-exit").on("click", e => {
         $(".popup-form").remove();
     });
+}
+/**
+ * Listen for switch buttons.
+ * Replace categoryId of adjacent elements to load the page with a different order.
+ */
+$('.up-arrow').on('click', e => {
+    e.preventDefault();
+    let clickedId = $(e.target).parent().parent().parent().attr('categoryid');
+    let switchWith = this.getAdjacentCategory(clickedId, true);
+    if(typeof switchWith !== 'undefined') {
+        $.ajax({
+            type: "POST",
+            url: "/categoryswitchid",
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
+            },
+            data: {
+                draggedId: clickedId,
+                targetId: switchWith
+            },
+            success: function(res) {
+                window.location.reload();
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                console.log(
+                    "Error occured during AJAX request, error code: " +
+                        xhr.status
+                );
+            }
+        });
+    }
+});
+$('.down-arrow').on('click', e => {
+    e.preventDefault();
+    let clickedId = $(e.target).parent().parent().parent().attr('categoryid');
+    let switchWith = this.getAdjacentCategory(clickedId, false);
+    if(typeof switchWith !== 'undefined') {
+        $.ajax({
+            type: "POST",
+            url: "/categoryswitchid",
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
+            },
+            data: {
+                draggedId: clickedId,
+                targetId: switchWith
+            },
+            success: function(res) {
+                window.location.reload();
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                console.log(
+                    "Error occured during AJAX request, error code: " +
+                        xhr.status
+                );
+            }
+        });
+    }
+});
+function getAdjacentCategory(id, above) {
+    let lastIterId = null;
+    let $catArray = $('a');
+    for(let i = 0; i < $catArray.length; i++) {
+        let eid = $catArray[i].getAttribute('categoryid');
+        console.log("eid" + eid);
+        if(lastIterId != null && id == eid && above) {
+            console.log("Returning " + lastIterId);
+            return lastIterId;
+        }
+        if(lastIterId != null && !above && lastIterId == id) {
+            return eid;
+        }
+        lastIterId = $catArray[i].getAttribute('categoryid');
+    }
 }
 /**
  * Set file scope var for use in ajax request.
