@@ -2,14 +2,6 @@
 @section('content')
 <link rel="stylesheet" href="{{asset('css/category.css')}}">
 <div id="wrapper">
-@auth
-        <a href="post">
-            <div id="postThread">
-                <i class="fas fa-plus"></i>
-                <h1> Post new thread </h1>
-            </div>
-        </a>
-        @endauth
     <div id="threads">
         @foreach($threads as $t)
         <a href="thread/{{$t->id}}/1">
@@ -53,6 +45,14 @@
         </a>
         @endforeach
     </div>
+    @auth
+        <a href="post">
+            <div id="postThread">
+                <i class="fas fa-plus"></i>
+                <h1> Create Thread </h1>
+            </div>
+        </a>
+        @endauth
     @if($page > 1)
     <a href="{{$page < 2 ? 1 : $page - 1}}">
         <div id="prevpage">
