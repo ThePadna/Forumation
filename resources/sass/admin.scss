@@ -1,0 +1,20 @@
+@import 'variables';
+@import 'libs';
+
+a {
+    text-decoration: none;
+}
+#menu>* {
+    display: inline-block;
+    * {
+        left: 50%;
+        position: relative;
+        transform: translateX(-50%);
+    }
+}
+#menu {
+    border: 1px solid red;
+}
+p {
+    color: green;
+}

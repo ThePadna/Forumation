@@ -176,6 +176,7 @@ class ForumController extends Controller
       /**
        * Show user profile page
        * 
+       * @param Request $request
        * @param int $userId
        * @return Response
        */
@@ -186,5 +187,15 @@ class ForumController extends Controller
           $threads = Thread::where('op', $user->id)->get()->count();
           $posts = ($posts - $threads);
           return view('profile', ['threads' => $threads, 'posts' => $posts, 'score' => $score, 'user' => $user]);
+      }
+      /**
+       * Show admin control panel
+       * 
+       * @param Request $request
+       * @return Response
+       */
+      public function showCtrlPanel(Request $request) {
+          //checks
+          return view('admin');
       }
 }

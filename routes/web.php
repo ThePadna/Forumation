@@ -19,6 +19,7 @@ Route::post('/postcategory', 'ForumController@postCategory');
 Route::post('/categoryswitchid', 'ForumController@categorySwitchId');
 Route::post('/delcategory', 'ForumController@delCategory');
 Route::post('/editcategory', 'ForumController@editCategory');
+Route::get('/forum/admin', 'ForumController@showCtrlPanel');
 Route::post('/forum/profile/{user}/edit/updateprofile', 'UserController@updateProfile');
 Route::get('/forum/profile/{user}', 'ForumController@showUserProfile');
 Route::get('/forum/profile/{user}/edit', 'UserController@editProfile');

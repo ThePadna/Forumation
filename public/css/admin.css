@@ -1,0 +1,22 @@
+@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js);@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);a {
+  text-decoration: none;
+}
+
+#menu > * {
+  display: inline-block;
+}
+
+#menu > * * {
+  left: 50%;
+  position: relative;
+  transform: translateX(-50%);
+}
+
+#menu {
+  border: 1px solid red;
+}
+
+p {
+  color: green;
+}
+

@@ -6,5 +6,6 @@
     "/css/post.css": "/css/post.css",
     "/css/thread.css": "/css/thread.css",
     "/css/profile.css": "/css/profile.css",
-    "/css/edit.css": "/css/edit.css"
+    "/css/edit.css": "/css/edit.css",
+    "/css/admin.css": "/css/admin.css"
 }
