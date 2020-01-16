@@ -20,3 +20,31 @@ p {
   color: green;
 }
 
+#settings #color-scheme > * {
+  display: inline-block;
+}
+
+.switch input {
+  position: absolute;
+  opacity: 0;
+}
+
+.switch {
+  height: 2vh;
+  width: 4vh;
+  background: gray;
+  border-radius: 2vh;
+}
+
+.switch div {
+  height: 2vh;
+  width: 2vh;
+  border-radius: 2vh;
+  background: #ff3333;
+  transition: all 0.3s;
+}
+
+.switch input:checked + div {
+  margin-left: 50%;
+}
+
