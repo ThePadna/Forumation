@@ -1,285 +1,356 @@
-var $prevClickedEditCategoryDesc, $prevClickedDelCategoryName;
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ })
+/************************************************************************/
+/******/ ({
 
-var addCategoryFormHTML = `<div id="addCategoryForm" class="popup-form">
-<div class="form-header">
-    <div class="form-exit">
-        <i id="exit-icon" class="fas fa-times"></i>
-    </div>
-    <h1> New Category </h1>
-</div>
-<div class="form-container">
-    <form>
-        <input id="categoryTitle" type="text" name="categoryTitle" placeholder="Category Name">
-        <input id="categoryDesc" type="text" name="categoryDesc" placeholder="Description" />
-        <button id="categoryFormCloser"> Add Category </button>
-    </form>
-</div>
-</div>`;
-var editCategoryFormHTML = `<div id="editCategoryForm" class="popup-form">
-<div class="form-header">
-    <div class="form-exit">
-        <i id="exit-icon" class="fas fa-times"></i>
-    </div>
-    <h1> Edit Category </h1>
-</div>
-<div class="form-container">
-    <form>
-        <input type="text" name="categoryname" value="%c" />
-        <input type="text" name="description" value="%d" />
-        <button id="categoryFormCloser"> Confirm Edit </button>
-    </form>
-</div>
-</div>`;
-var delCategoryFormHTML = `<div id="delCategoryForm" class="popup-form">
-<div class="form-header">
-    <div class="form-exit">
-        <i id="exit-icon" class="fas fa-times"></i>
-    </div>
-    <h1> Delete Category </h1>
-</div>
-<div class="form-container">
-    <form>
-        <h2> Delete Category '%c'? </h2>
-        <button id="categoryFormCloser"> Confirm Deletion </button>
-    </form>
-</div>
-</div>`;
+/***/ "./resources/js/categories.js":
+/*!************************************!*\
+  !*** ./resources/js/categories.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var _this3 = this;
+
+var $prevClickedEditCategoryDesc, $prevClickedDelCategoryName;
+var addCategoryFormHTML = "<div id=\"addCategoryForm\" class=\"popup-form\">\n<div class=\"form-header\">\n    <div class=\"form-exit\">\n        <i id=\"exit-icon\" class=\"fas fa-times\"></i>\n    </div>\n    <h1> New Category </h1>\n</div>\n<div class=\"form-container\">\n    <form>\n        <input id=\"categoryTitle\" type=\"text\" name=\"categoryTitle\" placeholder=\"Category Name\">\n        <input id=\"categoryDesc\" type=\"text\" name=\"categoryDesc\" placeholder=\"Description\" />\n        <button id=\"categoryFormCloser\"> Add Category </button>\n    </form>\n</div>\n</div>";
+var editCategoryFormHTML = "<div id=\"editCategoryForm\" class=\"popup-form\">\n<div class=\"form-header\">\n    <div class=\"form-exit\">\n        <i id=\"exit-icon\" class=\"fas fa-times\"></i>\n    </div>\n    <h1> Edit Category </h1>\n</div>\n<div class=\"form-container\">\n    <form>\n        <input type=\"text\" name=\"categoryname\" value=\"%c\" />\n        <input type=\"text\" name=\"description\" value=\"%d\" />\n        <button id=\"categoryFormCloser\"> Confirm Edit </button>\n    </form>\n</div>\n</div>";
+var delCategoryFormHTML = "<div id=\"delCategoryForm\" class=\"popup-form\">\n<div class=\"form-header\">\n    <div class=\"form-exit\">\n        <i id=\"exit-icon\" class=\"fas fa-times\"></i>\n    </div>\n    <h1> Delete Category </h1>\n</div>\n<div class=\"form-container\">\n    <form>\n        <h2> Delete Category '%c'? </h2>\n        <button id=\"categoryFormCloser\"> Confirm Deletion </button>\n    </form>\n</div>\n</div>";
 /**
  * Gain reference to forms and hide them in anticipation for button press.
  * Initialize them with #initForms before submission
  */
+
 var $addCategoryForm, $delCategoryForm, $editCategoryForm;
+
 function initForms() {
-    $addCategoryForm = $("#addCategoryForm");
-    $delCategoryForm = $("#delCategoryForm");
-    $editCategoryForm = $("#editCategoryForm");
+  $addCategoryForm = $("#addCategoryForm");
+  $delCategoryForm = $("#delCategoryForm");
+  $editCategoryForm = $("#editCategoryForm");
 }
 /**
  * Listen for form submission
  * Request to post new category when form is submitted.
  */
+
+
 function registerAddFormSubmitListener() {
-    $addCategoryForm.submit(e => {
-        e.preventDefault();
-        $title = $addCategoryForm.find('input[name="categoryTitle"]').val();
-        $desc = $addCategoryForm.find('input[name="categoryDesc"]').val();
-        $.ajax({
-            type: "POST",
-            url: "/postcategory",
-            headers: { "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content") },
-            data: { categoryTitle: $title, categoryDesc: $desc },
-            success: function(res) {
-                window.location.reload();
-            },
-            error: function(xhr, ajaxOptions, thrownError) {
-                console.log(
-                    "Error occured during AJAX request, error code: " +
-                        xhr.status
-                );
-            }
-        });
+  $addCategoryForm.submit(function (e) {
+    e.preventDefault();
+    $title = $addCategoryForm.find('input[name="categoryTitle"]').val();
+    $desc = $addCategoryForm.find('input[name="categoryDesc"]').val();
+    $.ajax({
+      type: "POST",
+      url: "/postcategory",
+      headers: {
+        "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
+      },
+      data: {
+        categoryTitle: $title,
+        categoryDesc: $desc
+      },
+      success: function success(res) {
+        window.location.reload();
+      },
+      error: function error(xhr, ajaxOptions, thrownError) {
+        console.log("Error occured during AJAX request, error code: " + xhr.status);
+      }
     });
+  });
 }
 /**
  * Listen for form submission
  * Request to delete category when form is submitted.
  */
+
+
 function registerDelFormSubmitListener() {
-    $delCategoryForm.submit(e => {
-        e.preventDefault();
-        $.ajax({
-            type: "POST",
-            url: "/delcategory",
-            headers: { "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content") },
-            data: { categoryName: this.$prevClickedDelCategoryName },
-            success: function(res) {
-                window.location.reload();
-            },
-            error: function(xhr, ajaxOptions, thrownError) {
-                console.log(
-                    "Error occured during AJAX request, error code: " +
-                        xhr.status
-                );
-            }
-        });
+  var _this = this;
+
+  $delCategoryForm.submit(function (e) {
+    e.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: "/delcategory",
+      headers: {
+        "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
+      },
+      data: {
+        categoryName: _this.$prevClickedDelCategoryName
+      },
+      success: function success(res) {
+        window.location.reload();
+      },
+      error: function error(xhr, ajaxOptions, thrownError) {
+        console.log("Error occured during AJAX request, error code: " + xhr.status);
+      }
     });
+  });
 }
-
-
 /**
  * Listen for form submission
  * Request to edit category when form is submitted.
  */
-function registerEditFormSubmitListener() {
-    $editCategoryForm.submit(e => {
-        e.preventDefault();
-        $categoryName = $editCategoryForm
-            .find('input[name="categoryname"]')
-            .val();
-        $description = $editCategoryForm
-            .find('input[name="description"]')
-            .val();
-        $.ajax({
-            type: "POST",
-            url: "/editcategory",
-            headers: { "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content") },
-            data: {
-                categoryName: this.$prevClickedDelCategoryName,
-                description: $description,
-                newCategoryName: $categoryName
-            },
-            success: function(res) {
-                window.location.reload();
-            },
-            error: function(xhr, ajaxOptions, thrownError) {
-                console.log(
-                    "Error occured during AJAX request, error code: " +
-                        xhr.status
-                );
-            }
-        });
-    });
-}
 
+
+function registerEditFormSubmitListener() {
+  var _this2 = this;
+
+  $editCategoryForm.submit(function (e) {
+    e.preventDefault();
+    $categoryName = $editCategoryForm.find('input[name="categoryname"]').val();
+    $description = $editCategoryForm.find('input[name="description"]').val();
+    $.ajax({
+      type: "POST",
+      url: "/editcategory",
+      headers: {
+        "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
+      },
+      data: {
+        categoryName: _this2.$prevClickedDelCategoryName,
+        description: $description,
+        newCategoryName: $categoryName
+      },
+      success: function success(res) {
+        window.location.reload();
+      },
+      error: function error(xhr, ajaxOptions, thrownError) {
+        console.log("Error occured during AJAX request, error code: " + xhr.status);
+      }
+    });
+  });
+}
 /**
  * Open category creator form on button press.
  */
-$("#categoryFormOpener").on("click", e => {
-    $("#categories").append(addCategoryFormHTML);
-    this.registerFormExitHandler();
-    this.initForms();
-    this.registerAddFormSubmitListener();
+
+
+$("#categoryFormOpener").on("click", function (e) {
+  $("#categories").append(addCategoryFormHTML);
+
+  _this3.registerFormExitHandler();
+
+  _this3.initForms();
+
+  _this3.registerAddFormSubmitListener();
 });
 /**
  * Register click handler every time we append form to DOM.
  */
+
 function registerFormExitHandler() {
-    $(".form-exit").on("click", e => {
-        $(".popup-form").remove();
-    });
+  $(".form-exit").on("click", function (e) {
+    $(".popup-form").remove();
+  });
 }
 /**
  * Listen for switch buttons.
  * Replace categoryId of adjacent elements to load the page with a different order.
  */
-$('.up-arrow').on('click', e => {
-    e.preventDefault();
-    let clickedId = $(e.target).parent().parent().parent().attr('categoryid');
-    let switchWith = this.getAdjacentCategory(clickedId, true);
-    if(typeof switchWith !== 'undefined') {
-        $.ajax({
-            type: "POST",
-            url: "/categoryswitchid",
-            headers: {
-                "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
-            },
-            data: {
-                draggedId: clickedId,
-                targetId: switchWith
-            },
-            success: function(res) {
-                window.location.reload();
-            },
-            error: function(xhr, ajaxOptions, thrownError) {
-                console.log(
-                    "Error occured during AJAX request, error code: " +
-                        xhr.status
-                );
-            }
-        });
-    }
+
+
+$('.up-arrow').on('click', function (e) {
+  e.preventDefault();
+  var clickedId = $(e.target).parent().parent().parent().attr('categoryid');
+
+  var switchWith = _this3.getAdjacentCategory(clickedId, true);
+
+  if (typeof switchWith !== 'undefined') {
+    $.ajax({
+      type: "POST",
+      url: "/categoryswitchid",
+      headers: {
+        "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
+      },
+      data: {
+        draggedId: clickedId,
+        targetId: switchWith
+      },
+      success: function success(res) {
+        window.location.reload();
+      },
+      error: function error(xhr, ajaxOptions, thrownError) {
+        console.log("Error occured during AJAX request, error code: " + xhr.status);
+      }
+    });
+  }
 });
-$('.down-arrow').on('click', e => {
-    e.preventDefault();
-    let clickedId = $(e.target).parent().parent().parent().attr('categoryid');
-    let switchWith = this.getAdjacentCategory(clickedId, false);
-    if(typeof switchWith !== 'undefined') {
-        $.ajax({
-            type: "POST",
-            url: "/categoryswitchid",
-            headers: {
-                "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
-            },
-            data: {
-                draggedId: clickedId,
-                targetId: switchWith
-            },
-            success: function(res) {
-                window.location.reload();
-            },
-            error: function(xhr, ajaxOptions, thrownError) {
-                console.log(
-                    "Error occured during AJAX request, error code: " +
-                        xhr.status
-                );
-            }
-        });
-    }
+$('.down-arrow').on('click', function (e) {
+  e.preventDefault();
+  var clickedId = $(e.target).parent().parent().parent().attr('categoryid');
+
+  var switchWith = _this3.getAdjacentCategory(clickedId, false);
+
+  if (typeof switchWith !== 'undefined') {
+    $.ajax({
+      type: "POST",
+      url: "/categoryswitchid",
+      headers: {
+        "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
+      },
+      data: {
+        draggedId: clickedId,
+        targetId: switchWith
+      },
+      success: function success(res) {
+        window.location.reload();
+      },
+      error: function error(xhr, ajaxOptions, thrownError) {
+        console.log("Error occured during AJAX request, error code: " + xhr.status);
+      }
+    });
+  }
 });
+
 function getAdjacentCategory(id, above) {
-    let lastIterId = null;
-    let $catArray = $('a');
-    for(let i = 0; i < $catArray.length; i++) {
-        let eid = $catArray[i].getAttribute('categoryid');
-        console.log("eid" + eid);
-        if(lastIterId != null && id == eid && above) {
-            console.log("Returning " + lastIterId);
-            return lastIterId;
-        }
-        if(lastIterId != null && !above && lastIterId == id) {
-            return eid;
-        }
-        lastIterId = $catArray[i].getAttribute('categoryid');
+  var lastIterId = null;
+  var $catArray = $('a');
+
+  for (var i = 0; i < $catArray.length; i++) {
+    var eid = $catArray[i].getAttribute('categoryid');
+    console.log("eid" + eid);
+
+    if (lastIterId != null && id == eid && above) {
+      console.log("Returning " + lastIterId);
+      return lastIterId;
     }
+
+    if (lastIterId != null && !above && lastIterId == id) {
+      return eid;
+    }
+
+    lastIterId = $catArray[i].getAttribute('categoryid');
+  }
 }
 /**
  * Set file scope var for use in ajax request.
  * Replace placeholder value with clicked category name.
  */
-$(".del-category").on("click", e => {
-    e.preventDefault();
-    this.$prevClickedDelCategoryName = $(e.target)
-        .parent()
-        .parent()
-        .find('#name')
-        .text();
-    $("#categories").append(
-        delCategoryFormHTML.replace(
-            "%c",
-            this.$prevClickedDelCategoryName.trim()
-        )
-    );
-    this.registerFormExitHandler();
-    this.initForms();
-    this.registerDelFormSubmitListener();
-});
 
+
+$(".del-category").on("click", function (e) {
+  e.preventDefault();
+  _this3.$prevClickedDelCategoryName = $(e.target).parent().parent().find('#name').text();
+  $("#categories").append(delCategoryFormHTML.replace("%c", _this3.$prevClickedDelCategoryName.trim()));
+
+  _this3.registerFormExitHandler();
+
+  _this3.initForms();
+
+  _this3.registerDelFormSubmitListener();
+});
 /**
  * Fill form's input with old category ready to edit.
  */
-$(".edit-category").on("click", e => {
-    e.preventDefault();
-    this.$prevClickedDelCategoryName = $(e.target)
-    .parent()
-    .parent()
-    .find('#name')
-    .text();
-    this.$prevClickedEditCategoryDesc = $(e.target)
-    .parent()
-    .parent()
-    .parent()
-    .find('#desc')
-    .text();
-    $("#categories").append(
-        editCategoryFormHTML.replace(
-            "%c",
-            this.$prevClickedDelCategoryName.trim()
-        ).replace( 
-            "%d",
-            this.$prevClickedEditCategoryDesc.trim()
-        )
-    );
-    this.registerFormExitHandler();
-    this.initForms();
-    this.registerEditFormSubmitListener();
+
+$(".edit-category").on("click", function (e) {
+  e.preventDefault();
+  _this3.$prevClickedDelCategoryName = $(e.target).parent().parent().find('#name').text();
+  _this3.$prevClickedEditCategoryDesc = $(e.target).parent().parent().parent().find('#desc').text();
+  $("#categories").append(editCategoryFormHTML.replace("%c", _this3.$prevClickedDelCategoryName.trim()).replace("%d", _this3.$prevClickedEditCategoryDesc.trim()));
+
+  _this3.registerFormExitHandler();
+
+  _this3.initForms();
+
+  _this3.registerEditFormSubmitListener();
 });
+
+/***/ }),
+
+/***/ 2:
+/*!******************************************!*\
+  !*** multi ./resources/js/categories.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\js\categories.js */"./resources/js/categories.js");
+
+
+/***/ })
+
+/******/ });
