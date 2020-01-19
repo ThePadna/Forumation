@@ -14,14 +14,20 @@ a {
 }
 #menu {
     border: 1px solid red;
+    * {
+        display: block;
+        text-align: center;
+    }
+    i {
+        font-size: 5vh;
+        border: 1px solid red;
+    }
+    div {
+        width: 500px;
+    }
 }
 p {
     color: green;
-}
-#settings {
-    #color-scheme>* {
-        display: inline-block;
-    }
 }
 .switch input {
     position: absolute;

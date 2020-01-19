@@ -16,12 +16,22 @@
   border: 1px solid red;
 }
 
-p {
-  color: green;
+#menu * {
+  display: block;
+  text-align: center;
 }
 
-#settings #color-scheme > * {
-  display: inline-block;
+#menu i {
+  font-size: 5vh;
+  border: 1px solid red;
+}
+
+#menu div {
+  width: 500px;
+}
+
+p {
+  color: green;
 }
 
 .switch input {
