@@ -1,8 +1,9 @@
-import '@simonwep/pickr/dist/themes/classic.min.css';
+
+import '@simonwep/pickr/dist/themes/nano.min.css';
 import Pickr from '@simonwep/pickr'
 const pickr = Pickr.create({
     el: '.pickr',
-    theme: 'classic', // or 'monolith', or 'nano'
+    theme: 'nano', // or 'monolith', or 'nano'
 
     swatches: [
         'rgba(244, 67, 54, 1)',
