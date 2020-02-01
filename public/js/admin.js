@@ -782,6 +782,9 @@ var pickr = _simonwep_pickr__WEBPACK_IMPORTED_MODULE_1___default.a.create({
     }
   }
 });
+loadProperties();
+
+function loadProperties() {}
 
 /***/ }),
 

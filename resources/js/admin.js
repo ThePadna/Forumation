@@ -42,3 +42,6 @@ const pickr = Pickr.create({
         }
     }
 });
+loadProperties();
+function loadProperties() {
+}

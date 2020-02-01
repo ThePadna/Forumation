@@ -198,4 +198,20 @@ class ForumController extends Controller
           //checks
           return view('admin');
       }
+      /**
+       * Post color change to DQL Settings.
+       * 
+       * @param Request $request
+       */
+      public function postColorUpdate(Request $request) {
+
+      }
+      /**
+       * Post editor mode update to SQL Settings.
+       * 
+       * @param Request $request
+       */
+      public function postEditorModeUpdate(Request $request) {
+          
+      }
 }

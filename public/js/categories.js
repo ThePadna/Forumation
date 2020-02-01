@@ -93,8 +93,6 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-var _this3 = this;
-
 var $prevClickedEditCategoryDesc, $prevClickedDelCategoryName;
 var addCategoryFormHTML = "<div id=\"addCategoryForm\" class=\"popup-form\">\n<div class=\"form-header\">\n    <div class=\"form-exit\">\n        <i id=\"exit-icon\" class=\"fas fa-times\"></i>\n    </div>\n    <h1> New Category </h1>\n</div>\n<div class=\"form-container\">\n    <form>\n        <input id=\"categoryTitle\" type=\"text\" name=\"categoryTitle\" placeholder=\"Category Name\">\n        <input id=\"categoryDesc\" type=\"text\" name=\"categoryDesc\" placeholder=\"Description\" />\n        <button id=\"categoryFormCloser\"> Add Category </button>\n    </form>\n</div>\n</div>";
 var editCategoryFormHTML = "<div id=\"editCategoryForm\" class=\"popup-form\">\n<div class=\"form-header\">\n    <div class=\"form-exit\">\n        <i id=\"exit-icon\" class=\"fas fa-times\"></i>\n    </div>\n    <h1> Edit Category </h1>\n</div>\n<div class=\"form-container\">\n    <form>\n        <input type=\"text\" name=\"categoryname\" value=\"%c\" />\n        <input type=\"text\" name=\"description\" value=\"%d\" />\n        <button id=\"categoryFormCloser\"> Confirm Edit </button>\n    </form>\n</div>\n</div>";
@@ -148,8 +146,6 @@ function registerAddFormSubmitListener() {
 
 
 function registerDelFormSubmitListener() {
-  var _this = this;
-
   $delCategoryForm.submit(function (e) {
     e.preventDefault();
     $.ajax({
@@ -159,7 +155,7 @@ function registerDelFormSubmitListener() {
         "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
       },
       data: {
-        categoryName: _this.$prevClickedDelCategoryName
+        categoryName: $prevClickedDelCategoryName
       },
       success: function success(res) {
         window.location.reload();
@@ -177,7 +173,7 @@ function registerDelFormSubmitListener() {
 
 
 function registerEditFormSubmitListener() {
-  var _this2 = this;
+  var _this = this;
 
   $editCategoryForm.submit(function (e) {
     e.preventDefault();
@@ -190,7 +186,7 @@ function registerEditFormSubmitListener() {
         "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
       },
       data: {
-        categoryName: _this2.$prevClickedDelCategoryName,
+        categoryName: _this.$prevClickedDelCategoryName,
         description: $description,
         newCategoryName: $categoryName
       },
@@ -210,12 +206,9 @@ function registerEditFormSubmitListener() {
 
 $("#categoryFormOpener").on("click", function (e) {
   $("#categories").append(addCategoryFormHTML);
-
-  _this3.registerFormExitHandler();
-
-  _this3.initForms();
-
-  _this3.registerAddFormSubmitListener();
+  registerFormExitHandler();
+  initForms();
+  registerAddFormSubmitListener();
 });
 /**
  * Register click handler every time we append form to DOM.
@@ -235,8 +228,7 @@ function registerFormExitHandler() {
 $('.up-arrow').on('click', function (e) {
   e.preventDefault();
   var clickedId = $(e.target).parent().parent().parent().attr('categoryid');
-
-  var switchWith = _this3.getAdjacentCategory(clickedId, true);
+  var switchWith = getAdjacentCategory(clickedId, true);
 
   if (typeof switchWith !== 'undefined') {
     $.ajax({
@@ -261,8 +253,7 @@ $('.up-arrow').on('click', function (e) {
 $('.down-arrow').on('click', function (e) {
   e.preventDefault();
   var clickedId = $(e.target).parent().parent().parent().attr('categoryid');
-
-  var switchWith = _this3.getAdjacentCategory(clickedId, false);
+  var switchWith = getAdjacentCategory(clickedId, false);
 
   if (typeof switchWith !== 'undefined') {
     $.ajax({
@@ -313,14 +304,11 @@ function getAdjacentCategory(id, above) {
 
 $(".del-category").on("click", function (e) {
   e.preventDefault();
-  _this3.$prevClickedDelCategoryName = $(e.target).parent().parent().find('#name').text();
-  $("#categories").append(delCategoryFormHTML.replace("%c", _this3.$prevClickedDelCategoryName.trim()));
-
-  _this3.registerFormExitHandler();
-
-  _this3.initForms();
-
-  _this3.registerDelFormSubmitListener();
+  $prevClickedDelCategoryName = $(e.target).parent().parent().find('#name').text();
+  $("#categories").append(delCategoryFormHTML.replace("%c", $prevClickedDelCategoryName.trim()));
+  registerFormExitHandler();
+  initForms();
+  registerDelFormSubmitListener();
 });
 /**
  * Fill form's input with old category ready to edit.
@@ -328,15 +316,12 @@ $(".del-category").on("click", function (e) {
 
 $(".edit-category").on("click", function (e) {
   e.preventDefault();
-  _this3.$prevClickedDelCategoryName = $(e.target).parent().parent().find('#name').text();
-  _this3.$prevClickedEditCategoryDesc = $(e.target).parent().parent().parent().find('#desc').text();
-  $("#categories").append(editCategoryFormHTML.replace("%c", _this3.$prevClickedDelCategoryName.trim()).replace("%d", _this3.$prevClickedEditCategoryDesc.trim()));
-
-  _this3.registerFormExitHandler();
-
-  _this3.initForms();
-
-  _this3.registerEditFormSubmitListener();
+  $prevClickedDelCategoryName = $(e.target).parent().parent().find('#name').text();
+  $prevClickedEditCategoryDesc = $(e.target).parent().parent().parent().find('#desc').text();
+  $("#categories").append(editCategoryFormHTML.replace("%c", $prevClickedDelCategoryName.trim()).replace("%d", $prevClickedEditCategoryDesc.trim()));
+  registerFormExitHandler();
+  initForms();
+  registerEditFormSubmitListener();
 });
 
 /***/ }),

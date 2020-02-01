@@ -52,14 +52,14 @@ p {
     background-color: #bc2612;
     border: 1px solid #aaa;
     border-radius: 5px;
-    transition: all 0.4s;
+    transition: all 0.2s;
   }
   .slider:before {
     position: absolute;
     content: "";
     width: 5vh;
     height: 2.5vh;
-    left: 5vh;
+    left: 5.5vh;
     top: 0.9vh;
     background-color: #eee;
     border-radius: 5px;
