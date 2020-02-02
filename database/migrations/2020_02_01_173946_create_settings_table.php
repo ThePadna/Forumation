@@ -16,7 +16,7 @@ class CreateSettingsTable extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->decimal('color', 6);
-            $table->boolval('editormode');
+            $table->boolean('editormode')->default(0);
         });
     }
 
