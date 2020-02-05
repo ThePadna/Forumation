@@ -1,6 +1,6 @@
 
 import '@simonwep/pickr/dist/themes/nano.min.css';
-import Pickr from '@simonwep/pickr'
+import Pickr from '@simonwep/pickr';
 const pickr = Pickr.create({
     el: '.pickr',
     theme: 'nano', // or 'monolith', or 'nano'
@@ -42,6 +42,59 @@ const pickr = Pickr.create({
         }
     }
 });
+$("#toggle").change(function() {
+    saveEditorMode(this.checked);
+    loadProperties(this.checked);
+});
+pickr.on('save', (hco, instance) => {
+    let color = hco.toHEXA().toString();
+    saveColor(color);
+    $('#color-state').text(color);
+});
+pickr.on('init', instance => {
+    loadProperties(null);
+});
 loadProperties();
-function loadProperties() {
+function loadProperties(toggle) {
+    let $color = $('meta[name="color-scheme"]').attr("content");
+    let $editormode = $('meta[name="editor-mode"]').attr("content");
+    if(toggle == null) toggle = $editormode;
+    $('#color-state').text($color);
+    pickr.setColor($color);
+    $('#editor-state').text(toggle == 0 ? "OFF" : "ON");
+    if(toggle == 1) $('#editor-state').css('color', 'green');
+    else $('#editor-state').css('color', 'red');
+}
+function saveColor(color) {
+    $.ajax({
+        type: "POST",
+        url: "/postColorUpdate",
+        headers: { "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content") },
+        data: { color: color },
+        success: function(res) {
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+            console.log(
+                "Error occured during AJAX request, error code: " +
+                    xhr.status
+            );
+        }
+    });
+}
+function saveEditorMode(toggle) {
+    let boolAsNum = toggle ? 1 : 0;
+    $.ajax({
+        type: "POST",
+        url: "/postEditorModeUpdate",
+        headers: { "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content") },
+        data: { toggle:boolAsNum },
+        success: function(res) {
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+            console.log(
+                "Error occured during AJAX request, error code: " +
+                    xhr.status
+            );
+        }
+    });
 }

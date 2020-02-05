@@ -8,6 +8,7 @@ use App\User;
 use App\Models\Thread;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Settings;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
@@ -196,7 +197,8 @@ class ForumController extends Controller
        */
       public function showCtrlPanel(Request $request) {
           //checks
-          return view('admin');
+          $settings = Settings::first();
+          return view('admin', ['settings' => $settings]);
       }
       /**
        * Post color change to DQL Settings.
@@ -204,7 +206,12 @@ class ForumController extends Controller
        * @param Request $request
        */
       public function postColorUpdate(Request $request) {
-
+          $settings = Settings::first();
+          if($settings == null) {
+              $settings = new Settings();
+          }
+          $settings->color = $request->input('color');
+          $settings->save();
       }
       /**
        * Post editor mode update to SQL Settings.
@@ -212,6 +219,11 @@ class ForumController extends Controller
        * @param Request $request
        */
       public function postEditorModeUpdate(Request $request) {
-          
+        $settings = Settings::first();
+        if($settings == null) {
+            $settings = new Settings();
+        }
+        $settings->editormode = $request->input('toggle');
+        $settings->save();
       }
 }

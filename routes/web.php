@@ -13,6 +13,8 @@
 Route::get('/', function () {
     return view('home');
 });
+Route::post('/postEditorModeUpdate', 'ForumController@postEditorModeUpdate');
+Route::post('/postColorUpdate', 'ForumController@postColorUpdate');
 Route::post('/postreply', 'ForumController@postReply');
 Route::post('/postthread', 'ForumController@postThread');
 Route::post('/postcategory', 'ForumController@postCategory');
