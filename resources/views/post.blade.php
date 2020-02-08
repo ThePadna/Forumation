@@ -12,6 +12,7 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 <meta name="csrf" content="{{csrf_token()}}">
+<meta name="color" content="{{$color}}">
 <script>
 var $form = $('form');
 $form.submit((e) => {
@@ -35,5 +36,14 @@ $form.submit((e) => {
       },
   });
 });
+updateColorScheme($('meta[name="color"]').attr('content'));
+/**
+ * Updates color scheme on present selectors.
+ * 
+ * @param {*} color 
+ */
+function updateColorScheme(color) {
+    $('#header').css('background', color);
+}
 </script>
 @stop

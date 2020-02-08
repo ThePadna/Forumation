@@ -56,5 +56,6 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 <meta name="csrf" content="{{csrf_token()}}">
+<meta name="color" content="{{$color}}">
 <script src="{{asset('js/categories.js')}}"> </script>
 @stop

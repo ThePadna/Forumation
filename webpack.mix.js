@@ -25,3 +25,4 @@ mix.sass('resources/sass/categories.scss', 'public/css')
 .js('resources/js/profile_edit.js', 'public/js/profile_edit.js')
 .js('resources/js/profile', 'public/js/profile.js')
 .js('resources/js/thread.js', 'public/js/thread.js')
+.js('resources/js/category.js', 'public/js/category.js');

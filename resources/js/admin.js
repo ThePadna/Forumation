@@ -44,12 +44,16 @@ const pickr = Pickr.create({
 });
 $("#toggle").change(function() {
     saveEditorMode(this.checked);
-    loadProperties(this.checked);
+    $('#editor-state').text(this.checked == 0 ? "OFF" : "ON");
+    if(this.checked == 1) $('#editor-state').css('color', 'green');
+    else $('#editor-state').css('color', 'red');
 });
 pickr.on('save', (hco, instance) => {
     let color = hco.toHEXA().toString();
     saveColor(color);
     $('#color-state').text(color);
+    updateColorScheme(color);
+    pickr.hide();
 });
 pickr.on('init', instance => {
     loadProperties(null);
@@ -64,6 +68,7 @@ function loadProperties(toggle) {
     $('#editor-state').text(toggle == 0 ? "OFF" : "ON");
     if(toggle == 1) $('#editor-state').css('color', 'green');
     else $('#editor-state').css('color', 'red');
+    updateColorScheme($color);
 }
 function saveColor(color) {
     $.ajax({
@@ -97,4 +102,12 @@ function saveEditorMode(toggle) {
             );
         }
     });
+}
+/**
+ * Updates color scheme on present selectors.
+ * 
+ * @param {*} color 
+ */
+function updateColorScheme(color) {
+    $('#header').css('background', color);
 }

@@ -30,7 +30,6 @@
 @auth
 @if(Auth::user()->id == $user->id)
 <script src="{{asset('js/profile_auth.js')}}"> </script>
-<meta name=
 <meta name="username" content="{{$user->name}}">
 @endif
 @endauth

@@ -783,12 +783,15 @@ var pickr = _simonwep_pickr__WEBPACK_IMPORTED_MODULE_1___default.a.create({
 });
 $("#toggle").change(function () {
   saveEditorMode(this.checked);
-  loadProperties(this.checked);
+  $('#editor-state').text(this.checked == 0 ? "OFF" : "ON");
+  if (this.checked == 1) $('#editor-state').css('color', 'green');else $('#editor-state').css('color', 'red');
 });
 pickr.on('save', function (hco, instance) {
   var color = hco.toHEXA().toString();
   saveColor(color);
   $('#color-state').text(color);
+  updateColorScheme(color);
+  pickr.hide();
 });
 pickr.on('init', function (instance) {
   loadProperties(null);
@@ -803,6 +806,7 @@ function loadProperties(toggle) {
   pickr.setColor($color);
   $('#editor-state').text(toggle == 0 ? "OFF" : "ON");
   if (toggle == 1) $('#editor-state').css('color', 'green');else $('#editor-state').css('color', 'red');
+  updateColorScheme($color);
 }
 
 function saveColor(color) {
@@ -838,6 +842,16 @@ function saveEditorMode(toggle) {
       console.log("Error occured during AJAX request, error code: " + xhr.status);
     }
   });
+}
+/**
+ * Updates color scheme on present selectors.
+ * 
+ * @param {*} color 
+ */
+
+
+function updateColorScheme(color) {
+  $('#header').css('background', color);
 }
 
 /***/ }),

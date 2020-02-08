@@ -81,44 +81,18 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/thread.js":
-/*!********************************!*\
-  !*** ./resources/js/thread.js ***!
-  \********************************/
+/***/ "./resources/js/category.js":
+/*!**********************************!*\
+  !*** ./resources/js/category.js ***!
+  \**********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-/**
- * Request to post thread reply when form is submitted
- */
-$replyForm = $('#replyForm');
-$replyForm.submit(function (e) {
-  e.preventDefault();
-  $text = $replyForm.find('#replyText').val();
-  $.ajax({
-    type: "POST",
-    url: '/postreply',
-    headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf"]').attr('content')
-    },
-    data: {
-      'text': $text,
-      'thread': $('meta[name="thread"]').attr('content')
-    },
-    success: function success(res) {
-      window.location.reload();
-      console.log(res);
-    },
-    error: function error(xhr, ajaxOptions, thrownError) {
-      console.log("Error occured during AJAX request, error code: " + xhr.status);
-    }
-  });
-});
 updateColorScheme($('meta[name="color"]').attr('content'));
 /**
  * Updates color scheme on present selectors.
@@ -128,18 +102,19 @@ updateColorScheme($('meta[name="color"]').attr('content'));
 
 function updateColorScheme(color) {
   $('#header').css('background', color);
+  $('#prevpage, #nextpage, #postThread>*, p').css('color', color);
 }
 
 /***/ }),
 
-/***/ 4:
-/*!**************************************!*\
-  !*** multi ./resources/js/thread.js ***!
-  \**************************************/
+/***/ 5:
+/*!****************************************!*\
+  !*** multi ./resources/js/category.js ***!
+  \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\js\thread.js */"./resources/js/thread.js");
+module.exports = __webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\js\category.js */"./resources/js/category.js");
 
 
 /***/ })

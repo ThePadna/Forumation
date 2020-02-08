@@ -29,7 +29,12 @@
 }
 
 p {
-  color: green;
+  color: black;
+  font-size: 3vh;
+}
+
+#color-state {
+  color: gray;
 }
 
 .toggle input {

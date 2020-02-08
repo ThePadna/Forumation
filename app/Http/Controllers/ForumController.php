@@ -37,7 +37,7 @@ class ForumController extends Controller
                 } else $posts[$id] = $p;
             }
         }
-        return view("category", ["category" => Category::All()->firstWhere('id', $categoryId), "threads" => $threads, "page" => $page, "posts" => $posts, "now" => Carbon::now()]);
+        return view("category", ["category" => Category::All()->firstWhere('id', $categoryId), "threads" => $threads, "page" => $page, "posts" => $posts, "now" => Carbon::now(), "color" => Settings::first()->color]);
     }
 
      /**
@@ -46,7 +46,7 @@ class ForumController extends Controller
      * @return Response
      */
     public function showCategories() {
-        return view("categories", ["categories" => Category::All()]);
+        return view("categories", ["categories" => Category::All(), "color" => Settings::first()->color]);
     }
 
     /**
@@ -112,7 +112,7 @@ class ForumController extends Controller
      * @return Response
      */
     public function showThreadPostForm(Request $request, $category) {
-        return view('post', ['categoryId' => $category]);
+        return view('post', ['categoryId' => $category, "color" => Settings::first()->color]);
     }
 
     /**
@@ -157,7 +157,7 @@ class ForumController extends Controller
          $thread = Thread::find($threadId);
          $postsSize = sizeof($posts);
          $empty = ($postsSize == 0);
-         return view('thread', ['lastPage' => $lastPage, 'empty' => $empty, 'page' => $page, 'posts' => $posts, 'isLastPage' => $isLastPage, 'thread' => $thread]);
+         return view('thread', ['lastPage' => $lastPage, 'empty' => $empty, 'page' => $page, 'posts' => $posts, 'isLastPage' => $isLastPage, 'thread' => $thread, "color" => Settings::first()->color]);
      }
      
      /**

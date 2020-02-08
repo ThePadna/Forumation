@@ -323,6 +323,16 @@ $(".edit-category").on("click", function (e) {
   initForms();
   registerEditFormSubmitListener();
 });
+updateColorScheme($('meta[name="color"]').attr('content'));
+/**
+ * Updates color scheme on present selectors.
+ * 
+ * @param {*} color 
+ */
+
+function updateColorScheme(color) {
+  $('#header').css('background', color);
+}
 
 /***/ }),
 

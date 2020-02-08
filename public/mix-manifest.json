@@ -10,6 +10,7 @@
     "/css/edit.css": "/css/edit.css",
     "/css/admin.css": "/css/admin.css",
     "/js/categories.js": "/js/categories.js",
+    "/js/category.js": "/js/category.js",
     "/js/profile.js": "/js/profile.js",
     "/js/profile_edit.js": "/js/profile_edit.js",
     "/js/thread.js": "/js/thread.js"

@@ -66,4 +66,7 @@
         </div>
     </a>
 </div>
+<meta name="color" content="{{$color}}">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
+<script src="{{asset('js/category.js')}}"> </script>
 @stop
