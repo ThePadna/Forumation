@@ -27,7 +27,7 @@
                     if($timeDisplay->m != 0) $formatAs = "m";
                     if($timeDisplay->y != 0) $formatAs = "y";
                     @endphp
-                    <p> Latest post by &nbsp; <i class="far fa-user"></i> {{App\User::find($t->op)->name}}
+                    <p> Latest post by &nbsp; <i class="far fa-user"></i> <a href="/forum/profile/{{$t->op}}"><span style="color:black;">{{App\User::find($t->op)->name}}</span> </a>
                         {{$timeDisplay->format("%" . $formatAs)}}{{$formatAs}} ago</p>
                 </div>
                     </div>

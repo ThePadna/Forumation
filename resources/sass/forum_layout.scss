@@ -41,3 +41,13 @@ body {
         transform: translateY(-50%);
     }
 }
+
+#admin:hover {
+    animation: rotate 1s;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}

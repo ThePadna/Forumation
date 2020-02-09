@@ -26,7 +26,12 @@
         </div>
     </div>
 </div>
+<meta name="color" content="{{$color}}">
+<meta name="threads" content="{{}}">
+<meta name="posts" content="{{}}">
+<meta name="score" content="{{}}">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
+<script src="{{asset('js/profile.js')}}"> </script>
 @auth
 @if(Auth::user()->id == $user->id)
 <script src="{{asset('js/profile_auth.js')}}"> </script>

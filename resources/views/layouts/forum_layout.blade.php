@@ -13,7 +13,7 @@
     @endif
     @else
             @if(Auth::user()->role == "admin")
-            <a id="admin" style="color:white; position: absolute; top: 0vh;" href="/forum/admin"> Control Panel </a>
+            <a id="admin" style="color:white; position:absolute; top:1vh; left:1vh;" href="/forum/admin"> <i style="font-size: 5vh;" class="fas fa-cog"></i></a>
             @endif
             <p class="auth">
             <a id="username" style="color:white;" href="/forum/profile/{{Auth::user()->id}}">{{ Auth::user()->name }}</a>

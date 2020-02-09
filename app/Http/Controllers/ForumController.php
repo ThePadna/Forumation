@@ -187,7 +187,7 @@ class ForumController extends Controller
           $posts = Post::where('user', $user->id)->get()->count();
           $threads = Thread::where('op', $user->id)->get()->count();
           $posts = ($posts - $threads);
-          return view('profile', ['threads' => $threads, 'posts' => $posts, 'score' => $score, 'user' => $user]);
+          return view('profile', ['threads' => $threads, 'posts' => $posts, 'score' => $score, 'user' => $user, "color" => Settings::first()->color]);
       }
       /**
        * Show admin control panel
