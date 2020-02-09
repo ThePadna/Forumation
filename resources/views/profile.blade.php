@@ -27,9 +27,9 @@
     </div>
 </div>
 <meta name="color" content="{{$color}}">
-<meta name="threads" content="{{}}">
-<meta name="posts" content="{{}}">
-<meta name="score" content="{{}}">
+<meta name="threads" content="{{$threads}}">
+<meta name="posts" content="{{$posts}}">
+<meta name="score" content="{{$score}}">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 <script src="{{asset('js/profile.js')}}"> </script>
 @auth
