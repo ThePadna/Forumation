@@ -14,15 +14,15 @@
     <div class="row">
         <div id="posts" class="col-sm-4">
             <h1 class="title"> Posts </h1>
-            <p class="counter"> {{$posts}} </p>
+            <p id="posts-counter" class="counter"> {{$posts}} </p>
         </div>
         <div id="threads" class="col-sm-4">
             <h1 class="title"> Threads </h1>
-            <p class="counter"> {{$threads}} </p>
+            <p id="threads-counter" class="counter"> {{$threads}} </p>
         </div>
         <div id="score" class="col-sm-4">
             <h1 class="title"> Score </h1>
-            <p class="counter"> {{$score + 1}} </p>
+            <p id="score-counter" class="counter"> {{$score}} </p>
         </div>
     </div>
 </div>

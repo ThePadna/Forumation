@@ -94,6 +94,7 @@
 /***/ (function(module, exports) {
 
 updateColorScheme($('meta[name="color"]').attr('content'));
+displayStats();
 /**
  * Updates color scheme on present selectors.
  * 
@@ -111,7 +112,45 @@ function updateColorScheme(color) {
 
 
 function displayStats() {
-  var posts, threads, scores;
+  var posts = $('meta[name="posts"]').attr('content'),
+      threads = $('meta[name="threads"]').attr('content'),
+      score = $('meta[name="scores"]').attr('content');
+  var $posts = $('#posts>p'),
+      $threads = $('#threads>p'),
+      $score = $('#score>p');
+  $({
+    posts: 0
+  }).animate({
+    posts: posts
+  }, {
+    duration: 500,
+    easing: 'linear',
+    step: function step() {
+      $posts.text(Math.round(this.posts));
+    }
+  });
+  $({
+    threads: 0
+  }).animate({
+    threads: threads
+  }, {
+    duration: 500,
+    easing: 'linear',
+    step: function step() {
+      $threads.text(Math.round(this.threads));
+    }
+  });
+  $({
+    score: 0
+  }).animate({
+    score: score
+  }, {
+    duration: 500,
+    easing: 'linear',
+    step: function step() {
+      $score.text(Math.round(this.score));
+    }
+  });
 }
 
 /***/ }),

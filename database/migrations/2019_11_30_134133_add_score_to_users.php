@@ -14,7 +14,7 @@ class AddScoreToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->decimal('points');
+            $table->integer('score');
         });
     }
 
