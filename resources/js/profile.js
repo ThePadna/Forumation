@@ -16,32 +16,38 @@ function updateColorScheme(color) {
 function displayStats() {
     let posts = $('meta[name="posts"]').attr('content'),
     threads = $('meta[name="threads"]').attr('content'),
-    score = $('meta[name="scores"]').attr('content');
+    score = $('meta[name="score"]').attr('content');
 
     let $posts = $('#posts>p'),
     $threads = $('#threads>p'),
     $score = $('#score>p');
-    $({posts: 0}).animate({posts: posts}, {
-        duration: 500,
-        easing:'linear',
-        step: function() {
-          $posts.text(Math.round(this.posts));
-        }
-    });
 
-    $({threads: 0}).animate({threads: threads}, {
-        duration: 500,
-        easing:'linear',
-        step: function() {
-          $threads.text(Math.round(this.threads));
-        }
-    });
 
-    $({score: 0}).animate({score: score}, {
+    animateCounting($posts, posts);
+    animateCounting($threads, threads);
+    animateCounting($score, score);
+}
+
+function animateCounting($obj, count) {
+    console.log(count);
+    if(count == 0) {
+        $obj.text(count);
+        return;
+    }
+    $({count: 0}).animate({count: count - (count / 5)}, {
         duration: 500,
-        easing:'linear',
+        easing: 'linear',
         step: function() {
-          $score.text(Math.round(this.score));
+          $obj.text(Math.round(this.count));
+        },
+        complete: function() {
+            $({count: $obj.text()}).animate({count: count}, {
+                duration: 1000,
+                easing: 'linear',
+                step: function() {
+                  $obj.text(Math.round(this.count));
+                }
+            });
         }
     });
 }
