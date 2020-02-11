@@ -12,6 +12,7 @@
     @endphp
     <div id="container">
         <div class="row">
+            <a href="/forum/profile/{{$user->id}}" style="text-decoration: none; color: inherit;">
             <div id="test" class="col-sm-2">
                 <img src="{{base64_decode($user->avatar)}}">
                 <p> {{$user->name}} </p>
@@ -20,6 +21,7 @@
                     <p> 21 <i class="fas fa-comments"></i> </p>
                 </div>
             </div>
+            </a>
             <div class="col-sm-1">
                 <hr />
             </div>

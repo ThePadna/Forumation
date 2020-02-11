@@ -1,5 +1,6 @@
 let $usernameInp = $('#usernameInput');
 let $picInp = $('#profilepic');
+updateColorScheme($('meta[name="color"]').attr('content'));
 $('form').submit((e) => {
     e.preventDefault(); 
     var formData = new FormData();
@@ -30,3 +31,11 @@ $('#pic').change((e) => {
   }
   reader.readAsDataURL(e.target.files[0]);
 });
+/**
+ * Updates color scheme on present selectors.
+ * 
+ * @param {*} color 
+ */
+function updateColorScheme(color) {
+    $('#header').css('background', color);
+}

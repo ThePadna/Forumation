@@ -95,6 +95,7 @@
 
 var $usernameInp = $('#usernameInput');
 var $picInp = $('#profilepic');
+updateColorScheme($('meta[name="color"]').attr('content'));
 $('form').submit(function (e) {
   e.preventDefault();
   var formData = new FormData();
@@ -129,6 +130,15 @@ $('#pic').change(function (e) {
 
   reader.readAsDataURL(e.target.files[0]);
 });
+/**
+ * Updates color scheme on present selectors.
+ * 
+ * @param {*} color 
+ */
+
+function updateColorScheme(color) {
+  $('#header').css('background', color);
+}
 
 /***/ }),
 

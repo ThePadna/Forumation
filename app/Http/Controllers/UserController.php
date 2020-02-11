@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Models\Settings;
 
 class UserController extends Controller
 {
@@ -17,7 +18,7 @@ class UserController extends Controller
     public function editProfile(Request $request, $userId) {
         $user = User::find($userId);
         if($user == null) return view('404');
-        return view('profile/edit', ['user' => $user]);
+        return view('profile/edit', ['user' => $user, "color" => Settings::first()->color]);
     }
 
     /**

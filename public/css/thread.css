@@ -45,10 +45,17 @@
   font-family: "Baskerville";
 }
 
-#stats * {
+#stats {
+  width: 7vw;
+  bordeR: 1px solid red;
+}
+
+#stats p {
+  border: 1px solid black;
   font-size: 2vh;
-  left: 0;
-  display: inline;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-block;
 }
 
 .col-sm-1 {
