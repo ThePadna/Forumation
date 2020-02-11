@@ -23,21 +23,21 @@
 }
 
 .col-sm-2 {
-  margin-bottom: 1%;
   margin-right: 2%;
 }
 
 .col-sm-2 p {
   font-size: 3vh;
   position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+  text-align: center;
+  width: 15vh;
 }
 
 .col-sm-2 img {
   width: 15vh;
   height: 15vh;
-  border: 1px solid black;
+  border: 1px;
+  bordeR-radius: 50%;
 }
 
 .col-sm-8 {
@@ -46,16 +46,11 @@
 }
 
 #stats {
-  width: 7vw;
-  bordeR: 1px solid red;
+  width: 15vh;
 }
 
 #stats p {
-  border: 1px solid black;
-  font-size: 2vh;
-  left: 50%;
-  transform: translateX(-50%);
-  display: inline-block;
+  font-size: 2.5vh;
 }
 
 .col-sm-1 {
