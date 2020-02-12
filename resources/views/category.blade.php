@@ -14,21 +14,21 @@
                     $id = $t->id;
                     $time = null;
                     $op = null;
-                    if(array_key_exists($id, $posts)) {
-                    $post = $posts[$id];
-                    $time = $post->created_at;
-                    $op = $post->user;
-                    }
-                    $timeDisplay = $time->diffAsCarbonInterval(Carbon\Carbon::now());
+                    $posts = App\Models\Post::where('thread', $id)->get();
+                    $latestPost = $posts[sizeof($posts)-1];
+                    $time = \Carbon\Carbon::createFromTimeStamp(strtotime($latestPost->created_at));
+                    $op = $posts[0]->user;
+                    $timeDisplay = $time->diff(\Carbon\Carbon::now());
                     $formatAs = null;
                     if($timeDisplay->s != 0) $formatAs = "s";
+                    if($timeDisplay->i != 0) $formatAs = "i";
                     if($timeDisplay->h != 0) $formatAs = "h";
                     if($timeDisplay->d != 0) $formatAs = "d";
-                    if($timeDisplay->m != 0) $formatAs = "m";
-                    if($timeDisplay->y != 0) $formatAs = "y";
+                    $suffix = $formatAs;
+                    if($formatAs == "i") $suffix = "m";
                     @endphp
                     <p> Latest post by &nbsp; <i class="far fa-user"></i> <a href="/forum/profile/{{$t->op}}"><span style="color:black;">{{App\User::find($t->op)->name}}</span> </a>
-                        {{$timeDisplay->format("%" . $formatAs)}}{{$formatAs}} ago</p>
+                        {{$timeDisplay->format('%' . $formatAs) . $suffix}} ago</p>
                 </div>
                     </div>
                     <div id="threads" class="col-sm-1">
