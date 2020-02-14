@@ -46,7 +46,8 @@ class ForumController extends Controller
      * @return Response
      */
     public function showCategories() {
-        return view("categories", ["categories" => Category::All(), "color" => Settings::first()->color]);
+        $settings = Settings::first();
+        return view("categories", ["categories" => Category::All(), "color" => $settings->color, "editormode" => $settings->editormode]);
     }
 
     /**

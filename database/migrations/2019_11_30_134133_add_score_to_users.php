@@ -14,7 +14,7 @@ class AddScoreToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('score');
+            $table->integer('score')->default(0);
         });
     }
 
@@ -26,7 +26,7 @@ class AddScoreToUsers extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('points');
+            $table->dropColumn('score');
         });
     }
 }

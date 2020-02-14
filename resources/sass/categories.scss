@@ -73,8 +73,10 @@ body {
         }
         .edit-btn,.switch-btn {
             font-size: 3.5vh;
+            position: absolute;
         }
         .catTitle {
+            text-align: center;
             width: 50%;
             font-size: 5vh;
             margin-left: 10vw;
@@ -90,7 +92,6 @@ body {
         }
     }
     p {
-        margin-right: 1vh;
         margin: 0;
     }
     .catTitle {

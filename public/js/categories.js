@@ -334,6 +334,15 @@ function updateColorScheme(color) {
   $('#header').css('background', color);
 }
 
+if ($('meta[name="editor-mode"]').attr('content') == 0) removeEditorElements();
+
+function removeEditorElements() {
+  var EDITOR_ELEMENTS = [$('#del'), $('#edit'), $('#up'), $('#down')];
+  EDITOR_ELEMENTS.forEach(function ($e) {
+    $e.remove();
+  });
+}
+
 /***/ }),
 
 /***/ 1:

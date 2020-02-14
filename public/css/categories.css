@@ -84,9 +84,11 @@
 #categories #title .edit-btn,
 #categories #title .switch-btn {
   font-size: 3.5vh;
+  position: absolute;
 }
 
 #categories #title .catTitle {
+  text-align: center;
   width: 50%;
   font-size: 5vh;
   margin-left: 10vw;
@@ -103,7 +105,6 @@
 }
 
 #categories p {
-  margin-right: 1vh;
   margin: 0;
 }
 

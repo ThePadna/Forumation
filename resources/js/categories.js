@@ -292,3 +292,10 @@ updateColorScheme($('meta[name="color"]').attr('content'));
 function updateColorScheme(color) {
     $('#header').css('background', color);
 }
+if($('meta[name="editor-mode"]').attr('content') == 0) removeEditorElements();
+function removeEditorElements() {
+    let EDITOR_ELEMENTS = [$('#del'), $('#edit')];
+    EDITOR_ELEMENTS.forEach($e => {
+        $e.remove();
+    });
+}

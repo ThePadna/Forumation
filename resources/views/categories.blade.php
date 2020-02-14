@@ -19,17 +19,25 @@
                 <a href="/forum/category/{{$c->id}}/1" id="title" categoryId="{{$c->id}}" class="drop-zone col-8"
                     ondragover="event.preventDefault()" draggable="true">
                     <div class="catTitleWrapper">
+                    @auth
+                    @if(Auth::user()->role == "admin")
                         <div class="edit-btn">
                             <i id="edit" class="edit-category far fa-edit"></i>
                             <i id="del" class="del-category fas fa-trash"></i>
                         </div>
+                    @endif
+                    @endauth
                         <div class="catTitle">
                             <p id="name"> {{$c->name}} </p>
                         </div>
+                    @auth
+                    @if(Auth::user()->role == "admin")
                         <div class="switch-btn">
                             <i id="up" class="up-arrow fas fa-arrow-up"></i>
                             <i id="down" class="down-arrow fas fa-arrow-down"></i>
                         </div>
+                    @endif
+                    @endauth
                     </div>
                     <p id="desc"> {{$c->desc}} </p>
                     <hr />
@@ -57,5 +65,6 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 <meta name="csrf" content="{{csrf_token()}}">
 <meta name="color" content="{{$color}}">
+<meta name="editor-mode" content="{{$editormode}}">
 <script src="{{asset('js/categories.js')}}"> </script>
 @stop
