@@ -101,8 +101,6 @@ class ForumController extends Controller
         $new = $request->input('newCategoryName');
         $desc = $request->input('description');
         $cat = Category::where('name', $old)->first();
-        $cat->desc = $desc;
-        $cat->name = $new;
         $cat->save();
     }
 

@@ -47,7 +47,7 @@
                     <p class="recentPoster"> Ixinon, 35m ago </p>
                 </div>
                 <div id="threads" class="col-1">
-                    <p> 305 </p>
+                    <p> {{App\Models\Thread::where('categoryId', $c->id)->get()->count()}} </p>
                 </div>
                 @endforeach
                 @endif

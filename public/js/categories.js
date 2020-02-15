@@ -337,7 +337,7 @@ function updateColorScheme(color) {
 if ($('meta[name="editor-mode"]').attr('content') == 0) removeEditorElements();
 
 function removeEditorElements() {
-  var EDITOR_ELEMENTS = [$('#del'), $('#edit'), $('#up'), $('#down')];
+  var EDITOR_ELEMENTS = [$('#del'), $('#edit')];
   EDITOR_ELEMENTS.forEach(function ($e) {
     $e.remove();
   });
