@@ -42,12 +42,33 @@
                     <p id="desc"> {{$c->desc}} </p>
                     <hr />
                 </a>
+                @php
+                $threads = App\Models\Thread::where('categoryId', $c->id)->get();
+                $recentThread = $threads->last();
+                $threadCount = sizeof($threads);
+                @endphp
                 <div id="recentlyUpdated" class="col-2">
-                    <p class="recentTitle"> Why is my dog.. </p>
-                    <p class="recentPoster"> Ixinon, 35m ago </p>
+                @if($recentThread == null)
+                <p class="recentTitle">  No threads for this category.</p>
+                    <p class="recentPoster"> Bot, just now </p>
+                    @else
+                    @php
+                    $time = \Carbon\Carbon::createFromTimeStamp(strtotime($recentThread->created_at));
+                    $timeDisplay = $time->diff(\Carbon\Carbon::now());
+                    $formatAs = null;
+                    if($timeDisplay->s != 0) $formatAs = "s";
+                    if($timeDisplay->i != 0) $formatAs = "i";
+                    if($timeDisplay->h != 0) $formatAs = "h";
+                    if($timeDisplay->d != 0) $formatAs = "d";
+                    $suffix = $formatAs;
+                    if($formatAs == "i") $suffix = "m";
+                    @endphp
+                    <p class="recentTitle">  {{$recentThread->title}}</p>
+                    <p class="recentPoster"> {{App\User::find($recentThread->op)->name}}, {{$timeDisplay->format('%' . $formatAs)}}{{$suffix}} ago </p>
+                    @endif
                 </div>
                 <div id="threads" class="col-1">
-                    <p> {{App\Models\Thread::where('categoryId', $c->id)->get()->count()}} </p>
+                    <p> {{$threadCount}} </p>
                 </div>
                 @endforeach
                 @endif
