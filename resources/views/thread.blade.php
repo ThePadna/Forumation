@@ -1,5 +1,21 @@
 @extends('layouts/forum_layout')
 @section('content')
+@auth
+@php
+$viewed_by = $thread->viewed_by;
+$users = unserialize($viewed_by);
+$id = Auth::user()->id;
+if($users == null) {
+    $users = Array($id);
+    $thread->viewed_by = serialize($users);
+    $thread->save();
+} else {
+if(!in_array($id, $users)) array_push($users, $id);
+$thread->viewed_by = serialize($users);
+$thread->save();
+}
+@endphp
+@endauth
 <link rel="stylesheet" href="{{asset('css/thread.css')}}">
 <div id="wrapper">
     <div id="titleContainer">

@@ -26,18 +26,22 @@
                     if($timeDisplay->d != 0) $formatAs = "d";
                     $suffix = $formatAs;
                     if($formatAs == "i") $suffix = "m";
+                    $viewed = 0;
+                    $users = unserialize($t->viewed_by);
+                    if($users != null) $viewed = sizeof($users);
+                    $replies = sizeof($posts);
                     @endphp
                     <p> Latest post by &nbsp; <i class="far fa-user"></i> <a href="/forum/profile/{{$t->op}}"><span style="color:black;">{{App\User::find($t->op)->name}}</span> </a>
                         {{$timeDisplay->format('%' . $formatAs) . $suffix}} ago</p>
                 </div>
                     </div>
                     <div id="threads" class="col-sm-1">
-                        <h1 class="title"> Replies </h1>
-                        <p class="counter"> 34 </p>
+                        <h1 class="title"> Posts </h1>
+                        <p class="counter"> {{$replies}} </p>
                     </div>
                     <div id="score" class="col-sm-1">
                         <h1 class="title"> Viewed </h1>
-                        <p class="counter"> 234 Times </p>
+                        <p class="counter"> {{$viewed}} Times </p>
                     </div>
                     <hr />
                 </div>
