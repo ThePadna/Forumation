@@ -119,12 +119,13 @@ function registerEditFormSubmitListener() {
         $description = $editCategoryForm
             .find('input[name="description"]')
             .val();
+            console.log("catName:" + $prevClickedDelCategoryName);
         $.ajax({
             type: "POST",
             url: "/editcategory",
             headers: { "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content") },
             data: {
-                categoryName: this.$prevClickedDelCategoryName,
+                categoryName: $prevClickedDelCategoryName,
                 description: $description,
                 newCategoryName: $categoryName
             },
@@ -267,9 +268,9 @@ $(".edit-category").on("click", e => {
     $prevClickedEditCategoryDesc = $(e.target)
     .parent()
     .parent()
-    .parent()
     .find('#desc')
     .text();
+    console.log($prevClickedDelCategoryName);
     $("#categories").append(
         editCategoryFormHTML.replace(
             "%c",
@@ -294,7 +295,7 @@ function updateColorScheme(color) {
 }
 if($('meta[name="editor-mode"]').attr('content') == 0) removeEditorElements();
 function removeEditorElements() {
-    let EDITOR_ELEMENTS = [$('#del'), $('#edit')];
+    let EDITOR_ELEMENTS = [$('.del-category'), $('.edit-category'), $('.switch-btn')];
     EDITOR_ELEMENTS.forEach($e => {
         $e.remove();
     });

@@ -101,6 +101,8 @@ class ForumController extends Controller
         $new = $request->input('newCategoryName');
         $desc = $request->input('description');
         $cat = Category::where('name', $old)->first();
+        $cat->desc = $desc;
+        $cat->name = $new;
         $cat->save();
     }
 
@@ -130,6 +132,7 @@ class ForumController extends Controller
         $thread->op = $userId;
         $thread->posts = 1;
         $thread->categoryId = $category;
+        $thread->viewed_by = serialize(Array($userId));
         $thread->save();
         $op = new Post();
         $op->thread = $thread->id;

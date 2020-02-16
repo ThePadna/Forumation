@@ -173,12 +173,11 @@ function registerDelFormSubmitListener() {
 
 
 function registerEditFormSubmitListener() {
-  var _this = this;
-
   $editCategoryForm.submit(function (e) {
     e.preventDefault();
     $categoryName = $editCategoryForm.find('input[name="categoryname"]').val();
     $description = $editCategoryForm.find('input[name="description"]').val();
+    console.log("catName:" + $prevClickedDelCategoryName);
     $.ajax({
       type: "POST",
       url: "/editcategory",
@@ -186,7 +185,7 @@ function registerEditFormSubmitListener() {
         "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
       },
       data: {
-        categoryName: _this.$prevClickedDelCategoryName,
+        categoryName: $prevClickedDelCategoryName,
         description: $description,
         newCategoryName: $categoryName
       },
@@ -317,7 +316,8 @@ $(".del-category").on("click", function (e) {
 $(".edit-category").on("click", function (e) {
   e.preventDefault();
   $prevClickedDelCategoryName = $(e.target).parent().parent().find('#name').text();
-  $prevClickedEditCategoryDesc = $(e.target).parent().parent().parent().find('#desc').text();
+  $prevClickedEditCategoryDesc = $(e.target).parent().parent().find('#desc').text();
+  console.log($prevClickedDelCategoryName);
   $("#categories").append(editCategoryFormHTML.replace("%c", $prevClickedDelCategoryName.trim()).replace("%d", $prevClickedEditCategoryDesc.trim()));
   registerFormExitHandler();
   initForms();
@@ -337,7 +337,7 @@ function updateColorScheme(color) {
 if ($('meta[name="editor-mode"]').attr('content') == 0) removeEditorElements();
 
 function removeEditorElements() {
-  var EDITOR_ELEMENTS = [$('#del'), $('#edit')];
+  var EDITOR_ELEMENTS = [$('.del-category'), $('.edit-category'), $('.switch-btn')];
   EDITOR_ELEMENTS.forEach(function ($e) {
     $e.remove();
   });
