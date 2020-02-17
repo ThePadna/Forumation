@@ -63,11 +63,17 @@ function loadProperties(toggle) {
     let $color = $('meta[name="color-scheme"]').attr("content");
     let $editormode = $('meta[name="editor-mode"]').attr("content");
     if(toggle == null) toggle = $editormode;
+    console.log($editormode);
     $('#color-state').text($color);
     pickr.setColor($color);
     $('#editor-state').text(toggle == 0 ? "OFF" : "ON");
-    if(toggle == 1) $('#editor-state').css('color', 'green');
-    else $('#editor-state').css('color', 'red');
+    if(toggle == 1) {
+        $('#toggle').prop('checked', true);
+        $('#editor-state').css('color', 'green');
+    } else {
+        $('#toggle').prop('checked', false);
+        $('#editor-state').css('color', 'red');
+    }
     updateColorScheme($color);
 }
 function saveColor(color) {
