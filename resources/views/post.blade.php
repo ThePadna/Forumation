@@ -29,7 +29,10 @@ $form.submit((e) => {
         'categoryId': '{{$categoryId}}'
         },
       success: function(res) {
-        window.location.replace("/forum/category/{{$categoryId}}/thread/" + res + "/1");
+        if(res != -1) window.location.replace("/forum/category/{{$categoryId}}/thread/" + res + "/1");
+        else {
+           window.location.replace("/forum/category/{{$categoryId}}/1");
+        }
       },
       error: function(xhr, ajaxOptions, thrownError) {
         console.log("Error occured during AJAX request, error code: " + xhr.status);

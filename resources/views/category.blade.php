@@ -15,7 +15,7 @@
                     $time = null;
                     $op = null;
                     $posts = App\Models\Post::where('thread', $id)->get();
-                    $latestPost = $posts[sizeof($posts)-1];
+                    $latestPost = $posts[sizeof($posts) - 1];
                     $time = \Carbon\Carbon::createFromTimeStamp(strtotime($latestPost->created_at));
                     $op = $posts[0]->user;
                     $timeDisplay = $time->diff(\Carbon\Carbon::now());
@@ -64,11 +64,13 @@
         </div>
     </a>
     @endif
+    @if(sizeof($threads) >= 9)
     <a href="{{$page + 1}}">
         <div id="nextpage">
             <i class="fas fa-long-arrow-alt-right"></i>
         </div>
     </a>
+    @endif
 </div>
 <meta name="color" content="{{$color}}">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>

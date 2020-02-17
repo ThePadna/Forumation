@@ -126,20 +126,23 @@ class ForumController extends Controller
         $title = $request->input('threadTitle');
         $text = $request->input('threadText');
         $category = $request->input('categoryId');
-        $userId = Auth::user()->id;
-        $thread = new Thread();
-        $thread->title = $title;
-        $thread->op = $userId;
-        $thread->posts = 1;
-        $thread->categoryId = $category;
-        $thread->viewed_by = serialize(Array($userId));
-        $thread->save();
-        $op = new Post();
-        $op->thread = $thread->id;
-        $op->contents = $text;
-        $op->user = $userId;
-        $op->save();
-        return $thread->id;
+        if($title != null && $text != null && $category != null) {
+            $userId = Auth::user()->id;
+            $thread = new Thread();
+            $thread->title = $title;
+            $thread->op = $userId;
+            $thread->posts = 1;
+            $thread->categoryId = $category;
+            $thread->viewed_by = serialize(Array($userId));
+            $thread->save();
+            $op = new Post();
+            $op->thread = $thread->id;
+            $op->contents = $text;
+            $op->user = $userId;
+            $op->save();
+            return $thread->id;
+        }
+        return -1;
     }
 
     /**
