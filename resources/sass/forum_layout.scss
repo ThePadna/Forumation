@@ -8,6 +8,13 @@ body {
     width: 100vw;
     overflow-x: hidden;
 }
+#important-notice {
+    position: absolute;
+    color: white;
+    left: 15%;
+    font-size: 2vh;
+    top: 6.5vh;
+}
 .auth {
     #username {
         color: white !important;

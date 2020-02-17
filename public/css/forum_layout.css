@@ -5,6 +5,14 @@ body {
   overflow-x: hidden;
 }
 
+#important-notice {
+  position: absolute;
+  color: white;
+  left: 15%;
+  font-size: 2vh;
+  top: 6.5vh;
+}
+
 .auth {
   color: gray !important;
   opacity: 0.5;

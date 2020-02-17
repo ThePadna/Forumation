@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="{{asset('css/forum_layout.css')}}">
     <div id="header">
     <a href="/forum">
+    <h1 id="important-notice"> </h1>
     <h1 id="title"> Forumation </h1>
     </a>
     @guest
