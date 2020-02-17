@@ -26,6 +26,24 @@
                 <p id="editor-state" class="state"> </p>
         </div>
     </div>
+    <hr />
+    <div id="thread-settings" class="row">
+        <div class="col-sm-4">
+        <h1 id="settings-title"> Thread </h1>
+        <div id="thread-title-length">
+            <h1> Thread Title Length </h1>
+            <input id="thread-title-input" />
+        </div>
+        <div id="thread-op-post-length">
+            <h1> Thread OP Post Length </h1>
+            <input id="thread-op-post-input" />
+        </div>
+        <div id="thread-post-length">
+            <h1> Thread Post Length </h1>
+            <input id="thread-post-input" />
+        </div>
+    </div>
+    </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 <meta name="csrf" content="{{csrf_token()}}">

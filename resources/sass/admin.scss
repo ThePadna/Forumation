@@ -33,9 +33,34 @@ p {
 #color-state {
   color: gray;
 }
-
+hr {
+  border: 1px solid black;
+  margin-bottom: 10vh;
+}
 .toggle input {
     display: none;
+  }
+  #settings-title {
+    color: gray;
+    font-size: 5vh !important;
+  }
+  #thread-settings>.col-sm-4 {
+    text-align: center;
+    color: gray;
+    div {
+      * {
+        display: inline;
+      }
+      margin-top: 5vh;
+    }
+    h1 {
+    font-size: 1.75vh;
+    margin-right: 1.5vh;
+    }
+    input {
+      font-size: 1vh;
+      width: 5vh;
+    }
   }
   
   .toggle {

@@ -37,8 +37,41 @@ p {
   color: gray;
 }
 
+hr {
+  border: 1px solid black;
+  margin-bottom: 10vh;
+}
+
 .toggle input {
   display: none;
+}
+
+#settings-title {
+  color: gray;
+  font-size: 5vh !important;
+}
+
+#thread-settings > .col-sm-4 {
+  text-align: center;
+  color: gray;
+}
+
+#thread-settings > .col-sm-4 div {
+  margin-top: 5vh;
+}
+
+#thread-settings > .col-sm-4 div * {
+  display: inline;
+}
+
+#thread-settings > .col-sm-4 h1 {
+  font-size: 1.75vh;
+  margin-right: 1.5vh;
+}
+
+#thread-settings > .col-sm-4 input {
+  font-size: 1vh;
+  width: 5vh;
 }
 
 .toggle {

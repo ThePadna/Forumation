@@ -19,6 +19,7 @@ $form.submit((e) => {
   e.preventDefault();
   var $text = $form.find('textarea[name="threadText"]').val();
   var $title = $form.find('input[name="threadTitle"]').val();
+  if($text.length)
   $.ajax({
       type: "POST",
       url: '/postthread',
