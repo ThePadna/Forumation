@@ -33,7 +33,7 @@ $thread->save();
                 <img src="{{base64_decode($user->avatar)}}">
                 <p> {{$user->name}} </p>
                 <div id="stats">
-                    <p> 77 <i style="color: {{$color}}" class="fas fa-star"></i>  21 <i style="color: {{$color}}" class="fas fa-comments"></i></p>
+                    <p> {{$user->points}} <i style="color: {{$color}}" class="fas fa-star"></i>  {{App\Models\Post::where('user', $user->id)->count()}} <i style="color: {{$color}}" class="fas fa-comments"></i></p>
                 </div>
             </div>
             </a>

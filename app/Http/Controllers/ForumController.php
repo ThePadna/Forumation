@@ -23,7 +23,7 @@ class ForumController extends Controller
      * @return Response
      */
     public function showCategory($categoryId, $page) {
-        $skipAmt = $page > 1 ? $page * 9 - 9 : 0;
+        $skipAmt = $page > 1 ? ($page * 9) - 9 : 0;
         $threads = Thread::latest()->where('categoryId', $categoryId)->skip($skipAmt)->take(9)->get();
         $posts = [];
         foreach($threads as $t) {
