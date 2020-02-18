@@ -6,9 +6,9 @@ $viewed_by = $thread->viewed_by;
 $users = unserialize($viewed_by);
 $id = Auth::user()->id;
 if($users == null) {
-    $users = Array($id);
-    $thread->viewed_by = serialize($users);
-    $thread->save();
+$users = Array($id);
+$thread->viewed_by = serialize($users);
+$thread->save();
 } else {
 if(!in_array($id, $users)) array_push($users, $id);
 $thread->viewed_by = serialize($users);
@@ -28,21 +28,26 @@ $thread->save();
     @endphp
     <div id="container">
         <div class="row">
-            <a href="/forum/profile/{{$user->id}}" style="text-decoration: none; color: inherit;">
-            <div id="test" class="col-sm-2">
-                <img src="{{base64_decode($user->avatar)}}">
-                <p> {{$user->name}} </p>
-                <div id="stats">
-                    <p> {{$user->points}} <i style="color: {{$color}}" class="fas fa-star"></i>  {{App\Models\Post::where('user', $user->id)->count()}} <i style="color: {{$color}}" class="fas fa-comments"></i></p>
-                </div>
+        <div id="star" class="col-sm-1">
+                <i class="far fa-star"></i>
             </div>
+            <a href="/forum/profile/{{$user->id}}" style="text-decoration: none; color: inherit;">
+                <div id="test" class="col-sm-2">
+                    <img src="{{base64_decode($user->avatar)}}">
+                    <p> {{$user->name}} </p>
+                    <div id="stats">
+                        <p> {{$user->points}} <i style="color: {{$color}}" class="fas fa-star"></i>
+                            {{App\Models\Post::where('user', $user->id)->get()->count()}} <i style="color: {{$color}}"
+                                class="fas fa-comments"></i></p>
+                    </div>
+                </div>
             </a>
-            <div class="col-sm-1">
+            <div class="col-sm-1 splitter">
                 <hr />
             </div>
-            <div class="col-sm-8">
+            <div class="col-sm-7">
                 {{$p->contents}}
-            </div>
+</div>
         </div>
         <hr />
     </div>

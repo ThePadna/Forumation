@@ -27,4 +27,5 @@ updateColorScheme($('meta[name="color"]').attr('content'));
  */
 function updateColorScheme(color) {
   $('#header').css('background', color);
+  $('#star').css('color', color);
 }

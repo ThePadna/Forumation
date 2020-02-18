@@ -14,12 +14,8 @@
 }
 
 #titleContainer #threadTitle {
-  font-size: 2.5vh;
+  font-size: 5vh;
   text-align: center;
-}
-
-#titleContainer hr {
-  border-top: 0.1vh solid black;
 }
 
 .col-sm-2 {
@@ -57,7 +53,20 @@
   height: 20vh;
   width: 1px;
   margin-left: 1vh;
+}
+
+.splitter {
   border-left: 1px solid black;
+}
+
+#star {
+  font-size: 5vh;
+}
+
+#star i {
+  position: relative;
+  top: 10vh;
+  transform: translateY(-100%);
 }
 
 #replyForm * {
