@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="{{asset('css/category.css')}}">
 <div id="wrapper">
     <div id="threads">
+    {{sizeof($threads)}}
         @foreach($threads as $t)
         <a href="thread/{{$t->id}}/1">
             <div class="thread">
