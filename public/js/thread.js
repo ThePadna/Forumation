@@ -119,6 +119,17 @@ $replyForm.submit(function (e) {
     }
   });
 });
+$('#star-symbol').on('click', function (e) {
+  var $star = $(e.target);
+
+  if ($star.hasClass('far')) {
+    $star.removeClass('far');
+    $star.addClass('fas');
+  } else {
+    $star.removeClass('fas');
+    $star.addClass('far');
+  }
+});
 updateColorScheme($('meta[name="color"]').attr('content'));
 /**
  * Updates color scheme on present selectors.
