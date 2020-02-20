@@ -14,7 +14,7 @@ class AddLikedByToPosts extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->string('liked_by');
+            $table->longtext('liked_by')->default(null);
         });
     }
 

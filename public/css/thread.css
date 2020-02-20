@@ -61,12 +61,24 @@
 
 #star {
   font-size: 5vh;
+  text-align: center;
+  bottom: -10vh;
 }
 
 #star i {
   position: relative;
-  top: 10vh;
+  top: 0vh;
   transform: translateY(-100%);
+}
+
+#star p {
+  font-size: 2.5vh;
+  position: relative;
+  top: -5vh;
+}
+
+#star-count {
+  font-size: 4vh;
 }
 
 #replyForm * {
@@ -118,5 +130,15 @@
   text-align: center;
   font-size: 5vh;
   color: #ff3333;
+}
+
+.increase-size {
+  font-size: 150%;
+  transition: font-size 0.25s;
+}
+
+.decrease-size {
+  font-size: 100%;
+  transition: font-size 0.25s;
 }
 

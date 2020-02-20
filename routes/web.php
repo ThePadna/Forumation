@@ -14,6 +14,7 @@ Route::get('/', function () {
     return view('home');
 });
 Route::post('/postEditorModeUpdate', 'ForumController@postEditorModeUpdate');
+Route::post('/likepost', 'ForumController@likePost');
 Route::post('/postColorUpdate', 'ForumController@postColorUpdate');
 Route::post('/postreply', 'ForumController@postReply');
 Route::post('/postthread', 'ForumController@postThread');

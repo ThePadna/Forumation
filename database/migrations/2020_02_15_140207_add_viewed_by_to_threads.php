@@ -14,7 +14,7 @@ class AddViewedByToThreads extends Migration
     public function up()
     {
         Schema::table('threads', function (Blueprint $table) {
-            $table->string('viewed_by');
+            $table->longtext('viewed_by')->default(null);
         });
     }
 

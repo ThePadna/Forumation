@@ -15,6 +15,11 @@
                     $time = null;
                     $op = null;
                     $posts = App\Models\Post::where('thread', $id)->get();
+                    $viewed = 0;
+                    $users = unserialize($t->viewed_by);
+                    if($users != null) $viewed = sizeof($users);
+                    $replies = sizeof($posts);
+                    if(sizeof($posts) != 0) {
                     $latestPost = $posts[sizeof($posts) - 1];
                     $time = \Carbon\Carbon::createFromTimeStamp(strtotime($latestPost->created_at));
                     $op = $posts[0]->user;
@@ -26,13 +31,14 @@
                     if($timeDisplay->d != 0) $formatAs = "d";
                     $suffix = $formatAs;
                     if($formatAs == "i") $suffix = "m";
-                    $viewed = 0;
-                    $users = unserialize($t->viewed_by);
-                    if($users != null) $viewed = sizeof($users);
-                    $replies = sizeof($posts);
+                    }
                     @endphp
+                    @if(sizeof($posts) != 0)
                     <p> Latest post by &nbsp; <i class="far fa-user"></i> <a href="/forum/profile/{{$t->op}}"><span style="color:black;">{{App\User::find($t->op)->name}}</span> </a>
                         {{$timeDisplay->format('%' . $formatAs) . $suffix}} ago</p>
+                    @else
+                    <p> This thread has no posts yet</p>
+                    @endif
                 </div>
                     </div>
                     <div id="threads" class="col-sm-1">

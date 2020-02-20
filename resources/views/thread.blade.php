@@ -28,9 +28,10 @@ $thread->save();
     @endphp
     <div id="container">
         <div class="row">
-        <div id="star" class="col-sm-1" post="{{$p->id}}">
-                <i id="star-symbol" class="far fa-star"></i>
-            </div>
+        <div id="star" class="col-sm-1">
+            <i id="star-symbol" class="far fa-star" post="{{$p->id}}"></i>
+            <p id="star-count">{{sizeof(unserialize($p->liked_by))}}</p>
+        </div>
             <a href="/forum/profile/{{$user->id}}" style="text-decoration: none; color: inherit;">
                 <div id="test" class="col-sm-2">
                     <img src="{{base64_decode($user->avatar)}}">

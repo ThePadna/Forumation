@@ -231,4 +231,20 @@ class ForumController extends Controller
         $settings->editormode = $request->input('toggle');
         $settings->save();
       }
+
+      /**
+       * Post a like or unlike to post
+       * 
+       * @param Request $request
+       */
+      public function likePost(Request $request) {
+          $liked = $request->input('liked');
+          $postId = $request->input('id');
+          $post = Post::find($postId);
+          $liked_users = unserialize($post->liked_by);
+          if($liked_users == null) $liked_users = Array();
+          if(!in_array(Auth::user()->id, $liked_users)) array_push($liked_users, Auth::user()->id);
+          $post->liked_by = serialize($liked_users);
+          $post->save();
+      }
 }
