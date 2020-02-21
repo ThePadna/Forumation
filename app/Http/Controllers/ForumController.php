@@ -256,4 +256,8 @@ class ForumController extends Controller
           $post->save();
           return sizeof($liked_users);
       }
+
+      public function testFunc() {
+          //test
+      }
 }
