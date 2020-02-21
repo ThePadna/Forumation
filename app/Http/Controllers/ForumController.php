@@ -243,8 +243,17 @@ class ForumController extends Controller
           $post = Post::find($postId);
           $liked_users = unserialize($post->liked_by);
           if($liked_users == null) $liked_users = Array();
-          if(!in_array(Auth::user()->id, $liked_users)) array_push($liked_users, Auth::user()->id);
+          $userId = Auth::user()->id;
+          if($liked == 0) {
+            if(in_array($userId, $liked_users)) {
+                $index = array_search($userId, $liked_users);
+                unset($liked_users[$index]);
+            }
+          } else {
+            if(!in_array($userId, $liked_users)) array_push($liked_users, $userId);
+          }
           $post->liked_by = serialize($liked_users);
           $post->save();
+          return sizeof($liked_users);
       }
 }

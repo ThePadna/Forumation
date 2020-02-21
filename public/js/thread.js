@@ -163,7 +163,7 @@ function likePost(id, liked) {
     },
     success: function success(res) {
       starAnim($('#star-symbol'));
-      console.log(res);
+      $('#star-count').text(res);
     },
     error: function error(xhr, ajaxOptions, thrownError) {
       console.log("Error occured during AJAX request, error code: " + xhr.status);

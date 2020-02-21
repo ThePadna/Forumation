@@ -29,8 +29,16 @@ $thread->save();
     <div id="container">
         <div class="row">
         <div id="star" class="col-sm-1">
+            @php
+            $users_liked = unserialize($p->liked_by);
+            $isLikedByUser = in_array(Auth::user()->id, $users_liked);
+            @endphp
+            @if(!$isLikedByUser)
             <i id="star-symbol" class="far fa-star" post="{{$p->id}}"></i>
-            <p id="star-count">{{sizeof(unserialize($p->liked_by))}}</p>
+            @else
+            <i id="star-symbol" class="fas fa-star" post="{{$p->id}}"></i>
+            @endif
+            <p id="star-count">{{sizeof($users_liked)}}</p>
         </div>
             <a href="/forum/profile/{{$user->id}}" style="text-decoration: none; color: inherit;">
                 <div id="test" class="col-sm-2">
