@@ -55,6 +55,21 @@ function initForms() {
     $editCategoryForm = $("#editCategoryForm");
 }
 /**
+ * Change colour to forum's color scheme on hover.
+ */
+$('.edit-btn, .switch-arrows').on('mouseover', (e) => {
+    $(e.target).css({
+        color: $('meta[name="color"]').attr('content'),
+        transition: 'color 1s'
+    });
+});
+$('.edit-btn, .switch-arrows').on('mouseout', (e) => {
+    $(e.target).css({
+        color: 'black',
+        transition: 'color 1s'
+    });
+});
+/**
  * Listen for form submission
  * Request to post new category when form is submitted.
  */

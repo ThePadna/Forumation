@@ -98,4 +98,15 @@ a:hover {
 
 .thread {
     margin-bottom: 15px;
+    .edit-btn {
+        font-size: 3.5vh;
+        left: 30vh;
+        top: 50%;
+        transform: translateY(-50%);
+        position: absolute;
+    }
+}
+
+.colorFade {
+    transition: color 1s;
 }

@@ -31,14 +31,19 @@ $thread->save();
         <div id="star" class="col-sm-1">
             @php
             $users_liked = unserialize($p->liked_by);
-            $isLikedByUser = in_array(Auth::user()->id, $users_liked);
+            $likeCount = 0;
+            $isLikedByUser = false;
+            if($users_liked != null) {
+                $isLikedByUser = in_array(Auth::user()->id, $users_liked);
+                $likeCount = sizeof($users_liked);
+            }
             @endphp
             @if(!$isLikedByUser)
-            <i id="star-symbol" class="far fa-star" post="{{$p->id}}"></i>
+            <i class="far fa-star star-symbol" post="{{$p->id}}"></i>
             @else
-            <i id="star-symbol" class="fas fa-star" post="{{$p->id}}"></i>
+            <i class="fas fa-star star-symbol" post="{{$p->id}}"></i>
             @endif
-            <p id="star-count">{{sizeof($users_liked)}}</p>
+            <p class="star-count">{{$likeCount}}</p>
         </div>
             <a href="/forum/profile/{{$user->id}}" style="text-decoration: none; color: inherit;">
                 <div id="test" class="col-sm-2">

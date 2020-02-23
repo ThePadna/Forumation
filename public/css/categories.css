@@ -71,16 +71,6 @@
   position: relative;
 }
 
-#categories #title i:hover {
-  transition: color 1s;
-  color: #ff3333;
-}
-
-#categories #title i {
-  transition: color 1s;
-  color: black;
-}
-
 #categories #title .edit-btn,
 #categories #title .switch-btn {
   font-size: 3.5vh;
@@ -96,8 +86,9 @@
   word-break: break-all;
 }
 
-#categories #title .description {
+#categories #title #desc {
   word-break: break-all;
+  color: gray !important;
   width: 50%;
   left: 50%;
   position: relative;

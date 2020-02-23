@@ -20,9 +20,9 @@ $replyForm.submit((e) => {
     });
 });
 
-$('#star-symbol').on('click', (e) => {
+$('.star-symbol').on('click', (e) => {
   let $star = $(e.target);
-  likePost($star.attr('post'), $star.hasClass('far') ? 1 : 0);
+  likePost($star, $star.attr('post'), $star.hasClass('far') ? 1 : 0);
 });
 
 function starAnim($star) {
@@ -50,7 +50,7 @@ function starAnim($star) {
  * 
  * Make POST request to like or unlike post (like = 1 || 0)
  */
-function likePost(id, liked) {
+function likePost($star, id, liked) {
   $.ajax({
     type: "POST",
     url: '/likepost',
@@ -60,8 +60,8 @@ function likePost(id, liked) {
       liked:liked
     },
     success: function(res) {
-      starAnim($('#star-symbol'));
-      $('#star-count').text(res);
+      starAnim($star);
+      $star.parent().find('.star-count').text(res);
     },
     error: function(xhr, ajaxOptions, thrownError) {
       console.log("Error occured during AJAX request, error code: " + xhr.status);
@@ -76,5 +76,5 @@ updateColorScheme($('meta[name="color"]').attr('content'));
  */
 function updateColorScheme(color) {
   $('#header').css('background', color);
-  $('#star').css('color', color);
+  $('.star-symbol, .star-count').css('color', color);
 }

@@ -63,14 +63,6 @@ body {
             display: inline-block;
             position: relative;
         }
-        i:hover {
-            transition: color 1s;
-            color: $color-scheme;
-        }
-        i {
-            transition: color 1s;
-            color:black;
-        }
         .edit-btn,.switch-btn {
             font-size: 3.5vh;
             position: absolute;
@@ -83,8 +75,9 @@ body {
             margin-right: 10vw;
             word-break: break-all;
         }
-        .description {
+        #desc {
             word-break: break-all;
+            color: gray !important;
             width: 50%;
             left: 50%;
             position: relative;
