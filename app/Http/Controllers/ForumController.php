@@ -257,7 +257,14 @@ class ForumController extends Controller
           return sizeof($liked_users);
       }
 
-      public function testFunc() {
-          //test
+      /**
+       * Delete a thread
+       * 
+       * @param Request $request
+       */
+      public function delThread(Request $request) {
+          $threadId = $request->input('id');
+          $thread = Thread::find($threadId);
+          $thread->delete();
       }
 }

@@ -53,7 +53,7 @@
                         @auth
                         @if(Auth::user()->role == "admin")
                         <div class="edit-btn">
-                            <i id="del" class="del-category fas fa-trash"></i>
+                            <i id="del" class="del-thread fas fa-trash" threadId='{{$t->id}}' threadName='{{$t->title}}'></i>
                         </div>
                         @endif
                         @endauth
@@ -88,6 +88,7 @@
     @endif
 </div>
 <meta name="color" content="{{$color}}">
+<meta name="csrf" content="{{csrf_token()}}">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 <script src="{{asset('js/category.js')}}"> </script>
 @stop

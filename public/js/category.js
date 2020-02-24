@@ -93,6 +93,8 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+var delThreadFormHTML = "<div id=\"delThreadForm\" class=\"popup-form\">\n<div class=\"form-header\">\n    <div class=\"form-exit\">\n        <i id=\"exit-icon\" class=\"fas fa-times\"></i>\n    </div>\n    <h1> Delete Thread </h1>\n</div>\n<div class=\"form-container\">\n    <form>\n        <h2> Delete Thread '%t'? </h2>\n        <button id=\"categoryFormCloser\"> Confirm Deletion </button>\n    </form>\n</div>\n</div>";
+var $prevClickedDelThreadName, $prevClickedDelThreadId;
 updateColorScheme($('meta[name="color"]').attr('content'));
 /**
  * Change colour to forum's color scheme on hover.
@@ -111,10 +113,67 @@ $('.edit-btn').on('mouseout', function (e) {
   });
 });
 /**
+ * Initialize forms that are used when a 'popup-form' is needed.
+ */
+
+var $delThreadForm;
+
+function initForms() {
+  $delThreadForm = $("#delThreadForm");
+}
+/**
+ * Listen for form submission
+ * Request to delete category when form is submitted.
+ */
+
+
+function registerDelFormSubmitListener() {
+  $delThreadForm.submit(function (e) {
+    e.preventDefault();
+    console.log("sbit");
+    $.ajax({
+      type: "POST",
+      url: "/delthread",
+      headers: {
+        "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
+      },
+      data: {
+        id: $prevClickedDelThreadId.trim()
+      },
+      success: function success(res) {
+        window.location.reload();
+      },
+      error: function error(xhr, ajaxOptions, thrownError) {
+        console.log("Error occured during AJAX request, error code: " + xhr.status);
+      }
+    });
+  });
+}
+
+$(".del-thread").on("click", function (e) {
+  e.preventDefault();
+  $prevClickedDelThreadId = $(e.target).attr('threadId');
+  $prevClickedDelThreadName = $(e.target).attr('threadName');
+  $("#threads").append(delThreadFormHTML.replace("%t", $prevClickedDelThreadName.trim()));
+  registerFormExitHandler();
+  initForms();
+  registerDelFormSubmitListener();
+});
+/**
+ * Register click handler every time we append form to DOM.
+ */
+
+function registerFormExitHandler() {
+  $(".form-exit").on("click", function (e) {
+    $(".popup-form").remove();
+  });
+}
+/**
  * Updates color scheme on present selectors.
  * 
  * @param {*} color 
  */
+
 
 function updateColorScheme(color) {
   $('#header').css('background', color);
