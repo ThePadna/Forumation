@@ -87,8 +87,8 @@ class ForumController extends Controller
      * @param Request $request
      */
     public function delCategory(Request $request) {
-        $categoryName = $request->input('categoryName');
-        Category::where('name', $categoryName)->delete();
+        $id = $request->input('id');
+        Category::find($id)->delete();
     }
 
     /**
@@ -97,10 +97,10 @@ class ForumController extends Controller
      * @param Request $request
      */
     public function editCategory(Request $request) {
-        $old = $request->input('categoryName');
+        $id = $request->input('id');
         $new = $request->input('newCategoryName');
         $desc = $request->input('description');
-        $cat = Category::where('name', $old)->first();
+        $cat = Category::find($id);
         $cat->desc = $desc;
         $cat->name = $new;
         $cat->save();

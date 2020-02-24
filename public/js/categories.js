@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-var $prevClickedEditCategoryDesc, $prevClickedDelCategoryName;
+var $prevClickedEditCategoryDesc, $prevClickedDelCategoryName, $prevClickedDelCategoryId;
 var addCategoryFormHTML = "<div id=\"addCategoryForm\" class=\"popup-form\">\n<div class=\"form-header\">\n    <div class=\"form-exit\">\n        <i id=\"exit-icon\" class=\"fas fa-times\"></i>\n    </div>\n    <h1> New Category </h1>\n</div>\n<div class=\"form-container\">\n    <form>\n        <input id=\"categoryTitle\" type=\"text\" name=\"categoryTitle\" placeholder=\"Category Name\">\n        <input id=\"categoryDesc\" type=\"text\" name=\"categoryDesc\" placeholder=\"Description\" />\n        <button id=\"categoryFormCloser\"> Add Category </button>\n    </form>\n</div>\n</div>";
 var editCategoryFormHTML = "<div id=\"editCategoryForm\" class=\"popup-form\">\n<div class=\"form-header\">\n    <div class=\"form-exit\">\n        <i id=\"exit-icon\" class=\"fas fa-times\"></i>\n    </div>\n    <h1> Edit Category </h1>\n</div>\n<div class=\"form-container\">\n    <form>\n        <input type=\"text\" name=\"categoryname\" value=\"%c\" />\n        <input type=\"text\" name=\"description\" value=\"%d\" />\n        <button id=\"categoryFormCloser\"> Confirm Edit </button>\n    </form>\n</div>\n</div>";
 var delCategoryFormHTML = "<div id=\"delCategoryForm\" class=\"popup-form\">\n<div class=\"form-header\">\n    <div class=\"form-exit\">\n        <i id=\"exit-icon\" class=\"fas fa-times\"></i>\n    </div>\n    <h1> Delete Category </h1>\n</div>\n<div class=\"form-container\">\n    <form>\n        <h2> Delete Category '%c'? </h2>\n        <button id=\"categoryFormCloser\"> Confirm Deletion </button>\n    </form>\n</div>\n</div>";
@@ -114,13 +114,13 @@ function initForms() {
  */
 
 
-$('.edit-btn, .switch-arrows').on('mouseover', function (e) {
+$('.edit-btn, .switch-btn').on('mouseover', function (e) {
   $(e.target).css({
     color: $('meta[name="color"]').attr('content'),
     transition: 'color 1s'
   });
 });
-$('.edit-btn, .switch-arrows').on('mouseout', function (e) {
+$('.edit-btn, .switch-btn').on('mouseout', function (e) {
   $(e.target).css({
     color: 'black',
     transition: 'color 1s'
@@ -164,6 +164,7 @@ function registerAddFormSubmitListener() {
 function registerDelFormSubmitListener() {
   $delCategoryForm.submit(function (e) {
     e.preventDefault();
+    console.log($prevClickedDelCategoryId);
     $.ajax({
       type: "POST",
       url: "/delcategory",
@@ -171,7 +172,7 @@ function registerDelFormSubmitListener() {
         "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
       },
       data: {
-        categoryName: $prevClickedDelCategoryName
+        id: $prevClickedDelCategoryId
       },
       success: function success(res) {
         window.location.reload();
@@ -193,7 +194,6 @@ function registerEditFormSubmitListener() {
     e.preventDefault();
     $categoryName = $editCategoryForm.find('input[name="categoryname"]').val();
     $description = $editCategoryForm.find('input[name="description"]').val();
-    console.log("catName:" + $prevClickedDelCategoryName);
     $.ajax({
       type: "POST",
       url: "/editcategory",
@@ -201,7 +201,7 @@ function registerEditFormSubmitListener() {
         "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
       },
       data: {
-        categoryName: $prevClickedDelCategoryName,
+        id: $prevClickedDelCategoryId,
         description: $description,
         newCategoryName: $categoryName
       },
@@ -242,7 +242,7 @@ function registerFormExitHandler() {
 
 $('.up-arrow').on('click', function (e) {
   e.preventDefault();
-  var clickedId = $(e.target).parent().parent().parent().attr('categoryid');
+  var clickedId = $(e.target).attr('categoryId');
   var switchWith = getAdjacentCategory(clickedId, true);
 
   if (typeof switchWith !== 'undefined') {
@@ -265,9 +265,14 @@ $('.up-arrow').on('click', function (e) {
     });
   }
 });
+/**
+ * Listen for switch buttons.
+ * Replace categoryId of adjacent elements to load the page with a different order.
+ */
+
 $('.down-arrow').on('click', function (e) {
   e.preventDefault();
-  var clickedId = $(e.target).parent().parent().parent().attr('categoryid');
+  var clickedId = $(e.target).attr('categoryId');
   var switchWith = getAdjacentCategory(clickedId, false);
 
   if (typeof switchWith !== 'undefined') {
@@ -290,6 +295,13 @@ $('.down-arrow').on('click', function (e) {
     });
   }
 });
+/**
+ * Get adjacent category of category's id.
+ * above var is the decider of which direction to search.
+ * 
+ * @param {int} id 
+ * @param {boolean} above 
+ */
 
 function getAdjacentCategory(id, above) {
   var lastIterId = null;
@@ -319,7 +331,8 @@ function getAdjacentCategory(id, above) {
 
 $(".del-category").on("click", function (e) {
   e.preventDefault();
-  $prevClickedDelCategoryName = $(e.target).parent().parent().find('#name').text();
+  $prevClickedDelCategoryName = $(e.target).attr('categoryName');
+  $prevClickedDelCategoryId = $(e.target).attr('categoryId');
   $("#categories").append(delCategoryFormHTML.replace("%c", $prevClickedDelCategoryName.trim()));
   registerFormExitHandler();
   initForms();
@@ -331,9 +344,9 @@ $(".del-category").on("click", function (e) {
 
 $(".edit-category").on("click", function (e) {
   e.preventDefault();
-  $prevClickedDelCategoryName = $(e.target).parent().parent().find('#name').text();
-  $prevClickedEditCategoryDesc = $(e.target).parent().parent().find('#desc').text();
-  console.log($prevClickedDelCategoryName);
+  $prevClickedDelCategoryName = $(e.target).attr('categoryName');
+  $prevClickedEditCategoryDesc = $(e.target).attr('categoryDesc');
+  $prevClickedDelCategoryId = $(e.target).attr('categoryId');
   $("#categories").append(editCategoryFormHTML.replace("%c", $prevClickedDelCategoryName.trim()).replace("%d", $prevClickedEditCategoryDesc.trim()));
   registerFormExitHandler();
   initForms();

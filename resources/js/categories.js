@@ -1,6 +1,6 @@
-var $prevClickedEditCategoryDesc, $prevClickedDelCategoryName;
+let $prevClickedEditCategoryDesc, $prevClickedDelCategoryName, $prevClickedDelCategoryId;
 
-var addCategoryFormHTML = `<div id="addCategoryForm" class="popup-form">
+let addCategoryFormHTML = `<div id="addCategoryForm" class="popup-form">
 <div class="form-header">
     <div class="form-exit">
         <i id="exit-icon" class="fas fa-times"></i>
@@ -15,7 +15,7 @@ var addCategoryFormHTML = `<div id="addCategoryForm" class="popup-form">
     </form>
 </div>
 </div>`;
-var editCategoryFormHTML = `<div id="editCategoryForm" class="popup-form">
+let editCategoryFormHTML = `<div id="editCategoryForm" class="popup-form">
 <div class="form-header">
     <div class="form-exit">
         <i id="exit-icon" class="fas fa-times"></i>
@@ -30,7 +30,7 @@ var editCategoryFormHTML = `<div id="editCategoryForm" class="popup-form">
     </form>
 </div>
 </div>`;
-var delCategoryFormHTML = `<div id="delCategoryForm" class="popup-form">
+let delCategoryFormHTML = `<div id="delCategoryForm" class="popup-form">
 <div class="form-header">
     <div class="form-exit">
         <i id="exit-icon" class="fas fa-times"></i>
@@ -48,7 +48,7 @@ var delCategoryFormHTML = `<div id="delCategoryForm" class="popup-form">
  * Gain reference to forms and hide them in anticipation for button press.
  * Initialize them with #initForms before submission
  */
-var $addCategoryForm, $delCategoryForm, $editCategoryForm;
+let $addCategoryForm, $delCategoryForm, $editCategoryForm;
 function initForms() {
     $addCategoryForm = $("#addCategoryForm");
     $delCategoryForm = $("#delCategoryForm");
@@ -57,13 +57,13 @@ function initForms() {
 /**
  * Change colour to forum's color scheme on hover.
  */
-$('.edit-btn, .switch-arrows').on('mouseover', (e) => {
+$('.edit-btn, .switch-btn').on('mouseover', (e) => {
     $(e.target).css({
         color: $('meta[name="color"]').attr('content'),
         transition: 'color 1s'
     });
 });
-$('.edit-btn, .switch-arrows').on('mouseout', (e) => {
+$('.edit-btn, .switch-btn').on('mouseout', (e) => {
     $(e.target).css({
         color: 'black',
         transition: 'color 1s'
@@ -102,11 +102,12 @@ function registerAddFormSubmitListener() {
 function registerDelFormSubmitListener() {
     $delCategoryForm.submit(e => {
         e.preventDefault();
+        console.log($prevClickedDelCategoryId);
         $.ajax({
             type: "POST",
             url: "/delcategory",
             headers: { "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content") },
-            data: { categoryName: $prevClickedDelCategoryName },
+            data: { id: $prevClickedDelCategoryId },
             success: function(res) {
                 window.location.reload();
             },
@@ -134,13 +135,12 @@ function registerEditFormSubmitListener() {
         $description = $editCategoryForm
             .find('input[name="description"]')
             .val();
-            console.log("catName:" + $prevClickedDelCategoryName);
         $.ajax({
             type: "POST",
             url: "/editcategory",
             headers: { "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content") },
             data: {
-                categoryName: $prevClickedDelCategoryName,
+                id: $prevClickedDelCategoryId,
                 description: $description,
                 newCategoryName: $categoryName
             },
@@ -180,7 +180,7 @@ function registerFormExitHandler() {
  */
 $('.up-arrow').on('click', e => {
     e.preventDefault();
-    let clickedId = $(e.target).parent().parent().parent().attr('categoryid');
+    let clickedId = $(e.target).attr('categoryId');
     let switchWith = getAdjacentCategory(clickedId, true);
     if(typeof switchWith !== 'undefined') {
         $.ajax({
@@ -205,9 +205,13 @@ $('.up-arrow').on('click', e => {
         });
     }
 });
+/**
+ * Listen for switch buttons.
+ * Replace categoryId of adjacent elements to load the page with a different order.
+ */
 $('.down-arrow').on('click', e => {
     e.preventDefault();
-    let clickedId = $(e.target).parent().parent().parent().attr('categoryid');
+    let clickedId = $(e.target).attr('categoryId');
     let switchWith = getAdjacentCategory(clickedId, false);
     if(typeof switchWith !== 'undefined') {
         $.ajax({
@@ -232,6 +236,13 @@ $('.down-arrow').on('click', e => {
         });
     }
 });
+/**
+ * Get adjacent category of category's id.
+ * above var is the decider of which direction to search.
+ * 
+ * @param {int} id 
+ * @param {boolean} above 
+ */
 function getAdjacentCategory(id, above) {
     let lastIterId = null;
     let $catArray = $('a');
@@ -254,11 +265,8 @@ function getAdjacentCategory(id, above) {
  */
 $(".del-category").on("click", e => {
     e.preventDefault();
-    $prevClickedDelCategoryName = $(e.target)
-        .parent()
-        .parent()
-        .find('#name')
-        .text();
+    $prevClickedDelCategoryName = $(e.target).attr('categoryName');
+    $prevClickedDelCategoryId = $(e.target).attr('categoryId');
     $("#categories").append(
         delCategoryFormHTML.replace(
             "%c",
@@ -275,17 +283,9 @@ $(".del-category").on("click", e => {
  */
 $(".edit-category").on("click", e => {
     e.preventDefault();
-    $prevClickedDelCategoryName = $(e.target)
-    .parent()
-    .parent()
-    .find('#name')
-    .text();
-    $prevClickedEditCategoryDesc = $(e.target)
-    .parent()
-    .parent()
-    .find('#desc')
-    .text();
-    console.log($prevClickedDelCategoryName);
+    $prevClickedDelCategoryName = $(e.target).attr('categoryName');
+    $prevClickedEditCategoryDesc = $(e.target).attr('categoryDesc');
+    $prevClickedDelCategoryId = $(e.target).attr('categoryId');
     $("#categories").append(
         editCategoryFormHTML.replace(
             "%c",

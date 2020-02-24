@@ -16,14 +16,14 @@
                     <p class="row-indicator"> Threads </p>
                 </div>
                 @foreach($categories as $c)
-                <a href="/forum/category/{{$c->id}}/1" id="title" categoryId="{{$c->id}}" class="drop-zone col-8"
-                    ondragover="event.preventDefault()" draggable="true">
+                <a href="/forum/category/{{$c->id}}/1" id="title" class="drop-zone col-8"
+                    ondragover="event.preventDefault()"  categoryId='{{$c->id}}'>
                     <div class="catTitleWrapper">
                     @auth
                     @if(Auth::user()->role == "admin")
                         <div class="edit-btn">
-                            <i id="edit" class="edit-category far fa-edit"></i>
-                            <i id="del" class="del-category fas fa-trash"></i>
+                            <i id="edit" class="edit-category far fa-edit" categoryId='{{$c->id}}' categoryName='{{$c->name}}' categoryDesc='{{$c->desc}}'></i>
+                            <i id="del" class="del-category fas fa-trash" categoryId='{{$c->id}}' categoryName='{{$c->name}}' categoryDesc='{{$c->desc}}'></i>
                         </div>
                     @endif
                     @endauth
@@ -33,8 +33,8 @@
                     @auth
                     @if(Auth::user()->role == "admin")
                         <div class="switch-btn">
-                            <i id="up" class="up-arrow fas fa-arrow-up"></i>
-                            <i id="down" class="down-arrow fas fa-arrow-down"></i>
+                            <i id="up" class="up-arrow fas fa-arrow-up" categoryId='{{$c->id}}' categoryName='{{$c->name}}'></i>
+                            <i id="down" class="down-arrow fas fa-arrow-down" categoryId='{{$c->id}}' categoryName='{{$c->name}}'></i>
                         </div>
                     @endif
                     @endauth
