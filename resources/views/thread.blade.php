@@ -18,6 +18,15 @@ $thread->save();
 @endauth
 <link rel="stylesheet" href="{{asset('css/thread.css')}}">
 <div id="wrapper">
+    @auth
+    @if(Auth::user()->role == "admin")
+    <div class="edit-btn">
+        <i id="edit" class="edit-category far fa-edit" threadId='{{$thread->id}}'></i>
+        <i id="del" class="del-category fas fa-trash" threadId='{{$thread->id}}'></i>
+        <i class="fas fa-lock" threadId='{{$thread->id}}'></i>
+    </div>
+    @endif
+    @endauth
     <div id="titleContainer">
         <p id="threadTitle"> {{$thread->title}} </p>
         <hr />
@@ -28,23 +37,23 @@ $thread->save();
     @endphp
     <div id="container">
         <div class="row">
-        <div id="star" class="col-sm-1">
-            @php
-            $users_liked = unserialize($p->liked_by);
-            $likeCount = 0;
-            $isLikedByUser = false;
-            if($users_liked != null) {
+            <div id="star" class="col-sm-1">
+                @php
+                $users_liked = unserialize($p->liked_by);
+                $likeCount = 0;
+                $isLikedByUser = false;
+                if($users_liked != null) {
                 $isLikedByUser = in_array(Auth::user()->id, $users_liked);
                 $likeCount = sizeof($users_liked);
-            }
-            @endphp
-            @if(!$isLikedByUser)
-            <i class="far fa-star star-symbol" post="{{$p->id}}"></i>
-            @else
-            <i class="fas fa-star star-symbol" post="{{$p->id}}"></i>
-            @endif
-            <p class="star-count">{{$likeCount}}</p>
-        </div>
+                }
+                @endphp
+                @if(!$isLikedByUser)
+                <i class="far fa-star star-symbol" post="{{$p->id}}"></i>
+                @else
+                <i class="fas fa-star star-symbol" post="{{$p->id}}"></i>
+                @endif
+                <p class="star-count">{{$likeCount}}</p>
+            </div>
             <a href="/forum/profile/{{$user->id}}" style="text-decoration: none; color: inherit;">
                 <div id="test" class="col-sm-2">
                     <img src="{{base64_decode($user->avatar)}}">
@@ -61,7 +70,10 @@ $thread->save();
             </div>
             <div class="col-sm-7">
                 {{$p->contents}}
-</div>
+            </div>
+            <div class="post-edit">
+                <i class="fas fa-eraser erase"></i>
+            </div>
         </div>
         <hr />
     </div>

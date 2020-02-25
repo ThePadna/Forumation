@@ -165,6 +165,8 @@ $("#categoryFormOpener").on("click", e => {
     registerFormExitHandler();
     initForms();
     registerAddFormSubmitListener();
+    updateColorScheme($('meta[name="color"]').attr('content'));
+    exitFormBtnHoverColorListener($('meta[name="color"]').attr('content'));
 });
 /**
  * Register click handler every time we append form to DOM.
@@ -276,6 +278,8 @@ $(".del-category").on("click", e => {
     registerFormExitHandler();
     initForms();
     registerDelFormSubmitListener();
+    updateColorScheme($('meta[name="color"]').attr('content'));
+    exitFormBtnHoverColorListener($('meta[name="color"]').attr('content'));
 });
 
 /**
@@ -298,6 +302,8 @@ $(".edit-category").on("click", e => {
     registerFormExitHandler();
     initForms();
     registerEditFormSubmitListener();
+    updateColorScheme($('meta[name="color"]').attr('content'));
+    exitFormBtnHoverColorListener($('meta[name="color"]').attr('content'));
 });
 updateColorScheme($('meta[name="color"]').attr('content'));
 /**
@@ -306,8 +312,20 @@ updateColorScheme($('meta[name="color"]').attr('content'));
  * @param {*} color 
  */
 function updateColorScheme(color) {
-    $('#header').css('background', color);
+    $('#header, .popup-form').css('background', color);
 }
+$(document).on('mouseover', '.form-exit', (e) => {
+   $(e.target).css({
+       color: 'red',
+       transition: 'color 1s'
+   });
+});
+$(document).on('mouseout', '.form-exit', (e) => {
+   $(e.target).css({
+       color: 'gray',
+       transition: 'color 1s'
+   });
+});
 if($('meta[name="editor-mode"]').attr('content') == 0) removeEditorElements();
 function removeEditorElements() {
     let EDITOR_ELEMENTS = [$('.del-category'), $('.edit-category'), $('.switch-btn')];

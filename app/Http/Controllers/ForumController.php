@@ -89,6 +89,14 @@ class ForumController extends Controller
     public function delCategory(Request $request) {
         $id = $request->input('id');
         Category::find($id)->delete();
+        $threads = Thread::where('categoryId', $id)->get();
+        foreach($threads as $t) {
+            $posts = Post::where('thread', $t->id)->get();
+            foreach($posts as $p) {
+                $p->delete();
+            }
+            $t->delete();
+        }
     }
 
     /**

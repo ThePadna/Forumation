@@ -93,9 +93,12 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+var erasePostFormHTML = "<div id=\"erasePostForm\" class=\"popup-form\">\n<div class=\"form-header\">\n    <div class=\"form-exit\">\n        <i id=\"exit-icon\" class=\"fas fa-times\"></i>\n    </div>\n    <h1> Erase Post </h1>\n</div>\n<div class=\"form-container\">\n    <form>\n        <p> Are you sure you would like to erase this post? </p>\n        <button id=\"erasePostConfirmation\"> Confirm </button>\n    </form>\n</div>\n</div>";
+var $prevClickedIconPostId;
 /**
  * Request to post thread reply when form is submitted
  */
+
 $replyForm = $('#replyForm');
 $replyForm.submit(function (e) {
   e.preventDefault();
@@ -117,6 +120,84 @@ $replyForm.submit(function (e) {
     error: function error(xhr, ajaxOptions, thrownError) {
       console.log("Error occured during AJAX request, error code: " + xhr.status);
     }
+  });
+});
+var $erasePostForm;
+
+function initForms() {
+  $erasePostForm = $("#erasePostForm");
+}
+
+$('.erase').on('click', function (e) {
+  $("body").append(erasePostFormHTML);
+  registerFormExitHandler();
+  initForms();
+  registerAddFormSubmitListener();
+  updateColorScheme($('meta[name="color"]').attr('content'));
+});
+$(document).on('mouseover', '.form-exit', function (e) {
+  $(e.target).css({
+    color: 'red',
+    transition: 'color 1s'
+  });
+});
+$(document).on('mouseout', '.form-exit', function (e) {
+  $(e.target).css({
+    color: 'gray',
+    transition: 'color 1s'
+  });
+});
+/**
+ * Listen for form submission
+ * Request to post erase post when form is submitted.
+ */
+
+function registerAddFormSubmitListener() {
+  $erasePostForm.submit(function (e) {
+    e.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: "/erasePost",
+      headers: {
+        "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
+      },
+      data: {
+        id: $prevClickedIconPostId
+      },
+      success: function success(res) {
+        window.location.reload();
+      },
+      error: function error(xhr, ajaxOptions, thrownError) {
+        console.log("Error occured during AJAX request, error code: " + xhr.status);
+      }
+    });
+  });
+}
+/**
+ * Register click handler every time we append form to DOM.
+ */
+
+
+function registerFormExitHandler() {
+  $(".form-exit").on("click", function (e) {
+    $(".popup-form").remove();
+  });
+}
+/**
+ * Change colour to forum's color scheme on hover.
+ */
+
+
+$('.edit-btn, .post-edit').on('mouseover', function (e) {
+  $(e.target).css({
+    color: $('meta[name="color"]').attr('content'),
+    transition: 'color 1s'
+  });
+});
+$('.edit-btn, .post-edit').on('mouseout', function (e) {
+  $(e.target).css({
+    color: 'black',
+    transition: 'color 1s'
   });
 });
 $('.star-symbol').on('click', function (e) {
@@ -179,7 +260,7 @@ updateColorScheme($('meta[name="color"]').attr('content'));
  */
 
 function updateColorScheme(color) {
-  $('#header').css('background', color);
+  $('#header, .popup-form').css('background', color);
   $('.star-symbol, .star-count').css('color', color);
 }
 

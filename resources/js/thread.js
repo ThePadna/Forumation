@@ -1,3 +1,19 @@
+let erasePostFormHTML = `<div id="erasePostForm" class="popup-form">
+<div class="form-header">
+    <div class="form-exit">
+        <i id="exit-icon" class="fas fa-times"></i>
+    </div>
+    <h1> Erase Post </h1>
+</div>
+<div class="form-container">
+    <form>
+        <p> Are you sure you would like to erase this post? </p>
+        <button id="erasePostConfirmation"> Confirm </button>
+    </form>
+</div>
+</div>`;
+
+let $prevClickedIconPostId;
 /**
  * Request to post thread reply when form is submitted
  */
@@ -18,6 +34,80 @@ $replyForm.submit((e) => {
           console.log("Error occured during AJAX request, error code: " + xhr.status);
         },
     });
+});
+
+let $erasePostForm;
+function initForms() {
+    $erasePostForm = $("#erasePostForm");
+}
+
+$('.erase').on('click', e => {
+  $("body").append(erasePostFormHTML);
+  registerFormExitHandler();
+  initForms();
+  registerAddFormSubmitListener();
+  updateColorScheme($('meta[name="color"]').attr('content'));
+});
+
+$(document).on('mouseover', '.form-exit', (e) => {
+  $(e.target).css({
+      color: 'red',
+      transition: 'color 1s'
+  });
+});
+$(document).on('mouseout', '.form-exit', (e) => {
+  $(e.target).css({
+      color: 'gray',
+      transition: 'color 1s'
+  });
+});
+
+/**
+ * Listen for form submission
+ * Request to post erase post when form is submitted.
+ */
+function registerAddFormSubmitListener() {
+  $erasePostForm.submit(e => {
+      e.preventDefault();
+      $.ajax({
+          type: "POST",
+          url: "/erasePost",
+          headers: { "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content") },
+          data: { id: $prevClickedIconPostId},
+          success: function(res) {
+              window.location.reload();
+          },
+          error: function(xhr, ajaxOptions, thrownError) {
+              console.log(
+                  "Error occured during AJAX request, error code: " +
+                      xhr.status
+              );
+          }
+      });
+  });
+}
+/**
+ * Register click handler every time we append form to DOM.
+ */
+function registerFormExitHandler() {
+  $(".form-exit").on("click", e => {
+      $(".popup-form").remove();
+  });
+}
+/**
+ * Change colour to forum's color scheme on hover.
+ */
+$('.edit-btn, .post-edit').on('mouseover', (e) => {
+  $(e.target).css({
+      color: $('meta[name="color"]').attr('content'),
+      transition: 'color 1s'
+  });
+});
+$('.edit-btn, .post-edit').on('mouseout', (e) => {
+  $(e.target).css({
+      color: 'black',
+      transition: 'color 1s'
+  });
 });
 
 $('.star-symbol').on('click', (e) => {
@@ -75,6 +165,6 @@ updateColorScheme($('meta[name="color"]').attr('content'));
  * @param {*} color 
  */
 function updateColorScheme(color) {
-  $('#header').css('background', color);
+  $('#header, .popup-form').css('background', color);
   $('.star-symbol, .star-count').css('color', color);
 }

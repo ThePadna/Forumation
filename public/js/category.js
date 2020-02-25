@@ -158,6 +158,7 @@ $(".del-thread").on("click", function (e) {
   registerFormExitHandler();
   initForms();
   registerDelFormSubmitListener();
+  updateColorScheme($('meta[name="color"]').attr('content'));
 });
 /**
  * Register click handler every time we append form to DOM.
@@ -168,15 +169,27 @@ function registerFormExitHandler() {
     $(".popup-form").remove();
   });
 }
+
+$(document).on('mouseover', '.form-exit', function (e) {
+  $(e.target).css({
+    color: 'red',
+    transition: 'color 1s'
+  });
+});
+$(document).on('mouseout', '.form-exit', function (e) {
+  $(e.target).css({
+    color: 'gray',
+    transition: 'color 1s'
+  });
+});
 /**
  * Updates color scheme on present selectors.
  * 
  * @param {*} color 
  */
 
-
 function updateColorScheme(color) {
-  $('#header').css('background', color);
+  $('#header, .popup-form').css('background', color);
   $('#prevpage, #nextpage, #postThread>*, p').css('color', color);
 }
 

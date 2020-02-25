@@ -1,4 +1,15 @@
-@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js);@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);@import url(https://fonts.googleapis.com/css?family=Baskerville);.row {
+@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js);@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);@import url(https://fonts.googleapis.com/css?family=Baskerville);.edit-btn {
+  font-size: 3.5vh;
+  left: 30vw;
+  top: 9.5vh;
+  position: absolute;
+}
+
+.post-edit {
+  font-size: 3.5vh;
+}
+
+.row {
   width: 50%;
   position: relative;
   left: 45%;
@@ -140,5 +151,73 @@
 .decrease-size {
   font-size: 100%;
   transition: font-size 0.25s;
+}
+
+.popup-form {
+  border: 1px solid black;
+  height: 20vh;
+  width: 30vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ff3333;
+  text-align: center;
+}
+
+.popup-form .form-exit {
+  float: right;
+  position: relative;
+  font-size: 3vh;
+  top: 1vh;
+  right: 1vh;
+  color: gray;
+}
+
+.popup-form .form-exit:hover {
+  color: red;
+}
+
+.popup-form .form-header {
+  border: 1px solid black;
+  width: 100%;
+  height: 30%;
+  opacity: 0.8;
+  background: white;
+}
+
+.popup-form .form-header h1 {
+  font-size: 4vh;
+}
+
+.popup-form .form-container {
+  height: 70%;
+  width: 100%;
+}
+
+.popup-form .form-container form {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.popup-form .form-container form h2 {
+  font-size: 2.5vh;
+  color: white;
+}
+
+.popup-form .form-container form input {
+  width: 70%;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.popup-form .form-container form button {
+  border: 1px solid black;
+  width: 30%;
+  height: 30%;
+  margin-top: 3%;
+  border-radius: 5px;
 }
 

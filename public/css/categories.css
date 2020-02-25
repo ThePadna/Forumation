@@ -135,13 +135,10 @@
 .popup-form .form-exit {
   float: right;
   position: relative;
-  font-size: 2vh;
+  font-size: 3vh;
   top: 1vh;
   right: 1vh;
-}
-
-.popup-form .form-exit:hover {
-  color: red;
+  color: gray;
 }
 
 .popup-form .form-header {
