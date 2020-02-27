@@ -129,6 +129,7 @@ function initForms() {
 }
 
 $('.erase').on('click', function (e) {
+  $prevClickedIconPostId = $(e.target).attr('post');
   $("body").append(erasePostFormHTML);
   registerFormExitHandler();
   initForms();
@@ -155,9 +156,10 @@ $(document).on('mouseout', '.form-exit', function (e) {
 function registerErasePostSubmitListener() {
   $erasePostForm.submit(function (e) {
     e.preventDefault();
+    console.log($prevClickedIconPostId);
     $.ajax({
       type: "POST",
-      url: "/erasePost",
+      url: "/erasepost",
       headers: {
         "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
       },

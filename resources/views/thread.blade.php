@@ -47,15 +47,30 @@ $thread->save();
                 $likeCount = sizeof($users_liked);
                 }
                 @endphp
+                @if(!$p->erased)
                 @if(!$isLikedByUser)
                 <i class="far fa-star star-symbol" post="{{$p->id}}"></i>
                 @else
                 <i class="fas fa-star star-symbol" post="{{$p->id}}"></i>
                 @endif
                 <p class="star-count">{{$likeCount}}</p>
+                @endif
             </div>
+            @if($p->erased)
+            <a style="text-decoration: none; color: inherit;">
+            @else
             <a href="/forum/profile/{{$user->id}}" style="text-decoration: none; color: inherit;">
+            @endif
                 <div id="test" class="col-sm-2">
+                    @if($p->erased)
+                    <img src="{{asset('img/profilepic.png')}}">
+                    <p> Removed </p>
+                    <div id="stats">
+                        <p> 0 <i style="color: {{$color}}" class="fas fa-star"></i>
+                            0 <i style="color: {{$color}}"
+                                class="fas fa-comments"></i></p>
+                    </div>
+                    @else
                     <img src="{{base64_decode($user->avatar)}}">
                     <p> {{$user->name}} </p>
                     <div id="stats">
@@ -63,16 +78,21 @@ $thread->save();
                             {{App\Models\Post::where('user', $user->id)->get()->count()}} <i style="color: {{$color}}"
                                 class="fas fa-comments"></i></p>
                     </div>
+                    @endif
                 </div>
             </a>
             <div class="col-sm-1 splitter">
                 <hr />
             </div>
             <div class="col-sm-7">
+                @if($p->erased)
+                <p style="color:red">This post has been erased.</p>
+                @else
                 {{$p->contents}}
+                @endif
             </div>
             <div class="post-edit">
-                <i class="fas fa-eraser erase"></i>
+                <i class="fas fa-eraser erase" post="{{$p->id}}"></i>
             </div>
         </div>
         <hr />

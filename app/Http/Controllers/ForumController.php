@@ -284,7 +284,7 @@ class ForumController extends Controller
       public function erasePost(Request $request) {
           $id = $request->id;
           $post = Post::find($id);
-          $post->erased = 1;
+          $post->erased = true;
           $post->save();
       }
 }
