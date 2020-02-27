@@ -132,7 +132,7 @@ $('.erase').on('click', function (e) {
   $("body").append(erasePostFormHTML);
   registerFormExitHandler();
   initForms();
-  registerAddFormSubmitListener();
+  registerErasePostSubmitListener();
   updateColorScheme($('meta[name="color"]').attr('content'));
 });
 $(document).on('mouseover', '.form-exit', function (e) {
@@ -152,7 +152,7 @@ $(document).on('mouseout', '.form-exit', function (e) {
  * Request to post erase post when form is submitted.
  */
 
-function registerAddFormSubmitListener() {
+function registerErasePostSubmitListener() {
   $erasePostForm.submit(function (e) {
     e.preventDefault();
     $.ajax({

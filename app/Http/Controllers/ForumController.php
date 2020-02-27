@@ -275,4 +275,16 @@ class ForumController extends Controller
           $thread = Thread::find($threadId);
           $thread->delete();
       }
+
+      /**
+       * Set erased on post's properties to true.
+       * 
+       * @param Request $request
+       */
+      public function erasePost(Request $request) {
+          $id = $request->id;
+          $post = Post::find($id);
+          $post->erased = 1;
+          $post->save();
+      }
 }
