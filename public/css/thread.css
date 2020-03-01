@@ -2,11 +2,13 @@
   font-size: 3.5vh;
   left: 30vw;
   top: 9.5vh;
+  color: black;
   position: absolute;
 }
 
 .post-edit {
   font-size: 3.5vh;
+  color: black;
 }
 
 .row {
@@ -161,7 +163,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #ff3333;
   text-align: center;
 }
 
@@ -174,15 +175,11 @@
   color: gray;
 }
 
-.popup-form .form-exit:hover {
-  color: red;
-}
-
 .popup-form .form-header {
   border: 1px solid black;
   width: 100%;
   height: 30%;
-  opacity: 0.8;
+  opacity: 1;
   background: white;
 }
 
@@ -202,7 +199,7 @@
   transform: translate(-50%, -50%);
 }
 
-.popup-form .form-container form h2 {
+.popup-form .form-container form p {
   font-size: 2.5vh;
   color: white;
 }

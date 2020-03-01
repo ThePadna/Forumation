@@ -15,7 +15,7 @@ class ChangeThreadOnPosts extends Migration
     {
         Schema::table('threads', function (Blueprint $table) {
             $table->dropColumn('thread');
-            $table->decimal('thread');
+            $table->integer('thread');
         });
         //
     }

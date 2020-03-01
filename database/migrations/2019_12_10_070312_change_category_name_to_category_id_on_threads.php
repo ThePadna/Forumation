@@ -15,7 +15,7 @@ class ChangeCategoryNameToCategoryIdOnThreads extends Migration
     {
         Schema::table('threads', function (Blueprint $table) {
             $table->dropColumn('categoryName');
-            $table->decimal('categoryId');
+            $table->integer('categoryId');
         });
     }
 

@@ -162,12 +162,15 @@ class ForumController extends Controller
      * @return Response
      */
      public function showThread(Request $request, $categoryName, $threadId, $page) {
+         $thread = Thread::find($threadId);
+         if($thread == null) {
+             return view('404');
+         }
          $postCount = Post::where('thread', $threadId)->get()->count();
          $lastPage = floor(($postCount / 9));
          $skipAmt = $page > 1 ? $page * 9 : 0;
          $posts = Post::where('thread', $threadId)->skip($skipAmt)->take(9)->get();
          $isLastPage = ($page >= $lastPage);
-         $thread = Thread::find($threadId);
          $postsSize = sizeof($posts);
          $empty = ($postsSize == 0);
          return view('thread', ['lastPage' => $lastPage, 'empty' => $empty, 'page' => $page, 'posts' => $posts, 'isLastPage' => $isLastPage, 'thread' => $thread, "color" => Settings::first()->color]);
@@ -284,7 +287,7 @@ class ForumController extends Controller
       public function erasePost(Request $request) {
           $id = $request->id;
           $post = Post::find($id);
-          $post->erased = true;
+          $post->erased = !$post->erased;
           $post->save();
       }
 }

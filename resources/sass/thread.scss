@@ -6,10 +6,12 @@
     font-size: 3.5vh;
     left: 30vw;
     top: 9.5vh;
+    color: black;
     position: absolute;
 }
 .post-edit {
     font-size: 3.5vh;
+    color: black;
 }
 .row {
     width: 50%;
@@ -150,7 +152,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: $color-scheme;
     text-align: center;
     .form-exit {
         float: right;
@@ -160,14 +161,11 @@
         right: 1vh;
         color: gray;
     }
-    .form-exit:hover {
-        color: red;
-    }
     .form-header {
         border: 1px solid black;
         width: 100%;
         height: 30%;
-        opacity: 0.8;
+        opacity: 1;
         background: white;
         h1 {
             font-size: 4vh;
@@ -177,7 +175,7 @@
         height: 70%;
         width: 100%;
         form {
-            h2 {
+            p {
                 font-size: 2.5vh;
                 color: white;
             }

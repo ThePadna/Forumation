@@ -21,8 +21,8 @@ $thread->save();
     @auth
     @if(Auth::user()->role == "admin")
     <div class="edit-btn">
-        <i id="edit" class="edit-category far fa-edit" threadId='{{$thread->id}}'></i>
-        <i id="del" class="del-category fas fa-trash" threadId='{{$thread->id}}'></i>
+        <i class="edit-category far fa-edit edit" threadId='{{$thread->id}}'></i>
+        <i class="del-category fas fa-trash del" threadId='{{$thread->id}}'></i>
         <i class="fas fa-lock" threadId='{{$thread->id}}'></i>
     </div>
     @endif
@@ -132,6 +132,7 @@ $thread->save();
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 <meta name="csrf" content="{{csrf_token()}}">
 <meta name="thread" content="{{$thread->id}}">
+<meta name="category" content="{{$thread->categoryId}}">
 <meta name="color" content="{{$color}}">
 <script src="{{asset('js/thread.js')}}"> </script>
 @stop
