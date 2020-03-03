@@ -8,7 +8,11 @@
             <div class="thread">
                 <div class="row">
                     <div id="posts" class="col-sm-8">
+                        @if($t->locked)
+                        <h1 class="title"> <i class="fas fa-lock"></i> {{$t->title}} </h1>
+                        @else
                         <h1 class="title"> {{$t->title}} </h1>
+                        @endif
                         <div class="op">
                             @php
                             $id = $t->id;
