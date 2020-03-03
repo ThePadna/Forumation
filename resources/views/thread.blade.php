@@ -23,12 +23,15 @@ $thread->save();
     <div class="edit-btn">
         <i class="edit-category far fa-edit edit" threadId='{{$thread->id}}'></i>
         <i class="del-category fas fa-trash del" threadId='{{$thread->id}}'></i>
-        <i class="fas fa-lock" threadId='{{$thread->id}}'></i>
+        <i class="fas fa-lock lock" threadId='{{$thread->id}}'></i>
     </div>
     @endif
     @endauth
     <div id="titleContainer">
         <p id="threadTitle"> {{$thread->title}} </p>
+        @if($thread->locked)
+        <p style="color:red; font-size: 2vh;"> <i class="fas fa-lock"></i> This thread has been locked. </h1>
+        @endif
         <hr />
     </div>
     @foreach($posts as $p)
@@ -102,7 +105,7 @@ $thread->save();
     <p id="empty"> There are no new posts at this time on this topic. :( </p>
     @endif
     @auth
-    @if($isLastPage || $empty)
+    @if($isLastPage && !$thread->locked)
     <form id="replyForm">
         <textarea id="replyText" name="replyText" placeholder="What are your thoughts?"></textarea>
         <button id="postReply"> POST </button>

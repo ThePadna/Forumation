@@ -167,9 +167,9 @@ class ForumController extends Controller
              return view('404');
          }
          $postCount = Post::where('thread', $threadId)->get()->count();
-         $lastPage = floor(($postCount / 9));
+         $lastPage = ceil(($postCount / 9));
          $skipAmt = $page > 1 ? $page * 9 : 0;
-         $posts = Post::where('thread', $threadId)->skip($skipAmt)->take(9)->get();
+         $posts = Post::where('thread', $threadId)->skip($skipAmt-9)->take(9)->get();
          $isLastPage = ($page >= $lastPage);
          $postsSize = sizeof($posts);
          $empty = ($postsSize == 0);
@@ -280,7 +280,7 @@ class ForumController extends Controller
       }
 
       /**
-       * Set erased on post's properties to true.
+       * Set erased on post's properties to !value.
        * 
        * @param Request $request
        */
@@ -289,5 +289,16 @@ class ForumController extends Controller
           $post = Post::find($id);
           $post->erased = !$post->erased;
           $post->save();
+      }
+      /**
+       * Set locked on thread's properties to !value.
+       * 
+       * @param Request $request
+       */
+      public function lockThread(Request $request) {
+          $id = $request->id;
+          $thread = Thread::find($id);
+          $thread->locked = !$thread->locked;
+          $thread->save();
       }
 }

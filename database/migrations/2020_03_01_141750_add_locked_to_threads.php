@@ -14,7 +14,7 @@ class AddLockedToThreads extends Migration
     public function up()
     {
         Schema::table('threads', function (Blueprint $table) {
-            $table->boolean('locked');
+            $table->boolean('locked')->default(0);
         });
     }
 

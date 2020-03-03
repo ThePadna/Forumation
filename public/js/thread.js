@@ -95,6 +95,7 @@
 
 var erasePostFormHTML = "<div id=\"erasePostForm\" class=\"popup-form\">\n<div class=\"form-header\">\n    <div class=\"form-exit\">\n        <i id=\"exit-icon\" class=\"fas fa-times\"></i>\n    </div>\n    <h1> Erase Post (Toggle) </h1>\n</div>\n<div class=\"form-container\">\n    <form>\n        <p> Are you sure you would like to erase/reveal this post? </p>\n        <button id=\"erasePostConfirmation\"> Confirm </button>\n    </form>\n</div>\n</div>";
 var delThreadFormHTML = "<div id=\"delThreadForm\" class=\"popup-form\">\n<div class=\"form-header\">\n    <div class=\"form-exit\">\n        <i id=\"exit-icon\" class=\"fas fa-times\"></i>\n    </div>\n    <h1> Delete Thread </h1>\n</div>\n<div class=\"form-container\">\n    <form>\n        <p> Are you sure you want to delete this thread? </p>\n        <button id=\"erasePostConfirmation\"> Confirm </button>\n    </form>\n</div>\n</div>";
+var lockThreadFormHTML = "<div id=\"lockThreadForm\" class=\"popup-form\">\n<div class=\"form-header\">\n    <div class=\"form-exit\">\n        <i id=\"exit-icon\" class=\"fas fa-times\"></i>\n    </div>\n    <h1> Lock Thread (Toggle) </h1>\n</div>\n<div class=\"form-container\">\n    <form>\n        <p> Are you sure you want to lock on this thread? </p>\n        <button id=\"erasePostConfirmation\"> Confirm </button>\n    </form>\n</div>\n</div>";
 var $prevClickedIconPostId;
 /**
  * Request to post thread reply when form is submitted
@@ -123,11 +124,12 @@ $replyForm.submit(function (e) {
     }
   });
 });
-var $erasePostForm, $delThreadForm;
+var $erasePostForm, $delThreadForm, $lockThreadForm;
 
 function initForms() {
   $erasePostForm = $("#erasePostForm");
   $delThreadForm = $("#delThreadForm");
+  $lockThreadForm = $('#lockThreadForm');
 }
 
 $('.erase').on('click', function (e) {
@@ -143,6 +145,13 @@ $('.del').on('click', function (e) {
   registerFormExitHandler();
   initForms();
   registerDelThreadSubmitListener();
+  updateColorScheme($('meta[name="color"]').attr('content'));
+});
+$('.lock').on('click', function (e) {
+  $("body").append(lockThreadFormHTML);
+  registerFormExitHandler();
+  initForms();
+  registerLockThreadSubmitListener();
   updateColorScheme($('meta[name="color"]').attr('content'));
 });
 $(document).on('mouseover', '.form-exit', function (e) {
@@ -193,7 +202,6 @@ function registerErasePostSubmitListener() {
 function registerDelThreadSubmitListener() {
   $delThreadForm.submit(function (e) {
     e.preventDefault();
-    console.log($prevClickedIconPostId);
     $.ajax({
       type: "POST",
       url: "/delthread",
@@ -205,6 +213,33 @@ function registerDelThreadSubmitListener() {
       },
       success: function success(res) {
         window.location = "/forum/category/" + $('meta[name="category"]').attr('content') + "/1";
+      },
+      error: function error(xhr, ajaxOptions, thrownError) {
+        console.log("Error occured during AJAX request, error code: " + xhr.status);
+      }
+    });
+  });
+}
+/**
+ * Listen for form submission
+ * Request to delete thread when form submitted.
+ */
+
+
+function registerLockThreadSubmitListener() {
+  $lockThreadForm.submit(function (e) {
+    e.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: "/lockthread",
+      headers: {
+        "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
+      },
+      data: {
+        id: $('meta[name="thread"]').attr('content')
+      },
+      success: function success(res) {
+        window.location.reload();
       },
       error: function error(xhr, ajaxOptions, thrownError) {
         console.log("Error occured during AJAX request, error code: " + xhr.status);

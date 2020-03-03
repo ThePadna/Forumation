@@ -26,6 +26,20 @@ let delThreadFormHTML = `<div id="delThreadForm" class="popup-form">
     </form>
 </div>
 </div>`;
+let lockThreadFormHTML = `<div id="lockThreadForm" class="popup-form">
+<div class="form-header">
+    <div class="form-exit">
+        <i id="exit-icon" class="fas fa-times"></i>
+    </div>
+    <h1> Lock Thread (Toggle) </h1>
+</div>
+<div class="form-container">
+    <form>
+        <p> Are you sure you want to lock on this thread? </p>
+        <button id="erasePostConfirmation"> Confirm </button>
+    </form>
+</div>
+</div>`;
 
 let $prevClickedIconPostId;
 /**
@@ -50,10 +64,11 @@ $replyForm.submit((e) => {
     });
 });
 
-let $erasePostForm, $delThreadForm;
+let $erasePostForm, $delThreadForm, $lockThreadForm;
 function initForms() {
     $erasePostForm = $("#erasePostForm");
     $delThreadForm = $("#delThreadForm");
+    $lockThreadForm = $('#lockThreadForm');
 }
 
 $('.erase').on('click', e => {
@@ -69,6 +84,13 @@ $('.del').on('click', e => {
   registerFormExitHandler();
   initForms();
   registerDelThreadSubmitListener();
+  updateColorScheme($('meta[name="color"]').attr('content'));
+});
+$('.lock').on('click', e => {
+  $("body").append(lockThreadFormHTML);
+  registerFormExitHandler();
+  initForms();
+  registerLockThreadSubmitListener();
   updateColorScheme($('meta[name="color"]').attr('content'));
 });
 
@@ -117,7 +139,6 @@ function registerErasePostSubmitListener() {
 function registerDelThreadSubmitListener() {
   $delThreadForm.submit(e => {
       e.preventDefault();
-      console.log($prevClickedIconPostId);
       $.ajax({
           type: "POST",
           url: "/delthread",
@@ -125,6 +146,30 @@ function registerDelThreadSubmitListener() {
           data: {id: $('meta[name="thread"]').attr('content')},
           success: function(res) {
               window.location = "/forum/category/" + $('meta[name="category"]').attr('content') + "/1";
+          },
+          error: function(xhr, ajaxOptions, thrownError) {
+              console.log(
+                  "Error occured during AJAX request, error code: " +
+                      xhr.status
+              );
+          }
+      });
+  });
+}
+/**
+ * Listen for form submission
+ * Request to delete thread when form submitted.
+ */
+function registerLockThreadSubmitListener() {
+  $lockThreadForm.submit(e => {
+      e.preventDefault();
+      $.ajax({
+          type: "POST",
+          url: "/lockthread",
+          headers: { "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content") },
+          data: {id: $('meta[name="thread"]').attr('content')},
+          success: function(res) {
+              window.location.reload();
           },
           error: function(xhr, ajaxOptions, thrownError) {
               console.log(
