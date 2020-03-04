@@ -1,7 +1,7 @@
 @import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js);@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);@import url(https://fonts.googleapis.com/css?family=Baskerville);.edit-btn {
   font-size: 3.5vh;
-  left: 30vw;
-  top: 9.5vh;
+  left: 0vw;
+  top: 15vh;
   color: black;
   position: absolute;
 }

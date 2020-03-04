@@ -21,7 +21,7 @@ $thread->save();
     @auth
     @if(Auth::user()->role == "admin")
     <div class="edit-btn">
-        <i class="edit-category far fa-edit edit" threadId='{{$thread->id}}'></i>
+        <!-- <i class="edit-category far fa-edit edit" threadId='{{$thread->id}}'></i> -->
         <i class="del-category fas fa-trash del" threadId='{{$thread->id}}'></i>
         <i class="fas fa-lock lock" threadId='{{$thread->id}}'></i>
     </div>
