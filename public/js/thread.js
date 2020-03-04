@@ -102,9 +102,32 @@ var $prevClickedIconPostId;
  */
 
 $replyForm = $('#replyForm');
+
+if ($replyForm != null) {
+  var $replyInput = $replyForm.find('#replyText');
+  $replyInput.on('input', function () {
+    var $limit = $('meta[name="thread-length"]').attr('content');
+    var $text = $replyInput.val().length;
+
+    if ($text > $limit) {
+      if ($replyForm.find('.warning').length < 1) {
+        $replyForm.prepend('<p class="warning" style="color: red; text-align: center;"> Your reply is over the ' + $limit + ' character limit. </h1>');
+      }
+    } else {
+      console.log($text + " " + $limit);
+
+      if ($replyForm.find('.warning').length > 0) {
+        $('.warning').remove();
+      }
+    }
+  });
+}
+
 $replyForm.submit(function (e) {
   e.preventDefault();
-  $text = $replyForm.find('#replyText').val();
+  var $text = $replyForm.find('#replyText').val();
+  var $limit = $('meta[name="thread-length"]').attr('content');
+  if ($text.length > $limit) return;
   $.ajax({
     type: "POST",
     url: '/postreply',

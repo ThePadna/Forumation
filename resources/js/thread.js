@@ -46,9 +46,28 @@ let $prevClickedIconPostId;
  * Request to post thread reply when form is submitted
  */
 $replyForm = $('#replyForm');
+if($replyForm != null) {
+  let $replyInput = $replyForm.find('#replyText');
+  $replyInput.on('input', () => {
+    let $limit = $('meta[name="thread-length"]').attr('content');
+    let $text = $replyInput.val().length;
+    if($text > $limit) {
+      if($replyForm.find('.warning').length < 1) {
+        $replyForm.prepend('<p class="warning" style="color: red; text-align: center;"> Your reply is over the ' + $limit + ' character limit. </h1>');
+      }
+    } else {
+      console.log($text + " " + $limit);
+      if($replyForm.find('.warning').length > 0) {
+        $('.warning').remove();
+      }
+    }
+  });
+}
 $replyForm.submit((e) => {
     e.preventDefault();
-    $text = $replyForm.find('#replyText').val();
+    let $text = $replyForm.find('#replyText').val();
+    let $limit = $('meta[name="thread-length"]').attr('content');
+    if($text.length > $limit) return;
     $.ajax({
         type: "POST",
         url: '/postreply',

@@ -137,5 +137,6 @@ $thread->save();
 <meta name="thread" content="{{$thread->id}}">
 <meta name="category" content="{{$thread->categoryId}}">
 <meta name="color" content="{{$color}}">
+<meta name="thread-length" content="{{$threadLength}}">
 <script src="{{asset('js/thread.js')}}"> </script>
 @stop

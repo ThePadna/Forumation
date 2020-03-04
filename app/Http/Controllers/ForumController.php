@@ -173,7 +173,8 @@ class ForumController extends Controller
          $isLastPage = ($page >= $lastPage);
          $postsSize = sizeof($posts);
          $empty = ($postsSize == 0);
-         return view('thread', ['lastPage' => $lastPage, 'empty' => $empty, 'page' => $page, 'posts' => $posts, 'isLastPage' => $isLastPage, 'thread' => $thread, "color" => Settings::first()->color]);
+         $threadLength = Settings::first()->thread_post_length;
+         return view('thread', ['threadLength' => $threadLength, 'lastPage' => $lastPage, 'empty' => $empty, 'page' => $page, 'posts' => $posts, 'isLastPage' => $isLastPage, 'thread' => $thread, "color" => Settings::first()->color]);
      }
      
      /**
