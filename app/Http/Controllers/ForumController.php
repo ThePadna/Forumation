@@ -207,44 +207,6 @@ class ForumController extends Controller
           return view('profile', ['threads' => $threads, 'posts' => $posts, 'score' => $score, 'user' => $user, "color" => Settings::first()->color]);
       }
       /**
-       * Show admin control panel
-       * 
-       * @param Request $request
-       * @return Response
-       */
-      public function showCtrlPanel(Request $request) {
-          //checks
-          $settings = Settings::first();
-          return view('admin', ['settings' => $settings]);
-      }
-      /**
-       * Post color change to SQL Settings.
-       * 
-       * @param Request $request
-       */
-      public function postColorUpdate(Request $request) {
-          $settings = Settings::first();
-          if($settings == null) {
-              $settings = new Settings();
-          }
-          $settings->color = $request->input('color');
-          $settings->save();
-      }
-      /**
-       * Post editor mode update to SQL Settings.
-       * 
-       * @param Request $request
-       */
-      public function postEditorModeUpdate(Request $request) {
-        $settings = Settings::first();
-        if($settings == null) {
-            $settings = new Settings();
-        }
-        $settings->editormode = $request->input('toggle');
-        $settings->save();
-      }
-
-      /**
        * Post a like or unlike to post
        * 
        * @param Request $request

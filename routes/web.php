@@ -13,20 +13,21 @@
 Route::get('/', function () {
     return view('home');
 });
-Route::post('/postEditorModeUpdate', 'ForumController@postEditorModeUpdate');
+Route::post('/postEditorModeUpdate', 'AdminController@postEditorModeUpdate');
 Route::post('/lockthread', 'ForumController@lockThread');
 Route::post('/erasepost', 'ForumController@erasePost');
 Route::post('/likepost', 'ForumController@likePost');
 Route::post('/delthread', 'ForumController@delThread');
-Route::post('/postColorUpdate', 'ForumController@postColorUpdate');
+Route::post('/postColorUpdate', 'AdminController@postColorUpdate');
 Route::post('/postreply', 'ForumController@postReply');
 Route::post('/postthread', 'ForumController@postThread');
 Route::post('/postcategory', 'ForumController@postCategory');
 Route::post('/categoryswitchid', 'ForumController@categorySwitchId');
 Route::post('/delcategory', 'ForumController@delCategory');
 Route::post('/editcategory', 'ForumController@editCategory');
-Route::get('/forum/admin', 'ForumController@showCtrlPanel');
+Route::get('/forum/admin', 'AdminController@showCtrlPanel');
 Route::post('/forum/profile/{user}/edit/updateprofile', 'UserController@updateProfile');
+Route::get('/forum/admin/datamanagement', 'AdminController@showDataManagement');
 Route::get('/forum/profile/{user}', 'ForumController@showUserProfile');
 Route::get('/forum/profile/{user}/edit', 'UserController@editProfile');
 Route::get('/forum/category/{category}/thread/{thread}/{page}', 'ForumController@showThread');
