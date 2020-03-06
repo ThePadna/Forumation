@@ -5,7 +5,7 @@
 }
 
 #postThread * {
-  color: #ff3333;
+  color: white;
   opacity: 0.7;
 }
 
@@ -46,13 +46,13 @@
 #prevpage {
   left: 50px;
   font-size: 100px;
-  color: #ff3333;
+  color: white;
 }
 
 #nextpage {
   right: 50px;
   font-size: 100px;
-  color: #ff3333;
+  color: white;
 }
 
 span {
@@ -93,7 +93,7 @@ a:hover {
 }
 
 .row p {
-  color: #ff3333;
+  color: white;
   font-size: 2vh;
 }
 
@@ -117,7 +117,7 @@ a:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #ff3333;
+  background-color: white;
   text-align: center;
 }
 

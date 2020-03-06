@@ -86,10 +86,10 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/category.js":
-/*!**********************************!*\
-  !*** ./resources/js/category.js ***!
-  \**********************************/
+/***/ "./resources/js/forum/category.js":
+/*!****************************************!*\
+  !*** ./resources/js/forum/category.js ***!
+  \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -196,13 +196,13 @@ function updateColorScheme(color) {
 /***/ }),
 
 /***/ 5:
-/*!****************************************!*\
-  !*** multi ./resources/js/category.js ***!
-  \****************************************/
+/*!**********************************************!*\
+  !*** multi ./resources/js/forum/category.js ***!
+  \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\js\category.js */"./resources/js/category.js");
+module.exports = __webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\js\forum\category.js */"./resources/js/forum/category.js");
 
 
 /***/ })

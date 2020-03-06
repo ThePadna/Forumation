@@ -1,7 +1,5 @@
-@import 'variables';
-@import 'libs';
 @import url('https://fonts.googleapis.com/css?family=Yellowtail|Saira+Stencil+One&display=swap');
-
+@import '../libs';
 html,
 body {
     height: 100vh;
@@ -27,7 +25,7 @@ body {
 }
 #header {
     display: block;
-    background-color: $color-scheme;
+    background-color: white;
     height: 15vh;
     min-height: 7vh;
     width: 100vw;

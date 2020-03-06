@@ -81,55 +81,19 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/forum/profile_edit.js":
-/*!********************************************!*\
-  !*** ./resources/js/forum/profile_edit.js ***!
-  \********************************************/
+/***/ "./resources/js/admin/datamanagement.js":
+/*!**********************************************!*\
+  !*** ./resources/js/admin/datamanagement.js ***!
+  \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-var $usernameInp = $('#usernameInput');
-var $picInp = $('#profilepic');
 updateColorScheme($('meta[name="color"]').attr('content'));
-$('form').submit(function (e) {
-  e.preventDefault();
-  var formData = new FormData();
-  var $name = $usernameInp.val();
-  console.log("name;" + $name);
-  if ($name != null) formData.append("username", $name);
-  var $src = $picInp.attr('src');
-  if ($src != null) formData.append("pic", $src);
-  $.ajax({
-    type: "POST",
-    url: '/forum/profile/' + $('meta[name="userId"]').attr('content') + '/edit/updateprofile',
-    headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf"]').attr('content')
-    },
-    data: formData,
-    processData: false,
-    contentType: false,
-    success: function success(res) {
-      window.location = "/forum/profile/" + $('meta[name="userId"]').attr('content');
-    },
-    error: function error(xhr, ajaxOptions, thrownError) {
-      console.log("Error occured during AJAX request, error code: " + xhr.status);
-    }
-  });
-});
-$('#pic').change(function (e) {
-  var reader = new FileReader();
-
-  reader.onload = function (e) {
-    $('#profilepic').attr('src', e.target.result);
-  };
-
-  reader.readAsDataURL(e.target.files[0]);
-});
 /**
  * Updates color scheme on present selectors.
  * 
@@ -137,19 +101,19 @@ $('#pic').change(function (e) {
  */
 
 function updateColorScheme(color) {
-  $('#header').css('background', color);
+  $('#header').css('background', color); //$('').css('color', color);
 }
 
 /***/ }),
 
-/***/ 2:
-/*!**************************************************!*\
-  !*** multi ./resources/js/forum/profile_edit.js ***!
-  \**************************************************/
+/***/ 6:
+/*!****************************************************!*\
+  !*** multi ./resources/js/admin/datamanagement.js ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\js\forum\profile_edit.js */"./resources/js/forum/profile_edit.js");
+module.exports = __webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\js\admin\datamanagement.js */"./resources/js/admin/datamanagement.js");
 
 
 /***/ })

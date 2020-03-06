@@ -86,10 +86,10 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/profile.js":
-/*!*********************************!*\
-  !*** ./resources/js/profile.js ***!
-  \*********************************/
+/***/ "./resources/js/forum/profile.js":
+/*!***************************************!*\
+  !*** ./resources/js/forum/profile.js ***!
+  \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -160,13 +160,13 @@ function animateCounting($obj, count) {
 /***/ }),
 
 /***/ 3:
-/*!************************************!*\
-  !*** multi ./resources/js/profile ***!
-  \************************************/
+/*!******************************************!*\
+  !*** multi ./resources/js/forum/profile ***!
+  \******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\js\profile */"./resources/js/profile.js");
+module.exports = __webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\js\forum\profile */"./resources/js/forum/profile.js");
 
 
 /***/ })

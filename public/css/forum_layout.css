@@ -1,4 +1,4 @@
-@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js);@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);@import url(https://fonts.googleapis.com/css?family=Yellowtail|Saira+Stencil+One&display=swap);html,
+@import url(https://fonts.googleapis.com/css?family=Yellowtail|Saira+Stencil+One&display=swap);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js);@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);html,
 body {
   height: 100vh;
   width: 100vw;
@@ -27,7 +27,7 @@ body {
 
 #header {
   display: block;
-  background-color: #ff3333;
+  background-color: white;
   height: 15vh;
   min-height: 7vh;
   width: 100vw;

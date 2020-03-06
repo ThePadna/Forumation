@@ -1,17 +1,19 @@
 {
     "/js/admin.js": "/js/admin.js",
-    "/css/categories.css": "/css/categories.css",
-    "/css/forum_layout.css": "/css/forum_layout.css",
     "/css/home.css": "/css/home.css",
-    "/css/category.css": "/css/category.css",
-    "/css/post.css": "/css/post.css",
-    "/css/thread.css": "/css/thread.css",
-    "/css/profile.css": "/css/profile.css",
-    "/css/edit.css": "/css/edit.css",
-    "/css/admin.css": "/css/admin.css",
+    "/css/datamanagement.css": "/css/datamanagement.css",
     "/js/categories.js": "/js/categories.js",
     "/js/category.js": "/js/category.js",
+    "/js/datamanagement.js": "/js/datamanagement.js",
     "/js/profile.js": "/js/profile.js",
     "/js/profile_edit.js": "/js/profile_edit.js",
-    "/js/thread.js": "/js/thread.js"
+    "/js/thread.js": "/js/thread.js",
+    "/css/thread.css": "/css/thread.css",
+    "/css/profile.css": "/css/profile.css",
+    "/css/post.css": "/css/post.css",
+    "/css/forum_layout.css": "/css/forum_layout.css",
+    "/css/edit.css": "/css/edit.css",
+    "/css/category.css": "/css/category.css",
+    "/css/categories.css": "/css/categories.css",
+    "/css/admin.css": "/css/admin.css"
 }

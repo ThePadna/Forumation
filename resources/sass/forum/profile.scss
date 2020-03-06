@@ -1,6 +1,4 @@
-@import 'variables';
-@import 'libs';
-
+@import '../libs';
 #profileheader {
     display: inline-block;
     position: relative;        
@@ -38,7 +36,7 @@
         height: 40vh;
         p {
             font-size: 800%;
-            color: $color-scheme;
+            color: white;
         }
         * {
             text-align: center;

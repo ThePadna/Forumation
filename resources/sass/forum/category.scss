@@ -1,12 +1,10 @@
-@import 'variables';
-@import 'libs';
-
+@import '../libs';
 #postThread {
     position: absolute;
     left: 1vw;
     top: 18vh;
     * {
-        color: $color-scheme;
+        color: white;
         opacity: 0.7;
     }
     h1 {
@@ -46,13 +44,13 @@
 #prevpage {
     left: 50px;
     font-size: 100px;
-    color: $color-scheme;
+    color: white;
 }
 
 #nextpage {
     right: 50px;
     font-size: 100px;
-    color: $color-scheme;
+    color: white;
 }
 
 span {
@@ -91,7 +89,7 @@ a:hover {
         font-size: 3vh;
     }
     p {
-        color: $color-scheme;
+        color: white;
         font-size: 2vh;
     }
 }
@@ -115,7 +113,7 @@ a:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: $color-scheme;
+    background-color: white;
     text-align: center;
     .form-exit {
         float: right;

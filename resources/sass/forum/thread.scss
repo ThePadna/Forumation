@@ -1,7 +1,5 @@
-@import 'variables';
-@import 'libs';
 @import url('https://fonts.googleapis.com/css?family=Baskerville');
-
+@import '../libs';
 .edit-btn {
     font-size: 3.5vh;
     left: 0vw;
@@ -110,7 +108,7 @@
     transform: translateY(-50%);
     position: fixed;
     opacity: 0.8;
-    color: $color-scheme;
+    color: white;
     font-size: 10vh;
 }
 
@@ -132,7 +130,7 @@
 #empty {
     text-align: center;
     font-size: 5vh;
-    color: $color-scheme;
+    color: white;
 }
 
 .increase-size {

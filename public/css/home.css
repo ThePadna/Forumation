@@ -4,18 +4,18 @@ body {
   width: 100vw;
   overflow-x: hidden;
   overflow-y: hidden;
-  background-color: #ff3333;
+  background-color: white;
 }
 
 #header {
-  background-color: #ff3333;
+  background-color: white;
   height: 25vh;
   width: 100vw;
   text-align: center;
 }
 
 #header #title {
-  background-color: #ff3333;
+  background-color: white;
   color: white;
   font-size: 10vh;
   text-align: center;
@@ -28,7 +28,7 @@ body {
 #footer {
   height: 25vh;
   width: 100vw;
-  background-color: #ff3333;
+  background-color: white;
 }
 
 #footer .row {

@@ -26,7 +26,8 @@ class AdminController extends Controller
      * @param Request $request
      */
     public function showDataManagement(Request $request) {
-        return view('admin/datamanagement');
+        $settings = Settings::first();
+        return view('admin/datamanagement', ['settings' => $settings]);
     }
 
     /**

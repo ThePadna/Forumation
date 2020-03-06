@@ -5,10 +5,12 @@
 </head>
 <div id="container">
     <div id="menu" class="row">
-        <div class="col-sm-4">
+        <a style="color: black; text-decoration: none;" href="/forum/admin/datamanagement" class="col-sm-4">
+        <div >
                 <i class="fas fa-database"></i>
                 <p> Data Management </p>
         </div>
+        </a>
         <div class="col-sm-4">
                 <div class="pickr"> To be replaced </div>
                 <p> Color Scheme </p>

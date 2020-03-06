@@ -1,4 +1,4 @@
-@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js);@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);@import url(https://fonts.googleapis.com/css?family=Baskerville);.edit-btn {
+@import url(https://fonts.googleapis.com/css?family=Baskerville);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js);@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);.edit-btn {
   font-size: 3.5vh;
   left: 0vw;
   top: 15vh;
@@ -121,7 +121,7 @@
   transform: translateY(-50%);
   position: fixed;
   opacity: 0.8;
-  color: #ff3333;
+  color: white;
   font-size: 10vh;
 }
 
@@ -142,7 +142,7 @@
 #empty {
   text-align: center;
   font-size: 5vh;
-  color: #ff3333;
+  color: white;
 }
 
 .increase-size {

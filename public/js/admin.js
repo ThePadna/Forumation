@@ -106,7 +106,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../css-loader??ref--14-1!../../../../postcss-loader/src??ref--14-2!./nano.min.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/@simonwep/pickr/dist/themes/nano.min.css");
+var content = __webpack_require__(/*! !../../../../css-loader??ref--15-1!../../../../postcss-loader/src??ref--15-2!./nano.min.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/@simonwep/pickr/dist/themes/nano.min.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -130,7 +130,7 @@ if(false) {}
 
 /***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/@simonwep/pickr/dist/themes/nano.min.css":
 /*!*************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--14-1!./node_modules/postcss-loader/src??ref--14-2!./node_modules/@simonwep/pickr/dist/themes/nano.min.css ***!
+  !*** ./node_modules/css-loader??ref--15-1!./node_modules/postcss-loader/src??ref--15-2!./node_modules/@simonwep/pickr/dist/themes/nano.min.css ***!
   \*************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -743,10 +743,10 @@ module.exports = function (css) {
 
 /***/ }),
 
-/***/ "./resources/js/admin.js":
-/*!*******************************!*\
-  !*** ./resources/js/admin.js ***!
-  \*******************************/
+/***/ "./resources/js/admin/admin.js":
+/*!*************************************!*\
+  !*** ./resources/js/admin/admin.js ***!
+  \*************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -865,10 +865,10 @@ function updateColorScheme(color) {
 
 /***/ }),
 
-/***/ "./resources/sass/admin.scss":
-/*!***********************************!*\
-  !*** ./resources/sass/admin.scss ***!
-  \***********************************/
+/***/ "./resources/sass/admin/admin.scss":
+/*!*****************************************!*\
+  !*** ./resources/sass/admin/admin.scss ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -876,9 +876,42 @@ function updateColorScheme(color) {
 
 /***/ }),
 
-/***/ "./resources/sass/categories.scss":
+/***/ "./resources/sass/admin/datamanagement.scss":
+/*!**************************************************!*\
+  !*** ./resources/sass/admin/datamanagement.scss ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/forum/categories.scss":
+/*!**********************************************!*\
+  !*** ./resources/sass/forum/categories.scss ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/forum/category.scss":
+/*!********************************************!*\
+  !*** ./resources/sass/forum/category.scss ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/forum/edit.scss":
 /*!****************************************!*\
-  !*** ./resources/sass/categories.scss ***!
+  !*** ./resources/sass/forum/edit.scss ***!
   \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -887,10 +920,10 @@ function updateColorScheme(color) {
 
 /***/ }),
 
-/***/ "./resources/sass/category.scss":
-/*!**************************************!*\
-  !*** ./resources/sass/category.scss ***!
-  \**************************************/
+/***/ "./resources/sass/forum/forum_layout.scss":
+/*!************************************************!*\
+  !*** ./resources/sass/forum/forum_layout.scss ***!
+  \************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -898,10 +931,10 @@ function updateColorScheme(color) {
 
 /***/ }),
 
-/***/ "./resources/sass/edit.scss":
-/*!**********************************!*\
-  !*** ./resources/sass/edit.scss ***!
-  \**********************************/
+/***/ "./resources/sass/forum/post.scss":
+/*!****************************************!*\
+  !*** ./resources/sass/forum/post.scss ***!
+  \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -909,9 +942,20 @@ function updateColorScheme(color) {
 
 /***/ }),
 
-/***/ "./resources/sass/forum_layout.scss":
+/***/ "./resources/sass/forum/profile.scss":
+/*!*******************************************!*\
+  !*** ./resources/sass/forum/profile.scss ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/forum/thread.scss":
 /*!******************************************!*\
-  !*** ./resources/sass/forum_layout.scss ***!
+  !*** ./resources/sass/forum/thread.scss ***!
   \******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -931,56 +975,24 @@ function updateColorScheme(color) {
 
 /***/ }),
 
-/***/ "./resources/sass/post.scss":
-/*!**********************************!*\
-  !*** ./resources/sass/post.scss ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./resources/sass/profile.scss":
-/*!*************************************!*\
-  !*** ./resources/sass/profile.scss ***!
-  \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./resources/sass/thread.scss":
-/*!************************************!*\
-  !*** ./resources/sass/thread.scss ***!
-  \************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ 0:
-/*!****************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** multi ./resources/js/admin.js ./resources/sass/categories.scss ./resources/sass/forum_layout.scss ./resources/sass/home.scss ./resources/sass/category.scss ./resources/sass/post.scss ./resources/sass/thread.scss ./resources/sass/profile.scss ./resources/sass/edit.scss ./resources/sass/admin.scss ***!
-  \****************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/admin/admin.js ./resources/sass/forum/categories.scss ./resources/sass/forum/forum_layout.scss ./resources/sass/home.scss ./resources/sass/forum/category.scss ./resources/sass/forum/post.scss ./resources/sass/forum/thread.scss ./resources/sass/forum/profile.scss ./resources/sass/forum/edit.scss ./resources/sass/admin/admin.scss ./resources/sass/admin/datamanagement.scss ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\js\admin.js */"./resources/js/admin.js");
-__webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\categories.scss */"./resources/sass/categories.scss");
-__webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\forum_layout.scss */"./resources/sass/forum_layout.scss");
+__webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\js\admin\admin.js */"./resources/js/admin/admin.js");
+__webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\forum\categories.scss */"./resources/sass/forum/categories.scss");
+__webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\forum\forum_layout.scss */"./resources/sass/forum/forum_layout.scss");
 __webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\home.scss */"./resources/sass/home.scss");
-__webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\category.scss */"./resources/sass/category.scss");
-__webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\post.scss */"./resources/sass/post.scss");
-__webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\thread.scss */"./resources/sass/thread.scss");
-__webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\profile.scss */"./resources/sass/profile.scss");
-__webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\edit.scss */"./resources/sass/edit.scss");
-module.exports = __webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\admin.scss */"./resources/sass/admin.scss");
+__webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\forum\category.scss */"./resources/sass/forum/category.scss");
+__webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\forum\post.scss */"./resources/sass/forum/post.scss");
+__webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\forum\thread.scss */"./resources/sass/forum/thread.scss");
+__webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\forum\profile.scss */"./resources/sass/forum/profile.scss");
+__webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\forum\edit.scss */"./resources/sass/forum/edit.scss");
+__webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\admin\admin.scss */"./resources/sass/admin/admin.scss");
+module.exports = __webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\admin\datamanagement.scss */"./resources/sass/admin/datamanagement.scss");
 
 
 /***/ })

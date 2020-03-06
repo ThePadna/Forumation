@@ -37,7 +37,7 @@ class ForumController extends Controller
                 } else $posts[$id] = $p;
             }
         }
-        return view("category", ["category" => Category::All()->firstWhere('id', $categoryId), "threads" => $threads, "page" => $page, "posts" => $posts, "now" => Carbon::now(), "color" => Settings::first()->color]);
+        return view("forum/category", ["category" => Category::All()->firstWhere('id', $categoryId), "threads" => $threads, "page" => $page, "posts" => $posts, "now" => Carbon::now(), "color" => Settings::first()->color]);
     }
 
      /**
@@ -47,7 +47,7 @@ class ForumController extends Controller
      */
     public function showCategories() {
         $settings = Settings::first();
-        return view("categories", ["categories" => Category::All(), "color" => $settings->color, "editormode" => $settings->editormode]);
+        return view("forum/categories", ["categories" => Category::All(), "color" => $settings->color, "editormode" => $settings->editormode]);
     }
 
     /**
@@ -121,7 +121,7 @@ class ForumController extends Controller
      * @return Response
      */
     public function showThreadPostForm(Request $request, $category) {
-        return view('post', ['categoryId' => $category, "color" => Settings::first()->color]);
+        return view('forum/post', ['categoryId' => $category, "color" => Settings::first()->color]);
     }
 
     /**
@@ -164,7 +164,7 @@ class ForumController extends Controller
      public function showThread(Request $request, $categoryName, $threadId, $page) {
          $thread = Thread::find($threadId);
          if($thread == null) {
-             return view('404');
+             return view('errors/404');
          }
          $postCount = Post::where('thread', $threadId)->get()->count();
          $lastPage = ceil(($postCount / 9));
@@ -174,7 +174,7 @@ class ForumController extends Controller
          $postsSize = sizeof($posts);
          $empty = ($postsSize == 0);
          $threadLength = Settings::first()->thread_post_length;
-         return view('thread', ['threadLength' => $threadLength, 'lastPage' => $lastPage, 'empty' => $empty, 'page' => $page, 'posts' => $posts, 'isLastPage' => $isLastPage, 'thread' => $thread, "color" => Settings::first()->color]);
+         return view('forum/thread', ['threadLength' => $threadLength, 'lastPage' => $lastPage, 'empty' => $empty, 'page' => $page, 'posts' => $posts, 'isLastPage' => $isLastPage, 'thread' => $thread, "color" => Settings::first()->color]);
      }
      
      /**
@@ -204,7 +204,7 @@ class ForumController extends Controller
           $posts = Post::where('user', $user->id)->get()->count();
           $threads = Thread::where('op', $user->id)->get()->count();
           $posts = ($posts - $threads);
-          return view('profile', ['threads' => $threads, 'posts' => $posts, 'score' => $score, 'user' => $user, "color" => Settings::first()->color]);
+          return view('/profile/profile', ['threads' => $threads, 'posts' => $posts, 'score' => $score, 'user' => $user, "color" => Settings::first()->color]);
       }
       /**
        * Post a like or unlike to post

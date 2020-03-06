@@ -1,5 +1,4 @@
-@import 'variables';
-@import 'libs';
+@import '../libs';
 @import url('https://fonts.googleapis.com/css?family=Alegreya|Grenze&display=swap');
 body {
     min-width: 750px;
@@ -26,7 +25,7 @@ body {
 }
 .header {
     font-size: 3vh;
-    color: $color-scheme;
+    color: white;
 }
 .recentTitle {
     font-size: 2vh;
@@ -112,7 +111,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: $color-scheme;
+    background-color: white;
     text-align: center;
     .form-exit {
         float: right;

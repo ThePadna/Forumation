@@ -86,10 +86,10 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/thread.js":
-/*!********************************!*\
-  !*** ./resources/js/thread.js ***!
-  \********************************/
+/***/ "./resources/js/forum/thread.js":
+/*!**************************************!*\
+  !*** ./resources/js/forum/thread.js ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -364,13 +364,13 @@ function updateColorScheme(color) {
 /***/ }),
 
 /***/ 4:
-/*!**************************************!*\
-  !*** multi ./resources/js/thread.js ***!
-  \**************************************/
+/*!********************************************!*\
+  !*** multi ./resources/js/forum/thread.js ***!
+  \********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\js\thread.js */"./resources/js/thread.js");
+module.exports = __webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\js\forum\thread.js */"./resources/js/forum/thread.js");
 
 
 /***/ })

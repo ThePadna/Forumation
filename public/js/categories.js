@@ -86,10 +86,10 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/categories.js":
-/*!************************************!*\
-  !*** ./resources/js/categories.js ***!
-  \************************************/
+/***/ "./resources/js/forum/categories.js":
+/*!******************************************!*\
+  !*** ./resources/js/forum/categories.js ***!
+  \******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -393,13 +393,13 @@ function removeEditorElements() {
 /***/ }),
 
 /***/ 1:
-/*!******************************************!*\
-  !*** multi ./resources/js/categories.js ***!
-  \******************************************/
+/*!************************************************!*\
+  !*** multi ./resources/js/forum/categories.js ***!
+  \************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\js\categories.js */"./resources/js/categories.js");
+module.exports = __webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\js\forum\categories.js */"./resources/js/forum/categories.js");
 
 
 /***/ })
