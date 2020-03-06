@@ -14,6 +14,8 @@
     color: black;
 }
 .row {
+    word-wrap: break-word;
+    overflow: hidden;
     width: 50%;
     position: relative;
     left: 45%;
@@ -33,6 +35,8 @@
 .col-sm-2 {
     p {
         font-size: 3vh;
+        word-wrap: break-word;
+        overflow: hidden;
         position: relative;
         text-align: center;
         width: 15vh;
