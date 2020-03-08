@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Settings;
+use App\User;
 
 class AdminController extends Controller
 {
@@ -18,7 +19,21 @@ class AdminController extends Controller
         //checks
         $settings = Settings::first();
         return view('admin/admin', ['settings' => $settings]);
-    }
+      }
+
+      /**
+       * Show admin  
+       * 
+       * @param int page
+       * @param Request $request
+       * @return Response
+       */
+      public function showUsers(Request $request, $page) {
+        $RESULTS_PER_PAGE = 20;
+        $skipAmt = $page > 1 ? ($page * $RESULTS_PER_PAGE) - $RESULTS_PER_PAGE : 0;
+        $users = User::latest()->skip($skipAmt)->take($RESULTS_PER_PAGE)->get();
+        return view('admin/users', ["users" => $users]);
+      }
 
     /**
      * Show admin data management page

@@ -1,0 +1,13 @@
+@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js);@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);table {
+  width: 100vw;
+  text-align: center;
+}
+
+table th {
+  font-size: 3.5vh;
+}
+
+table td {
+  font-size: 2.5vh;
+}
+

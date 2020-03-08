@@ -106,7 +106,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../css-loader??ref--15-1!../../../../postcss-loader/src??ref--15-2!./nano.min.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/@simonwep/pickr/dist/themes/nano.min.css");
+var content = __webpack_require__(/*! !../../../../css-loader??ref--16-1!../../../../postcss-loader/src??ref--16-2!./nano.min.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/@simonwep/pickr/dist/themes/nano.min.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -130,7 +130,7 @@ if(false) {}
 
 /***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/@simonwep/pickr/dist/themes/nano.min.css":
 /*!*************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--15-1!./node_modules/postcss-loader/src??ref--15-2!./node_modules/@simonwep/pickr/dist/themes/nano.min.css ***!
+  !*** ./node_modules/css-loader??ref--16-1!./node_modules/postcss-loader/src??ref--16-2!./node_modules/@simonwep/pickr/dist/themes/nano.min.css ***!
   \*************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -887,6 +887,17 @@ function updateColorScheme(color) {
 
 /***/ }),
 
+/***/ "./resources/sass/admin/users.scss":
+/*!*****************************************!*\
+  !*** ./resources/sass/admin/users.scss ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./resources/sass/forum/categories.scss":
 /*!**********************************************!*\
   !*** ./resources/sass/forum/categories.scss ***!
@@ -976,9 +987,9 @@ function updateColorScheme(color) {
 /***/ }),
 
 /***/ 0:
-/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** multi ./resources/js/admin/admin.js ./resources/sass/forum/categories.scss ./resources/sass/forum/forum_layout.scss ./resources/sass/home.scss ./resources/sass/forum/category.scss ./resources/sass/forum/post.scss ./resources/sass/forum/thread.scss ./resources/sass/forum/profile.scss ./resources/sass/forum/edit.scss ./resources/sass/admin/admin.scss ./resources/sass/admin/datamanagement.scss ***!
-  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/admin/admin.js ./resources/sass/forum/categories.scss ./resources/sass/forum/forum_layout.scss ./resources/sass/home.scss ./resources/sass/forum/category.scss ./resources/sass/forum/post.scss ./resources/sass/forum/thread.scss ./resources/sass/forum/profile.scss ./resources/sass/forum/edit.scss ./resources/sass/admin/admin.scss ./resources/sass/admin/datamanagement.scss ./resources/sass/admin/users.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -992,7 +1003,8 @@ __webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\forum\thread.
 __webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\forum\profile.scss */"./resources/sass/forum/profile.scss");
 __webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\forum\edit.scss */"./resources/sass/forum/edit.scss");
 __webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\admin\admin.scss */"./resources/sass/admin/admin.scss");
-module.exports = __webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\admin\datamanagement.scss */"./resources/sass/admin/datamanagement.scss");
+__webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\admin\datamanagement.scss */"./resources/sass/admin/datamanagement.scss");
+module.exports = __webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\admin\users.scss */"./resources/sass/admin/users.scss");
 
 
 /***/ })

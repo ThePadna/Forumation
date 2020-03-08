@@ -23,8 +23,9 @@ class ForumController extends Controller
      * @return Response
      */
     public function showCategory($categoryId, $page) {
-        $skipAmt = $page > 1 ? ($page * 9) - 9 : 0;
-        $threads = Thread::latest()->where('categoryId', $categoryId)->skip($skipAmt)->take(9)->get();
+        $RESULTS_PER_PAGE = 9;
+        $skipAmt = $page > 1 ? ($page * $RESULTS_PER_PAGE) - $RESULTS_PER_PAGE : 0;
+        $threads = Thread::latest()->where('categoryId', $categoryId)->skip($skipAmt)->take($RESULTS_PER_PAGE)->get();
         $posts = [];
         foreach($threads as $t) {
             $id = $t->id;

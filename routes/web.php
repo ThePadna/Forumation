@@ -27,6 +27,7 @@ Route::post('/delcategory', 'ForumController@delCategory');
 Route::post('/editcategory', 'ForumController@editCategory');
 Route::get('/forum/admin', 'AdminController@showCtrlPanel');
 Route::post('/forum/profile/{user}/edit/updateprofile', 'UserController@updateProfile');
+Route::get('/forum/admin/datamanagement/users/{page}', 'AdminController@showUsers');
 Route::get('/forum/admin/datamanagement', 'AdminController@showDataManagement');
 Route::get('/forum/profile/{user}', 'ForumController@showUserProfile');
 Route::get('/forum/profile/{user}/edit', 'UserController@editProfile');

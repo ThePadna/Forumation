@@ -5,27 +5,17 @@
 </head>
 <div id="container">
     <div id="menu" class="row">
-        <a style="color: black; text-decoration: none;" href="/forum/admin/datamanagement" class="col-sm-4">
-        <div >
-                <i class="fas fa-database"></i>
-                <p> Data Management </p>
-        </div>
+        <a href="/forum/admin/datamanagement/users/1" class="col-sm-4">
+        <i class="fas fa-users"></i>
+                <p> Users </p>
         </a>
         <div class="col-sm-4">
-                <div class="pickr"> To be replaced </div>
-                <p> Color Scheme </p>
-                <p id="color-state" class="state"> </p>
+        <i class="fas fa-comments"></i>
+                <p> Threads </p>
         </div>
         <div class="col-sm-4">
-            <div id="sliderDiv">
-                <label class="toggle">
-                <input id="toggle" type="checkbox"/>
-                <span class="slider"></span>
-            </div>
-    </label>
-            </label>
-                <p> Editor Mode </p>
-                <p id="editor-state" class="state"> </p>
+        <i class="far fa-address-card"></i>
+            <p> Posts </p>
         </div>
     </div>
 </div>
