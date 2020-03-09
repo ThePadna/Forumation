@@ -13,7 +13,7 @@
   <tr>
     <td>{{$u->name}}</td>
     <td>{{$u->created_at}}</td>
-    <td>50</td>
+    <td>{{$u->last_login}}</td>
   </tr>
   @endforeach
 </table> 

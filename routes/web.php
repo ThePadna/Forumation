@@ -36,4 +36,3 @@ Route::get('/forum/category/{category}/post', 'ForumController@showThreadPostFor
 Route::get('/forum/category/{category}/{page}', 'ForumController@showCategory');
 Route::get('/forum', 'ForumController@showCategories');
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
