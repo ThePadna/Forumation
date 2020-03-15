@@ -2,6 +2,10 @@
   min-width: 750px;
 }
 
+.row > h1 {
+  text-align: center;
+}
+
 #categoryFormOpener {
   position: absolute;
   top: 7.5vh;

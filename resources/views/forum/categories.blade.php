@@ -3,9 +3,10 @@
 <link rel="stylesheet" href="{{asset('css/categories.css')}}">
 <div id="wrapper">
     <div id="categories">
+    @if(sizeof($categories) < 1) <h1> No Categories found. </h1>
         <div class="row">
-            @if(sizeof($categories) < 1) <h1> No Categories found. </h1>
                 @else
+                <div class="row">
                 <div id="title" class="col-8">
                     <p class="row-indicator"> Category</p>
                 </div>
