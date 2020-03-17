@@ -32,7 +32,8 @@ class AdminController extends Controller
         $RESULTS_PER_PAGE = 20;
         $skipAmt = $page > 1 ? ($page * $RESULTS_PER_PAGE) - $RESULTS_PER_PAGE : 0;
         $users = User::latest()->skip($skipAmt)->take($RESULTS_PER_PAGE)->get();
-        return view('admin/users', ["users" => $users]);
+        $settings = Settings::first();
+        return view('admin/users', ["page" => $page, "users" => $users, "settings" => $settings]);
       }
 
     /**

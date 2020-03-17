@@ -31,8 +31,8 @@ $thread->save();
         <p id="threadTitle"> {{$thread->title}} </p>
         @if($thread->locked)
         <p style="color:red; font-size: 2vh;"> <i class="fas fa-lock"></i> This thread has been locked. </h1>
-        @endif
-        <hr />
+            @endif
+            <hr />
     </div>
     @foreach($posts as $p)
     @php
@@ -61,42 +61,45 @@ $thread->save();
             </div>
             @if($p->erased)
             <a style="text-decoration: none; color: inherit;">
-            @else
-            <a href="/forum/profile/{{$user->id}}" style="text-decoration: none; color: inherit;">
-            @endif
-                <div id="test" class="col-sm-2">
+                @else
+                <a href="/forum/profile/{{$user->name}}" style="text-decoration: none; color: inherit;">
+                    @endif
+                    <div id="test" class="col-sm-2">
+                        @if($p->erased)
+                        <img id="profilepic" src="{{asset('img/profilepic.png')}}">
+                        <p> Removed </p>
+                        <div id="stats">
+                            <p> 0 <i style="color: {{$color}}" class="fas fa-star"></i>
+                                0 <i style="color: {{$color}}" class="fas fa-comments"></i></p>
+                        </div>
+                        @else
+                        @if($user->avatar == null)
+                        <img id="profilepic" src="{{asset('img/profilepic.png')}}" />
+                        @else
+                        <img id="profilepic" src="{{base64_decode($user->avatar)}}" />
+                        @endif
+                        <p> {{$user->name}} </p>
+                        <div id="stats">
+                            <p> {{$user->score}} <i style="color: {{$color}}" class="fas fa-star"></i>
+                                {{App\Models\Post::where('user', $user->id)->get()->count()}} <i
+                                    style="color: {{$color}}" class="fas fa-comments"></i></p>
+                        </div>
+                        @endif
+                    </div>
+                </a>
+                <div class="col-sm-1 splitter">
+                    <hr />
+                </div>
+                <div class="col-sm-7">
                     @if($p->erased)
-                    <img src="{{asset('img/profilepic.png')}}">
-                    <p> Removed </p>
-                    <div id="stats">
-                        <p> 0 <i style="color: {{$color}}" class="fas fa-star"></i>
-                            0 <i style="color: {{$color}}"
-                                class="fas fa-comments"></i></p>
-                    </div>
+                    <p style="color:red">This post has been erased.</p>
                     @else
-                    <img src="{{base64_decode($user->avatar)}}">
-                    <p> {{$user->name}} </p>
-                    <div id="stats">
-                        <p> {{$user->points}} <i style="color: {{$color}}" class="fas fa-star"></i>
-                            {{App\Models\Post::where('user', $user->id)->get()->count()}} <i style="color: {{$color}}"
-                                class="fas fa-comments"></i></p>
-                    </div>
+                    {{$p->contents}}
                     @endif
                 </div>
-            </a>
-            <div class="col-sm-1 splitter">
-                <hr />
-            </div>
-            <div class="col-sm-7">
-                @if($p->erased)
-                <p style="color:red">This post has been erased.</p>
-                @else
-                {{$p->contents}}
-                @endif
-            </div>
-            <div class="post-edit">
-                <i class="fas fa-eraser erase" post="{{$p->id}}"></i>
-            </div>
+                <div class="post-edit">
+                    <i class="fas fa-eraser erase" post="{{$p->id}}"></i>
+                </div>
         </div>
         <hr />
     </div>

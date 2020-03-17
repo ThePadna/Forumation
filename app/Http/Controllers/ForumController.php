@@ -196,14 +196,17 @@ class ForumController extends Controller
        * Show user profile page
        * 
        * @param Request $request
-       * @param int $userId
+       * @param string $userId
        * @return Response
        */
       public function showUserProfile(Request $request, $userId) {
-          $user = User::find($userId);
-          $score = $user->points;
-          $posts = Post::where('user', $user->id)->get()->count();
-          $threads = Thread::where('op', $user->id)->get()->count();
+          $user = User::where('name', $userId)->first();
+          if($user == null) {
+              return view('errors/404');
+          }
+          $score = $user->score;
+          $posts = Post::where('user', $user->id)->count();
+          $threads = Thread::where('op', $user->id)->count();
           $posts = ($posts - $threads);
           return view('/profile/profile', ['threads' => $threads, 'posts' => $posts, 'score' => $score, 'user' => $user, "color" => Settings::first()->color]);
       }
@@ -231,7 +234,6 @@ class ForumController extends Controller
           $post->save();
           return sizeof($liked_users);
       }
-
       /**
        * Delete a thread
        * 
@@ -240,6 +242,9 @@ class ForumController extends Controller
       public function delThread(Request $request) {
           $threadId = $request->input('id');
           $thread = Thread::find($threadId);
+          foreach(Post::where('thread', $thread->id)->get() as $p) {
+            $p->delete();
+          }
           $thread->delete();
       }
 

@@ -81,20 +81,19 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/forum/profile.js":
-/*!***************************************!*\
-  !*** ./resources/js/forum/profile.js ***!
-  \***************************************/
+/***/ "./resources/js/admin/users.js":
+/*!*************************************!*\
+  !*** ./resources/js/admin/users.js ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
 updateColorScheme($('meta[name="color"]').attr('content'));
-displayStats();
 /**
  * Updates color scheme on present selectors.
  * 
@@ -103,70 +102,19 @@ displayStats();
 
 function updateColorScheme(color) {
   $('#header').css('background', color);
-  $('p').css('color', color);
-}
-/**
- * Load all Posts, Threads, and Scores for user
- * Increment them to retrieved value as a displaying animation
- */
-
-
-function displayStats() {
-  var posts = $('meta[name="posts"]').attr('content'),
-      threads = $('meta[name="threads"]').attr('content'),
-      score = $('meta[name="score"]').attr('content');
-  var $posts = $('.post-counter'),
-      $threads = $('.thread-counter'),
-      $score = $('.score-counter');
-  animateCounting($posts, posts);
-  animateCounting($threads, threads);
-  animateCounting($score, score);
-}
-
-function animateCounting($obj, count) {
-  console.log(count);
-
-  if (count == 0) {
-    $obj.text(count);
-    return;
-  }
-
-  $({
-    count: 0
-  }).animate({
-    count: count - count / 5
-  }, {
-    duration: 500,
-    easing: 'linear',
-    step: function step() {
-      $obj.text(Math.round(this.count));
-    },
-    complete: function complete() {
-      $({
-        count: $obj.text()
-      }).animate({
-        count: count
-      }, {
-        duration: 1000,
-        easing: 'linear',
-        step: function step() {
-          $obj.text(Math.round(this.count));
-        }
-      });
-    }
-  });
+  $('#prevpage, #nextpage').css('color', color);
 }
 
 /***/ }),
 
-/***/ 3:
-/*!******************************************!*\
-  !*** multi ./resources/js/forum/profile ***!
-  \******************************************/
+/***/ 7:
+/*!*******************************************!*\
+  !*** multi ./resources/js/admin/users.js ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\js\forum\profile */"./resources/js/forum/profile.js");
+module.exports = __webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\js\admin\users.js */"./resources/js/admin/users.js");
 
 
 /***/ })

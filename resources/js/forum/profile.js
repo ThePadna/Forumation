@@ -18,9 +18,9 @@ function displayStats() {
     threads = $('meta[name="threads"]').attr('content'),
     score = $('meta[name="score"]').attr('content');
 
-    let $posts = $('#posts>p'),
-    $threads = $('#threads>p'),
-    $score = $('#score>p');
+    let $posts = $('.post-counter'),
+    $threads = $('.thread-counter'),
+    $score = $('.score-counter');
 
 
     animateCounting($posts, posts);

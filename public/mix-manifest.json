@@ -16,5 +16,6 @@
     "/js/datamanagement.js": "/js/datamanagement.js",
     "/js/profile.js": "/js/profile.js",
     "/js/profile_edit.js": "/js/profile_edit.js",
-    "/js/thread.js": "/js/thread.js"
+    "/js/thread.js": "/js/thread.js",
+    "/js/users.js": "/js/users.js"
 }

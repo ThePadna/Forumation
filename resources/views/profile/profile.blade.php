@@ -4,7 +4,11 @@
 <div id="profileheader">
     <a href="/forum/profile/{{$user->id}}/edit"> <p id="editBtn"> [Edit Profile] </p> </a>
     <div id="profilepicdiv">
+        @if($user->avatar == null)
+        <img id="profilepic" src="{{asset('img/profilepic.png')}}" />
+        @else
         <img id="profilepic" src="{{base64_decode($user->avatar)}}" />
+        @endif
     </div>
     <div id="profilenamediv">
             <h1> {{$user->name}} </h1>

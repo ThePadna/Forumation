@@ -28,4 +28,5 @@ mix.sass('resources/sass/forum/categories.scss', 'public/css')
 .js('resources/js/forum/profile', 'public/js/profile.js')
 .js('resources/js/forum/thread.js', 'public/js/thread.js')
 .js('resources/js/forum/category.js', 'public/js/category.js')
-.js('resources/js/admin/datamanagement.js', 'public/js/datamanagement.js');
+.js('resources/js/admin/datamanagement.js', 'public/js/datamanagement.js')
+.js('resources/js/admin/users.js', 'public/js/users.js');
