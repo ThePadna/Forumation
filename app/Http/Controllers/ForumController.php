@@ -22,9 +22,10 @@ class ForumController extends Controller
      * @param string $categoryName
      * @return Response
      */
-    public function showCategory($categoryId, $page) {
+    public function showCategory($category, $page) {
         $RESULTS_PER_PAGE = 9;
         $skipAmt = $page > 1 ? ($page * $RESULTS_PER_PAGE) - $RESULTS_PER_PAGE : 0;
+        $categoryId = Category::where('name', str_replace('-', " ", $category))->first()->id;
         $threads = Thread::latest()->where('categoryId', $categoryId)->skip($skipAmt)->take($RESULTS_PER_PAGE)->get();
         $posts = [];
         foreach($threads as $t) {
@@ -122,7 +123,8 @@ class ForumController extends Controller
      * @return Response
      */
     public function showThreadPostForm(Request $request, $category) {
-        return view('forum/post', ['categoryId' => $category, "color" => Settings::first()->color]);
+        $categoryId = Category::where('name', str_replace("-", " ", $category))->first()->id;
+        return view('forum/post', ['categoryURL' => $category, 'categoryId' => $categoryId, "color" => Settings::first()->color]);
     }
 
     /**
@@ -149,7 +151,7 @@ class ForumController extends Controller
             $op->contents = $text;
             $op->user = $userId;
             $op->save();
-            return $thread->id;
+            return str_replace(" ", "-", substr($thread->title, 0, 20)) . '-' . $thread->id;
         }
         return -1;
     }
@@ -158,11 +160,13 @@ class ForumController extends Controller
      * Show thread for $threadId
      * 
      * @param Request $request
-     * @param String $categoryName
-     * @param int $threadId
+     * @param string $categoryName
+     * @param string $thread
      * @return Response
      */
-     public function showThread(Request $request, $categoryName, $threadId, $page) {
+     public function showThread(Request $request, $categoryName, $thread, $page) {
+         $exploded = explode("-", $thread);
+         $threadId = $exploded[sizeof($exploded) - 1];
          $thread = Thread::find($threadId);
          if($thread == null) {
              return view('errors/404');

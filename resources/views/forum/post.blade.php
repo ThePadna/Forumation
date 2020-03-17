@@ -30,9 +30,9 @@ $form.submit((e) => {
         'categoryId': '{{$categoryId}}'
         },
       success: function(res) {
-        if(res != -1) window.location.replace("/forum/category/{{$categoryId}}/thread/" + res + "/1");
+        if(res != -1) window.location.replace("/forum/category/{{$categoryURL}}/thread/" + res + "/1");
         else {
-           window.location.replace("/forum/category/{{$categoryId}}/1");
+           window.location.replace("/forum/category/{{$categoryURL}}/1");
             }
       },
       error: function(xhr, ajaxOptions, thrownError) {

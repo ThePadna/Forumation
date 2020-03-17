@@ -4,7 +4,7 @@
 <div id="wrapper">
     <div id="threads">
         @foreach($threads as $t)
-        <a href="thread/{{$t->id}}/1">
+        <a href="thread/{{str_replace(' ', '-', substr($t->title, 0, 20))}}-{{$t->id}}/1">
             <div class="thread">
                 <div class="row">
                     <div id="posts" class="col-sm-8">
@@ -39,7 +39,7 @@
                             @endphp
                             @if(sizeof($posts) != 0)
                             <p> Latest post by &nbsp; <i class="far fa-user"></i> <a
-                                    href="/forum/profile/{{$t->op}}"><span
+                                    href="/forum/profile/{{App\User::find($t->op)->name}}"><span
                                         style="color:black;">{{App\User::find($t->op)->name}}</span> </a>
                                 {{$timeDisplay->format('%' . $formatAs) . $suffix}} ago</p>
                             @else

@@ -17,7 +17,7 @@
                     <p class="row-indicator"> Threads </p>
                 </div>
                 @foreach($categories as $c)
-                <a href="/forum/category/{{$c->id}}/1" id="title" class="drop-zone col-8"
+                <a href="/forum/category/{{str_replace(' ', '-', $c->name)}}/1" id="title" class="drop-zone col-8"
                     ondragover="event.preventDefault()"  categoryId='{{$c->id}}'>
                     <div class="catTitleWrapper">
                     @auth
