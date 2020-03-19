@@ -74,4 +74,19 @@ class AdminController extends Controller
       $settings->save();
     }
 
+    /**
+     * Query DB for users based on $val
+     * 
+     * @param Request $request
+     */
+    public function queryUsers(Request $request) {
+      $val = $request->input('val');
+      $users = User::where('name', 'LIKE', '%' . $val)->get();
+      $usersSerialized = '';
+      foreach($users as $u) {
+        $usersSerialized = $usersSerialized . ' ' . $u->name;
+      }
+      return $usersSerialized;
+    }
+
 }

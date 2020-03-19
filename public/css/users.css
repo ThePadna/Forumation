@@ -23,6 +23,11 @@ table td {
   font-size: 100px;
 }
 
+#user-search {
+  font-size: 1vw;
+  margin-left: 10vw;
+}
+
 #prevpage {
   left: 50px;
   font-size: 100px;

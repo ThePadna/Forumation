@@ -3,7 +3,10 @@
 <head>
     <link rel="stylesheet" href="{{asset('css/users.css')}}">
 </head>
-{{}}
+<div id="user-search">
+<input id="search-box">
+<i class="fas fa-search"></i>
+</div>
 <table>
   <tr>
     <th>Username</th>
@@ -35,4 +38,5 @@
 <meta name="color" content="{{$settings->color}}">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 <script src="{{asset('js/users.js')}}"> </script>
+<meta name="csrf" content="{{csrf_token()}}">
 @stop
