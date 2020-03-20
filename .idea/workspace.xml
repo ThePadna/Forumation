@@ -1,33 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1ca84d57-0980-4594-b6c4-389b39806fc8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_14_213439_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_14_213439_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_16_161218_create_threads_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_16_161218_create_threads_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_16_173905_create_posts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_16_173905_create_posts_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_09_02_154059_create_categories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_09_02_154059_create_categories_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_09_04_193420_add_category_id_to_threads.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_09_09_061303_add_role_to_users.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_10_115539_change_category_id_to_string.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_23_071018_add_timestamps_to_categories.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_23_234233_remove_unique_attr_from_threads_op.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_23_234758_remove_unique_attr_from_threads_title.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_21_145140_add_avatar_to_users.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_28_133312_change_thread_on_posts.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_30_134133_add_score_to_users.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_10_070312_change_category_name_to_category_id_on_threads.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_28_194835_add_desc_to_categories.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_01_173946_create_settings_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_01_173946_create_settings_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_15_140207_add_viewed_by_to_threads.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_19_163635_add_liked_by_to_posts.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_27_132304_add_erased_to_posts.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_03_01_141750_add_locked_to_threads.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_03_04_152749_add_thread_settings_to_settings.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_03_08_050459_add_last_login_to_users.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/categories.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/categories.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/forum/categories.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/forum/categories.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/forum/categories.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/forum/categories.blade.php" afterDir="false" />
-    </list>
+    <list default="true" id="1ca84d57-0980-4594-b6c4-389b39806fc8" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -15,7 +15,7 @@
   </tr>
   @foreach($users as $u)
   <tr>
-    <td> <a href="/forum/profile/{{$u->name}}">{{$u->name}} </a></td>
+    <td> <a href="/forum/profile/{{$u->name}}">{{$u->name}} </a> </td>
     <td>{{$u->created_at}}</td>
     <td>{{$u->last_login}}</td>
   </tr>

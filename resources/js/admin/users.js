@@ -1,3 +1,4 @@
+$('#search-box').val("");
 $("#search-box").on("change keyup paste", function() {
     if($(this).val().length >= 3) {
         queryUsersDB($(this).val());
@@ -11,10 +12,18 @@ function queryUsersDB(val) {
         headers: {'X-CSRF-TOKEN' : $('meta[name="csrf"]').attr('content')},
         data: {"val" : val},
         success: function(res) {
-            if(res == '') {
-                $('body').append('empty');
-            } else {
-            $('body').append(res);
+            if(res != '') {
+                $jsonResult = JSON.parse(res);
+                console.log($jsonResult);
+                $('td').hide();
+                $jsonResult.forEach(r => {
+                    let html = `<tr>
+                    <td> ` + `<a href="/forum/profile/ ` + r[0] + `">` + r[0] + `</a> </td>
+                    <td> ` + r[1] + ` </td>
+                    <td> ` + r[2] + ` </td>
+                    </tr>`;
+                    $(html).appendTo('table');
+                });
             }
         },
         error: function(xhr, ajaxOptions, thrownError) {

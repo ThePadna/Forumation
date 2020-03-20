@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Settings;
 use App\User;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
@@ -82,11 +83,12 @@ class AdminController extends Controller
     public function queryUsers(Request $request) {
       $val = $request->input('val');
       $users = User::where('name', 'LIKE', '%' . $val)->get();
-      $usersSerialized = '';
+      $usersSerialized = array();
       foreach($users as $u) {
-        $usersSerialized = $usersSerialized . ' ' . $u->name;
+        $userData = array($u->name, Carbon::parse($u->created_at)->format('Y-m-d H:i:s'), Carbon::parse($u->updated_at)->format('Y-m-d H:i:s'));
+        array_push($usersSerialized, $userData);
       }
-      return $usersSerialized;
+      return json_encode($usersSerialized);
     }
 
 }

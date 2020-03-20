@@ -93,6 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+$('#search-box').val("");
 $("#search-box").on("change keyup paste", function () {
   if ($(this).val().length >= 3) {
     queryUsersDB($(this).val());
@@ -110,10 +111,14 @@ function queryUsersDB(val) {
       "val": val
     },
     success: function success(res) {
-      if (res == '') {
-        $('body').append('empty');
-      } else {
-        $('body').append(res);
+      if (res != '') {
+        $jsonResult = JSON.parse(res);
+        console.log($jsonResult);
+        $('td').hide();
+        $jsonResult.forEach(function (r) {
+          var html = "<tr>\n                    <td> " + "<a href=\"/forum/profile/ " + r[0] + "\">" + r[0] + "</a> </td>\n                    <td> " + r[1] + " </td>\n                    <td> " + r[2] + " </td>\n                    </tr>";
+          $(html).appendTo('table');
+        });
       }
     },
     error: function error(xhr, ajaxOptions, thrownError) {
