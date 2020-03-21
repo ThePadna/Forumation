@@ -93,7 +93,20 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+var banUserFormHTML = "<div id=\"banUserForm\" class=\"popup-form\">\n<div class=\"form-header\">\n    <div class=\"form-exit\">\n        <i id=\"exit-icon\" class=\"fas fa-times\"></i>\n    </div>\n    <h1> Ban User </h1>\n</div>\n<div class=\"form-container\">\n    <form>\n        <input id=\"cause\" type=\"text\" name=\"cause\" placeholder=\"Cause\" />\n        <button id=\"confirmBan\"> Confirm Ban </button>\n    </form>\n</div>\n</div>";
 updateColorScheme($('meta[name="color"]').attr('content'));
+$(document).on('mouseover', '.form-exit', function (e) {
+  $(e.target).css({
+    color: 'red',
+    transition: 'color 1s'
+  });
+});
+$(document).on('mouseout', '.form-exit', function (e) {
+  $(e.target).css({
+    color: 'gray',
+    transition: 'color 1s'
+  });
+});
 displayStats();
 /**
  * Updates color scheme on present selectors.
@@ -102,14 +115,75 @@ displayStats();
  */
 
 function updateColorScheme(color) {
-  $('#header').css('background', color);
+  $('#header, .popup-form').css('background', color);
   $('p').css('color', color);
 }
+/**
+ * Initialize forms that are used when a 'popup-form' is needed.
+ */
+
+
+var $banUserForm;
+
+function initForms() {
+  $banUserForm = $("#banUserForm");
+}
+/**
+ * Listen for form submission
+ * Request to post new category when form is submitted.
+ */
+
+
+function registerBanUserSubmitListener() {
+  $banUserForm.submit(function (e) {
+    e.preventDefault();
+    var $cause = $banUserForm.find('input[name="cause"]').val();
+    $.ajax({
+      type: "POST",
+      url: "/banuser",
+      headers: {
+        "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
+      },
+      data: {
+        user: $('meta[name="user"]').attr("content"),
+        cause: $cause
+      },
+      success: function success(res) {
+        window.location.reload();
+      },
+      error: function error(xhr, ajaxOptions, thrownError) {
+        console.log("Error occured during AJAX request, error code: " + xhr.status);
+      }
+    });
+  });
+}
+/**
+ * Register click handler every time we append form to DOM.
+ */
+
+
+function registerFormExitHandler() {
+  $(".form-exit").on("click", function (e) {
+    $(".popup-form").remove();
+  });
+}
+/**
+ * Open user ban form on click.
+ */
+
+
+$("#ban-btn").on("click", function (e) {
+  $("body").append(banUserFormHTML);
+  registerFormExitHandler();
+  initForms();
+  registerBanUserSubmitListener();
+  updateColorScheme($('meta[name="color"]').attr('content'));
+  exitFormBtnHoverColorListener($('meta[name="color"]').attr('content'));
+});
 /**
  * Load all Posts, Threads, and Scores for user
  * Increment them to retrieved value as a displaying animation
  */
-
 
 function displayStats() {
   var posts = $('meta[name="posts"]').attr('content'),

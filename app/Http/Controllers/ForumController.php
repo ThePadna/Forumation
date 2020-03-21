@@ -274,4 +274,15 @@ class ForumController extends Controller
           $thread->locked = !$thread->locked;
           $thread->save();
       }
+      /**
+       * Ban user.
+       * 
+       * @param Request $request
+       */
+      public function banUser(Request $request) {
+        $name = $request->user;
+        $user = User::where('name', $name)->first();
+        $user->banned = 1;
+        $user->save();
+    }
 }

@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('remember_token', 100)->nullable();
             $table->string('role', 15)->nullable();
             $table->integer('score')->default(0);
+            $table->boolean('banned')->default(0);
             $table->timestamp('last_login')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
         });

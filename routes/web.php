@@ -26,6 +26,7 @@ Route::post('/categoryswitchid', 'ForumController@categorySwitchId');
 Route::post('/delcategory', 'ForumController@delCategory');
 Route::post('/editcategory', 'ForumController@editCategory');
 Route::post('/queryusers', 'AdminController@queryUsers');
+Route::post('/banuser', 'ForumController@banUser');
 Route::get('/forum/admin', 'AdminController@showCtrlPanel');
 Route::post('/forum/profile/{user}/edit/updateprofile', 'UserController@updateProfile');
 Route::get('/forum/admin/datamanagement/users/{page}', 'AdminController@showUsers');

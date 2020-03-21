@@ -150,11 +150,15 @@
   color: gray;
 }
 
+.popup-form .form-exit:hover {
+  cursor: pointer;
+}
+
 .popup-form .form-header {
   border: 1px solid black;
   width: 100%;
   height: 30%;
-  opacity: 0.8;
+  opacity: 1;
   background: white;
 }
 

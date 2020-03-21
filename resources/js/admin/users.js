@@ -1,5 +1,7 @@
+
 $('#search-box').val("");
 $("#search-box").on("change keyup paste", function() {
+    $('.temp').remove();
     if($(this).val().length >= 3) {
         queryUsersDB($(this).val());
     }
@@ -15,10 +17,9 @@ function queryUsersDB(val) {
             if(res != '') {
                 $jsonResult = JSON.parse(res);
                 console.log($jsonResult);
-                $('td').hide();
                 $jsonResult.forEach(r => {
-                    let html = `<tr>
-                    <td> ` + `<a href="/forum/profile/ ` + r[0] + `">` + r[0] + `</a> </td>
+                    let html = `<tr class="temp">
+                    <td> <i class="fas fa-search"></i> ` + `<a href="/forum/profile/ ` + r[0] + `">` + r[0] + `</a> </td>
                     <td> ` + r[1] + ` </td>
                     <td> ` + r[2] + ` </td>
                     </tr>`;

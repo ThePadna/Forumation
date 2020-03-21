@@ -2,7 +2,12 @@
 @section('content')
 <link rel="stylesheet" href="{{asset('css/profile.css')}}">
 <div id="profileheader">
-    <a href="/forum/profile/{{$user->id}}/edit"> <p id="editBtn"> [Edit Profile] </p> </a>
+    @auth 
+    @if(Auth::user()->role == "admin" || Auth::user()->id == $user->id)
+    <p id="ban-btn"> <i class="fas fa-ban"></i> Ban User </p>
+    <a href="/forum/profile/{{$user->name}}/edit"> <p id="editBtn"> [Edit Profile] </p> </a>
+    @endif
+    @endauth
     <div id="profilepicdiv">
         @if($user->avatar == null)
         <img id="profilepic" src="{{asset('img/profilepic.png')}}" />
@@ -34,6 +39,7 @@
 <meta name="threads" content="{{$threads}}">
 <meta name="posts" content="{{$posts}}">
 <meta name="score" content="{{$score}}">
+<meta name="user" content="{{$user->name}}">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 <script src="{{asset('js/profile.js')}}"> </script>
 @auth
