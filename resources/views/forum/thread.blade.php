@@ -45,7 +45,7 @@ $thread->save();
                 $users_liked = unserialize($p->liked_by);
                 $likeCount = 0;
                 $isLikedByUser = false;
-                if($users_liked != null) {
+                if($users_liked != null && Auth::user() != null) {
                 $isLikedByUser = in_array(Auth::user()->id, $users_liked);
                 $likeCount = sizeof($users_liked);
                 }
@@ -80,8 +80,18 @@ $thread->save();
                         @endif
                         <p> {{$user->name}} </p>
                         <div id="stats">
-                            <p> {{$user->score}} <i style="color: {{$color}}" class="fas fa-star"></i>
-                                {{App\Models\Post::where('user', $user->id)->get()->count()}} <i
+                        @php
+                        $posts = App\Models\Post::where('user', $user->id)->get();
+                        $score = 0;
+                        foreach($posts as $p) {
+                            if($p->liked_by != '') {
+                                $score += sizeof(unserialize($p->liked_by));
+                            }
+                        }
+                        $comments = sizeof($posts);
+                        @endphp
+                            <p> {{$score}} <i style="color: {{$color}}" class="fas fa-star"></i>
+                                {{$comments}} <i
                                     style="color: {{$color}}" class="fas fa-comments"></i></p>
                         </div>
                         @endif

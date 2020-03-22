@@ -1,0 +1,32 @@
+@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js);@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);a,
+a:hover {
+  text-decoration: none !important;
+  color: black;
+}
+
+#menu > * {
+  display: inline-block;
+}
+
+#menu > * i,
+#menu > * div {
+  display: table;
+  left: 50%;
+  position: relative;
+  transform: translateX(-50%);
+}
+
+#menu * {
+  display: block;
+  text-align: center;
+}
+
+#menu i {
+  font-size: 10vh;
+}
+
+p {
+  color: black;
+  font-size: 3vh;
+}
+

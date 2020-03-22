@@ -6,5 +6,5 @@ updateColorScheme($('meta[name="color"]').attr('content'));
  */
 function updateColorScheme(color) {
     $('#header').css('background', color);
-    //$('').css('color', color);
+    $('.menu-item').css('color', color);
 }

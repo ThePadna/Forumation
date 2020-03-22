@@ -208,10 +208,15 @@ class ForumController extends Controller
           if($user == null) {
               return view('errors/404');
           }
-          $score = $user->score;
-          $posts = Post::where('user', $user->id)->count();
+          $score = 0;
+          $posts = Post::where('user', $user->id)->get();
+          foreach($posts as $p) {
+            if($p->liked_by != '') {
+                $score += sizeof(unserialize($p->liked_by));
+            }
+          }
           $threads = Thread::where('op', $user->id)->count();
-          $posts = ($posts - $threads);
+          $posts = (sizeof($posts) - $threads);
           return view('/profile/profile', ['threads' => $threads, 'posts' => $posts, 'score' => $score, 'user' => $user, "color" => Settings::first()->color]);
       }
       /**

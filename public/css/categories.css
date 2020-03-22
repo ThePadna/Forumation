@@ -51,17 +51,12 @@
   text-align: center;
 }
 
-#categories #threads p {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+#categories .thread-count {
+  top: 2vh;
 }
 
-#categories #recentlyUpdated .recentPoster,
-#categories #recentlyUpdated .recentTitle {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+#categories .recentlyUpdated {
+  top: 2vh;
 }
 
 #categories a {
@@ -70,8 +65,10 @@
 }
 
 #categories #title hr {
+  border-top: 0.1vh;
   border-bottom: 0.1vh solid black;
-  width: 75%;
+  margin-left: 10vw;
+  width: 135%;
 }
 
 #categories #title .catTitleWrapper > * {
@@ -119,7 +116,17 @@
 
 #categories .recentTitle,
 #categories .recentPoster {
-  font-size: 100%;
+  font-size: 2vh;
+  top: -5%;
+}
+
+#categories .recentPoster {
+  margin-bottom: 1vh;
+}
+
+#categories .thread-count {
+  font-size: 2.5vh;
+  margin-top: 2vh;
 }
 
 #categories .category-hyperlink {

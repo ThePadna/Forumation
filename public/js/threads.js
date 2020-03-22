@@ -81,17 +81,52 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/admin/datamanagement.js":
-/*!**********************************************!*\
-  !*** ./resources/js/admin/datamanagement.js ***!
-  \**********************************************/
+/***/ "./resources/js/admin/threads.js":
+/*!***************************************!*\
+  !*** ./resources/js/admin/threads.js ***!
+  \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
+
+$('#search-box').val("");
+$("#search-box").on("change keyup paste", function () {
+  $('.temp').remove();
+
+  if ($(this).val().length >= 3) {
+    queryUsersDB($(this).val());
+  }
+});
+
+function queryUsersDB(val) {
+  $.ajax({
+    type: "POST",
+    url: '/querythreads',
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf"]').attr('content')
+    },
+    data: {
+      "val": val
+    },
+    success: function success(res) {
+      if (res != '') {
+        $jsonResult = JSON.parse(res);
+        console.log($jsonResult);
+        $jsonResult.forEach(function (r) {
+          var html = "<tr class=\"temp\">\n                    <td> <i class=\"fas fa-search\"></i> " + "<a href=\"/forum/profile/ " + r[0] + "\">" + r[0] + "</a> </td>\n                    <td> " + r[1] + " </td>\n                    <td> " + r[2] + " </td>\n                    </tr>";
+          $(html).appendTo('table');
+        });
+      }
+    },
+    error: function error(xhr, ajaxOptions, thrownError) {
+      console.log("Error occured during AJAX request, error code: " + xhr.status);
+    }
+  });
+}
 
 updateColorScheme($('meta[name="color"]').attr('content'));
 /**
@@ -101,20 +136,21 @@ updateColorScheme($('meta[name="color"]').attr('content'));
  */
 
 function updateColorScheme(color) {
+  console.log(color);
   $('#header').css('background', color);
-  $('.menu-item').css('color', color);
+  $('#prevpage, #nextpage').css('color', color);
 }
 
 /***/ }),
 
-/***/ 6:
-/*!****************************************************!*\
-  !*** multi ./resources/js/admin/datamanagement.js ***!
-  \****************************************************/
+/***/ 8:
+/*!*********************************************!*\
+  !*** multi ./resources/js/admin/threads.js ***!
+  \*********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\js\admin\datamanagement.js */"./resources/js/admin/datamanagement.js");
+module.exports = __webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\js\admin\threads.js */"./resources/js/admin/threads.js");
 
 
 /***/ })

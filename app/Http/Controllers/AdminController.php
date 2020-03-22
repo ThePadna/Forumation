@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Settings;
 use App\User;
+use App\Models\Thread;
+use App\Models\Post;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,7 +26,7 @@ class AdminController extends Controller
       }
 
       /**
-       * Show admin  
+       * Show admin users page.
        * 
        * @param int page
        * @param Request $request
@@ -37,6 +39,36 @@ class AdminController extends Controller
         $users = User::latest()->skip($skipAmt)->take($RESULTS_PER_PAGE)->get();
         $settings = Settings::first();
         return view('admin/users', ["page" => $page, "users" => $users, "settings" => $settings]);
+      }
+      /**
+       * Show admin threads page.
+       * 
+       * @param int page
+       * @param Request $request
+       * @return Response
+       */
+      public function showThreads(Request $request, $page) {
+        if(!$this->canAccess()) return view('errors/noaccess');
+        $RESULTS_PER_PAGE = 20;
+        $skipAmt = $page > 1 ? ($page * $RESULTS_PER_PAGE) - $RESULTS_PER_PAGE : 0;
+        $threads = Thread::latest()->skip($skipAmt)->take($RESULTS_PER_PAGE)->get();
+        $settings = Settings::first();
+        return view('admin/threads', ["page" => $page, "threads" => $threads, "settings" => $settings]);
+      }
+      /**
+       * Show admin posts page.
+       * 
+       * @param int page
+       * @param Request $request
+       * @return Response
+       */
+      public function showPosts(Request $request, $page) {
+        if(!$this->canAccess()) return view('errors/noaccess');
+        $RESULTS_PER_PAGE = 20;
+        $skipAmt = $page > 1 ? ($page * $RESULTS_PER_PAGE) - $RESULTS_PER_PAGE : 0;
+        $posts = Post::latest()->skip($skipAmt)->take($RESULTS_PER_PAGE)->get();
+        $settings = Settings::first();
+        return view('admin/posts', ["page" => $page, "posts" => $posts, "settings" => $settings]);
       }
 
     /**
@@ -95,6 +127,38 @@ class AdminController extends Controller
         array_push($usersSerialized, $userData);
       }
       return json_encode($usersSerialized);
+    }
+     /**
+     * Query DB for threads based on $val
+     * 
+     * @param Request $request
+     */
+    public function queryThreads(Request $request) {
+      if(!$this->canAccess()) return view('errors/noaccess');
+      $val = $request->input('val');
+      $threads = Thread::where('title', 'LIKE', '%' . $val . '%')->take(15)->get();
+      $threadsSerialized = array();
+      foreach($threads as $t) {
+        $threadData = array($t->title, Carbon::parse($t->created_at)->format('Y-m-d H:i:s'), Carbon::parse($t->updated_at)->format('Y-m-d H:i:s'));
+        array_push($threadsSerialized, $threadData);
+      }
+      return json_encode($threadsSerialized);
+    }
+     /**
+     * Query DB for users based on $val
+     * 
+     * @param Request $request
+     */
+    public function queryPosts(Request $request) {
+      if(!$this->canAccess()) return view('errors/noaccess');
+      $val = $request->input('val');
+      $posts = Post::where('contents', 'LIKE', '%' . $val . '%')->take(15)->get();
+      $postsSerialized = array();
+      foreach($posts as $p) {
+        $postData = array($p->contents, Carbon::parse($p->created_at)->format('Y-m-d H:i:s'), Carbon::parse($p->updated_at)->format('Y-m-d H:i:s'));
+        array_push($postsSerialized, $postData);
+      }
+      return json_encode($postsSerialized);
     }
 
     public function canAccess() {

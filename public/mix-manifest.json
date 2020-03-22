@@ -11,11 +11,15 @@
     "/css/admin.css": "/css/admin.css",
     "/css/datamanagement.css": "/css/datamanagement.css",
     "/css/users.css": "/css/users.css",
+    "/css/posts.css": "/css/posts.css",
+    "/css/threads.css": "/css/threads.css",
     "/js/categories.js": "/js/categories.js",
     "/js/category.js": "/js/category.js",
     "/js/datamanagement.js": "/js/datamanagement.js",
+    "/js/posts.js": "/js/posts.js",
     "/js/profile.js": "/js/profile.js",
     "/js/profile_edit.js": "/js/profile_edit.js",
     "/js/thread.js": "/js/thread.js",
+    "/js/threads.js": "/js/threads.js",
     "/js/users.js": "/js/users.js"
 }

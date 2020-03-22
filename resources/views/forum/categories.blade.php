@@ -7,7 +7,7 @@
         <div class="row">
                 @else
                 <div class="row">
-                <div id="title" class="col-8">
+                <div id="title" class="col-7">
                     <p class="row-indicator"> Category</p>
                 </div>
                 <div id="recentlyUpdated" class="col-2">
@@ -17,7 +17,7 @@
                     <p class="row-indicator"> Threads </p>
                 </div>
                 @foreach($categories as $c)
-                <a href="/forum/category/{{str_replace(' ', '-', $c->name)}}/1" id="title" class="drop-zone col-8"
+                <a href="/forum/category/{{str_replace(' ', '-', $c->name)}}/1" id="title" class="drop-zone col-7"
                     ondragover="event.preventDefault()"  categoryId='{{$c->id}}'>
                     <div class="catTitleWrapper">
                     @auth
@@ -48,7 +48,7 @@
                 $recentThread = $threads->last();
                 $threadCount = sizeof($threads);
                 @endphp
-                <div id="recentlyUpdated" class="col-2">
+                <div class="col-2 recentlyUpdated">
                 @if($recentThread == null)
                 <p class="recentTitle">  No threads for this category.</p>
                     <p class="recentPoster"> Bot, just now </p>
@@ -68,8 +68,8 @@
                     <p class="recentPoster"> {{App\User::find($recentThread->op)->name}}, {{$timeDisplay->format('%' . $formatAs)}}{{$suffix}} ago </p>
                     @endif
                 </div>
-                <div id="threads" class="col-1">
-                    <p> {{$threadCount}} </p>
+                <div class="col-1 threads">
+                    <p class="thread-count"> {{$threadCount}} </p>
                 </div>
                 @endforeach
                 @endif

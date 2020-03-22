@@ -86,7 +86,6 @@ $("#ban-btn").on("click", e => {
     initForms();
     registerBanUserSubmitListener();
     updateColorScheme($('meta[name="color"]').attr('content'));
-    exitFormBtnHoverColorListener($('meta[name="color"]').attr('content'));
 });
 /**
  * Load all Posts, Threads, and Scores for user
