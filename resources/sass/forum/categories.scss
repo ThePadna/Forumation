@@ -1,0 +1,172 @@
+@import '../libs';
+@import url('https://fonts.googleapis.com/css?family=Alegreya|Grenze&display=swap');
+body {
+    min-width: 750px;
+}
+.row>h1 {
+    text-align: center;
+}
+#categoryFormOpener {
+    position: absolute;
+    top: 7.5vh;
+    right: 7.5vh;
+    * {
+        color: white;
+        opacity: 0.7;
+    }
+    h1 {
+        text-align: center;
+        font-size: 2.5vh;
+    }
+    i {
+        font-size: 2.5vh;
+    }
+}
+#categoryFormOpener:hover {
+    cursor: pointer;
+}
+
+.row-indicator {
+    font-size: 3vh;
+}
+.header {
+    font-size: 3vh;
+    color: white;
+}
+.recentTitle {
+    font-size: 2vh;
+}
+.recentPoster {
+    font-size: 1.5vh;
+}
+#categories {
+    text-align: center;
+    .thread-count {
+        top: 2vh;
+    }
+    .recentlyUpdated {
+        top: 2vh;
+    }
+    a {
+        color: black;
+        text-decoration: none;
+    }
+    #title {
+        hr {
+            border-top: 0.1vh;
+            border-bottom: 0.1vh solid black;
+            margin-left: 10vw;
+            width: 135%;
+        }
+        .catTitleWrapper>* {
+            display: inline-block;
+            position: relative;
+        }
+        .edit-btn,.switch-btn {
+            font-size: 3.5vh;
+            position: absolute;
+        }
+        .catTitle {
+            text-align: center;
+            width: 50%;
+            font-size: 5vh;
+            margin-left: 10vw;
+            margin-right: 10vw;
+            word-break: break-all;
+        }
+        #desc {
+            word-break: break-all;
+            color: gray !important;
+            font-size: 2.5vh;
+            width: 50%;
+            left: 50%;
+            position: relative;
+            transform: translateX(-50%);
+        }
+    }
+    p {
+        margin: 0;
+    }
+    .catTitle {
+        font-size: 250%;
+    }
+    .description {
+        font-size: 150% !important;
+        color: gray;
+    }
+    .recentTitle, .recentPoster {
+        font-size: 2vh;
+        top: -5%;
+    }
+    .recentPoster {
+        margin-bottom: 1vh;
+    }
+    .thread-count {
+        font-size: 2.5vh;
+        margin-top: 2vh;
+    }
+    .category-hyperlink {
+        color: black;
+        text-decoration: none;
+        outline: none;
+        width: 50vw;
+    }
+}
+.popup-form {
+    border: 1px solid black;
+    height: 20vh;
+    width: 30vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    text-align: center;
+    .form-exit {
+        float: right;
+        position: relative;
+        font-size: 3vh;
+        top: 1vh;
+        right: 1vh;
+        color: gray;
+    }
+    .form-exit:hover {
+        cursor: pointer;
+    }
+    .form-header {
+        border: 1px solid black;
+        width: 100%;
+        height: 30%;
+        opacity: 1;
+        background: white;
+        h1 {
+            font-size: 4vh;
+        }
+    }
+    .form-container {
+        height: 70%;
+        width: 100%;
+        form {
+            h2 {
+                font-size: 2.5vh;
+                color: white;
+            }
+            input {
+                width: 70%;
+                border: 1px solid black;
+                border-radius: 5px;
+            }
+            button {
+                border: 1px solid black;
+                width: 30%;
+                height: 30%;
+                margin-top: 3%;
+                border-radius: 5px;
+            }
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+}

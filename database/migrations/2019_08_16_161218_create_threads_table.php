@@ -15,9 +15,12 @@ class CreateThreadsTable extends Migration
     {
         Schema::create('threads', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('op', 36)->unique();
-            $table->string('title', 300)->unique();
-            $table->decimal("posts");
+            $table->integer('op');
+            $table->string('title', 300);
+            $table->integer("posts");
+            $table->integer('categoryId');
+            $table->longtext('viewed_by')->default(null);
+            $table->boolean('locked')->default(0);
             $table->timestamps();
         });
     }

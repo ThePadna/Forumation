@@ -17,7 +17,7 @@
             <a id="admin" style="color:white; position:absolute; top:1vh; left:1vh;" href="/forum/admin"> <i style="font-size: 5vh;" class="fas fa-cog"></i></a>
             @endif
             <p class="auth">
-            <a id="username" style="color:white;" href="/forum/profile/{{Auth::user()->id}}">{{ Auth::user()->name }}</a>
+            <a id="username" style="color:white;" href="/forum/profile/{{Auth::user()->name}}">{{ Auth::user()->name }}</a>
             <a id="logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 {{ __('logout') }}
             </a>

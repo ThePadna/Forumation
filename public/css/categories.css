@@ -1,0 +1,206 @@
+@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js);@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);@import url(https://fonts.googleapis.com/css?family=Alegreya|Grenze&display=swap);body {
+  min-width: 750px;
+}
+
+.row > h1 {
+  text-align: center;
+}
+
+#categoryFormOpener {
+  position: absolute;
+  top: 7.5vh;
+  right: 7.5vh;
+}
+
+#categoryFormOpener * {
+  color: white;
+  opacity: 0.7;
+}
+
+#categoryFormOpener h1 {
+  text-align: center;
+  font-size: 2.5vh;
+}
+
+#categoryFormOpener i {
+  font-size: 2.5vh;
+}
+
+#categoryFormOpener:hover {
+  cursor: pointer;
+}
+
+.row-indicator {
+  font-size: 3vh;
+}
+
+.header {
+  font-size: 3vh;
+  color: white;
+}
+
+.recentTitle {
+  font-size: 2vh;
+}
+
+.recentPoster {
+  font-size: 1.5vh;
+}
+
+#categories {
+  text-align: center;
+}
+
+#categories .thread-count {
+  top: 2vh;
+}
+
+#categories .recentlyUpdated {
+  top: 2vh;
+}
+
+#categories a {
+  color: black;
+  text-decoration: none;
+}
+
+#categories #title hr {
+  border-top: 0.1vh;
+  border-bottom: 0.1vh solid black;
+  margin-left: 10vw;
+  width: 135%;
+}
+
+#categories #title .catTitleWrapper > * {
+  display: inline-block;
+  position: relative;
+}
+
+#categories #title .edit-btn,
+#categories #title .switch-btn {
+  font-size: 3.5vh;
+  position: absolute;
+}
+
+#categories #title .catTitle {
+  text-align: center;
+  width: 50%;
+  font-size: 5vh;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  word-break: break-all;
+}
+
+#categories #title #desc {
+  word-break: break-all;
+  color: gray !important;
+  font-size: 2.5vh;
+  width: 50%;
+  left: 50%;
+  position: relative;
+  transform: translateX(-50%);
+}
+
+#categories p {
+  margin: 0;
+}
+
+#categories .catTitle {
+  font-size: 250%;
+}
+
+#categories .description {
+  font-size: 150% !important;
+  color: gray;
+}
+
+#categories .recentTitle,
+#categories .recentPoster {
+  font-size: 2vh;
+  top: -5%;
+}
+
+#categories .recentPoster {
+  margin-bottom: 1vh;
+}
+
+#categories .thread-count {
+  font-size: 2.5vh;
+  margin-top: 2vh;
+}
+
+#categories .category-hyperlink {
+  color: black;
+  text-decoration: none;
+  outline: none;
+  width: 50vw;
+}
+
+.popup-form {
+  border: 1px solid black;
+  height: 20vh;
+  width: 30vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  text-align: center;
+}
+
+.popup-form .form-exit {
+  float: right;
+  position: relative;
+  font-size: 3vh;
+  top: 1vh;
+  right: 1vh;
+  color: gray;
+}
+
+.popup-form .form-exit:hover {
+  cursor: pointer;
+}
+
+.popup-form .form-header {
+  border: 1px solid black;
+  width: 100%;
+  height: 30%;
+  opacity: 1;
+  background: white;
+}
+
+.popup-form .form-header h1 {
+  font-size: 4vh;
+}
+
+.popup-form .form-container {
+  height: 70%;
+  width: 100%;
+}
+
+.popup-form .form-container form {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.popup-form .form-container form h2 {
+  font-size: 2.5vh;
+  color: white;
+}
+
+.popup-form .form-container form input {
+  width: 70%;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.popup-form .form-container form button {
+  border: 1px solid black;
+  width: 30%;
+  height: 30%;
+  margin-top: 3%;
+  border-radius: 5px;
+}
+

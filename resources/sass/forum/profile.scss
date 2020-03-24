@@ -1,0 +1,112 @@
+@import '../libs';
+#profileheader {
+    display: inline-block;
+    position: relative;        
+    left: 50%;
+    transform: translateX(-50%);
+    #profilepic {
+        width: 25vh;
+        height: 25vh;
+    }
+    #editBtn {
+        text-align: center;
+    }
+    * {
+        h1 {
+            font-size: 7.5vh;
+            text-align: center;
+            margin-top: 2.5vh;
+            margin-bottom: 10vh;
+        }
+        display: block;
+        position: relative;
+        margin: 0;
+        padding: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    input[type="file"] {
+        width: 75%;
+    }
+}
+
+#ban-btn:hover {
+    cursor: pointer;
+}
+#ban-btn {
+    text-align: center;
+}
+#ban-btn:hover {
+    color:red;
+}
+
+.row {
+    div {
+        height: 40vh;
+        p {
+            font-size: 800%;
+            color: white;
+        }
+        * {
+            text-align: center;
+        }
+    }
+}
+.popup-form {
+    border: 1px solid black;
+    height: 20vh;
+    width: 30vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    text-align: center;
+    .form-exit {
+        float: right;
+        position: relative;
+        font-size: 3vh;
+        top: 1vh;
+        right: 1vh;
+        color: gray;
+    }
+    .form-exit:hover {
+        cursor: pointer;
+    }
+    .form-header {
+        border: 1px solid black;
+        width: 100%;
+        height: 30%;
+        opacity: 1s;
+        background: white;
+        h1 {
+            font-size: 4vh;
+        }
+    }
+    .form-container {
+        height: 70%;
+        width: 100%;
+        form {
+            h2 {
+                font-size: 2.5vh;
+                color: white;
+            }
+            input {
+                width: 70%;
+                border: 1px solid black;
+                border-radius: 5px;
+            }
+            button {
+                border: 1px solid black;
+                width: 30%;
+                height: 30%;
+                margin-top: 3%;
+                border-radius: 5px;
+            }
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+}

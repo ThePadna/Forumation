@@ -22,9 +22,11 @@ class ForumController extends Controller
      * @param string $categoryName
      * @return Response
      */
-    public function showCategory($categoryId, $page) {
-        $skipAmt = $page > 1 ? ($page * 9) - 9 : 0;
-        $threads = Thread::latest()->where('categoryId', $categoryId)->skip($skipAmt)->take(9)->get();
+    public function showCategory($category, $page) {
+        $RESULTS_PER_PAGE = 9;
+        $skipAmt = $page > 1 ? ($page * $RESULTS_PER_PAGE) - $RESULTS_PER_PAGE : 0;
+        $categoryId = Category::where('name', str_replace('-', " ", $category))->first()->id;
+        $threads = Thread::latest()->where('categoryId', $categoryId)->skip($skipAmt)->take($RESULTS_PER_PAGE)->get();
         $posts = [];
         foreach($threads as $t) {
             $id = $t->id;
@@ -37,7 +39,7 @@ class ForumController extends Controller
                 } else $posts[$id] = $p;
             }
         }
-        return view("category", ["category" => Category::All()->firstWhere('id', $categoryId), "threads" => $threads, "page" => $page, "posts" => $posts, "now" => Carbon::now(), "color" => Settings::first()->color]);
+        return view("forum/category", ["category" => Category::All()->firstWhere('id', $categoryId), "threads" => $threads, "page" => $page, "posts" => $posts, "now" => Carbon::now(), "color" => Settings::first()->color]);
     }
 
      /**
@@ -47,7 +49,7 @@ class ForumController extends Controller
      */
     public function showCategories() {
         $settings = Settings::first();
-        return view("categories", ["categories" => Category::All(), "color" => $settings->color, "editormode" => $settings->editormode]);
+        return view("forum/categories", ["categories" => Category::All(), "color" => $settings->color, "editormode" => $settings->editormode]);
     }
 
     /**
@@ -121,7 +123,8 @@ class ForumController extends Controller
      * @return Response
      */
     public function showThreadPostForm(Request $request, $category) {
-        return view('post', ['categoryId' => $category, "color" => Settings::first()->color]);
+        $categoryId = Category::where('name', str_replace("-", " ", $category))->first()->id;
+        return view('forum/post', ['categoryURL' => $category, 'categoryId' => $categoryId, "color" => Settings::first()->color]);
     }
 
     /**
@@ -148,7 +151,7 @@ class ForumController extends Controller
             $op->contents = $text;
             $op->user = $userId;
             $op->save();
-            return $thread->id;
+            return str_replace(" ", "-", substr($thread->title, 0, 20)) . '-' . $thread->id;
         }
         return -1;
     }
@@ -157,14 +160,16 @@ class ForumController extends Controller
      * Show thread for $threadId
      * 
      * @param Request $request
-     * @param String $categoryName
-     * @param int $threadId
+     * @param string $categoryName
+     * @param string $thread
      * @return Response
      */
-     public function showThread(Request $request, $categoryName, $threadId, $page) {
+     public function showThread(Request $request, $categoryName, $thread, $page) {
+         $exploded = explode("-", $thread);
+         $threadId = $exploded[sizeof($exploded) - 1];
          $thread = Thread::find($threadId);
          if($thread == null) {
-             return view('404');
+             return view('errors/404');
          }
          $postCount = Post::where('thread', $threadId)->get()->count();
          $lastPage = ceil(($postCount / 9));
@@ -174,7 +179,7 @@ class ForumController extends Controller
          $postsSize = sizeof($posts);
          $empty = ($postsSize == 0);
          $threadLength = Settings::first()->thread_post_length;
-         return view('thread', ['threadLength' => $threadLength, 'lastPage' => $lastPage, 'empty' => $empty, 'page' => $page, 'posts' => $posts, 'isLastPage' => $isLastPage, 'thread' => $thread, "color" => Settings::first()->color]);
+         return view('forum/thread', ['threadLength' => $threadLength, 'lastPage' => $lastPage, 'empty' => $empty, 'page' => $page, 'posts' => $posts, 'isLastPage' => $isLastPage, 'thread' => $thread, "color" => Settings::first()->color]);
      }
      
      /**
@@ -195,55 +200,25 @@ class ForumController extends Controller
        * Show user profile page
        * 
        * @param Request $request
-       * @param int $userId
+       * @param string $userId
        * @return Response
        */
       public function showUserProfile(Request $request, $userId) {
-          $user = User::find($userId);
-          $score = $user->points;
-          $posts = Post::where('user', $user->id)->get()->count();
-          $threads = Thread::where('op', $user->id)->get()->count();
-          $posts = ($posts - $threads);
-          return view('profile', ['threads' => $threads, 'posts' => $posts, 'score' => $score, 'user' => $user, "color" => Settings::first()->color]);
-      }
-      /**
-       * Show admin control panel
-       * 
-       * @param Request $request
-       * @return Response
-       */
-      public function showCtrlPanel(Request $request) {
-          //checks
-          $settings = Settings::first();
-          return view('admin', ['settings' => $settings]);
-      }
-      /**
-       * Post color change to SQL Settings.
-       * 
-       * @param Request $request
-       */
-      public function postColorUpdate(Request $request) {
-          $settings = Settings::first();
-          if($settings == null) {
-              $settings = new Settings();
+          $user = User::where('name', $userId)->first();
+          if($user == null) {
+              return view('errors/404');
           }
-          $settings->color = $request->input('color');
-          $settings->save();
+          $score = 0;
+          $posts = Post::where('user', $user->id)->get();
+          foreach($posts as $p) {
+            if($p->liked_by != '') {
+                $score += sizeof(unserialize($p->liked_by));
+            }
+          }
+          $threads = Thread::where('op', $user->id)->count();
+          $posts = (sizeof($posts) - $threads);
+          return view('/profile/profile', ['threads' => $threads, 'posts' => $posts, 'score' => $score, 'user' => $user, "color" => Settings::first()->color]);
       }
-      /**
-       * Post editor mode update to SQL Settings.
-       * 
-       * @param Request $request
-       */
-      public function postEditorModeUpdate(Request $request) {
-        $settings = Settings::first();
-        if($settings == null) {
-            $settings = new Settings();
-        }
-        $settings->editormode = $request->input('toggle');
-        $settings->save();
-      }
-
       /**
        * Post a like or unlike to post
        * 
@@ -268,7 +243,6 @@ class ForumController extends Controller
           $post->save();
           return sizeof($liked_users);
       }
-
       /**
        * Delete a thread
        * 
@@ -277,6 +251,9 @@ class ForumController extends Controller
       public function delThread(Request $request) {
           $threadId = $request->input('id');
           $thread = Thread::find($threadId);
+          foreach(Post::where('thread', $thread->id)->get() as $p) {
+            $p->delete();
+          }
           $thread->delete();
       }
 
@@ -302,4 +279,15 @@ class ForumController extends Controller
           $thread->locked = !$thread->locked;
           $thread->save();
       }
+      /**
+       * Ban user.
+       * 
+       * @param Request $request
+       */
+      public function banUser(Request $request) {
+        $name = $request->user;
+        $user = User::where('name', $name)->first();
+        $user->banned = 1;
+        $user->save();
+    }
 }

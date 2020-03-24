@@ -1,0 +1,28 @@
+@import '../libs';
+
+a,a:hover {
+    text-decoration: none !important;
+    color: black;
+}
+#menu>* {
+    display: inline-block;
+    i,div {
+        display: table;
+        left: 50%;
+        position: relative;
+        transform: translateX(-50%);
+    }
+}
+#menu {
+    * {
+        display: block;
+        text-align: center;
+    }
+    i {
+        font-size: 10vh;
+    }
+}
+p {
+    color: black;
+    font-size: 3vh;
+}

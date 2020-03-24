@@ -1,0 +1,228 @@
+@import url(https://fonts.googleapis.com/css?family=Baskerville);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js);@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);.edit-btn {
+  font-size: 3.5vh;
+  left: 0vw;
+  top: 15vh;
+  color: black;
+  position: absolute;
+}
+
+.post-edit {
+  font-size: 3.5vh;
+  color: black;
+}
+
+.row {
+  word-wrap: break-word;
+  overflow: hidden;
+  width: 50%;
+  position: relative;
+  left: 45%;
+  transform: translateX(-50%);
+  margin-bottom: 1%;
+}
+
+#titleContainer {
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#titleContainer #threadTitle {
+  font-size: 5vh;
+  text-align: center;
+}
+
+.col-sm-2 {
+  margin-right: 2%;
+}
+
+.col-sm-2 p {
+  font-size: 3vh;
+  word-wrap: break-word;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  width: 15vh;
+}
+
+.col-sm-2 img {
+  width: 15vh;
+  height: 15vh;
+  border: 1px;
+  bordeR-radius: 50%;
+}
+
+.col-sm-8 {
+  word-break: break-all;
+  font-family: "Baskerville";
+}
+
+#stats {
+  width: 15vh;
+}
+
+#stats p {
+  font-size: 2.5vh;
+}
+
+.col-sm-1 {
+  height: 20vh;
+  width: 1px;
+  margin-left: 1vh;
+}
+
+.splitter {
+  border-left: 1px solid black;
+}
+
+#star {
+  font-size: 5vh;
+  text-align: center;
+  bottom: -10vh;
+}
+
+#star i {
+  position: relative;
+  top: 0vh;
+  transform: translateY(-100%);
+}
+
+#star p {
+  font-size: 2.5vh;
+  position: relative;
+  top: -5vh;
+}
+
+#star-count {
+  font-size: 4vh;
+}
+
+#replyForm * {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#replyForm textarea {
+  margin-bottom: 2%;
+  width: 35vw;
+  height: 20vh;
+}
+
+#replyForm button {
+  display: block;
+  color: gray;
+  width: 4vw;
+  height: 4vh;
+}
+
+#prevpage,
+#nextpage,
+#lastpage {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  position: fixed;
+  opacity: 0.8;
+  color: white;
+  font-size: 10vh;
+}
+
+#prevpage {
+  left: 50px;
+}
+
+#lastpage {
+  top: 60% !important;
+  right: 50px;
+  font-size: 5vh !important;
+}
+
+#nextpage {
+  right: 50px;
+}
+
+#empty {
+  text-align: center;
+  font-size: 5vh;
+  color: white;
+}
+
+.increase-size {
+  font-size: 150%;
+  transition: font-size 0.25s;
+}
+
+.decrease-size {
+  font-size: 100%;
+  transition: font-size 0.25s;
+}
+
+.popup-form {
+  border: 1px solid black;
+  height: 20vh;
+  width: 30vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.popup-form .form-exit {
+  float: right;
+  position: relative;
+  font-size: 3vh;
+  top: 1vh;
+  right: 1vh;
+  color: gray;
+}
+
+.popup-form .form-exit:hover {
+  cursor: pointer;
+}
+
+.popup-form .form-header {
+  border: 1px solid black;
+  width: 100%;
+  height: 30%;
+  opacity: 1;
+  background: white;
+}
+
+.popup-form .form-header h1 {
+  font-size: 4vh;
+}
+
+.popup-form .form-container {
+  height: 70%;
+  width: 100%;
+}
+
+.popup-form .form-container form {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.popup-form .form-container form p {
+  font-size: 2.5vh;
+  color: white;
+}
+
+.popup-form .form-container form input {
+  width: 70%;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.popup-form .form-container form button {
+  border: 1px solid black;
+  width: 30%;
+  height: 30%;
+  margin-top: 3%;
+  border-radius: 5px;
+}
+

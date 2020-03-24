@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1ca84d57-0980-4594-b6c4-389b39806fc8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/public/css/categories.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/categories.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/categories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/categories.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/categories.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/categories.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/categories.blade.php" afterDir="false" />
-    </list>
+    <list default="true" id="1ca84d57-0980-4594-b6c4-389b39806fc8" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +42,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
