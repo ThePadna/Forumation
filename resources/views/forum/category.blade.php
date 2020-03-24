@@ -38,7 +38,7 @@
                             }
                             @endphp
                             @if(sizeof($posts) != 0)
-                            <p> Latest post by &nbsp; <i class="far fa-user"></i> <a
+                            <p style="color:{{$color}}"> Latest post by &nbsp; <i class="far fa-user"></i> <a
                                     href="/forum/profile/{{App\User::find($t->op)->name}}"><span
                                         style="color:black;">{{App\User::find($t->op)->name}}</span> </a>
                                 {{$timeDisplay->format('%' . $formatAs) . $suffix}} ago</p>
