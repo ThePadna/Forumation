@@ -10876,132 +10876,42 @@ a.text-dark:focus {
   }
 }
 
-#profileheader {
+#container #profilepic,
+#container #pic,
+#container #update {
+  display: block;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#container #profilepic {
+  border: 1px solid black;
+  height: 30vh;
+  width: 30vh;
+}
+
+#container #update {
+  margin-top: 1%;
+}
+
+#container input[type=file] {
+  width: 11vw;
+}
+
+#container #namechanger {
+  margin-top: 1%;
   display: inline-block;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
 }
 
-#profileheader #profilepic {
-  width: 25vh;
-  height: 25vh;
+#container #namechanger h1 {
+  font-size: 1vw;
 }
 
-#profileheader #editBtn {
-  text-align: center;
-}
-
-#profileheader * {
-  display: block;
-  position: relative;
-  margin: 0;
-  padding: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-#profileheader * h1 {
-  font-size: 7.5vh;
-  text-align: center;
-  margin-top: 2.5vh;
-  margin-bottom: 10vh;
-}
-
-#profileheader input[type=file] {
-  width: 75%;
-}
-
-#ban-btn:hover {
-  cursor: pointer;
-}
-
-#ban-btn {
-  text-align: center;
-}
-
-#ban-btn:hover {
-  color: red;
-}
-
-.row div {
-  height: 40vh;
-}
-
-.row div p {
-  font-size: 800%;
-  color: white;
-}
-
-.row div * {
-  text-align: center;
-}
-
-.popup-form {
-  border: 1px solid black;
-  height: 20vh;
-  width: 30vw;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  text-align: center;
-}
-
-.popup-form .form-exit {
-  float: right;
-  position: relative;
-  font-size: 3vh;
-  top: 1vh;
-  right: 1vh;
-  color: gray;
-}
-
-.popup-form .form-exit:hover {
-  cursor: pointer;
-}
-
-.popup-form .form-header {
-  border: 1px solid black;
-  width: 100%;
-  height: 30%;
-  opacity: 1s;
-  background: white;
-}
-
-.popup-form .form-header h1 {
-  font-size: 4vh;
-}
-
-.popup-form .form-container {
-  height: 70%;
-  width: 100%;
-}
-
-.popup-form .form-container form {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.popup-form .form-container form h2 {
-  font-size: 2.5vh;
-  color: white;
-}
-
-.popup-form .form-container form input {
-  width: 70%;
-  border: 1px solid black;
-  border-radius: 5px;
-}
-
-.popup-form .form-container form button {
-  border: 1px solid black;
-  width: 30%;
-  height: 30%;
-  margin-top: 3%;
-  border-radius: 5px;
+#container #namechanger * {
+  display: inline-block;
 }
 

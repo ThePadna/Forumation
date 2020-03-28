@@ -1,11 +1,5 @@
 @import '../libs';
 @import url('https://fonts.googleapis.com/css?family=Alegreya|Grenze&display=swap');
-body {
-    min-width: 750px;
-}
-.row>h1 {
-    text-align: center;
-}
 #categoryFormOpener {
     position: absolute;
     top: 7.5vh;
@@ -22,95 +16,66 @@ body {
         font-size: 2.5vh;
     }
 }
-#categoryFormOpener:hover {
-    cursor: pointer;
-}
 
-.row-indicator {
-    font-size: 3vh;
+a {
+    text-decoration: none !important;
 }
-.header {
-    font-size: 3vh;
-    color: white;
-}
-.recentTitle {
-    font-size: 2vh;
-}
-.recentPoster {
-    font-size: 1.5vh;
-}
-#categories {
-    text-align: center;
-    .thread-count {
-        top: 2vh;
+.row {
+    width: 70vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    * {
+        text-align: center;
     }
-    .recentlyUpdated {
-        top: 2vh;
+    hr {
+        border-bottom: 0.1vh solid black;
+        width: 125%;
     }
-    a {
+    h1 {
+        top: 2vh;
+        font-size: 3vh;
         color: black;
-        text-decoration: none;
-    }
-    #title {
-        hr {
-            border-top: 0.1vh;
-            border-bottom: 0.1vh solid black;
-            margin-left: 10vw;
-            width: 135%;
-        }
-        .catTitleWrapper>* {
-            display: inline-block;
-            position: relative;
-        }
-        .edit-btn,.switch-btn {
-            font-size: 3.5vh;
-            position: absolute;
-        }
-        .catTitle {
-            text-align: center;
-            width: 50%;
-            font-size: 5vh;
-            margin-left: 10vw;
-            margin-right: 10vw;
-            word-break: break-all;
-        }
-        #desc {
-            word-break: break-all;
-            color: gray !important;
-            font-size: 2.5vh;
-            width: 50%;
-            left: 50%;
-            position: relative;
-            transform: translateX(-50%);
-        }
     }
     p {
-        margin: 0;
-    }
-    .catTitle {
-        font-size: 250%;
-    }
-    .description {
-        font-size: 150% !important;
-        color: gray;
-    }
-    .recentTitle, .recentPoster {
-        font-size: 2vh;
-        top: -5%;
-    }
-    .recentPoster {
-        margin-bottom: 1vh;
-    }
-    .thread-count {
-        font-size: 2.5vh;
-        margin-top: 2vh;
-    }
-    .category-hyperlink {
         color: black;
-        text-decoration: none;
-        outline: none;
-        width: 50vw;
+        font-size: 1.5vh;
     }
+    .col-7 {
+        height: 10vh;
+        top: 2.5vh;
+    }
+
+    .col-2 {
+        top: 2vh;
+    }
+
+    .desc {
+        color: gray;
+        font-size: 2vh;
+    }
+
+    .switch-btn, .edit-btn {
+        color: black;
+        font-size: 150%;
+        position: absolute;
+        top: 35%;
+        right: 0;
+        cursor: pointer;
+    }
+    .edit-btn {
+        position: absolute;
+        left: 15vw;
+    }
+}
+#threads {
+    margin-left: 20vw;
+}
+.category {
+    margin-bottom: 15px;
+}
+#categoryFormOpener:hover {
+    cursor: pointer;
 }
 .popup-form {
     border: 1px solid black;

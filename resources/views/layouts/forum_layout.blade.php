@@ -1,6 +1,7 @@
 <html>
 
 <head>
+    <link href = "{{ asset('bootstrap.min.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{asset('css/forum_layout.css')}}">
     <div id="header">
     <a href="/forum">

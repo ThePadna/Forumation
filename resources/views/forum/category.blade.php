@@ -11,7 +11,7 @@
                         @if($t->locked)
                         <h1 class="title"> <i class="fas fa-lock"></i> {{$t->title}} </h1>
                         @else
-                        <h1 class="title"> {{$t->title}} </h1>
+                        <h1 class="title" style="font-weight: 550;"> {{$t->title}} </h1>
                         @endif
                         <div class="op">
                             @php
@@ -38,12 +38,15 @@
                             }
                             @endphp
                             @if(sizeof($posts) != 0)
-                            <p style="color:{{$color}}"> Latest post by &nbsp; <i class="far fa-user"></i> <a
-                                    href="/forum/profile/{{App\User::find($t->op)->name}}"><span
-                                        style="color:black;">{{App\User::find($t->op)->name}}</span> </a>
-                                {{$timeDisplay->format('%' . $formatAs) . $suffix}} ago</p>
+                            <h5>
+                            <span style="color:{{$color}}; font-style: normal;"> Latest post by </span> &nbsp; <i
+                                class="far fa-user"></i>
+                            <a href="/forum/profile/{{App\User::find($t->op)->name}}">
+                                <span style="color:black;">{{App\User::find($t->op)->name}}</span> </a>
+                            <span style="color:{{$color}}; font-style: normal;"> {{$timeDisplay->format('%' . $formatAs) . $suffix}} ago </span>
+                            </h5>
                             @else
-                            <p> This thread has no posts yet</p>
+                            <p> This thread has no posts yet </p>
                             @endif
                         </div>
                     </div>
@@ -57,7 +60,8 @@
                         @auth
                         @if(Auth::user()->role == "admin")
                         <div class="edit-btn">
-                            <i id="del" class="del-thread fas fa-trash" threadId='{{$t->id}}' threadName='{{$t->title}}'></i>
+                            <i id="del" class="del-thread fas fa-trash" threadId='{{$t->id}}'
+                                threadName='{{$t->title}}'></i>
                         </div>
                         @endif
                         @endauth

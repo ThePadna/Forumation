@@ -57,13 +57,14 @@ function initForms() {
 /**
  * Change colour to forum's color scheme on hover.
  */
-$('.edit-btn, .switch-btn').on('mouseover', (e) => {
+$('#up, #down, #edit, #del').on('mouseover', (e) => {
+    console.log("hi");
     $(e.target).css({
         color: $('meta[name="color"]').attr('content'),
         transition: 'color 1s'
     });
 });
-$('.edit-btn, .switch-btn').on('mouseout', (e) => {
+$('#up, #down, #edit, #del').on('mouseout', (e) => {
     $(e.target).css({
         color: 'black',
         transition: 'color 1s'
@@ -161,12 +162,11 @@ function registerEditFormSubmitListener() {
  * Open category creator form on button press.
  */
 $("#categoryFormOpener").on("click", e => {
-    $("#categories").append(addCategoryFormHTML);
+    $(".wrapper").append(addCategoryFormHTML);
     registerFormExitHandler();
     initForms();
     registerAddFormSubmitListener();
     updateColorScheme($('meta[name="color"]').attr('content'));
-    exitFormBtnHoverColorListener($('meta[name="color"]').attr('content'));
 });
 /**
  * Register click handler every time we append form to DOM.
@@ -247,9 +247,10 @@ $('.down-arrow').on('click', e => {
  */
 function getAdjacentCategory(id, above) {
     let lastIterId = null;
-    let $catArray = $('a');
+    let $catArray = $('.data-title');
+    console.log($catArray);
     for(let i = 0; i < $catArray.length; i++) {
-        let eid = $catArray[i].getAttribute('categoryid');
+        let eid = $catArray[i].getAttribute('categoryId');
         console.log("eid" + eid);
         if(lastIterId != null && id == eid && above) {
             console.log("Returning " + lastIterId);
@@ -258,7 +259,7 @@ function getAdjacentCategory(id, above) {
         if(lastIterId != null && !above && lastIterId == id) {
             return eid;
         }
-        lastIterId = $catArray[i].getAttribute('categoryid');
+        lastIterId = $catArray[i].getAttribute('categoryId');
     }
 }
 /**
@@ -269,7 +270,7 @@ $(".del-category").on("click", e => {
     e.preventDefault();
     $prevClickedDelCategoryName = $(e.target).attr('categoryName');
     $prevClickedDelCategoryId = $(e.target).attr('categoryId');
-    $("#categories").append(
+    $(".wrapper").append(
         delCategoryFormHTML.replace(
             "%c",
             $prevClickedDelCategoryName.trim()
@@ -279,7 +280,6 @@ $(".del-category").on("click", e => {
     initForms();
     registerDelFormSubmitListener();
     updateColorScheme($('meta[name="color"]').attr('content'));
-    exitFormBtnHoverColorListener($('meta[name="color"]').attr('content'));
 });
 
 /**
@@ -290,7 +290,7 @@ $(".edit-category").on("click", e => {
     $prevClickedDelCategoryName = $(e.target).attr('categoryName');
     $prevClickedEditCategoryDesc = $(e.target).attr('categoryDesc');
     $prevClickedDelCategoryId = $(e.target).attr('categoryId');
-    $("#categories").append(
+    $(".wrapper").append(
         editCategoryFormHTML.replace(
             "%c",
             $prevClickedDelCategoryName.trim()
@@ -303,7 +303,6 @@ $(".edit-category").on("click", e => {
     initForms();
     registerEditFormSubmitListener();
     updateColorScheme($('meta[name="color"]').attr('content'));
-    exitFormBtnHoverColorListener($('meta[name="color"]').attr('content'));
 });
 updateColorScheme($('meta[name="color"]').attr('content'));
 /**

@@ -10876,132 +10876,121 @@ a.text-dark:focus {
   }
 }
 
-#profileheader {
+a {
+  text-decoration: none;
+}
+
+#menu > * {
   display: inline-block;
-  position: relative;
+}
+
+#menu > * i,
+#menu > * div {
+  display: table;
   left: 50%;
+  position: relative;
   transform: translateX(-50%);
 }
 
-#profileheader #profilepic {
-  width: 25vh;
-  height: 25vh;
-}
-
-#profileheader #editBtn {
-  text-align: center;
-}
-
-#profileheader * {
+#menu * {
   display: block;
-  position: relative;
-  margin: 0;
-  padding: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-#profileheader * h1 {
-  font-size: 7.5vh;
-  text-align: center;
-  margin-top: 2.5vh;
-  margin-bottom: 10vh;
-}
-
-#profileheader input[type=file] {
-  width: 75%;
-}
-
-#ban-btn:hover {
-  cursor: pointer;
-}
-
-#ban-btn {
   text-align: center;
 }
 
-#ban-btn:hover {
-  color: red;
+#menu i {
+  font-size: 10vh;
 }
 
-.row div {
-  height: 40vh;
+#menu .pcr-button {
+  width: 10vh;
+  height: 10vh;
 }
 
-.row div p {
-  font-size: 800%;
-  color: white;
-}
-
-.row div * {
-  text-align: center;
-}
-
-.popup-form {
-  border: 1px solid black;
-  height: 20vh;
-  width: 30vw;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  text-align: center;
-}
-
-.popup-form .form-exit {
-  float: right;
-  position: relative;
+p {
+  color: black;
   font-size: 3vh;
-  top: 1vh;
-  right: 1vh;
+}
+
+#color-state {
   color: gray;
 }
 
-.popup-form .form-exit:hover {
-  cursor: pointer;
-}
-
-.popup-form .form-header {
+hr {
   border: 1px solid black;
-  width: 100%;
-  height: 30%;
-  opacity: 1s;
-  background: white;
+  margin-bottom: 10vh;
 }
 
-.popup-form .form-header h1 {
-  font-size: 4vh;
+.toggle input {
+  display: none;
 }
 
-.popup-form .form-container {
-  height: 70%;
-  width: 100%;
+#settings-title {
+  color: gray;
+  font-size: 5vh !important;
 }
 
-.popup-form .form-container form {
+#thread-settings > .col-sm-4 {
+  text-align: center;
+  color: gray;
+}
+
+#thread-settings > .col-sm-4 div {
+  margin-top: 5vh;
+}
+
+#thread-settings > .col-sm-4 div * {
+  display: inline;
+}
+
+#thread-settings > .col-sm-4 h1 {
+  font-size: 1.75vh;
+  margin-right: 1.5vh;
+}
+
+#thread-settings > .col-sm-4 input {
+  font-size: 1vh;
+  width: 5vh;
+}
+
+.toggle {
   position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: inline-block;
+  width: 20vh;
+  height: 5vh;
+  margin-top: 2.5vh;
+  margin-bottom: 2.5vh;
 }
 
-.popup-form .form-container form h2 {
-  font-size: 2.5vh;
-  color: white;
-}
-
-.popup-form .form-container form input {
-  width: 70%;
-  border: 1px solid black;
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #bc2612;
+  border: 1px solid #aaa;
   border-radius: 5px;
+  transition: all 0.2s;
 }
 
-.popup-form .form-container form button {
-  border: 1px solid black;
-  width: 30%;
-  height: 30%;
-  margin-top: 3%;
+.slider:before {
+  position: absolute;
+  content: "";
+  width: 5vh;
+  height: 2.5vh;
+  left: 5.5vh;
+  top: 0.9vh;
+  background-color: #eee;
   border-radius: 5px;
+  transition: all 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #8cbc13;
+}
+
+input:checked + .slider:before {
+  transform: translateX(40px);
 }
 

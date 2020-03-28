@@ -1,7 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1ca84d57-0980-4594-b6c4-389b39806fc8" name="Default Changelist" comment="" />
+    <list default="true" id="1ca84d57-0980-4594-b6c4-389b39806fc8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ForumController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ForumController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/categories.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/categories.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/category.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/category.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/datamanagement.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/datamanagement.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/forum_layout.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/forum_layout.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/posts.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/posts.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/profile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/thread.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/thread.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/threads.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/threads.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/users.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/users.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/categories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/category.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/category.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/datamanagement.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/datamanagement.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/posts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/profile_edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/profile_edit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/thread.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/thread.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/threads.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/threads.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/forum/categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/forum/categories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/_libs.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/_libs.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/forum/categories.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/forum/categories.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/forum/category.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/forum/category.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/forum/categories.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/forum/categories.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/forum/category.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/forum/category.blade.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

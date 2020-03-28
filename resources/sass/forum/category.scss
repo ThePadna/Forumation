@@ -30,6 +30,10 @@
     }
 }
 
+#del {
+    cursor: pointer;
+}
+
 #prevpage,
 #nextpage {
     position: relative;
@@ -103,6 +107,10 @@ a:hover {
         transform: translateY(-50%);
         position: absolute;
     }
+}
+
+.post-by {
+    color:red;
 }
 
 .popup-form {

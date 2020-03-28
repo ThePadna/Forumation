@@ -10876,132 +10876,39 @@ a.text-dark:focus {
   }
 }
 
-#profileheader {
-  display: inline-block;
+#header {
+  margin-bottom: 0 !important;
+}
+
+#wrapper {
+  width: 100vw;
+  height: 85vh;
+}
+
+#wrapper #post {
   position: relative;
+  width: auto;
+  height: auto;
   left: 50%;
-  transform: translateX(-50%);
-}
-
-#profileheader #profilepic {
-  width: 25vh;
-  height: 25vh;
-}
-
-#profileheader #editBtn {
-  text-align: center;
-}
-
-#profileheader * {
-  display: block;
-  position: relative;
-  margin: 0;
-  padding: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-#profileheader * h1 {
-  font-size: 7.5vh;
-  text-align: center;
-  margin-top: 2.5vh;
-  margin-bottom: 10vh;
-}
-
-#profileheader input[type=file] {
-  width: 75%;
-}
-
-#ban-btn:hover {
-  cursor: pointer;
-}
-
-#ban-btn {
-  text-align: center;
-}
-
-#ban-btn:hover {
-  color: red;
-}
-
-.row div {
-  height: 40vh;
-}
-
-.row div p {
-  font-size: 800%;
-  color: white;
-}
-
-.row div * {
-  text-align: center;
-}
-
-.popup-form {
-  border: 1px solid black;
-  height: 20vh;
-  width: 30vw;
-  position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  text-align: center;
-}
-
-.popup-form .form-exit {
-  float: right;
-  position: relative;
-  font-size: 3vh;
-  top: 1vh;
-  right: 1vh;
-  color: gray;
-}
-
-.popup-form .form-exit:hover {
-  cursor: pointer;
-}
-
-.popup-form .form-header {
-  border: 1px solid black;
-  width: 100%;
-  height: 30%;
-  opacity: 1s;
-  background: white;
-}
-
-.popup-form .form-header h1 {
-  font-size: 4vh;
-}
-
-.popup-form .form-container {
-  height: 70%;
-  width: 100%;
-}
-
-.popup-form .form-container form {
-  position: relative;
-  top: 50%;
-  left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.popup-form .form-container form h2 {
-  font-size: 2.5vh;
-  color: white;
+#wrapper input,
+#wrapper textarea,
+#wrapper button {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 1%;
 }
 
-.popup-form .form-container form input {
-  width: 70%;
-  border: 1px solid black;
-  border-radius: 5px;
+#wrapper #threadTitle {
+  width: 50%;
 }
 
-.popup-form .form-container form button {
-  border: 1px solid black;
-  width: 30%;
-  height: 30%;
-  margin-top: 3%;
-  border-radius: 5px;
+#wrapper #threadText {
+  width: 50%;
+  height: 25%;
 }
 

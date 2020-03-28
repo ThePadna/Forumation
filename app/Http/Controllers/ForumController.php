@@ -110,6 +110,7 @@ class ForumController extends Controller
         $id = $request->input('id');
         $new = $request->input('newCategoryName');
         $desc = $request->input('description');
+        if($desc == null) $desc = '';
         $cat = Category::find($id);
         $cat->desc = $desc;
         $cat->name = $new;
