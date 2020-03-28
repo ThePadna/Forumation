@@ -44,9 +44,15 @@ a {
     .col-7 {
         height: 10vh;
         top: 2.5vh;
+        left: 10vw;
     }
 
     .col-2 {
+        top: 2vh;
+        left: 12vw;
+    }
+
+    .col-1 {
         top: 2vh;
     }
 
@@ -55,17 +61,23 @@ a {
         font-size: 2vh;
     }
 
-    .switch-btn, .edit-btn {
+    .editor-btn {
+        * {
+            display: inline-block;
+            float: left;
+            margin-right: 0.1vw;
+        }
+        .switch-btn {
+            margin-right: 1vw;
+        }
+        width: 10vw;
+        position: absolute;
+        display: inline-block;
         color: black;
-        font-size: 150%;
-        position: absolute;
-        top: 35%;
-        right: 0;
+        font-size: 175%;
+        top: 45%;
+        right: 30vw;
         cursor: pointer;
-    }
-    .edit-btn {
-        position: absolute;
-        left: 15vw;
     }
 }
 #threads {

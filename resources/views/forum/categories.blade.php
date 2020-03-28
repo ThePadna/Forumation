@@ -10,22 +10,20 @@
                 <div id="title" class="col-5">
                     @auth
                     @if(Auth::user()->role == "admin")
-                    <div class="switch-btn">
-                        <i id="up" class="up-arrow fas fa-arrow-up" categoryId='{{$c->id}}'
-                            categoryName='{{$c->name}}'></i>
-                        <i id="down" class="down-arrow fas fa-arrow-down" categoryId='{{$c->id}}'
-                            categoryName='{{$c->name}}'></i>
+                    <div class="editor-btn">
+                        <div class="switch-btn">
+                            <i id="up" class="up-arrow fas fa-arrow-up" categoryId='{{$c->id}}'
+                                categoryName='{{$c->name}}'></i>
+                            <i id="down" class="down-arrow fas fa-arrow-down" categoryId='{{$c->id}}'
+                                categoryName='{{$c->name}}'></i>
+                        </div>
+                        <div class="edit-btn">
+                            <i id="edit" class="edit-category far fa-edit" categoryId='{{$c->id}}'
+                                categoryName='{{$c->name}}' categoryDesc='{{$c->desc}}'></i>
+                            <i id="del" class="del-category fas fa-trash" categoryId='{{$c->id}}'
+                                categoryName='{{$c->name}}' categoryDesc='{{$c->desc}}'></i>
+                        </div>
                     </div>
-                    @auth
-                    @if(Auth::user()->role == "admin")
-                    <div class="edit-btn">
-                        <i id="edit" class="edit-category far fa-edit" categoryId='{{$c->id}}'
-                            categoryName='{{$c->name}}' categoryDesc='{{$c->desc}}'></i>
-                        <i id="del" class="del-category fas fa-trash" categoryId='{{$c->id}}'
-                            categoryName='{{$c->name}}' categoryDesc='{{$c->desc}}'></i>
-                    </div>
-                    @endif
-                    @endauth
                     @endif
                     @endauth
                     <a href="/forum/category/{{str_replace(' ', '-', $c->name)}}/1" class="data-title"
