@@ -10876,28 +10876,53 @@ a.text-dark:focus {
   }
 }
 
-#categoryFormOpener {
+#addCategory {
   position: absolute;
-  top: 7.5vh;
-  right: 7.5vh;
+  left: 2vw;
+  top: 18vh;
 }
 
-#categoryFormOpener * {
+#addCategory * {
   color: white;
   opacity: 0.7;
 }
 
-#categoryFormOpener h1 {
+#addCategory h1 {
   text-align: center;
-  font-size: 2.5vh;
+  font-size: 3vh;
+  transition: opacity 1s;
+  opacity: 0;
 }
 
-#categoryFormOpener i {
-  font-size: 2.5vh;
+#addCategory i {
+  left: 50%;
+  position: relative;
+  transform: translateX(-50%);
+  font-size: 4vh;
+  opacity: 0.5;
+  transition: opacity 1s;
+}
+
+#addCategory:hover {
+  cursor: pointer;
+}
+
+#addCategory:hover h1 {
+  transition: opacity 1s;
+  opacity: 1;
+}
+
+#addCategory:hover i {
+  transition: opacity 1s;
+  opacity: 1;
 }
 
 a {
   text-decoration: none !important;
+}
+
+#table-header * {
+  font-weight: 620;
 }
 
 .row {
@@ -10927,19 +10952,19 @@ a {
   font-size: 1.5vh;
 }
 
-.row .col-7 {
-  height: 10vh;
-  top: 2.5vh;
-  left: 10vw;
-}
-
 .row .col-2 {
-  top: 2vh;
-  left: 12vw;
+  margin-left: 12.5vw;
 }
 
-.row .col-1 {
-  top: 2vh;
+.row #thread {
+  margin-left: 5vw;
+}
+
+.row .col-1 * {
+  font-size: 2.2vh;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .row .desc {
@@ -10966,10 +10991,6 @@ a {
 
 .row .editor-btn .switch-btn {
   margin-right: 1vw;
-}
-
-#threads {
-  margin-left: 20vw;
 }
 
 .category {

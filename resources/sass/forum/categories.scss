@@ -1,24 +1,47 @@
 @import '../libs';
 @import url('https://fonts.googleapis.com/css?family=Alegreya|Grenze&display=swap');
-#categoryFormOpener {
+#addCategory {
     position: absolute;
-    top: 7.5vh;
-    right: 7.5vh;
+    left: 2vw;
+    top: 18vh;
     * {
         color: white;
         opacity: 0.7;
     }
     h1 {
         text-align: center;
-        font-size: 2.5vh;
+        font-size: 3vh;
+        transition: opacity 1s;
+        opacity: 0;
     }
     i {
-        font-size: 2.5vh;
+        left: 50%;
+        position: relative;
+        transform: translateX(-50%);
+        font-size: 4vh;
+        opacity: 0.5;
+        transition: opacity 1s;
+    }
+}
+#addCategory:hover {
+    cursor: pointer;
+    h1 {
+        transition: opacity 1s;
+        opacity: 1;
+    }
+    i {
+        transition: opacity 1s;
+        opacity: 1;
     }
 }
 
 a {
     text-decoration: none !important;
+}
+#table-header {
+    * {
+        font-weight: 620;
+    }
 }
 .row {
     width: 70vw;
@@ -41,19 +64,20 @@ a {
         color: black;
         font-size: 1.5vh;
     }
-    .col-7 {
-        height: 10vh;
-        top: 2.5vh;
-        left: 10vw;
-    }
 
     .col-2 {
-        top: 2vh;
-        left: 12vw;
+        margin-left: 12.5vw;
     }
-
+    #thread {
+        margin-left: 5vw;
+    }
     .col-1 {
-        top: 2vh;
+        * {
+            font-size: 2.2vh;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
     }
 
     .desc {
@@ -79,9 +103,6 @@ a {
         right: 30vw;
         cursor: pointer;
     }
-}
-#threads {
-    margin-left: 20vw;
 }
 .category {
     margin-bottom: 15px;
