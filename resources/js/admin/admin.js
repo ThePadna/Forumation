@@ -109,6 +109,34 @@ function saveEditorMode(toggle) {
         }
     });
 }
+$('#submit-thread-settings').on('click', e => {
+    let $threadTitleLen = $('#thread-title-input').val();
+    console.log($threadTitleLen);
+    let $threadOPLen = $('#thread-op-input').val();
+    let $threadPostLen = $('#thread-post-input').val();
+    if(isNaN($threadTitleLen) || isNaN($threadOPLen) || isNaN($threadPostLen)) {
+        $('.error-msg').remove();
+        $('#error-placement').append('<p class="error-msg" style="color:red; font-size: 2vh;"> Values must be numerical! </p>');
+    } else {
+    $.ajax({
+        type: "POST",
+        url: "/updatethreadsettings",
+        headers: { "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content") },
+        data: { titleLength:$threadTitleLen, opLength:$threadOPLen, postLength:$threadPostLen },
+        success: function(res) {
+            $('.error-msg').remove();
+            $('#error-placement').append('<p class="error-msg" style="color:green; font-size: 2vh;"> Values Updated! </p>');
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+            console.log(
+                "Error occured during AJAX request, error code: " +
+                    xhr.status
+            );
+        }
+    });
+    }
+    $('.error-msg').fadeOut(4000);
+});
 /**
  * Updates color scheme on present selectors.
  * 

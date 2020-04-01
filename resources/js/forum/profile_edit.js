@@ -17,7 +17,7 @@ $('form').submit((e) => {
         processData: false,
         contentType: false,
         success: function(res) {
-          window.location = "/forum/profile/" + $('meta[name="userId"]').attr('content');
+          window.location = "/forum/profile/" + res;
         },
         error: function(xhr, ajaxOptions, thrownError) {
           console.log("Error occured during AJAX request, error code: " + xhr.status);

@@ -12,7 +12,9 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 <meta name="csrf" content="{{csrf_token()}}">
-<meta name="color" content="{{$color}}">
+<meta name="color" content="{{$settings->color}}">
+<meta name="thread-length" content="{{$settings->thread_post_length}}">
+<meta name="title-length" content="{{$settings->thread_title_length}}">
 <script>
 var $form = $('form');
 $form.submit((e) => {
@@ -40,6 +42,42 @@ $form.submit((e) => {
       },
   });
 });
+$replyForm = $('#post');
+if($replyForm != null) {
+  let $replyInput = $replyForm.find('#threadText');
+  $replyInput.on('input', () => {
+    let $limit = $('meta[name="thread-length"]').attr('content');
+    let $text = $replyInput.val().length;
+    if($text > $limit) {
+      if($replyForm.find('.warning').length < 1) {
+        $replyForm.prepend('<p class="warning" style="color: red; text-align: center;"> Post body is over the ' + $limit + ' character limit. </h1>');
+      }
+    } else {
+      console.log($text + " " + $limit);
+      if($replyForm.find('.warning').length > 0) {
+        $('.warning').remove();
+      }
+    }
+  });
+}
+$replyForm = $('#post');
+if($replyForm != null) {
+  let $replyInput = $replyForm.find('#threadTitle');
+  $replyInput.on('input', () => {
+    let $limit = $('meta[name="title-length"]').attr('content');
+    let $text = $replyInput.val().length;
+    if($text > $limit) {
+      if($replyForm.find('.warning').length < 1) {
+        $replyForm.prepend('<p class="warning" style="color: red; text-align: center;"> Post title is over the ' + $limit + ' character limit. </h1>');
+      }
+    } else {
+      console.log($text + " " + $limit);
+      if($replyForm.find('.warning').length > 0) {
+        $('.warning').remove();
+      }
+    }
+  });
+}
 updateColorScheme($('meta[name="color"]').attr('content'));
 /**
  * Updates color scheme on present selectors.

@@ -161,6 +161,23 @@ class AdminController extends Controller
       return json_encode($postsSerialized);
     }
 
+    /**
+     * Update thread settings
+     * 
+     * @param Request $request
+     */
+    public function updateThreadSettings(Request $request) {
+      if(!$this->canAccess()) return view('errors/noaccess');
+      $postLen = $request->input('postLength');
+      $opLen = $request->input('opLength');
+      $titleLen = $request->input('titleLength');
+      $settings = Settings::first();
+      $settings->thread_title_length = $titleLen;
+      $settings->thread_op_length = $opLen;
+      $settings->thread_post_length = $postLen;
+      $settings->save();
+    }
+
     public function canAccess() {
       return Auth::check() && Auth::user()->role == "admin";
     }

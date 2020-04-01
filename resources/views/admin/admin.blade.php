@@ -32,19 +32,21 @@
     <div id="thread-settings" class="row">
         <div class="col-sm-4">
         <h1 id="settings-title"> Thread </h1>
-        <div id="thread-title-length">
-            <h1> Thread Title Length </h1>
-            <input value="{{$settings->thread_title_length}}"  id="thread-title-input" />
+        <div>
+            <h1 id="thread-title-length"> Thread Title Length </h1>
+            <input id="thread-title-input" value="{{$settings->thread_title_length}}"  id="thread-title-input" />
         </div>
-        <div id="thread-op-length">
-            <h1> Thread OP Post Length </h1>
-            <input value="{{$settings->thread_op_length}}" id="thread-op-post-input" />
+        <div>
+            <h1 id="thread-op-length"> Thread OP Post Length </h1>
+            <input id="thread-op-input" value="{{$settings->thread_op_length}}" id="thread-op-post-input" />
         </div>
-        <div id="thread-post-length">
-            <h1> Thread Post Length </h1>
-            <input value="{{$settings->thread_post_length}}" id="thread-post-input" />
+        <div>
+            <h1 id="thread-post-length"> Thread Post Length </h1>
+            <input id="thread-post-input" value="{{$settings->thread_post_length}}" id="thread-post-input" />
         </div>
+        <br />
         <button id="submit-thread-settings"> SAVE </button>
+        <div id="error-placement"> </div>
     </div>
     </div>
 </div>

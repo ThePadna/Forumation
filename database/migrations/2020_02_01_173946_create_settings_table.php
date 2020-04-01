@@ -18,7 +18,7 @@ class CreateSettingsTable extends Migration
             $table->bigIncrements('id');
             $table->string('color', 10)->default('#0b1e4a');
             $table->boolean('editormode')->default(0);
-            $table->integer('thread_title_length')->default(200);
+            $table->integer('thread_title_length')->default(50);
             $table->integer('thread_op_length')->default(2000);
             $table->integer('thread_post_length')->default(2000);
         });

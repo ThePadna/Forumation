@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Models\Settings;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -43,5 +44,6 @@ class UserController extends Controller
             $user->name = $username;
         }
         $user->save();
+        return $user->name;
     }
 }

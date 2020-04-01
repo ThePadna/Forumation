@@ -26,8 +26,9 @@
     left: 50%;
     transform: translateX(-50%);
     #threadTitle {
-        font-size: 5vh;
+        font-size: 3vh;
         text-align: center;
+        font-style: italic;
     }
 }
 .col-sm-2 {
@@ -68,6 +69,7 @@
 }
 
 #star {
+    cursor:pointer;
     font-size: 5vh;
     text-align: center;
     i {

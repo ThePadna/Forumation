@@ -10907,8 +10907,9 @@ a.text-dark:focus {
 }
 
 #titleContainer #threadTitle {
-  font-size: 5vh;
+  font-size: 3vh;
   text-align: center;
+  font-style: italic;
 }
 
 .col-sm-2 {
@@ -10955,6 +10956,7 @@ a.text-dark:focus {
 }
 
 #star {
+  cursor: pointer;
   font-size: 5vh;
   text-align: center;
   bottom: -10vh;

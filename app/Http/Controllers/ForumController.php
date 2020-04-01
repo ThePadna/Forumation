@@ -125,7 +125,7 @@ class ForumController extends Controller
      */
     public function showThreadPostForm(Request $request, $category) {
         $categoryId = Category::where('name', str_replace("-", " ", $category))->first()->id;
-        return view('forum/post', ['categoryURL' => $category, 'categoryId' => $categoryId, "color" => Settings::first()->color]);
+        return view('forum/post', ['categoryURL' => $category, 'categoryId' => $categoryId, "settings" => Settings::first()]);
     }
 
     /**
@@ -138,6 +138,16 @@ class ForumController extends Controller
         $title = $request->input('threadTitle');
         $text = $request->input('threadText');
         $category = $request->input('categoryId');
+        if(Category::find($category) == null) {
+            return false;
+        }
+        $settings = Settings::first();
+        if(strlen($text) >= $settings->thread_post_length) {
+            return false;
+        }
+        if(strlen($title) >= $settings->thread_title_length) {
+            return false;
+        }
         if($title != null && $text != null && $category != null) {
             $userId = Auth::user()->id;
             $thread = new Thread();
@@ -192,9 +202,18 @@ class ForumController extends Controller
       */
       public function postReply(Request $request) {
           $post = new Post();
-          $post->thread = $request->input('thread');
+          $settings = Settings::first();
+          $text = $request->input('text');
+          $threadId = $request->input('thread');
+          if($settings->thread_post_length <= strlength($text)) {
+              return false;
+          }
+          if(Thread::find($threadId) == null) {
+              return false;
+          }
+          $post->thread = $threadId;
           $post->user = Auth::user()->id;
-          $post->contents = $request->input('text');
+          $post->contents = $text;
           $post->save();
       }
       /**
@@ -229,6 +248,7 @@ class ForumController extends Controller
           $liked = $request->input('liked');
           $postId = $request->input('id');
           $post = Post::find($postId);
+          if($post != null) {
           $liked_users = unserialize($post->liked_by);
           if($liked_users == null) $liked_users = Array();
           $userId = Auth::user()->id;
@@ -243,6 +263,7 @@ class ForumController extends Controller
           $post->liked_by = serialize($liked_users);
           $post->save();
           return sizeof($liked_users);
+        }
       }
       /**
        * Delete a thread
@@ -252,10 +273,12 @@ class ForumController extends Controller
       public function delThread(Request $request) {
           $threadId = $request->input('id');
           $thread = Thread::find($threadId);
+          if($thread != null) {
           foreach(Post::where('thread', $thread->id)->get() as $p) {
             $p->delete();
           }
           $thread->delete();
+        }
       }
 
       /**
@@ -266,8 +289,10 @@ class ForumController extends Controller
       public function erasePost(Request $request) {
           $id = $request->id;
           $post = Post::find($id);
+          if($post != null) {
           $post->erased = !$post->erased;
           $post->save();
+          }
       }
       /**
        * Set locked on thread's properties to !value.
@@ -277,8 +302,10 @@ class ForumController extends Controller
       public function lockThread(Request $request) {
           $id = $request->id;
           $thread = Thread::find($id);
+          if($thread != null) {
           $thread->locked = !$thread->locked;
           $thread->save();
+          }
       }
       /**
        * Ban user.
@@ -288,7 +315,9 @@ class ForumController extends Controller
       public function banUser(Request $request) {
         $name = $request->user;
         $user = User::where('name', $name)->first();
+        if($user != null) {
         $user->banned = 1;
         $user->save();
+        }
     }
 }
