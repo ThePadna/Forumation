@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 11);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -743,9 +743,9 @@ module.exports = function (css) {
 
 /***/ }),
 
-/***/ "./resources/js/admin/admin.js":
+/***/ "./resources/js/admin/ranks.js":
 /*!*************************************!*\
-  !*** ./resources/js/admin/admin.js ***!
+  !*** ./resources/js/admin/ranks.js ***!
   \*************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -758,134 +758,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _simonwep_pickr__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_simonwep_pickr__WEBPACK_IMPORTED_MODULE_1__);
 
 
-var pickr = _simonwep_pickr__WEBPACK_IMPORTED_MODULE_1___default.a.create({
-  el: '.pickr',
-  theme: 'nano',
-  // or 'monolith', or 'nano'
-  swatches: ['rgba(244, 67, 54, 1)', 'rgba(233, 30, 99, 0.95)', 'rgba(156, 39, 176, 0.9)', 'rgba(103, 58, 183, 0.85)', 'rgba(63, 81, 181, 0.8)', 'rgba(33, 150, 243, 0.75)', 'rgba(3, 169, 244, 0.7)', 'rgba(0, 188, 212, 0.7)', 'rgba(0, 150, 136, 0.75)', 'rgba(76, 175, 80, 0.8)', 'rgba(139, 195, 74, 0.85)', 'rgba(205, 220, 57, 0.9)', 'rgba(255, 235, 59, 0.95)', 'rgba(255, 193, 7, 1)'],
-  components: {
-    // Main components
-    preview: true,
-    opacity: true,
-    hue: true,
-    // Input / output Options
-    interaction: {
-      hex: true,
-      rgba: true,
-      hsla: true,
-      hsva: true,
-      cmyk: true,
-      input: true,
-      clear: true,
-      save: true
-    }
-  }
-});
-$("#toggle").change(function () {
-  saveEditorMode(this.checked);
-  $('#editor-state').text(this.checked == 0 ? "OFF" : "ON");
-  if (this.checked == 1) $('#editor-state').css('color', 'green');else $('#editor-state').css('color', 'red');
-});
-pickr.on('save', function (hco, instance) {
-  var color = hco.toHEXA().toString();
-  saveColor(color);
-  $('#color-state').text(color);
-  updateColorScheme(color);
-  pickr.hide();
-});
-pickr.on('init', function (instance) {
-  loadProperties(null);
-});
-loadProperties();
-
-function loadProperties(toggle) {
-  var $color = $('meta[name="color-scheme"]').attr("content");
-  var $editormode = $('meta[name="editor-mode"]').attr("content");
-  if (toggle == null) toggle = $editormode;
-  console.log($editormode);
-  $('#color-state').text($color);
-  pickr.setColor($color);
-  $('#editor-state').text(toggle == 0 ? "OFF" : "ON");
-
-  if (toggle == 1) {
-    $('#toggle').prop('checked', true);
-    $('#editor-state').css('color', 'green');
-  } else {
-    $('#toggle').prop('checked', false);
-    $('#editor-state').css('color', 'red');
-  }
-
-  updateColorScheme($color);
-}
-
-function saveColor(color) {
-  $.ajax({
-    type: "POST",
-    url: "/postColorUpdate",
-    headers: {
-      "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
-    },
-    data: {
-      color: color
-    },
-    success: function success(res) {},
-    error: function error(xhr, ajaxOptions, thrownError) {
-      console.log("Error occured during AJAX request, error code: " + xhr.status);
-    }
-  });
-}
-
-function saveEditorMode(toggle) {
-  var boolAsNum = toggle ? 1 : 0;
-  $.ajax({
-    type: "POST",
-    url: "/postEditorModeUpdate",
-    headers: {
-      "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
-    },
-    data: {
-      toggle: boolAsNum
-    },
-    success: function success(res) {},
-    error: function error(xhr, ajaxOptions, thrownError) {
-      console.log("Error occured during AJAX request, error code: " + xhr.status);
-    }
-  });
-}
-
-$('#submit-thread-settings').on('click', function (e) {
-  var $threadTitleLen = $('#thread-title-input').val();
-  console.log($threadTitleLen);
-  var $threadOPLen = $('#thread-op-input').val();
-  var $threadPostLen = $('#thread-post-input').val();
-
-  if (isNaN($threadTitleLen) || isNaN($threadOPLen) || isNaN($threadPostLen)) {
-    $('.error-msg').remove();
-    $('#error-placement').append('<p class="error-msg" style="color:red; font-size: 2vh;"> Values must be numerical! </p>');
-  } else {
-    $.ajax({
-      type: "POST",
-      url: "/updatethreadsettings",
-      headers: {
-        "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
-      },
-      data: {
-        titleLength: $threadTitleLen,
-        opLength: $threadOPLen,
-        postLength: $threadPostLen
-      },
-      success: function success(res) {
-        $('.error-msg').remove();
-        $('#error-placement').append('<p class="error-msg" style="color:green; font-size: 2vh;"> Values Updated! </p>');
-      },
-      error: function error(xhr, ajaxOptions, thrownError) {
-        console.log("Error occured during AJAX request, error code: " + xhr.status);
+$('.color').each(function (i, obj) {
+  var $id = $(obj).attr('id');
+  var $HEXcolor = obj.innerHTML;
+  var pickr = _simonwep_pickr__WEBPACK_IMPORTED_MODULE_1___default.a.create({
+    el: '#' + $id,
+    theme: 'nano',
+    // or 'monolith', or 'nano'
+    swatches: ['rgba(244, 67, 54, 1)', 'rgba(233, 30, 99, 0.95)', 'rgba(156, 39, 176, 0.9)', 'rgba(103, 58, 183, 0.85)', 'rgba(63, 81, 181, 0.8)', 'rgba(33, 150, 243, 0.75)', 'rgba(3, 169, 244, 0.7)', 'rgba(0, 188, 212, 0.7)', 'rgba(0, 150, 136, 0.75)', 'rgba(76, 175, 80, 0.8)', 'rgba(139, 195, 74, 0.85)', 'rgba(205, 220, 57, 0.9)', 'rgba(255, 235, 59, 0.95)', 'rgba(255, 193, 7, 1)'],
+    components: {
+      // Main components
+      preview: true,
+      opacity: true,
+      hue: true,
+      // Input / output Options
+      interaction: {
+        hex: true,
+        rgba: true,
+        hsla: true,
+        hsva: true,
+        cmyk: true,
+        input: true,
+        clear: true,
+        save: true
       }
-    });
-  }
-
-  $('.error-msg').fadeOut(4000);
+    }
+  });
+  setTimeout(function () {
+    pickr.setColor($HEXcolor);
+  }, 100);
 });
+updateColorScheme($('meta[name="color"]').attr('content'));
 /**
  * Updates color scheme on present selectors.
  * 
@@ -894,187 +797,18 @@ $('#submit-thread-settings').on('click', function (e) {
 
 function updateColorScheme(color) {
   $('#header').css('background', color);
-  $('#data-mgmt').css('color', color);
 }
 
 /***/ }),
 
-/***/ "./resources/sass/admin/admin.scss":
-/*!*****************************************!*\
-  !*** ./resources/sass/admin/admin.scss ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./resources/sass/admin/datamanagement.scss":
-/*!**************************************************!*\
-  !*** ./resources/sass/admin/datamanagement.scss ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./resources/sass/admin/posts.scss":
-/*!*****************************************!*\
-  !*** ./resources/sass/admin/posts.scss ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./resources/sass/admin/ranks.scss":
-/*!*****************************************!*\
-  !*** ./resources/sass/admin/ranks.scss ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./resources/sass/admin/threads.scss":
+/***/ 11:
 /*!*******************************************!*\
-  !*** ./resources/sass/admin/threads.scss ***!
+  !*** multi ./resources/js/admin/ranks.js ***!
   \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./resources/sass/admin/users.scss":
-/*!*****************************************!*\
-  !*** ./resources/sass/admin/users.scss ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./resources/sass/forum/categories.scss":
-/*!**********************************************!*\
-  !*** ./resources/sass/forum/categories.scss ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./resources/sass/forum/category.scss":
-/*!********************************************!*\
-  !*** ./resources/sass/forum/category.scss ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./resources/sass/forum/edit.scss":
-/*!****************************************!*\
-  !*** ./resources/sass/forum/edit.scss ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./resources/sass/forum/forum_layout.scss":
-/*!************************************************!*\
-  !*** ./resources/sass/forum/forum_layout.scss ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./resources/sass/forum/post.scss":
-/*!****************************************!*\
-  !*** ./resources/sass/forum/post.scss ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./resources/sass/forum/profile.scss":
-/*!*******************************************!*\
-  !*** ./resources/sass/forum/profile.scss ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./resources/sass/forum/thread.scss":
-/*!******************************************!*\
-  !*** ./resources/sass/forum/thread.scss ***!
-  \******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./resources/sass/home.scss":
-/*!**********************************!*\
-  !*** ./resources/sass/home.scss ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 0:
-/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** multi ./resources/js/admin/admin.js ./resources/sass/forum/categories.scss ./resources/sass/forum/forum_layout.scss ./resources/sass/home.scss ./resources/sass/forum/category.scss ./resources/sass/forum/post.scss ./resources/sass/forum/thread.scss ./resources/sass/forum/profile.scss ./resources/sass/forum/edit.scss ./resources/sass/admin/admin.scss ./resources/sass/admin/datamanagement.scss ./resources/sass/admin/users.scss ./resources/sass/admin/posts.scss ./resources/sass/admin/threads.scss ./resources/sass/admin/ranks.scss ***!
-  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\js\admin\admin.js */"./resources/js/admin/admin.js");
-__webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\forum\categories.scss */"./resources/sass/forum/categories.scss");
-__webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\forum\forum_layout.scss */"./resources/sass/forum/forum_layout.scss");
-__webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\home.scss */"./resources/sass/home.scss");
-__webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\forum\category.scss */"./resources/sass/forum/category.scss");
-__webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\forum\post.scss */"./resources/sass/forum/post.scss");
-__webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\forum\thread.scss */"./resources/sass/forum/thread.scss");
-__webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\forum\profile.scss */"./resources/sass/forum/profile.scss");
-__webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\forum\edit.scss */"./resources/sass/forum/edit.scss");
-__webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\admin\admin.scss */"./resources/sass/admin/admin.scss");
-__webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\admin\datamanagement.scss */"./resources/sass/admin/datamanagement.scss");
-__webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\admin\users.scss */"./resources/sass/admin/users.scss");
-__webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\admin\posts.scss */"./resources/sass/admin/posts.scss");
-__webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\admin\threads.scss */"./resources/sass/admin/threads.scss");
-module.exports = __webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\sass\admin\ranks.scss */"./resources/sass/admin/ranks.scss");
+module.exports = __webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\js\admin\ranks.js */"./resources/js/admin/ranks.js");
 
 
 /***/ })

@@ -59,10 +59,10 @@
                 $suffix = $formatAs;
                 if($formatAs == "i") $suffix = "m";
                 $name = App\User::find($recentThread->op)->name;
-                $title = strlen($recentThread->title) >= 25 ? substr($recentThread->title, 0, 25) . '..' :
+                $title = strlen($recentThread->title) >= 30 ? substr($recentThread->title, 0, 30) . '..' :
                 $recentThread->title;
                 @endphp
-                <p class="recentTitle" style="font-weight: 550; font-size: 1.8vh;"> {{$title}}</p>
+                <p class="recentTitle">{{$title}}</p>
                 <p class="recentPoster" style="white-space: no-wrap; overflow: hidden;"> <a
                         href="forum/profile/{{$name}}" style=" color:{{$color}}"> by <span
                             style="color:black; font-style: italic;"><i class="far fa-user"></i> {{$name}} </span></a>,

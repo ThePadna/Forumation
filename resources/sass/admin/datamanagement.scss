@@ -4,7 +4,7 @@ a,a:hover {
     text-decoration: none !important;
     color: black;
 }
-#menu>* {
+.menu>* {
     display: inline-block;
     i,div {
         display: table;
@@ -13,7 +13,8 @@ a,a:hover {
         transform: translateX(-50%);
     }
 }
-#menu {
+.menu {
+    margin-top: 10vh;
     * {
         display: block;
         text-align: center;

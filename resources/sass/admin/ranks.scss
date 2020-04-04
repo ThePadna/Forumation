@@ -1,0 +1,13 @@
+@import '../libs';
+
+table {
+    width: 100vw;
+    text-align: center;
+    th {
+        width: 25vw;
+        font-size: 4.5vh;
+    }
+    td {
+        font-size: 2.5vh;
+    }
+}

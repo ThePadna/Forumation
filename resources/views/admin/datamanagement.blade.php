@@ -1,21 +1,28 @@
 @extends('layouts/forum_layout')
 @section('content')
+
 <head>
     <link rel="stylesheet" href="{{asset('css/datamanagement.css')}}">
 </head>
 <div id="container">
-    <div id="menu" class="row">
+    <div class="row menu">
         <a href="/forum/admin/datamanagement/users/1" class="col-sm-4 menu-item">
-        <i class="fas fa-users"></i>
-                <p> Users </p>
+            <i class="fas fa-users"></i>
+            <p> Users </p>
         </a>
         <a href="/forum/admin/datamanagement/threads/1" class="col-sm-4 menu-item">
-        <i class="fas fa-comments"></i>
-                <p> Threads </p>
+            <i class="fas fa-comments"></i>
+            <p> Threads </p>
         </a>
         <a href="/forum/admin/datamanagement/posts/1" class="col-sm-4 menu-item">
-        <i class="far fa-address-card"></i>
+            <i class="far fa-address-card"></i>
             <p> Posts </p>
+        </a>
+    </div>
+    <div class="row menu">
+        <a href="/forum/admin/datamanagement/ranks" class="col-sm-4 menu-item">
+                <i class="fas fa-pencil-alt"></i>
+                <p> Ranks </p>
         </a>
     </div>
 </div>

@@ -10882,24 +10882,28 @@ a:hover {
   color: black;
 }
 
-#menu > * {
+.menu > * {
   display: inline-block;
 }
 
-#menu > * i,
-#menu > * div {
+.menu > * i,
+.menu > * div {
   display: table;
   left: 50%;
   position: relative;
   transform: translateX(-50%);
 }
 
-#menu * {
+.menu {
+  margin-top: 10vh;
+}
+
+.menu * {
   display: block;
   text-align: center;
 }
 
-#menu i {
+.menu i {
   font-size: 10vh;
 }
 

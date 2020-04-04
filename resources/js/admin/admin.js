@@ -144,4 +144,5 @@ $('#submit-thread-settings').on('click', e => {
  */
 function updateColorScheme(color) {
     $('#header').css('background', color);
+    $('#data-mgmt').css('color', color);
 }

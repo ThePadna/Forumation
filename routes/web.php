@@ -31,6 +31,7 @@ Route::post('/querythreads', 'AdminController@queryThreads');
 Route::post('/queryposts', 'AdminController@queryPosts');
 Route::post('/banuser', 'ForumController@banUser');
 Route::get('/forum/admin', 'AdminController@showCtrlPanel');
+Route::get('/forum/admin/datamanagement/ranks', 'AdminController@showRanks');
 Route::post('/forum/profile/{user}/edit/updateprofile', 'UserController@updateProfile');
 Route::get('/forum/admin/datamanagement/users/{page}', 'AdminController@showUsers');
 Route::get('/forum/admin/datamanagement/threads/{page}', 'AdminController@showThreads');

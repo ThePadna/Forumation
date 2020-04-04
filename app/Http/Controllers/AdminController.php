@@ -9,6 +9,7 @@ use App\User;
 use App\Models\Thread;
 use App\Models\Post;
 use Carbon\Carbon;
+use App\Models\Rank;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -178,6 +179,15 @@ class AdminController extends Controller
       $settings->save();
     }
 
+    /**
+     * Show rank editor page.
+     * 
+     * @param Request $request
+     */
+    public function showRanks(Request $request) {
+      if(!$this->canAccess()) return view('errors/noaccess');
+      return view('admin/ranks', ['settings' => Settings::first(), 'ranks' => Rank::all()]);
+    }
     public function canAccess() {
       return Auth::check() && Auth::user()->role == "admin";
     }
