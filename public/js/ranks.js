@@ -760,7 +760,7 @@ __webpack_require__.r(__webpack_exports__);
 
 $('.color').each(function (i, obj) {
   var $id = $(obj).attr('id');
-  var $HEXcolor = obj.innerHTML;
+  var $HEXcolor = $(obj).css('color');
   var pickr = _simonwep_pickr__WEBPACK_IMPORTED_MODULE_1___default.a.create({
     el: '#' + $id,
     theme: 'nano',
@@ -786,7 +786,24 @@ $('.color').each(function (i, obj) {
   });
   setTimeout(function () {
     pickr.setColor($HEXcolor);
-  }, 100);
+    console.log($(obj).css('color'));
+  }, 25);
+});
+$('save').on('click', function (e) {
+  $.ajax({
+    type: "POST",
+    url: '/updateRanks',
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf"]').attr('content')
+    },
+    data: {
+      "ranks": val
+    },
+    success: function success(res) {},
+    error: function error(xhr, ajaxOptions, thrownError) {
+      console.log("Error occured during AJAX request, error code: " + xhr.status);
+    }
+  });
 });
 updateColorScheme($('meta[name="color"]').attr('content'));
 /**

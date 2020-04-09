@@ -2,7 +2,7 @@ import '@simonwep/pickr/dist/themes/nano.min.css';
 import Pickr from '@simonwep/pickr';
 $('.color').each(function(i, obj) {
     let $id = $(obj).attr('id');
-    let $HEXcolor = obj.innerHTML;
+    let $HEXcolor = $(obj).css('color');
     let pickr = Pickr.create({
         el: '#' + $id,
         theme: 'nano', // or 'monolith', or 'nano'
@@ -46,7 +46,22 @@ $('.color').each(function(i, obj) {
     });
     setTimeout(function() {
         pickr.setColor($HEXcolor);
-    }, 100);
+        console.log($(obj).css('color'));
+    }, 25);
+});
+$('save').on('click', e => {
+    $.ajax({
+        type: "POST",
+        url: '/updateRanks',
+        headers: {'X-CSRF-TOKEN' : $('meta[name="csrf"]').attr('content')},
+        data: {"ranks" : val},
+        success: function(res) {
+
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+          console.log("Error occured during AJAX request, error code: " + xhr.status);
+        },
+    });
 });
 updateColorScheme($('meta[name="color"]').attr('content'));
 /**

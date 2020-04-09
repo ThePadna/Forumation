@@ -10887,6 +10887,25 @@ table th {
 }
 
 table td {
+  padding: 1vh;
   font-size: 2.5vh;
+}
+
+table input {
+  width: auto;
+  height: 3.5vh;
+  padding: 0;
+  border: none;
+  position: relative;
+  left: 5.5vw;
+}
+
+table .dropdown p {
+  font-size: 2.5vh;
+  color: gray;
+}
+
+table .dropdown .dropdown-menu {
+  border: 1px solid gray;
 }
 

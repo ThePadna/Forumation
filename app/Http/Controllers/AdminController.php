@@ -180,6 +180,16 @@ class AdminController extends Controller
     }
 
     /**
+     * Update ranks based on edits.
+     * 
+     * @param Request $request
+     */
+    public function updateRanks(Request $request) {
+      if(!$this->canAccess()) return view('errors/noaccess');
+      $settings->save();
+    }
+
+    /**
      * Show rank editor page.
      * 
      * @param Request $request

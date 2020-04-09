@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ca84d57-0980-4594-b6c4-389b39806fc8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/profile_edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/profile_edit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/forum/profile_edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/forum/profile_edit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_04_03_163647_create_ranks_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_03_163647_create_ranks_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/ranks.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/ranks.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/ranks.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/ranks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/admin/ranks.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/admin/ranks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/admin/ranks.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/admin/ranks.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/ranks.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/ranks.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
