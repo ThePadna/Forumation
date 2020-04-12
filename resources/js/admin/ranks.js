@@ -1,5 +1,27 @@
 import '@simonwep/pickr/dist/themes/nano.min.css';
 import Pickr from '@simonwep/pickr';
+$(".dropdown-menu p").click((e) => {
+    e.stopPropagation();
+    let $ele = $(e.target);
+    $ele.toggleClass('selected');
+    $ele.toggleClass('unselected')
+})
+$(".dropdown-menu p").mouseover(e => {
+    let $ele = $(e.target);
+    let prefix = $ele.hasClass('selected') ? "-" : "+";
+    $ele.text(prefix + $ele.text());
+    $ele.css('background', 'white');
+});
+$(".dropdown-menu p").mouseout(e => {
+    let $ele = $(e.target);
+    $ele.text($ele.text().replace(new RegExp("[-+]"), ""));
+});
+try {
+    window.Popper = require('popper.js').default;
+    window.$ = window.jQuery = require('jquery');
+
+    require('bootstrap');
+} catch (e) {}
 $('.color').each(function(i, obj) {
     let $id = $(obj).attr('id');
     let $HEXcolor = $(obj).css('color');
@@ -46,17 +68,36 @@ $('.color').each(function(i, obj) {
     });
     setTimeout(function() {
         pickr.setColor($HEXcolor);
-        console.log($(obj).css('color'));
     }, 25);
 });
-$('save').on('click', e => {
+$('.save').on('click', e => {
+    let $ranksJson = {"ranks" : []};
+    $('.rank').each((i, e) => {
+        let $name = $(e).find('.name').val();
+        let $color = $(e).find('.pcr-button').css('color').replace(/\s/g, '');
+        let $stopIndex = ($color.length - 5); //No idea what's happening here..
+        let $rgb = $color.trim().substr(4, $stopIndex);
+        let $split = $rgb.split(',');
+        let $r = $split[0], $g = $split[1], $b = $split[2];
+        $color = rgbToHex($r, $g, $b);
+        let permsArray = [];
+        $(e).find('.permission').each((i, e) => {
+            permsArray[0] = ($(e).text().trim());
+        });
+        let $jsonObj = {
+            "name": $name,
+            "color": $color,
+            "perms": permsArray
+        }
+        $ranksJson["ranks"].push($jsonObj);
+    });
     $.ajax({
         type: "POST",
         url: '/updateRanks',
         headers: {'X-CSRF-TOKEN' : $('meta[name="csrf"]').attr('content')},
         data: {"ranks" : val},
         success: function(res) {
-
+            
         },
         error: function(xhr, ajaxOptions, thrownError) {
           console.log("Error occured during AJAX request, error code: " + xhr.status);
@@ -71,4 +112,13 @@ updateColorScheme($('meta[name="color"]').attr('content'));
  */
 function updateColorScheme(color) {
     $('#header').css('background', color);
+}
+
+function componentToHex(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+}
+  
+function rgbToHex(r, g, b) {
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }

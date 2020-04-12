@@ -10900,12 +10900,44 @@ table input {
   left: 5.5vw;
 }
 
+table .dropdown {
+  border-radius: 10%;
+}
+
+table .dropdown * {
+  margin: 0;
+  border-top: 1px solid black;
+}
+
+table .dropdown p {
+  text-align: center;
+}
+
+table .dropdown p:hover {
+  background: #2e2a2a;
+  cursor: pointer;
+}
+
 table .dropdown p {
   font-size: 2.5vh;
   color: gray;
 }
 
-table .dropdown .dropdown-menu {
-  border: 1px solid gray;
+table .dropdown-menu {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: rgba(0, 0, 0, 0.1);
+  margin-left: 3vw;
+  position: relative;
+  width: 12vw;
+}
+
+.selected {
+  background: rgba(117, 231, 3, 0.4) !important;
+}
+
+.unselected {
+  background: rgba(255, 1, 1, 0.4) !important;
 }
 
