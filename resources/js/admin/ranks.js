@@ -71,7 +71,7 @@ $('.color').each(function(i, obj) {
     }, 25);
 });
 $('.save').on('click', e => {
-    let $ranksJson = {"ranks" : []};
+    let $ranksJson = [];
     $('.rank').each((i, e) => {
         let $name = $(e).find('.name').val();
         let $color = $(e).find('.pcr-button').css('color').replace(/\s/g, '');
@@ -81,23 +81,24 @@ $('.save').on('click', e => {
         let $r = $split[0], $g = $split[1], $b = $split[2];
         $color = rgbToHex($r, $g, $b);
         let permsArray = [];
-        $(e).find('.permission').each((i, e) => {
-            permsArray[0] = ($(e).text().trim());
+        $(e).find('.selected').each((i, e) => {
+            permsArray[i] = ($(e).text().trim());
         });
         let $jsonObj = {
             "name": $name,
             "color": $color,
             "perms": permsArray
         }
-        $ranksJson["ranks"].push($jsonObj);
+        $ranksJson.push($jsonObj);
     });
+    console.log($ranksJson);
     $.ajax({
         type: "POST",
-        url: '/updateRanks',
+        url: '/updateranks',
         headers: {'X-CSRF-TOKEN' : $('meta[name="csrf"]').attr('content')},
-        data: {"ranks" : val},
+        data: {"ranks" : JSON.stringify($ranksJson)},
         success: function(res) {
-            
+            console.log(res);
         },
         error: function(xhr, ajaxOptions, thrownError) {
           console.log("Error occured during AJAX request, error code: " + xhr.status);

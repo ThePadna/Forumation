@@ -186,7 +186,13 @@ class AdminController extends Controller
      */
     public function updateRanks(Request $request) {
       if(!$this->canAccess()) return view('errors/noaccess');
-      $settings->save();
+      $json = $request->input('ranks');
+      $json = json_decode($json, true);
+      foreach($json as $r) {
+        $color = $r['color'];
+        $perms = $r['perms'];
+        $name = $r['name'];
+      }
     }
 
     /**
