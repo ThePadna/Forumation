@@ -1,5 +1,21 @@
 import '@simonwep/pickr/dist/themes/nano.min.css';
 import Pickr from '@simonwep/pickr';
+$(document).on('mouseover', '.save, .add', (e) => {
+    console.log('h');
+    $(e.target).css({
+        color: $('meta[name="color"]').attr('content'),
+        transition: 'color 1s'
+    });
+ });
+ $(document).on('mouseout', '.save, .add', (e) => {
+    $(e.target).css({
+        color: '#212529',
+        transition: 'color 1s'
+    });
+ });
+ $('.add').on('click', e => {
+
+ });
 $(".dropdown-menu p").click((e) => {
     e.stopPropagation();
     let $ele = $(e.target);
@@ -24,7 +40,7 @@ try {
 } catch (e) {}
 $('.color').each(function(i, obj) {
     let $id = $(obj).attr('id');
-    let $HEXcolor = $(obj).css('color');
+    let $HEXcolor = $(obj).attr('hex');
     let pickr = Pickr.create({
         el: '#' + $id,
         theme: 'nano', // or 'monolith', or 'nano'
@@ -56,10 +72,10 @@ $('.color').each(function(i, obj) {
             // Input / output Options
             interaction: {
                 hex: true,
-                rgba: true,
-                hsla: true,
-                hsva: true,
-                cmyk: true,
+                rgba: false,
+                hsla: false,
+                hsva: false,
+                cmyk: false,
                 input: true,
                 clear: true,
                 save: true
@@ -68,30 +84,30 @@ $('.color').each(function(i, obj) {
     });
     setTimeout(function() {
         pickr.setColor($HEXcolor);
+        pickr.on('save', () => {
+            pickr.hide();
+            $('#' + $id.substr('5')).attr('updated-hex', '#' + pickr.getColor().toHEXA().join(''));
+        });
     }, 25);
 });
 $('.save').on('click', e => {
     let $ranksJson = [];
     $('.rank').each((i, e) => {
         let $name = $(e).find('.name').val();
-        let $color = $(e).find('.pcr-button').css('color').replace(/\s/g, '');
-        let $stopIndex = ($color.length - 5); //No idea what's happening here..
-        let $rgb = $color.trim().substr(4, $stopIndex);
-        let $split = $rgb.split(',');
-        let $r = $split[0], $g = $split[1], $b = $split[2];
-        $color = rgbToHex($r, $g, $b);
+        let $id = $(e).find('.name').attr('index');
+        let $color = $(e).attr('updated-hex');
         let permsArray = [];
         $(e).find('.selected').each((i, e) => {
-            permsArray[i] = ($(e).text().trim());
+            permsArray[i] = ($(e).attr('id'));
         });
         let $jsonObj = {
+            "id": $id,
             "name": $name,
             "color": $color,
             "perms": permsArray
         }
         $ranksJson.push($jsonObj);
     });
-    console.log($ranksJson);
     $.ajax({
         type: "POST",
         url: '/updateranks',
@@ -113,13 +129,4 @@ updateColorScheme($('meta[name="color"]').attr('content'));
  */
 function updateColorScheme(color) {
     $('#header').css('background', color);
-}
-
-function componentToHex(c) {
-    var hex = c.toString(16);
-    return hex.length == 1 ? "0" + hex : hex;
-}
-  
-function rgbToHex(r, g, b) {
-    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }

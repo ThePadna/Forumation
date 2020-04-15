@@ -56,3 +56,15 @@ table {
 .unselected {
     background: rgb(255, 1, 1, .4) !important;
 }
+
+#menu {
+    cursor: pointer;
+    left: 2.5vw;
+    width: 10vw;
+    position: relative;
+    * {
+        cursor: pointer;
+        margin-top: 5vh;
+        font-size: 10vh;
+    }
+}

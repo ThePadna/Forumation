@@ -89,7 +89,7 @@ class AdminController extends Controller
        * @param Request $request
        */
       public function postColorUpdate(Request $request) {
-        if(!$this->canAccess()) return view('errors/noaccess');
+        if(!$this->canAccess()) return;
         $settings = Settings::first();
         if($settings == null) {
             $settings = new Settings();
@@ -104,7 +104,7 @@ class AdminController extends Controller
      * @param Request $request
      */
     public function postEditorModeUpdate(Request $request) {
-      if(!$this->canAccess()) return view('errors/noaccess');
+      if(!$this->canAccess()) return;
       $settings = Settings::first();
       if($settings == null) {
           $settings = new Settings();
@@ -119,7 +119,7 @@ class AdminController extends Controller
      * @param Request $request
      */
     public function queryUsers(Request $request) {
-      if(!$this->canAccess()) return view('errors/noaccess');
+      if(!$this->canAccess()) return;
       $val = $request->input('val');
       $users = User::where('name', 'LIKE', '%' . $val . '%')->take(15)->get();
       $usersSerialized = array();
@@ -135,7 +135,7 @@ class AdminController extends Controller
      * @param Request $request
      */
     public function queryThreads(Request $request) {
-      if(!$this->canAccess()) return view('errors/noaccess');
+      if(!$this->canAccess()) return;
       $val = $request->input('val');
       $threads = Thread::where('title', 'LIKE', '%' . $val . '%')->take(15)->get();
       $threadsSerialized = array();
@@ -151,7 +151,7 @@ class AdminController extends Controller
      * @param Request $request
      */
     public function queryPosts(Request $request) {
-      if(!$this->canAccess()) return view('errors/noaccess');
+      if(!$this->canAccess()) return;
       $val = $request->input('val');
       $posts = Post::where('contents', 'LIKE', '%' . $val . '%')->take(15)->get();
       $postsSerialized = array();
@@ -168,7 +168,7 @@ class AdminController extends Controller
      * @param Request $request
      */
     public function updateThreadSettings(Request $request) {
-      if(!$this->canAccess()) return view('errors/noaccess');
+      if(!$this->canAccess()) return;
       $postLen = $request->input('postLength');
       $opLen = $request->input('opLength');
       $titleLen = $request->input('titleLength');
@@ -185,14 +185,33 @@ class AdminController extends Controller
      * @param Request $request
      */
     public function updateRanks(Request $request) {
-      if(!$this->canAccess()) return view('errors/noaccess');
+      if(!$this->canAccess()) return;
       $json = $request->input('ranks');
       $json = json_decode($json, true);
+      $errors = [];
       foreach($json as $r) {
+        $id = $r['id'];
         $color = $r['color'];
         $perms = $r['perms'];
         $name = $r['name'];
+        $hexCode = str_replace_first('#', ' ', $color);
+        if(!preg_match('/[^A-Fa-f0-9]/', $hexCode) || strlen($color) > 10) {
+          $errors[sizeof($errors)] = "Hex value of color is invalid or too long. Skipping save of Rank " . $name . " with ID " . $id . ".";
+          continue;
+        }
+        $r = Rank::find($id);
+        if($r == null) {
+          $r = new Rank();
+        }
+        $r->name = $name;
+        $r->color = $color;
+        $r->permissions = serialize($perms);
+        $r->save();
       }
+      if(sizeof($errors) == 0) {
+        return "Successfully updated rank settings.";
+      }
+      return join("\n", $errors);
     }
 
     /**
@@ -208,4 +227,8 @@ class AdminController extends Controller
       return Auth::check() && Auth::user()->role == "admin";
     }
 
+    function str_replace_first($from, $to, $content) {
+    $from = '/'.preg_quote($from, '/').'/';
+    return preg_replace($from, $to, $content, 1);
+    }
 }

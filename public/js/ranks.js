@@ -18548,6 +18548,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _simonwep_pickr__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_simonwep_pickr__WEBPACK_IMPORTED_MODULE_1__);
 
 
+$(document).on('mouseover', '.save, .add', function (e) {
+  console.log('h');
+  $(e.target).css({
+    color: $('meta[name="color"]').attr('content'),
+    transition: 'color 1s'
+  });
+});
+$(document).on('mouseout', '.save, .add', function (e) {
+  $(e.target).css({
+    color: '#212529',
+    transition: 'color 1s'
+  });
+});
+$('.add').on('click', function (e) {});
 $(".dropdown-menu p").click(function (e) {
   e.stopPropagation();
   var $ele = $(e.target);
@@ -18574,7 +18588,7 @@ try {
 
 $('.color').each(function (i, obj) {
   var $id = $(obj).attr('id');
-  var $HEXcolor = $(obj).css('color');
+  var $HEXcolor = $(obj).attr('hex');
   var pickr = _simonwep_pickr__WEBPACK_IMPORTED_MODULE_1___default.a.create({
     el: '#' + $id,
     theme: 'nano',
@@ -18588,10 +18602,10 @@ $('.color').each(function (i, obj) {
       // Input / output Options
       interaction: {
         hex: true,
-        rgba: true,
-        hsla: true,
-        hsva: true,
-        cmyk: true,
+        rgba: false,
+        hsla: false,
+        hsva: false,
+        cmyk: false,
         input: true,
         clear: true,
         save: true
@@ -18600,33 +18614,30 @@ $('.color').each(function (i, obj) {
   });
   setTimeout(function () {
     pickr.setColor($HEXcolor);
+    pickr.on('save', function () {
+      pickr.hide();
+      $('#' + $id.substr('5')).attr('updated-hex', '#' + pickr.getColor().toHEXA().join(''));
+    });
   }, 25);
 });
 $('.save').on('click', function (e) {
   var $ranksJson = [];
   $('.rank').each(function (i, e) {
     var $name = $(e).find('.name').val();
-    var $color = $(e).find('.pcr-button').css('color').replace(/\s/g, '');
-    var $stopIndex = $color.length - 5; //No idea what's happening here..
-
-    var $rgb = $color.trim().substr(4, $stopIndex);
-    var $split = $rgb.split(',');
-    var $r = $split[0],
-        $g = $split[1],
-        $b = $split[2];
-    $color = rgbToHex($r, $g, $b);
+    var $id = $(e).find('.name').attr('index');
+    var $color = $(e).attr('updated-hex');
     var permsArray = [];
     $(e).find('.selected').each(function (i, e) {
-      permsArray[i] = $(e).text().trim();
+      permsArray[i] = $(e).attr('id');
     });
     var $jsonObj = {
+      "id": $id,
       "name": $name,
       "color": $color,
       "perms": permsArray
     };
     $ranksJson.push($jsonObj);
   });
-  console.log($ranksJson);
   $.ajax({
     type: "POST",
     url: '/updateranks',
@@ -18653,15 +18664,6 @@ updateColorScheme($('meta[name="color"]').attr('content'));
 
 function updateColorScheme(color) {
   $('#header').css('background', color);
-}
-
-function componentToHex(c) {
-  var hex = c.toString(16);
-  return hex.length == 1 ? "0" + hex : hex;
-}
-
-function rgbToHex(r, g, b) {
-  return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
 
 /***/ }),

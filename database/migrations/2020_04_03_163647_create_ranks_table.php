@@ -17,7 +17,7 @@ class CreateRanksTable extends Migration
             $table->bigIncrements('id');
             $table->string('color', 10)->default('#820505');
             $table->string('name', 25);
-            $table->string('permissions')->default(serialize(array('user.edit.own.profile', 'post.create', 'post.star')));
+            $table->longtext('permissions')->default(serialize(array('usereditownprofile', 'postcreate', 'poststar')));
             $table->timestamps();
         });
     }
