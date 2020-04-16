@@ -18548,20 +18548,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _simonwep_pickr__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_simonwep_pickr__WEBPACK_IMPORTED_MODULE_1__);
 
 
-$(document).on('mouseover', '.save, .add', function (e) {
-  console.log('h');
+$(document).on('mouseover', '.save, .add, .trash', function (e) {
   $(e.target).css({
     color: $('meta[name="color"]').attr('content'),
     transition: 'color 1s'
   });
 });
-$(document).on('mouseout', '.save, .add', function (e) {
+$(document).on('mouseout', '.save, .add, .trash', function (e) {
   $(e.target).css({
     color: '#212529',
     transition: 'color 1s'
   });
 });
-$('.add').on('click', function (e) {});
+$('.add').on('click', function (e) {
+  $.ajax({
+    type: "POST",
+    url: '/addrank',
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf"]').attr('content')
+    },
+    data: {},
+    success: function success(res) {
+      window.location.reload();
+    },
+    error: function error(xhr, ajaxOptions, thrownError) {
+      console.log("Error occured during AJAX request, error code: " + xhr.status);
+    }
+  });
+});
 $(".dropdown-menu p").click(function (e) {
   e.stopPropagation();
   var $ele = $(e.target);
@@ -18572,7 +18586,6 @@ $(".dropdown-menu p").mouseover(function (e) {
   var $ele = $(e.target);
   var prefix = $ele.hasClass('selected') ? "-" : "+";
   $ele.text(prefix + $ele.text());
-  $ele.css('background', 'white');
 });
 $(".dropdown-menu p").mouseout(function (e) {
   var $ele = $(e.target);
@@ -18649,11 +18662,18 @@ $('.save').on('click', function (e) {
     },
     success: function success(res) {
       console.log(res);
+      $('.result').html('<span style="color:green"> Saved. </span>');
     },
     error: function error(xhr, ajaxOptions, thrownError) {
       console.log("Error occured during AJAX request, error code: " + xhr.status);
+      $('.result').html('<span style="color:red"> Failed.<br/>Please check Console. </span>');
     }
   });
+  $('.result').fadeOut(3000);
+  setTimeout(function () {
+    $('.result').html('');
+    $('.result').show();
+  }, 3000);
 });
 updateColorScheme($('meta[name="color"]').attr('content'));
 /**

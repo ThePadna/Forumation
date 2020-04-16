@@ -1,20 +1,30 @@
 import '@simonwep/pickr/dist/themes/nano.min.css';
 import Pickr from '@simonwep/pickr';
-$(document).on('mouseover', '.save, .add', (e) => {
-    console.log('h');
+$(document).on('mouseover', '.save, .add, .trash', (e) => {
     $(e.target).css({
         color: $('meta[name="color"]').attr('content'),
         transition: 'color 1s'
     });
  });
- $(document).on('mouseout', '.save, .add', (e) => {
+ $(document).on('mouseout', '.save, .add, .trash', (e) => {
     $(e.target).css({
         color: '#212529',
         transition: 'color 1s'
     });
  });
  $('.add').on('click', e => {
-
+    $.ajax({
+        type: "POST",
+        url: '/addrank',
+        headers: {'X-CSRF-TOKEN' : $('meta[name="csrf"]').attr('content')},
+        data: {},
+        success: function(res) {
+            window.location.reload();
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+          console.log("Error occured during AJAX request, error code: " + xhr.status);
+        },
+    });
  });
 $(".dropdown-menu p").click((e) => {
     e.stopPropagation();
@@ -26,7 +36,6 @@ $(".dropdown-menu p").mouseover(e => {
     let $ele = $(e.target);
     let prefix = $ele.hasClass('selected') ? "-" : "+";
     $ele.text(prefix + $ele.text());
-    $ele.css('background', 'white');
 });
 $(".dropdown-menu p").mouseout(e => {
     let $ele = $(e.target);
@@ -115,11 +124,18 @@ $('.save').on('click', e => {
         data: {"ranks" : JSON.stringify($ranksJson)},
         success: function(res) {
             console.log(res);
+            $('.result').html('<span style="color:green"> Saved. </span>');
         },
         error: function(xhr, ajaxOptions, thrownError) {
           console.log("Error occured during AJAX request, error code: " + xhr.status);
+          $('.result').html('<span style="color:red"> Failed.<br/>Please check Console. </span>');
         },
     });
+    $('.result').fadeOut(3000);
+    setTimeout(() => {
+        $('.result').html('');
+        $('.result').show();
+    }, 3000);
 });
 updateColorScheme($('meta[name="color"]').attr('content'));
 /**

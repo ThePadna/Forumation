@@ -10897,16 +10897,21 @@ table input {
   padding: 0;
   border: none;
   position: relative;
-  left: 5.5vw;
+  margin-left: 0.3vw;
+}
+
+table .namecell {
+  position: relative;
+  left: 10vh;
 }
 
 table .dropdown {
   border-radius: 10%;
 }
 
-table .dropdown * {
+table .dropdown p {
   margin: 0;
-  border-top: 1px solid black;
+  border: 1px solid black;
 }
 
 table .dropdown p {
@@ -10914,7 +10919,6 @@ table .dropdown p {
 }
 
 table .dropdown p:hover {
-  background: #2e2a2a;
   cursor: pointer;
 }
 
@@ -10927,30 +10931,38 @@ table .dropdown-menu {
   border: none;
   border-radius: 0;
   box-shadow: none;
-  background: rgba(0, 0, 0, 0.1);
-  margin-left: 3vw;
+  background: black;
   position: relative;
   width: 12vw;
 }
 
 .selected {
-  background: rgba(117, 231, 3, 0.4) !important;
+  background: lightgray;
 }
 
 .unselected {
-  background: rgba(255, 1, 1, 0.4) !important;
+  background: darkgray;
 }
 
 #menu {
-  cursor: pointer;
-  left: 2.5vw;
-  width: 10vw;
-  position: relative;
+  position: absolute;
+  top: 15vh;
+  left: 1.5vw;
 }
 
 #menu * {
+  text-align: center;
+  font-size: 2vh;
+}
+
+#menu .add i,
+#menu .save svg {
   cursor: pointer;
   margin-top: 5vh;
   font-size: 10vh;
+}
+
+.trash:hover {
+  cursor: pointer;
 }
 

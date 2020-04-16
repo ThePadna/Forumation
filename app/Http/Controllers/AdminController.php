@@ -180,6 +180,18 @@ class AdminController extends Controller
     }
 
     /**
+     * Add a rank with ready for edits.
+     * 
+     * @param Request $request
+     */
+    public function addRank(Request $request) {
+      if(!$this->canAccess()) return;
+      $r = new Rank();
+      $r->name = "New Rank";
+      $r->save();
+    }
+
+    /**
      * Update ranks based on edits.
      * 
      * @param Request $request
@@ -189,8 +201,14 @@ class AdminController extends Controller
       $json = $request->input('ranks');
       $json = json_decode($json, true);
       $errors = [];
+      $ranksMatched = Rank::pluck('id')->toArray();
       foreach($json as $r) {
         $id = $r['id'];
+        for($i = 0; $i < sizeof($ranksMatched); $i++) {
+          if($id == $ranksMatched[$i]) {
+            $ranksMatched[$i] = true;
+          }
+        }
         $color = $r['color'];
         $perms = $r['perms'];
         $name = $r['name'];
@@ -207,6 +225,9 @@ class AdminController extends Controller
         $r->color = $color;
         $r->permissions = serialize($perms);
         $r->save();
+      }
+      for($i = 0; $i < sizeof($ranksMatched); $i++) {
+        echo $ranksMatched[$i];
       }
       if(sizeof($errors) == 0) {
         return "Successfully updated rank settings.";

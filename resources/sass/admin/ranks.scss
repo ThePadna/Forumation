@@ -17,20 +17,23 @@ table {
         padding: 0;
         border: none;
         position: relative;
-        left: 5.5vw;
+        margin-left: 0.3vw;
+    }
+    .namecell {
+        position: relative;
+        left: 10vh;
     }
 
     .dropdown {
-        * {
+        p {
             margin: 0;
-            border-top: 1px solid black;
+            border: 1px solid black;
         }
         border-radius: 10%;
         p {
             text-align: center;
         }
         p:hover {
-            background: rgb(46, 42, 42);
             cursor: pointer;
         }
         p {
@@ -42,29 +45,35 @@ table {
         border: none;
         border-radius: 0;
         box-shadow: none;
-        background: rgb(0, 0, 0, 0.1);
-        margin-left: 3vw;
+        background: rgb(0, 0, 0);
         position: relative;
         width: 12vw;
     }
 }
 
 .selected {
-    background: rgb(117, 231, 3, .4) !important;
+    background: lightgray;
 }
 
 .unselected {
-    background: rgb(255, 1, 1, .4) !important;
+    background: darkgray;
 }
 
 #menu {
-    cursor: pointer;
-    left: 2.5vw;
-    width: 10vw;
-    position: relative;
+    position: absolute;
+    top: 15vh;
+    left: 1.5vw;
     * {
+        text-align: center;
+        font-size: 2vh;
+    }
+    .add i, .save svg {
         cursor: pointer;
         margin-top: 5vh;
         font-size: 10vh;
     }
+}
+
+.trash:hover {
+    cursor: pointer;
 }

@@ -16,6 +16,7 @@ Route::get('/', function () {
 Route::post('/postEditorModeUpdate', 'AdminController@postEditorModeUpdate');
 Route::post('/updatethreadsettings', 'AdminController@updateThreadSettings');
 Route::post('/updateranks', 'AdminController@updateRanks');
+Route::post('/addrank', 'AdminController@addRank');
 Route::post('/lockthread', 'ForumController@lockThread');
 Route::post('/erasepost', 'ForumController@erasePost');
 Route::post('/likepost', 'ForumController@likePost');

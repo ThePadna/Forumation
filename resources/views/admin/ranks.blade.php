@@ -13,7 +13,7 @@
     </tr>
     @foreach($ranks as $r)
     <tr class="rank" id="{{$r->id}}" updated-hex="{{$r->color}}">
-        <td><input class="name" value="{{$r->name}}" autocomplete="off" index="{{$r->id}}"></input></td>
+        <td class="namecell"><i class="fas fa-tags"></i><input class="name" value="{{$r->name}}" autocomplete="off" index="{{$r->id}}"></input></td>
         <td><div class="pickr-wrapper"><div class="color" style="color:{{$r->color}}" id="color{{$r->id}}" hex="{{$r->color}}" class="color"></div></div></td>
         <td>
             <div class="dropdown">
@@ -36,6 +36,7 @@
                 <p id="categoryadd" class="permission unselected"> Add Category </p>
                 <p id="admin" class="permission unselected"> Admin Panel </p>
                 </div>
+                <i style="font-size: 3vh;position: relative; top:1vh; left: 7vw;" class="trash fas fa-trash"></i>
             </div>
         </td>
     </tr>
@@ -51,10 +52,12 @@
     @endforeach
 </table>
 <div id="menu">
-<div class="save"> <i class="fas fa-plus"></i> </div>
-<div class="add"><svg class="bi bi-person-check-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+<div class="add"> <i class="fas fa-plus"></i> <p> New Rank </p> </div>
+<div class="save"><svg class="bi bi-person-check-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 100-6 3 3 0 000 6zm9.854-2.854a.5.5 0 010 .708l-3 3a.5.5 0 01-.708 0l-1.5-1.5a.5.5 0 01.708-.708L12.5 7.793l2.646-2.647a.5.5 0 01.708 0z" clip-rule="evenodd"/>
-</svg></div>
+</svg><p> Save All </p>
+<p class="result"> </p>
+</div>
 </div>
 <meta name="color" content="{{$settings->color}}">
 <script src="{{asset('js/ranks.js')}}"> </script>
