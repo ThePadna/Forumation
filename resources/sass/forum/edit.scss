@@ -31,3 +31,18 @@
         }
     }
 }
+.dropdown-container {
+    display: table;
+    position: relative;
+    width: auto;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.dropdown {
+    * {
+        z-index: 100;
+    }
+    h1, button {
+    display: inline-block;
+    }
+}

@@ -3,7 +3,6 @@
 
 <head>
     <link rel="stylesheet" href="{{asset('css/ranks.css')}}">
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 </head>
 <table>
     <tr>
@@ -60,6 +59,7 @@
 </div>
 </div>
 <meta name="color" content="{{$settings->color}}">
+<script src="{{asset('js/app.js')}}" charset="utf-8"></script>
 <script src="{{asset('js/ranks.js')}}"> </script>
 <meta name="csrf" content="{{csrf_token()}}">
 @stop

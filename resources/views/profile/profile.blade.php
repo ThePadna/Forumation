@@ -40,12 +40,6 @@
 <meta name="posts" content="{{$posts}}">
 <meta name="score" content="{{$score}}">
 <meta name="user" content="{{$user->name}}">
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
+<script src="{{asset('js/app.js')}}" charset="utf-8"></script>
 <script src="{{asset('js/profile.js')}}"> </script>
-@auth
-@if(Auth::user()->id == $user->id)
-<script src="{{asset('js/profile_auth.js')}}"> </script>
-<meta name="username" content="{{$user->name}}">
-@endif
-@endauth
 @stop

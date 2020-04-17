@@ -44,12 +44,6 @@ $(".dropdown-menu p").mouseout(e => {
     let $ele = $(e.target);
     $ele.text($ele.text().replace(new RegExp("[-+]"), ""));
 });
-try {
-    window.Popper = require('popper.js').default;
-    window.$ = window.jQuery = require('jquery');
-
-    require('bootstrap');
-} catch (e) {}
 $('.color').each(function(i, obj) {
     let $id = $(obj).attr('id');
     let $HEXcolor = $(obj).attr('hex');
