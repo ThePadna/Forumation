@@ -201,14 +201,14 @@ class AdminController extends Controller
       $json = $request->input('ranks');
       $json = json_decode($json, true);
       $errors = [];
-      $ranksMatched = Rank::pluck('id')->toArray();
+      $ranksMatched = [];
+      foreach(Rank::pluck('id')->toArray() as $r) {
+        $ranksMatched[$r] = 0;
+      }
       foreach($json as $r) {
         $id = $r['id'];
-        for($i = 0; $i < sizeof($ranksMatched); $i++) {
-          if($id == $ranksMatched[$i]) {
-            $ranksMatched[$i] = true;
-          }
-        }
+        $matched = $ranksMatched[$id];
+        if($matched == 0) $ranksMatched[$id] = 1;
         $color = $r['color'];
         $perms = $r['perms'];
         $name = $r['name'];
@@ -226,8 +226,11 @@ class AdminController extends Controller
         $r->permissions = serialize($perms);
         $r->save();
       }
-      for($i = 0; $i < sizeof($ranksMatched); $i++) {
-        echo $ranksMatched[$i];
+      foreach($ranksMatched as $rm => $val) {
+        if($val == 0) {
+          $rank = Rank::find($rm);
+          $rank->delete();
+        }
       }
       if(sizeof($errors) == 0) {
         return "Successfully updated rank settings.";

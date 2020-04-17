@@ -1,5 +1,8 @@
 import '@simonwep/pickr/dist/themes/nano.min.css';
 import Pickr from '@simonwep/pickr';
+$('.trash').on('click', (e) => {
+    $(e.target).parent().parent().parent().remove();
+});
 $(document).on('mouseover', '.save, .add, .trash', (e) => {
     $(e.target).css({
         color: $('meta[name="color"]').attr('content'),

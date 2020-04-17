@@ -18548,6 +18548,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _simonwep_pickr__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_simonwep_pickr__WEBPACK_IMPORTED_MODULE_1__);
 
 
+$('.trash').on('click', function (e) {
+  $(e.target).parent().parent().parent().remove();
+});
 $(document).on('mouseover', '.save, .add, .trash', function (e) {
   $(e.target).css({
     color: $('meta[name="color"]').attr('content'),
