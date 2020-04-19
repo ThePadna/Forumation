@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 10);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -142,7 +142,7 @@ function updateColorScheme(color) {
 
 /***/ }),
 
-/***/ 10:
+/***/ 8:
 /*!*******************************************!*\
   !*** multi ./resources/js/admin/posts.js ***!
   \*******************************************/

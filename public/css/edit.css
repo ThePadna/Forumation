@@ -10896,6 +10896,7 @@ a.text-dark:focus {
 }
 
 #container input[type=file] {
+  margin-top: 0.5vh;
   width: 11vw;
 }
 
@@ -10905,10 +10906,6 @@ a.text-dark:focus {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-}
-
-#container #namechanger h1 {
-  font-size: 1vw;
 }
 
 #container #namechanger * {
@@ -10930,5 +10927,32 @@ a.text-dark:focus {
 .dropdown h1,
 .dropdown button {
   display: inline-block;
+}
+
+.dropdown .dropdown-menu {
+  position: relative;
+  background: #6c757d;
+}
+
+#settings .option {
+  width: 12vw;
+  font-size: 3vh;
+}
+
+#settings .value {
+  width: 13vw;
+}
+
+#update {
+  top: 20vh;
+  width: 10vw;
+  height: 4vh;
+  color: white;
+  background: #6c757d;
+  border-radius: 0.25rem;
+}
+
+.dropdown-item {
+  cursor: pointer;
 }
 

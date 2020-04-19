@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Models\Settings;
+use App\Models\Rank;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
@@ -18,8 +19,9 @@ class UserController extends Controller
      */
     public function editProfile(Request $request, $userId) {
         $user = User::where('name', $userId)->first();
+        $ranks = Rank::all();
         if($user == null) return view('404');
-        return view('profile/edit', ['user' => $user, "color" => Settings::first()->color]);
+        return view('profile/edit', ['ranks' => $ranks, 'user' => $user, "color" => Settings::first()->color]);
     }
 
     /**

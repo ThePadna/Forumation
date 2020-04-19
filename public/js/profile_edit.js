@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -142,7 +142,7 @@ function updateColorScheme(color) {
 
 /***/ }),
 
-/***/ 3:
+/***/ 2:
 /*!**************************************************!*\
   !*** multi ./resources/js/forum/profile_edit.js ***!
   \**************************************************/
