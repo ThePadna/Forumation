@@ -17,7 +17,7 @@
                     <h1 class="option"> Rank </h1>
                     <button class="value btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Moderator
+                        {{$user->rank}}
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         @foreach($ranks as $r)

@@ -248,7 +248,21 @@ class AdminController extends Controller
       return view('admin/ranks', ['settings' => Settings::first(), 'ranks' => Rank::all()]);
     }
     public function canAccess() {
-      return Auth::check() && Auth::user()->role == "admin";
+      if(!Auth::check()) return false;
+      $rank = Rank::find(Auth::user()->rank);
+      if($rank != null) {
+        $perms = unserialize($rank->permissions);
+        if(in_array("admin", $perms)) return true;
+      } else {
+        $settings = Settings::first();
+        $default = $settings->default_rank;
+        $rank = Rank::find($default);
+        if($rank != null) {
+          $perms = unserialize($rank->permissions);
+          if(in_array("admin", $perms)) return true;
+        }
+      }
+      return false;
     }
 
     function str_replace_first($from, $to, $content) {

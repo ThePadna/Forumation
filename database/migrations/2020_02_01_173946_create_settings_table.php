@@ -17,6 +17,7 @@ class CreateSettingsTable extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('color', 10)->default('#0b1e4a');
+            $table->integer('default_rank')->default(1);
             $table->boolean('editormode')->default(0);
             $table->integer('thread_title_length')->default(50);
             $table->integer('thread_op_length')->default(2000);

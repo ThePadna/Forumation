@@ -20,6 +20,11 @@ class CreateRanksTable extends Migration
             $table->longtext('permissions')->default(serialize(array('usereditownprofile', 'postcreate', 'poststar')));
             $table->timestamps();
         });
+        $rank = new App\Models\Rank();
+        $rank->name = "ADMINISTRATOR";
+        $perms = array('admin', 'categoryadd', 'categoryswitch', 'categorydelete', 'categoryedit', 'posterase', 'threaddelete', 'threadlock', 'threadcreate', 'posteraseself', 'poststar', 'postcreate', 'usereditownprofile');
+        $rank->permissions = serialize($perms);
+        $rank->save();
     }
 
     /**
