@@ -163,19 +163,21 @@ class AdminController extends Controller
     }
 
     /**
-     * Update thread settings
+     * Update settings
      * 
      * @param Request $request
      */
-    public function updateThreadSettings(Request $request) {
+    public function updateSettings(Request $request) {
       if(!$this->canAccess()) return;
       $postLen = $request->input('postLength');
       $opLen = $request->input('opLength');
       $titleLen = $request->input('titleLength');
+      $profileNameLen = $request->input('profileNameLen');
       $settings = Settings::first();
       $settings->thread_title_length = $titleLen;
       $settings->thread_op_length = $opLen;
       $settings->thread_post_length = $postLen;
+      $settings->profile_name_length = $profileNameLen;
       $settings->save();
     }
 

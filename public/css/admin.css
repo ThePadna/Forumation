@@ -10928,32 +10928,32 @@ hr {
   display: none;
 }
 
-#settings-title {
-  color: gray;
+.settings-title {
+  color: white;
   font-size: 5vh !important;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
-#thread-settings > .col-sm-4 {
-  text-align: center;
-  color: gray;
+.thread-settings-wrapper {
+  margin-left: 1vh;
 }
 
-#thread-settings > .col-sm-4 div {
-  margin-top: 5vh;
+.option,
+.value {
+  width: 15vw;
+  display: inline-block;
+  font-size: 1.5em;
 }
 
-#thread-settings > .col-sm-4 div * {
-  display: inline;
-}
-
-#thread-settings > .col-sm-4 h1 {
-  font-size: 1.75vh;
-  margin-right: 1.5vh;
-}
-
-#thread-settings > .col-sm-4 input {
-  font-size: 1vh;
-  width: 5vh;
+.submit-thread-settings {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10vw;
+  height: 4vh;
+  background: gray;
+  color: white;
+  margin-top: 10vh;
 }
 
 .toggle {

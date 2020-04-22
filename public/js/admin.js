@@ -853,15 +853,20 @@ function saveEditorMode(toggle) {
   });
 }
 
-$('#submit-thread-settings').on('click', function (e) {
+$('#submit-settings').on('click', function (e) {
   var $threadTitleLen = $('#thread-title-input').val();
   console.log($threadTitleLen);
   var $threadOPLen = $('#thread-op-input').val();
   var $threadPostLen = $('#thread-post-input').val();
+  var $profileNameLen = $('#profile-name-length').val();
+  var $profileDefaultAvatar = $('#profile-avatar-input');
 
   if (isNaN($threadTitleLen) || isNaN($threadOPLen) || isNaN($threadPostLen)) {
     $('.error-msg').remove();
     $('#error-placement').append('<p class="error-msg" style="color:red; font-size: 2vh;"> Values must be numerical! </p>');
+  } else if (isNaN($profileNameLen)) {
+    $('.error-msg').remove();
+    $('#error-placement-2').append('<p class="error-msg" style="color:red; font-size: 2vh;"> Values must be numerical! </p>');
   } else {
     $.ajax({
       type: "POST",
@@ -872,7 +877,8 @@ $('#submit-thread-settings').on('click', function (e) {
       data: {
         titleLength: $threadTitleLen,
         opLength: $threadOPLen,
-        postLength: $threadPostLen
+        postLength: $threadPostLen,
+        profileNameLen: $profileNameLen
       },
       success: function success(res) {
         $('.error-msg').remove();

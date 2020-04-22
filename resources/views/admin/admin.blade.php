@@ -30,26 +30,49 @@
         </div>
     </div>
     <hr />
-    <div id="thread-settings" class="row">
+    <div class="row settings-footer">
         <div class="col-sm-4">
-            <h1 id="settings-title"> Thread </h1>
-            <div>
-                <h1 id="thread-title-length"> Thread Title Length </h1>
-                <input id="thread-title-input" value="{{$settings->thread_title_length}}" id="thread-title-input" />
+            <div class="thread-settings-wrapper">
+                <h1 class="settings-title"> Thread </h1>
+                <div class="setting">
+                    <h1 id="thread-title-length" class="option"> Thread Title Length </h1>
+                    <input class="value" id="thread-title-input" value="{{$settings->thread_title_length}}"
+                        id="thread-title-input" />
+                </div>
+                <div class="setting">
+                    <h1 id="thread-op-length" class="option"> Thread OP Post Length </h1>
+                    <input class="value" id="thread-op-input" value="{{$settings->thread_op_length}}"
+                        id="thread-op-post-input" />
+                </div>
+                <div class="setting">
+                    <h1 id="thread-post-length" class="option"> Thread Post Length </h1>
+                    <input class="value" id="thread-post-input" value="{{$settings->thread_post_length}}"
+                        id="thread-post-input" />
+                </div>
+                <br />
+                <div id="error-placement"> </div>
             </div>
-            <div>
-                <h1 id="thread-op-length"> Thread OP Post Length </h1>
-                <input id="thread-op-input" value="{{$settings->thread_op_length}}" id="thread-op-post-input" />
+        </div>
+        <div class="col-sm-4">
+            <div class="profile-settings-wrapper">
+                <h1 class="settings-title"> Profile </h1>
+                <div class="setting">
+                    <h1 id="profile-name-length" class="option"> Username Length </h1>
+                    <input class="value" id="profile-name-length" value="{{$settings->thread_title_length}}"
+                        id="thread-title-input" />
+                </div>
+                <div class="setting">
+                    <h1 id="profile-picture-default" class="option"> Default Profile Picture </h1>
+                    <input type="file" class="value" id="profile-avatar-input" value="{{$settings->thread_op_length}}"
+                        id="thread-op-post-input" />
+                    <img id="profile-picture-preview" src="{{base64_decode($settings->profile_default_avatar)}}" />
+                </div>
+                <br />
+                <div id="error-placement-2"> </div>
             </div>
-            <div>
-                <h1 id="thread-post-length"> Thread Post Length </h1>
-                <input id="thread-post-input" value="{{$settings->thread_post_length}}" id="thread-post-input" />
-            </div>
-            <br />
-            <button id="submit-thread-settings"> SAVE </button>
-            <div id="error-placement"> </div>
         </div>
     </div>
+    <button class="submit-settings"> SAVE SETTINGS </button>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
     <meta name="csrf" content="{{csrf_token()}}">
     @if($settings != null)

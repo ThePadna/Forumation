@@ -10962,6 +10962,10 @@ table .dropdown-menu {
   font-size: 10vh;
 }
 
+#menu .default {
+  margin-top: 15vh;
+}
+
 .trash:hover {
   cursor: pointer;
 }
