@@ -1,8 +1,32 @@
 @extends('layouts/forum_layout')
 @section('content')
 <link rel="stylesheet" href="{{asset('css/categories.css')}}">
+@php
+$rank = null;
+if(Auth::check()) {
+$rank = Auth::user()->rank;
+}
+if($rank == null) {
+$settings = App\Models\Settings::first();
+if($settings != null) {
+$default = $settings->default_rank;
+$rank = App\Models\Rank::find($default);
+}
+$switch = false;
+$add = false;
+$delete = false;
+$edit = false;
+if($rank != null) {
+$perms = unserialize($rank->permissions);
+if(in_array('categoryswitch', $perms)) $switch = true;
+if(in_array('categoryadd', $perms)) $add = true;
+if(in_array('categorydelete', $perms)) $delete = true;
+if(in_array('categoryedit', $perms)) $edit = true;
+}
+}
+@endphp
 <div class="wrapper">
-    @if(sizeof($categories) < 1) <h1> No Categories found. </h1>
+    @if(sizeof($categories) < 1) <h1 style="text-align: center;"> No Categories found. </h1>
         @else
         <div id="table-header" class="row">
             <h1 class="col-5"> Category </h1>
@@ -14,24 +38,26 @@
         @foreach($categories as $c)
         <div class="row">
             <div id="title" class="col-5">
-                @auth
-                @if(Auth::user()->role == "admin")
                 <div class="editor-btn">
+                @if($switch)
                     <div class="switch-btn">
                         <i id="up" class="up-arrow fas fa-arrow-up" categoryId='{{$c->id}}'
                             categoryName='{{$c->name}}'></i>
                         <i id="down" class="down-arrow fas fa-arrow-down" categoryId='{{$c->id}}'
                             categoryName='{{$c->name}}'></i>
                     </div>
+                    @endif
                     <div class="edit-btn">
+                    @if($edit)
                         <i id="edit" class="edit-category far fa-edit" categoryId='{{$c->id}}'
                             categoryName='{{$c->name}}' categoryDesc='{{$c->desc}}'></i>
+                            @endif
+                            @if($delete)
                         <i id="del" class="del-category fas fa-trash" categoryId='{{$c->id}}'
                             categoryName='{{$c->name}}' categoryDesc='{{$c->desc}}'></i>
+                            @endif
                     </div>
                 </div>
-                @endif
-                @endauth
                 <a href="/forum/category/{{str_replace(' ', '-', $c->name)}}/1" class="data-title"
                     ondragover="event.preventDefault()" categoryId='{{$c->id}}'>
                     <h1 class="title"> {{$c->name}} </h1>
@@ -78,14 +104,11 @@
         </div>
         @endforeach
 </div>
-@auth
-@if(Auth::user()->role == "admin")
+@endif
+@if($add)
 <div id="addCategory">
     <i class="fas fa-plus"></i>
     <h1> Add Category </h1>
-</div>
-@endif
-@endauth
 </div>
 @endif
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
