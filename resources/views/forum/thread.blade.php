@@ -16,6 +16,30 @@ $thread->save();
 }
 @endphp
 @endauth
+@php
+$star = false;
+$erase = false;
+$eraseSelf = false;
+$create = false;
+$rank = null;
+if(Auth::check()) {
+$rank = Auth::user()->rank;
+if($rank == null) {
+$settings = App\Models\Settings::first();
+if($settings != null) {
+$default = $settings->default_rank;
+$rank = App\Models\Rank::find($default);
+}
+if($rank != null) {
+$perms = unserialize($rank->permissions);
+if(in_array('poststar', $perms)) $star = true;
+if(in_array('postcreate', $perms)) $create = true;
+if(in_array('posteraseself', $perms)) $eraseSelf = true;
+if(in_array('posterase', $perms)) $erase = true;
+}
+}
+}
+@endphp
 <link rel="stylesheet" href="{{asset('css/thread.css')}}">
 <div id="wrapper">
     @auth
@@ -52,9 +76,17 @@ $thread->save();
                 @endphp
                 @if(!$p->erased)
                 @if(!$isLikedByUser)
+                @if($star)
                 <i class="far fa-star star-symbol" post="{{$p->id}}"></i>
                 @else
+                <i class="far fa-star star-symbol-disabled" post="{{$p->id}}"></i>
+                @endif
+                @else
+                @if($star)
                 <i class="fas fa-star star-symbol" post="{{$p->id}}"></i>
+                @else
+                <i class="fas fa-star star-symbol-disabled" post="{{$p->id}}"></i>
+                @endif
                 @endif
                 <p class="star-count">{{$likeCount}}</p>
                 @endif
@@ -66,7 +98,7 @@ $thread->save();
                     @endif
                     <div id="test" class="col-sm-2">
                         @if($p->erased)
-                        <img id="profilepic" src="{{asset('img/profilepic.png')}}">
+                        <img id="profilepic" src="{{asset('default_avatar.png')}}">
                         <p> Removed </p>
                         <div id="stats">
                             <p> 0 <i style="color: {{$color}}" class="fas fa-star"></i>
@@ -74,7 +106,7 @@ $thread->save();
                         </div>
                         @else
                         @if($user->avatar == null)
-                        <img id="profilepic" src="{{asset('img/profilepic.png')}}" />
+                        <img id="profilepic" src="{{asset('default_avatar.png')}}" />
                         @else
                         <img id="profilepic" src="{{base64_decode($user->avatar)}}" />
                         @endif

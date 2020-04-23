@@ -15,8 +15,8 @@ $rank = App\Models\Rank::find($default);
 }
 if($rank != null) {
 $perms = unserialize($rank->permissions);
-if(in_array('threaddelete', $perms)) $delete = true;
 if(in_array('threadcreate', $perms)) $create = true;
+if(in_array('threaddelete', $perms)) $delete = true;
 }
 }
 }

@@ -10,7 +10,7 @@
     @endauth
     <div id="profilepicdiv">
         @if($user->avatar == null)
-        <img id="profilepic" src="{{asset('img/profilepic.png')}}" />
+        <img id="profilepic" src="{{asset('default_avatar.png')}}" />
         @else
         <img id="profilepic" src="{{base64_decode($user->avatar)}}" />
         @endif
