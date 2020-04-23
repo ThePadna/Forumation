@@ -3,25 +3,25 @@
 <link rel="stylesheet" href="{{asset('css/categories.css')}}">
 @php
 $rank = null;
+$switch = false;
+$add = false;
+$delete = false;
+$edit = false;
 if(Auth::check()) {
 $rank = Auth::user()->rank;
-}
 if($rank == null) {
 $settings = App\Models\Settings::first();
 if($settings != null) {
 $default = $settings->default_rank;
 $rank = App\Models\Rank::find($default);
 }
-$switch = false;
-$add = false;
-$delete = false;
-$edit = false;
 if($rank != null) {
 $perms = unserialize($rank->permissions);
 if(in_array('categoryswitch', $perms)) $switch = true;
 if(in_array('categoryadd', $perms)) $add = true;
 if(in_array('categorydelete', $perms)) $delete = true;
 if(in_array('categoryedit', $perms)) $edit = true;
+}
 }
 }
 @endphp

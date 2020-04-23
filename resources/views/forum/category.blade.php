@@ -1,6 +1,26 @@
 @extends('layouts/forum_layout')
 @section('content')
 <link rel="stylesheet" href="{{asset('css/category.css')}}">
+@php
+$create = false;
+$delete = false;
+$rank = null;
+if(Auth::check()) {
+$rank = Auth::user()->rank;
+if($rank == null) {
+$settings = App\Models\Settings::first();
+if($settings != null) {
+$default = $settings->default_rank;
+$rank = App\Models\Rank::find($default);
+}
+if($rank != null) {
+$perms = unserialize($rank->permissions);
+if(in_array('threaddelete', $perms)) $delete = true;
+if(in_array('threadcreate', $perms)) $create = true;
+}
+}
+}
+@endphp
 <div id="wrapper">
     <div id="threads">
         @foreach($threads as $t)
@@ -57,14 +77,12 @@
                     <div id="score" class="col-sm-1">
                         <h1 class="title"> Viewed </h1>
                         <p class="counter"> {{$viewed}} Times </p>
-                        @auth
-                        @if(Auth::user()->role == "admin")
+                        @if($delete)
                         <div class="edit-btn">
                             <i id="del" class="del-thread fas fa-trash" threadId='{{$t->id}}'
                                 threadName='{{$t->title}}'></i>
                         </div>
                         @endif
-                        @endauth
                     </div>
                     <hr />
                 </div>
@@ -72,14 +90,14 @@
         </a>
         @endforeach
     </div>
-    @auth
+    @if($create)
     <a href="post">
         <div id="postThread">
             <i class="fas fa-plus"></i>
             <h1> Create Thread </h1>
         </div>
     </a>
-    @endauth
+    @endif
     @if($page > 1)
     <a href="{{$page < 2 ? 1 : $page - 1}}">
         <div id="prevpage">
