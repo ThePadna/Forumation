@@ -24,7 +24,6 @@ class CreateSettingsTable extends Migration
             $table->integer('thread_post_length')->default(2000);
             $table->integer('profile_name_length')->default(15);
         });
-        DB::statement("ALTER TABLE settings ADD profile_default_avatar MEDIUMBLOB");
         $s = new Settings();
         $s->save();
     }

@@ -213,6 +213,7 @@ class AdminController extends Controller
         if($matched == 0) $ranksMatched[$id] = 1;
         $color = $r['color'];
         $perms = $r['perms'];
+        echo serialize($perms);
         $name = $r['name'];
         $hexCode = str_replace_first('#', ' ', $color);
         if(!preg_match('/[^A-Fa-f0-9]/', $hexCode) || strlen($color) > 10) {

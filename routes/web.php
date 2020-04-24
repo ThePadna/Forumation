@@ -14,7 +14,7 @@ Route::get('/', function () {
     return view('home');
 });
 Route::post('/postEditorModeUpdate', 'AdminController@postEditorModeUpdate');
-Route::post('/updatethreadsettings', 'AdminController@updateThreadSettings');
+Route::post('/updatesettings', 'AdminController@updateSettings');
 Route::post('/updateranks', 'AdminController@updateRanks');
 Route::post('/addrank', 'AdminController@addRank');
 Route::post('/lockthread', 'ForumController@lockThread');

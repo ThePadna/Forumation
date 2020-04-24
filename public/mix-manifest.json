@@ -14,6 +14,7 @@
     "/css/posts.css": "/css/posts.css",
     "/css/threads.css": "/css/threads.css",
     "/css/ranks.css": "/css/ranks.css",
+    "/js/app.js": "/js/app.js",
     "/js/categories.js": "/js/categories.js",
     "/js/category.js": "/js/category.js",
     "/js/datamanagement.js": "/js/datamanagement.js",

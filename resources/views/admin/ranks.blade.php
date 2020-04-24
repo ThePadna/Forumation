@@ -3,6 +3,7 @@
 
 <head>
     <link rel="stylesheet" href="{{asset('css/ranks.css')}}">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 </head>
 <table>
     <tr>
@@ -46,9 +47,10 @@
         </td>
     </tr>
     <script>
-    perms1 = "{{implode("
-    _ ", unserialize($r->permissions))}}";
-    perms1 = perms1.split("_");
+    let perms1 = `{{implode('
+    ,', unserialize($r->permissions))}}`;
+    console.log("hello");
+    perms1 = perms1.split(",");
     for (let i = 0; i < perms1.length; i++) {
         let $obj = $('#{{$r->id}}').find('#' + perms1[i]);
         $obj.removeClass('unselected');

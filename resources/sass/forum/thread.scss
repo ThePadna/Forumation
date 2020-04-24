@@ -31,28 +31,56 @@
         font-style: italic;
     }
 }
-.col-sm-2 {
+.col-4 {
+    max-width: 150% !important;
+    width: 15vw;
+    height: 30vh;
     p {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
         font-size: 3vh;
         word-wrap: break-word;
         overflow: hidden;
         position: relative;
         text-align: center;
         width: 15vh;
+        height: 5vh;
     }
     img {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
         width: 15vh;
         height: 15vh;
         border: 1px;
         bordeR-radius: 50%;
     }
-    margin-right: 2%;
+    .rank-container {
+        margin-top: -1vh;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        * {
+            text-align: center;
+        }
+        height: 5vh;
+        width: 100%;
+    }
+    .stats {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 }
-.col-sm-8 {
-    word-break: break-all;
-    font-family: 'Baskerville';
+.col-6 {
+    .post-wrapper {
+        position: relative;
+        left: -5vh;
+        width: 28vw !important;
+    }
 }
-#stats {
+.stats {
     p {
         font-size: 2.5vh;
     }

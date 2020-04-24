@@ -55,7 +55,7 @@ hr {
   display: inline-block;
   font-size: 1.5em;
 }
-.submit-thread-settings {
+.submit-settings {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
@@ -64,6 +64,10 @@ hr {
   background: gray;
   color: white;
   margin-top: 10vh;
+}
+#result-placement {
+  text-align: center;
+  height: 5vh;
 }
 .toggle {
   position: relative;

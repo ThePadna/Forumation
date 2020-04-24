@@ -49,8 +49,6 @@
                     <input class="value" id="thread-post-input" value="{{$settings->thread_post_length}}"
                         id="thread-post-input" />
                 </div>
-                <br />
-                <div id="error-placement"> </div>
             </div>
         </div>
         <div class="col-sm-4">
@@ -58,21 +56,16 @@
                 <h1 class="settings-title"> Profile </h1>
                 <div class="setting">
                     <h1 id="profile-name-length" class="option"> Username Length </h1>
-                    <input class="value" id="profile-name-length" value="{{$settings->thread_title_length}}"
+                    <input class="value" id="profile-name-input" value="{{$settings->profile_name_length}}"
                         id="thread-title-input" />
                 </div>
-                <div class="setting">
-                    <h1 id="profile-picture-default" class="option"> Default Profile Picture </h1>
-                    <input type="file" class="value" id="profile-avatar-input" value="{{$settings->thread_op_length}}"
-                        id="thread-op-post-input" />
-                    <img id="profile-picture-preview" src="{{base64_decode($settings->profile_default_avatar)}}" />
-                </div>
-                <br />
-                <div id="error-placement-2"> </div>
             </div>
         </div>
     </div>
-    <button class="submit-settings"> SAVE SETTINGS </button>
+    <div class="footer">
+        <div id="result-placement"> </div>
+        <button class="submit-settings"> SAVE SETTINGS </button>
+    </div>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
     <meta name="csrf" content="{{csrf_token()}}">
     @if($settings != null)

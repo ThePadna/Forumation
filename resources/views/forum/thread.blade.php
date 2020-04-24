@@ -56,7 +56,6 @@ if(in_array('posterase', $perms)) $erase = true;
         @if($thread->locked)
         <p style="color:red; font-size: 2vh;"> <i class="fas fa-lock"></i> This thread has been locked. </h1>
             @endif
-            <hr />
     </div>
     @foreach($posts as $p)
     @php
@@ -64,7 +63,7 @@ if(in_array('posterase', $perms)) $erase = true;
     @endphp
     <div id="container">
         <div class="row">
-            <div id="star" class="col-sm-1">
+            <div id="star" class="col-1">
                 @php
                 $users_liked = unserialize($p->liked_by);
                 $likeCount = 0;
@@ -96,7 +95,7 @@ if(in_array('posterase', $perms)) $erase = true;
                 @else
                 <a href="/forum/profile/{{$user->name}}" style="text-decoration: none; color: inherit;">
                     @endif
-                    <div id="test" class="col-sm-2">
+                    <div class="col-4">
                         @if($p->erased)
                         <img id="profilepic" src="{{asset('default_avatar.png')}}">
                         <p> Removed </p>
@@ -111,39 +110,56 @@ if(in_array('posterase', $perms)) $erase = true;
                         <img id="profilepic" src="{{base64_decode($user->avatar)}}" />
                         @endif
                         <p> {{$user->name}} </p>
-                        <div id="stats">
                         @php
-                        $posts = App\Models\Post::where('user', $user->id)->get();
-                        $score = 0;
-                        foreach($posts as $p) {
-                            if($p->liked_by != '') {
-                                $score += sizeof(unserialize($p->liked_by));
-                            }
+                        $rankId = $user->rank;
+                        $rank = App\Models\Rank::find($rankId);
+                        $rankName = "";
+                        $rankColor = "#00000";
+                        if($rank != null) {
+                        $rankName = $rank->name;
+                        $rankColor = $rank->color;
+                        } else {
+                        $default = $settings->default_rank;
+                        $rank = App\Models\Rank::find($default);
+                        if($rank != null) {
+                        $rankName = $rank->name;
+                        $rankColor = $rank->color;
                         }
-                        $comments = sizeof($posts);
+                        }
                         @endphp
+                        <div class="rank-container">
+                            <p class="rank" style="color:{{$rankColor}}; font-size: 1.5em; width: 10vw;"> {{$rankName}}
+                            </p>
+                        </div>
+                        <div class="stats">
+                            @php
+                            $posts = App\Models\Post::where('user', $user->id)->get();
+                            $score = 0;
+                            foreach($posts as $p) {
+                            if($p->liked_by != '') {
+                            $score += sizeof(unserialize($p->liked_by));
+                            }
+                            }
+                            $comments = sizeof($posts);
+                            @endphp
                             <p> {{$score}} <i style="color: {{$color}}" class="fas fa-star"></i>
-                                {{$comments}} <i
-                                    style="color: {{$color}}" class="fas fa-comments"></i></p>
+                                {{$comments}} <i style="color: {{$color}}" class="fas fa-comments"></i></p>
                         </div>
                         @endif
                     </div>
                 </a>
-                <div class="col-sm-1 splitter">
-                    <hr />
-                </div>
-                <div class="col-sm-7">
+                <div class="col-6">
+                    <div class="post-wrapper">
                     @if($p->erased)
                     <p style="color:red">This post has been erased.</p>
                     @else
+                    <p class="post-content">
                     {{$p->contents}}
+                    </p>
                     @endif
-                </div>
-                <div class="post-edit">
-                    <i class="fas fa-eraser erase" post="{{$p->id}}"></i>
+                    </div>
                 </div>
         </div>
-        <hr />
     </div>
     @endforeach
     @if($empty)

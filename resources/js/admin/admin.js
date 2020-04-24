@@ -109,28 +109,29 @@ function saveEditorMode(toggle) {
         }
     });
 }
-$('#submit-settings').on('click', e => {
+$('.submit-settings').on('click', e => {
     let $threadTitleLen = $('#thread-title-input').val();
-    console.log($threadTitleLen);
     let $threadOPLen = $('#thread-op-input').val();
     let $threadPostLen = $('#thread-post-input').val();
-    let $profileNameLen = $('#profile-name-length').val();
-    let $profileDefaultAvatar = $('#profile-avatar-input')
+    let $profileNameLen = $('#profile-name-input').val();
     if(isNaN($threadTitleLen) || isNaN($threadOPLen) || isNaN($threadPostLen)) {
-        $('.error-msg').remove();
-        $('#error-placement').append('<p class="error-msg" style="color:red; font-size: 2vh;"> Values must be numerical! </p>');
+        $('.result-msg').remove();
+        $('#result-placement').append('<p class="result-msg" style="color:red; font-size: 2vh;"> Values must be numerical! </p>');
+        $('.result-msg').fadeOut(3000);
     } else if(isNaN($profileNameLen)) {
-        $('.error-msg').remove();
-        $('#error-placement-2').append('<p class="error-msg" style="color:red; font-size: 2vh;"> Values must be numerical! </p>');
-    } else {
+        $('.result-msg').remove();
+        $('#result-placement').append('<p class="result-msg" style="color:red; font-size: 2vh;"> Values must be numerical! </p>');
+        $('.result-msg').fadeOut(3000);
+        } else {
     $.ajax({
         type: "POST",
-        url: "/updatethreadsettings",
+        url: "/updatesettings",
         headers: { "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content") },
         data: { titleLength:$threadTitleLen, opLength:$threadOPLen, postLength:$threadPostLen, profileNameLen:$profileNameLen },
         success: function(res) {
-            $('.error-msg').remove();
-            $('#error-placement').append('<p class="error-msg" style="color:green; font-size: 2vh;"> Values Updated! </p>');
+            $('.result-msg').remove();
+            $('#result-placement').append('<p class="result-msg" style="color:green; font-size: 2vh;"> Values Updated! </p>');
+            $('.result-msg').fadeOut(3000);
         },
         error: function(xhr, ajaxOptions, thrownError) {
             console.log(
@@ -140,7 +141,6 @@ $('#submit-settings').on('click', e => {
         }
     });
     }
-    $('.error-msg').fadeOut(4000);
 });
 /**
  * Updates color scheme on present selectors.

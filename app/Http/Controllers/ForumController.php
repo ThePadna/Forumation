@@ -190,7 +190,7 @@ class ForumController extends Controller
          $postsSize = sizeof($posts);
          $empty = ($postsSize == 0);
          $threadLength = Settings::first()->thread_post_length;
-         return view('forum/thread', ['threadLength' => $threadLength, 'lastPage' => $lastPage, 'empty' => $empty, 'page' => $page, 'posts' => $posts, 'isLastPage' => $isLastPage, 'thread' => $thread, "color" => Settings::first()->color]);
+         return view('forum/thread', ['settings' => Settings::first(), 'threadLength' => $threadLength, 'lastPage' => $lastPage, 'empty' => $empty, 'page' => $page, 'posts' => $posts, 'isLastPage' => $isLastPage, 'thread' => $thread, "color" => Settings::first()->color]);
      }
      
      /**
@@ -205,7 +205,7 @@ class ForumController extends Controller
           $settings = Settings::first();
           $text = $request->input('text');
           $threadId = $request->input('thread');
-          if($settings->thread_post_length <= strlength($text)) {
+          if($settings->thread_post_length <= strlen($text)) {
               return false;
           }
           if(Thread::find($threadId) == null) {
