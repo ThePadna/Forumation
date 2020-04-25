@@ -10876,6 +10876,11 @@ a.text-dark:focus {
   }
 }
 
+#wrapper {
+  min-width: 50vw;
+  min-height: 50vh;
+}
+
 .edit-btn {
   font-size: 3.5vh;
   left: 0vw;
@@ -10889,118 +10894,153 @@ a.text-dark:focus {
   color: black;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
 .row {
+  margin-top: 1vh;
+  border-bottom: 1px solid gray;
+  min-width: 950px;
   word-wrap: break-word;
   overflow: hidden;
   width: 50%;
   position: relative;
   left: 45%;
   transform: translateX(-50%);
-  margin-bottom: 1%;
 }
 
-#titleContainer {
+#title-container {
+  color: gray;
+  height: 10%;
+  width: 50%;
   display: inline-block;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
 }
 
-#titleContainer #threadTitle {
-  font-size: 3vh;
+#title-container .thread-title-wrapper {
+  height: 70%;
+}
+
+#title-container .thread-detail-wrapper {
+  height: 30%;
+}
+
+#title-container .thread-detail {
+  font-size: 1em;
+  color: gray;
   text-align: center;
-  font-style: italic;
+  height: 2%;
+}
+
+#title-container #thread-title {
+  font-size: 4vh;
+  text-align: center;
 }
 
 .col-4 {
+  min-width: 150px !important;
+  min-height: 200px !important;
   max-width: 150% !important;
-  width: 15vw;
-  height: 30vh;
+  width: 10vw;
+  height: 25vh;
 }
 
-.col-4 p {
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 3vh;
-  word-wrap: break-word;
-  overflow: hidden;
-  position: relative;
+.col-4 .username-wrapper {
+  display: inline;
+  min-height: 15%;
+  min-width: 100%;
+}
+
+.col-4 .username-wrapper .username {
   text-align: center;
-  width: 15vh;
-  height: 5vh;
+  font-size: 150%;
 }
 
-.col-4 img {
+.col-4 .avatar {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  width: 15vh;
-  height: 15vh;
-  border: 1px;
-  bordeR-radius: 50%;
+  width: 125px;
+  min-width: 100px;
+  min-height: 100px;
+  height: 125px;
+  border: 0.1em solid black;
+  border-radius: 50%;
 }
 
 .col-4 .rank-container {
-  margin-top: -1vh;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  height: 5vh;
-  width: 100%;
+  display: inline;
+  min-height: 15%;
+  min-width: 100%;
 }
 
-.col-4 .rank-container * {
+.col-4 .rank-container .rank {
   text-align: center;
+  font-size: 80%;
 }
 
 .col-4 .stats {
+  height: 7%;
+  display: inline-block;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.col-4 .stats * {
+  font-size: 1em;
 }
 
 .col-6 .post-wrapper {
   position: relative;
-  left: -5vh;
+  min-width: 400px !important;
   width: 28vw !important;
 }
 
-.stats {
-  width: 15vh;
+.col-6 .post-wrapper .post-content-wrapper {
+  position: relative;
+  margin-bottom: 1vh;
+  min-height: 20vh;
 }
 
-.stats p {
-  font-size: 2.5vh;
+.col-6 .post-wrapper * {
+  font-size: 1em;
 }
 
-.col-sm-1 {
-  height: 20vh;
-  width: 1px;
-  margin-left: 1vh;
+.col-6 .post-wrapper .post-footer-wrapper {
+  margin-top: 1vh;
+  position: relative;
+  bottom: 0;
+  height: 8%;
 }
 
-.splitter {
-  border-left: 1px solid black;
+.col-6 .post-wrapper .post-footer-wrapper * {
+  color: gray;
+  font-size: 0.75em;
 }
 
-#star {
+.star {
+  height: 30%;
+  width: 150% !important;
+  max-width: 150% !important;
+  min-width: 100px !important;
   cursor: pointer;
-  font-size: 5vh;
-  text-align: center;
-  bottom: -10vh;
+  font-size: 200%;
+  position: relative;
+  left: -25%;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-#star i {
-  position: relative;
-  top: 0vh;
-  transform: translateY(-100%);
-}
-
-#star p {
-  font-size: 2.5vh;
-  position: relative;
-  top: -5vh;
+.star * {
+  display: inline-block;
 }
 
 #star-count {

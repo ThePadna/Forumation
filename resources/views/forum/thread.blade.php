@@ -39,6 +39,8 @@ if(in_array('posterase', $perms)) $erase = true;
 }
 }
 }
+$category = App\Models\Category::find($thread->categoryId);
+$op = App\User::find($thread->op);
 @endphp
 <link rel="stylesheet" href="{{asset('css/thread.css')}}">
 <div id="wrapper">
@@ -51,44 +53,59 @@ if(in_array('posterase', $perms)) $erase = true;
     </div>
     @endif
     @endauth
-    <div id="titleContainer">
-        <p id="threadTitle"> {{$thread->title}} </p>
+    <div id="title-container">
+        <div class="thread-title-wrapper">
+            <p id="thread-title"> {{$thread->title}} </p>
+        </div>
+        <div class="thread-detail-wrapper">
+            <p class="thread-detail"> Thread in <a href="/forum/category/{{$category->name}}/1"> {{$category->name}}
+                </a> by
+                <a href="/forum/profile/{{$op->name}}"> {{$op->name}} </a> </p>
+        </div>
         @if($thread->locked)
-        <p style="color:red; font-size: 2vh;"> <i class="fas fa-lock"></i> This thread has been locked. </h1>
+        <div class="thread-title-wrapper">
+            <p style="color:red; font-size: 2vh;"> <i class="fas fa-lock"></i> This thread has been locked. </h1>
+        </div>
             @endif
     </div>
+    @php
+    $i = 0;
+    @endphp
     @foreach($posts as $p)
     @php
+    $i++;
     $user = App\User::find($p->user);
     @endphp
     <div id="container">
         <div class="row">
-            <div id="star" class="col-1">
-                @php
-                $users_liked = unserialize($p->liked_by);
-                $likeCount = 0;
-                $isLikedByUser = false;
-                if($users_liked != null && Auth::user() != null) {
-                $isLikedByUser = in_array(Auth::user()->id, $users_liked);
-                $likeCount = sizeof($users_liked);
-                }
-                @endphp
-                @if(!$p->erased)
-                @if(!$isLikedByUser)
-                @if($star)
-                <i class="far fa-star star-symbol" post="{{$p->id}}"></i>
-                @else
-                <i class="far fa-star star-symbol-disabled" post="{{$p->id}}"></i>
-                @endif
-                @else
-                @if($star)
-                <i class="fas fa-star star-symbol" post="{{$p->id}}"></i>
-                @else
-                <i class="fas fa-star star-symbol-disabled" post="{{$p->id}}"></i>
-                @endif
-                @endif
-                <p class="star-count">{{$likeCount}}</p>
-                @endif
+            <div class="col-1">
+                <div class="star">
+                    @php
+                    $users_liked = unserialize($p->liked_by);
+                    $likeCount = 0;
+                    $isLikedByUser = false;
+                    if($users_liked != null && Auth::user() != null) {
+                    $isLikedByUser = in_array(Auth::user()->id, $users_liked);
+                    $likeCount = sizeof($users_liked);
+                    }
+                    @endphp
+                    @if(!$p->erased)
+                    @if(!$isLikedByUser)
+                    @if($star)
+                    <i class="far fa-star star-symbol" post="{{$p->id}}"></i>
+                    @else
+                    <i class="far fa-star star-symbol-disabled" post="{{$p->id}}"></i>
+                    @endif
+                    @else
+                    @if($star)
+                    <i class="fas fa-star star-symbol" post="{{$p->id}}"></i>
+                    @else
+                    <i class="fas fa-star star-symbol-disabled" post="{{$p->id}}"></i>
+                    @endif
+                    @endif
+                    <p class="star-count">{{$likeCount}}</p>
+                    @endif
+                </div>
             </div>
             @if($p->erased)
             <a style="text-decoration: none; color: inherit;">
@@ -105,11 +122,27 @@ if(in_array('posterase', $perms)) $erase = true;
                         </div>
                         @else
                         @if($user->avatar == null)
-                        <img id="profilepic" src="{{asset('default_avatar.png')}}" />
+                        <img class="avatar" src="{{asset('default_avatar.png')}}" />
                         @else
-                        <img id="profilepic" src="{{base64_decode($user->avatar)}}" />
+                        <img class="avatar" src="{{base64_decode($user->avatar)}}" />
                         @endif
-                        <p> {{$user->name}} </p>
+                        <div class="stats">
+                            @php
+                            $posts1 = App\Models\Post::where('user', $user->id)->get();
+                            $score = 0;
+                            foreach($posts1 as $p1) {
+                            if($p1->liked_by != '') {
+                            $score += sizeof(unserialize($p1->liked_by));
+                            }
+                            }
+                            $comments = sizeof($posts1);
+                            @endphp
+                            <p> {{$score}} <i style="color: {{$color}}" class="fas fa-star"></i>
+                                {{$comments}} <i style="color: {{$color}}" class="fas fa-comments"></i></p>
+                        </div>
+                        <div class="username-wrapper">
+                            <p class="username"> {{$user->name}} </p>
+                        </div>
                         @php
                         $rankId = $user->rank;
                         $rank = App\Models\Rank::find($rankId);
@@ -128,35 +161,25 @@ if(in_array('posterase', $perms)) $erase = true;
                         }
                         @endphp
                         <div class="rank-container">
-                            <p class="rank" style="color:{{$rankColor}}; font-size: 1.5em; width: 10vw;"> {{$rankName}}
-                            </p>
-                        </div>
-                        <div class="stats">
-                            @php
-                            $posts = App\Models\Post::where('user', $user->id)->get();
-                            $score = 0;
-                            foreach($posts as $p) {
-                            if($p->liked_by != '') {
-                            $score += sizeof(unserialize($p->liked_by));
-                            }
-                            }
-                            $comments = sizeof($posts);
-                            @endphp
-                            <p> {{$score}} <i style="color: {{$color}}" class="fas fa-star"></i>
-                                {{$comments}} <i style="color: {{$color}}" class="fas fa-comments"></i></p>
+                            <p class="rank" style="color:{{$rankColor}};"> {{$rankName}} </p>
                         </div>
                         @endif
                     </div>
                 </a>
                 <div class="col-6">
                     <div class="post-wrapper">
-                    @if($p->erased)
-                    <p style="color:red">This post has been erased.</p>
-                    @else
-                    <p class="post-content">
-                    {{$p->contents}}
-                    </p>
-                    @endif
+                        @if($p->erased)
+                        <p style="color:red">This post has been erased.</p>
+                        @else
+                        <div class="post-content-wrapper">
+                        <p class="post-content">
+                            {{$p->contents}}
+                        </p>
+                        </div>
+                        <div class="post-footer-wrapper">
+                        <p class="post-footer"> Post by <a href="/forum/profile/{{App\User::find($p->user)->name}}"> {{App\User::find($p->user)->name}} </a> on {{$p->created_at}} </p>
+                        </div>
+                        @endif
                     </div>
                 </div>
         </div>
