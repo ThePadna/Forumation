@@ -33,10 +33,14 @@ class UserController extends Controller
     public function updateProfile(Request $request, $userId) {
         $file = $request->input('pic');
         $username = $request->input('username');
+        $rank = $request->input('rank');
         $user = User::where('name', $userId)->first();
         if($user == null) {
             echo 'Invalid profile ID.';
             return;
+        }
+        if($rank != null) {
+            $user->rank = $rank;
         }
         if($file != null) {
             $b64 = base64_encode($file);

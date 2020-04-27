@@ -100,10 +100,12 @@ $('form').submit(function (e) {
   e.preventDefault();
   var formData = new FormData();
   var $name = $usernameInp.val();
+  var $rank = $('.selected-rank').attr('rankId');
   console.log("name;" + $name);
   if ($name != null) formData.append("username", $name);
   var $src = $picInp.attr('src');
   if ($src != null) formData.append("pic", $src);
+  if ($rank != -1) formData.append("rank", $rank);
   $.ajax({
     type: "POST",
     url: '/forum/profile/' + $('meta[name="userId"]').attr('content') + '/edit/updateprofile',
@@ -129,6 +131,12 @@ $('#pic').change(function (e) {
   };
 
   reader.readAsDataURL(e.target.files[0]);
+});
+$('.dropdown-item').on('click', function (e) {
+  var $rId = $(e.target).attr('id');
+  var $rName = $(e.target).text();
+  $('.selected-rank').attr('rankId', $rId);
+  $('.selected-rank').text($rName);
 });
 /**
  * Updates color scheme on present selectors.
