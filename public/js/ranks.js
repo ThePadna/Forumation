@@ -863,11 +863,12 @@ $('.save').on('click', function (e) {
       'X-CSRF-TOKEN': $('meta[name="csrf"]').attr('content')
     },
     data: {
-      "ranks": JSON.stringify($ranksJson)
+      "ranks": JSON.stringify($ranksJson),
+      "default": $('.selected-rank').attr('rankId')
     },
     success: function success(res) {
-      console.log(res);
       $('.result').html('<span style="color:green"> Saved. </span>');
+      window.location.reload();
     },
     error: function error(xhr, ajaxOptions, thrownError) {
       console.log("Error occured during AJAX request, error code: " + xhr.status);
@@ -879,6 +880,12 @@ $('.save').on('click', function (e) {
     $('.result').html('');
     $('.result').show();
   }, 3000);
+});
+$('.dropdown-item').on('click', function (e) {
+  var $rId = $(e.target).attr('id');
+  var $rName = $(e.target).text();
+  $('.selected-rank').attr('rankId', $rId);
+  $('.selected-rank').text($rName);
 });
 updateColorScheme($('meta[name="color"]').attr('content'));
 /**

@@ -6,14 +6,14 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 </head>
 <script>
-    function fillPermissions(perms, id) {
-        for (let i = 0; i < perms.length; i++) {
-        if(perms[i].length == 0) continue;
-        let $obj = $('#' + id).find('#' + perms[i]);
+function fillPermissions(perms, id) {
+    for (let i = 0; i < perms.length; i++) {
+        if (perms[i].length == 0) continue;
+        let $obj = $('#' + id).find('#' + perms[i].trim());
         $obj.removeClass('unselected');
         $obj.addClass('selected');
-        }
     }
+}
 </script>
 <table>
     <tr>
@@ -57,7 +57,7 @@
         </td>
     </tr>
     <script>
-    fillPermissions('{{implode(',', unserialize($r->permissions))}}'.split(","), '{{$r->id}}');
+    fillPermissions('{{implode(', ', unserialize($r->permissions))}}'.split(","), '{{$r->id}}');
     </script>
     @endforeach
 </table>
@@ -77,16 +77,18 @@
     <div class="default">
         <div class="dropdown">
             <h1 class="option"> Default Rank </h1>
-            <button class="value btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                @php
-                $default = $settings->default_rank;
-                $rank = App\Models\Rank::find($default);
-                $defRank = "No default selected";
-                if($rank != null) {
-                    $defRank = $rank->name;
-                }
-                @endphp
+            @php
+            $default = $settings->default_rank;
+            $rank = App\Models\Rank::find($default);
+            $defRank = "No default selected";
+            $id = -1;
+            if($rank != null) {
+            $defRank = $rank->name;
+            $id = $rank->name;
+            }
+            @endphp
+            <button rankId="{{$id}}" class="selected-rank value btn btn-secondary dropdown-toggle" type="button"
+                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{$defRank}}
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">

@@ -188,9 +188,9 @@ function displayStats() {
   var posts = $('meta[name="posts"]').attr('content'),
       threads = $('meta[name="threads"]').attr('content'),
       score = $('meta[name="score"]').attr('content');
-  var $posts = $('.post-counter'),
-      $threads = $('.thread-counter'),
-      $score = $('.score-counter');
+  var $posts = $('#posts-counter'),
+      $threads = $('#threads-counter'),
+      $score = $('#score-counter');
   animateCounting($posts, posts);
   animateCounting($threads, threads);
   animateCounting($score, score);
@@ -220,7 +220,7 @@ function animateCounting($obj, count) {
       }).animate({
         count: count
       }, {
-        duration: 1000,
+        duration: 650,
         easing: 'linear',
         step: function step() {
           $obj.text(Math.round(this.count));

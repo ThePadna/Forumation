@@ -200,6 +200,11 @@ class AdminController extends Controller
      */
     public function updateRanks(Request $request) {
       if(!$this->canAccess()) return;
+      $settings = Settings::first();
+      $defId = $request->input('default');
+      if($defId != -1) {
+        $settings->default_rank = $defId;
+      }
       $json = $request->input('ranks');
       $json = json_decode($json, true);
       $errors = [];

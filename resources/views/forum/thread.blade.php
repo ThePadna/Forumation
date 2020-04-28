@@ -24,11 +24,13 @@ $create = false;
 $rank = null;
 if(Auth::check()) {
 $rank = Auth::user()->rank;
+$rank = App\Models\Rank::find($rank);
 if($rank == null) {
 $settings = App\Models\Settings::first();
 if($settings != null) {
 $default = $settings->default_rank;
 $rank = App\Models\Rank::find($default);
+}
 }
 if($rank != null) {
 $perms = unserialize($rank->permissions);
@@ -36,7 +38,6 @@ if(in_array('poststar', $perms)) $star = true;
 if(in_array('postcreate', $perms)) $create = true;
 if(in_array('posteraseself', $perms)) $eraseSelf = true;
 if(in_array('posterase', $perms)) $erase = true;
-}
 }
 }
 $category = App\Models\Category::find($thread->categoryId);
