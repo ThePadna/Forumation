@@ -5,6 +5,16 @@
     <link rel="stylesheet" href="{{asset('css/ranks.css')}}">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 </head>
+<script>
+    function fillPermissions(perms, id) {
+        for (let i = 0; i < perms.length; i++) {
+        if(perms[i].length == 0) continue;
+        let $obj = $('#' + id).find('#' + perms[i]);
+        $obj.removeClass('unselected');
+        $obj.addClass('selected');
+        }
+    }
+</script>
 <table>
     <tr>
         <th>Rank</th>
@@ -47,15 +57,7 @@
         </td>
     </tr>
     <script>
-    let perms1 = `{{implode('
-    ,', unserialize($r->permissions))}}`;
-    console.log("hello");
-    perms1 = perms1.split(",");
-    for (let i = 0; i < perms1.length; i++) {
-        let $obj = $('#{{$r->id}}').find('#' + perms1[i]);
-        $obj.removeClass('unselected');
-        $obj.addClass('selected');
-    }
+    fillPermissions('{{implode(',', unserialize($r->permissions))}}'.split(","), '{{$r->id}}');
     </script>
     @endforeach
 </table>
