@@ -4,9 +4,11 @@
     <link href="{{ asset('bootstrap.min.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{asset('css/forum_layout.css')}}">
     <div id="header">
-        <a href="/forum">
+    <a href="/forum">
+        <div class="title-container" href="/forum">
             <h1 id="important-notice"> </h1>
             <h1 id="title"> Forumation </h1>
+        </div>
         </a>
         @guest
         <p class="auth">
@@ -37,16 +39,16 @@
         @endphp
         @if($admin)
         <a id="admin" style="color:white; position:absolute; top:1vh; left:1vh;" href="/forum/admin"> <i
-                style="font-size: 5vh;" class="fas fa-cog"></i></a>
+                class="admin-icon fas fa-cog"></i></a>
         @endif
-        <p class="auth">
+        <div class="auth">
             <a id="username" style="color:white;"
                 href="/forum/profile/{{Auth::user()->name}}">{{ Auth::user()->name }}</a>
             <a id="logout" href="{{ route('logout') }}"
                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 {{ __('logout') }}
             </a>
-        </p>
+        </div>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
         </form>

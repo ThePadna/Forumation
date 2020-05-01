@@ -10,18 +10,20 @@ $edit = false;
 if(Auth::check()) {
 $rank = Auth::user()->rank;
 if($rank == null) {
+    echo "hello";
 $settings = App\Models\Settings::first();
 if($settings != null) {
 $default = $settings->default_rank;
 $rank = App\Models\Rank::find($default);
 }
+}
 if($rank != null) {
+$rank = App\Models\Rank::find($rank);
 $perms = unserialize($rank->permissions);
 if(in_array('categoryswitch', $perms)) $switch = true;
 if(in_array('categoryadd', $perms)) $add = true;
 if(in_array('categorydelete', $perms)) $delete = true;
 if(in_array('categoryedit', $perms)) $edit = true;
-}
 }
 }
 @endphp

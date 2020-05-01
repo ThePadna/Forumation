@@ -45,6 +45,8 @@ a {
 }
 .row {
     width: 70vw;
+    min-width: 750px !important;
+    min-height: 92px;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
@@ -56,13 +58,13 @@ a {
         width: 125%;
     }
     h1 {
-        top: 2vh;
-        font-size: 3vh;
+        top: 1em;
+        font-size: 2em;
         color: black;
     }
     p {
         color: black;
-        font-size: 1.5vh;
+        font-size: 1em;
     }
 
     .col-2 {
@@ -73,7 +75,7 @@ a {
     }
     .col-1 {
         * {
-            font-size: 2.2vh;
+            font-size: 1.5em;
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
@@ -82,7 +84,7 @@ a {
 
     .desc {
         color: gray;
-        font-size: 2vh;
+        font-size: 1.5em;
     }
 
     .editor-btn {
