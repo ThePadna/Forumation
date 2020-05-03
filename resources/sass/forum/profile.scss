@@ -1,22 +1,24 @@
 @import '../libs';
-#profileheader {
+#profile-header {
+    margin-bottom: 20vh;
     display: inline-block;
     position: relative;        
     left: 50%;
     transform: translateX(-50%);
-    #profilepic {
-        width: 25vh;
+    #avatar {
+        min-height: 200px;
+        min-width: 200px;
         height: 25vh;
+        width: 25vh;
     }
-    #editBtn {
+    #edit-btn {
         text-align: center;
     }
     * {
         h1 {
+            font-weight: 650;
             font-size: 7.5vh;
             text-align: center;
-            margin-top: 2.5vh;
-            margin-bottom: 10vh;
         }
         display: block;
         position: relative;
@@ -27,6 +29,25 @@
     }
     input[type="file"] {
         width: 75%;
+    }
+    #rank-container {
+        position: relative;
+        min-height: 2.5rem;
+        height: 5vh;
+        #rank {
+            font-size: 1.5em;
+        }
+    }
+    #profile-name-container {
+        position: relative;
+        min-height: 3rem;
+        height: 5vh;
+        #profile-name {
+            font-size: 2.5em;
+        }
+    }
+    * {
+        text-align: center;
     }
 }
 

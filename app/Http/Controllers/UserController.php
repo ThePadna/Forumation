@@ -19,9 +19,10 @@ class UserController extends Controller
      */
     public function editProfile(Request $request, $userId) {
         $user = User::where('name', $userId)->first();
+        $settings = Settings::first();
         $ranks = Rank::all();
         if($user == null) return view('404');
-        return view('profile/edit', ['ranks' => $ranks, 'user' => $user, "color" => Settings::first()->color]);
+        return view('profile/edit', ['ranks' => $ranks, 'user' => $user, "settings" => $settings]);
     }
 
     /**
@@ -35,6 +36,7 @@ class UserController extends Controller
         $username = $request->input('username');
         $rank = $request->input('rank');
         $user = User::where('name', $userId)->first();
+        $settings = Settings::first();
         if($user == null) {
             echo 'Invalid profile ID.';
             return;
@@ -46,7 +48,7 @@ class UserController extends Controller
             $b64 = base64_encode($file);
             $user->avatar = $b64;
         }
-        if($username != null) {
+        if($username != null && strlen($username) <= $settings->profile_name_length) {
             $user->name = $username;
         }
         $user->save();

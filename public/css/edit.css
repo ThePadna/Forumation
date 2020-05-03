@@ -10876,8 +10876,8 @@ a.text-dark:focus {
   }
 }
 
-#container #profilepic,
-#container #pic,
+#container #avatar,
+#container #avatar-input,
 #container #update {
   display: block;
   position: relative;
@@ -10885,7 +10885,7 @@ a.text-dark:focus {
   transform: translateX(-50%);
 }
 
-#container #profilepic {
+#container #avatar {
   border: 1px solid black;
   height: 30vh;
   width: 30vh;
@@ -10900,7 +10900,7 @@ a.text-dark:focus {
   width: 11vw;
 }
 
-#container #namechanger {
+#container #name-changer {
   margin-top: 1%;
   display: inline-block;
   position: relative;
@@ -10908,8 +10908,13 @@ a.text-dark:focus {
   transform: translateX(-50%);
 }
 
-#container #namechanger * {
+#container #name-changer * {
   display: inline-block;
+}
+
+.error-container {
+  margin-top: 2vh;
+  height: 5vh;
 }
 
 .dropdown-container {

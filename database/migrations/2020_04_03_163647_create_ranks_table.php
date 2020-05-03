@@ -22,7 +22,7 @@ class CreateRanksTable extends Migration
         });
         $rank = new App\Models\Rank();
         $rank->name = "ADMINISTRATOR";
-        $perms = array('admin', 'categoryadd', 'categoryswitch', 'categorydelete', 'categoryedit', 'posterase', 'threaddelete', 'threadlock', 'threadcreate', 'posteraseself', 'poststar', 'postcreate', 'usereditownprofile');
+        $perms = array('admin', 'categoryadd', 'categoryswitch', 'categorydelete', 'categoryedit', 'posterase', 'threaddelete', 'threadlock', 'threadcreate', 'posteraseself', 'poststar', 'postcreate', 'usereditownprofile', 'editotherprofile', 'banuserprofile');
         $rank->permissions = serialize($perms);
         $rank->save();
     }

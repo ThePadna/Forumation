@@ -10,7 +10,6 @@ $edit = false;
 if(Auth::check()) {
 $rank = Auth::user()->rank;
 if($rank == null) {
-    echo "hello";
 $settings = App\Models\Settings::first();
 if($settings != null) {
 $default = $settings->default_rank;

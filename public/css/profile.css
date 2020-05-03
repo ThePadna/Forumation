@@ -10876,23 +10876,26 @@ a.text-dark:focus {
   }
 }
 
-#profileheader {
+#profile-header {
+  margin-bottom: 20vh;
   display: inline-block;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
 }
 
-#profileheader #profilepic {
-  width: 25vh;
+#profile-header #avatar {
+  min-height: 200px;
+  min-width: 200px;
   height: 25vh;
+  width: 25vh;
 }
 
-#profileheader #editBtn {
+#profile-header #edit-btn {
   text-align: center;
 }
 
-#profileheader * {
+#profile-header * {
   display: block;
   position: relative;
   margin: 0;
@@ -10901,15 +10904,38 @@ a.text-dark:focus {
   transform: translateX(-50%);
 }
 
-#profileheader * h1 {
+#profile-header * h1 {
+  font-weight: 650;
   font-size: 7.5vh;
   text-align: center;
-  margin-top: 2.5vh;
-  margin-bottom: 10vh;
 }
 
-#profileheader input[type=file] {
+#profile-header input[type=file] {
   width: 75%;
+}
+
+#profile-header #rank-container {
+  position: relative;
+  min-height: 2.5rem;
+  height: 5vh;
+}
+
+#profile-header #rank-container #rank {
+  font-size: 1.5em;
+}
+
+#profile-header #profile-name-container {
+  position: relative;
+  min-height: 3rem;
+  height: 5vh;
+}
+
+#profile-header #profile-name-container #profile-name {
+  font-size: 2.5em;
+}
+
+#profile-header * {
+  text-align: center;
 }
 
 #ban-btn:hover {

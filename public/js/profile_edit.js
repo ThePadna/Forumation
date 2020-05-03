@@ -96,6 +96,27 @@
 var $usernameInp = $('#usernameInput');
 var $picInp = $('#profilepic');
 updateColorScheme($('meta[name="color"]').attr('content'));
+$usernameInp = $('#username-input');
+
+if ($usernameInp != null) {
+  $usernameInp.on('input', function () {
+    var $limit = $('meta[name="username-length"]').attr('content');
+    var $text = $usernameInp.val().length;
+
+    if ($text > $limit) {
+      if ($('.warning').length < 1) {
+        $('.error-container').append('<p class="warning" style="color: red; text-align: center;"> Your username is over the ' + $limit + ' character limit. This will not be updated. </h1>');
+      }
+    } else {
+      console.log($text + " " + $limit);
+
+      if ($('.warning').length > 0) {
+        $('.warning').remove();
+      }
+    }
+  });
+}
+
 $('form').submit(function (e) {
   e.preventDefault();
   var formData = new FormData();

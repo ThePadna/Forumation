@@ -46,6 +46,8 @@ function fillPermissions(perms, id) {
                     <p id="threadlock" class="permission unselected"> Lock Thread </p>
                     <p id="threaddelete" class="permission unselected"> Delete Thread </p>
                     <p id="posterase" class="permission unselected"> Erase Post </p>
+                    <p id="editotherprofile" class="permission unselected"> Edit Any Profile </p>
+                    <p id="banuserprofile" class="permission unselected"> Ban Users </p>
                     <p id="categoryedit" class="permission unselected"> Edit Category </p>
                     <p id="categorydelete" class="permission unselected"> Delete Category </p>
                     <p id="categoryswitch" class="permission unselected"> Switch Category </p>

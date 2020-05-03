@@ -1,23 +1,60 @@
 @extends('layouts/forum_layout')
 @section('content')
 <link rel="stylesheet" href="{{asset('css/profile.css')}}">
-<div id="profileheader">
-    @auth 
-    @if(Auth::user()->role == "admin" || Auth::user()->id == $user->id)
+<div id="profile-header">
+    @php
+    $rank = null;
+    $ban = false;
+    $edit = false;
+    $editown = false;
+    $settings = App\Models\Settings::first();
+    if(Auth::check()) {
+    $rank = Auth::user()->rank;
+    if($rank == null) {
+    if($settings != null) {
+    $default = $settings->default_rank;
+    $rank = App\Models\Rank::find($default);
+    }
+    }
+    if($rank != null) {
+    $rank = App\Models\Rank::find($rank);
+    $perms = unserialize($rank->permissions);
+    if(in_array('editotherprofile', $perms)) $edit = true;
+    if(in_array('banuserprofile', $perms)) $ban = true;
+    if(in_array('usereditownprofile', $perms)) $editown = true;
+    }
+    }
+    $profileRank = App\Models\Rank::find($user->rank);
+    if($profileRank == null) {
+    if($settings != null) {
+    $default = $settings->default_rank;
+    $profileRank = App\Models\Rank::find($default);
+    }
+    }
+    @endphp
+    @if($ban && Auth::user()->id != $user->id)
     <p id="ban-btn"> <i class="fas fa-ban"></i> Ban User </p>
-    <a href="/forum/profile/{{$user->name}}/edit"> <p id="editBtn"> [Edit Profile] </p> </a>
     @endif
-    @endauth
-    <div id="profilepicdiv">
+    @if($edit || $editown)
+    <a href="/forum/profile/{{$user->name}}/edit">
+        <p id="edit-btn"> [Edit Profile] </p>
+    </a>
+    @endif
+    <div id="avatar-container">
         @if($user->avatar == null)
-        <img id="profilepic" src="{{asset('default_avatar.png')}}" />
+        <img id="avatar" src="{{asset('default_avatar.png')}}" />
         @else
-        <img id="profilepic" src="{{base64_decode($user->avatar)}}" />
+        <img id="avatar" src="{{base64_decode($user->avatar)}}" />
         @endif
     </div>
-    <div id="profilenamediv">
-            <h1> {{$user->name}} </h1>
+    <div id="profile-name-container">
+        <h1 id="profile-name"> {{$user->name}} </h1>
     </div>
+    @if($profileRank != null)
+    <div id="rank-container">
+        <p id="rank" style="color: {{$profileRank->color}}"> {{$profileRank->name}} </p>
+    </div>
+    @endif
 </div>
 <div id="container">
     <div class="row">

@@ -1,12 +1,12 @@
 @import '../libs';
 #container {
-    #profilepic, #pic, #update {
+    #avatar, #avatar-input, #update {
         display: block;
         position: relative;
         left: 50%;
         transform: translateX(-50%);
     }
-    #profilepic {
+    #avatar {
         border: 1px solid black;
         height: 30vh;
         width: 30vh;
@@ -18,7 +18,7 @@
         margin-top: 0.5vh;
         width: 11vw;
     }
-    #namechanger {
+    #name-changer {
         margin-top: 1%;
         display: inline-block;
         position: relative;
@@ -28,6 +28,10 @@
             display: inline-block;
         }
     }
+}
+.error-container {
+    margin-top: 2vh;
+    height: 5vh;
 }
 .dropdown-container {
     display: table;

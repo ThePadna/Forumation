@@ -4,13 +4,13 @@
 @if(Auth::user()->id == $user->id)
 <link rel="stylesheet" href="{{asset('css/edit.css')}}">
 <div id="container">
-    <form id="updateProfile">
-        <img id="profilepic" src="{{base64_decode($user->avatar)}}" />
-        <input id="pic" type="file" />
+    <form id="update-profile">
+        <img id="avatar" src="{{base64_decode($user->avatar)}}" />
+        <input id="avatar-input" type="file" />
         <div id="settings">
-            <div id="namechanger">
+            <div id="name-changer">
                 <h1 class="option">Profile Name </h1>
-                <input class="value" id="usernameInput" type="text" placeholder="{{$user->name}}" />
+                <input autocomplete="off" class="value" id="username-input" type="text" placeholder="{{$user->name}}" />
             </div>
             <div class="dropdown-container setting">
                 <div class="dropdown">
@@ -23,14 +23,11 @@
                     $display = $rank->name;
                     $id = $rank->id;
                     } else {
-                    $settings = App\Models\Settings::first();
-                    if($settings != null) {
                     $spaghetti = $settings->default_rank;
                     $rank = App\Models\Rank::find($spaghetti);
                     if($rank != null) {
                     $display = "Default: " . $rank->name;
                     $id = $rank->id;
-                    }
                     }
                     }
                     @endphp
@@ -40,7 +37,7 @@
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         @foreach($ranks as $r)
-                        @if(App\Models\Settings::first()->default_rank == $r->id)
+                        @if($settings->default_rank == $r->id)
                         <a id="{{$r->id}}" class="dropdown-item" href="#"> Default: {{$r->name}} </a>
                         @else
                         <a id="{{$r->id}}" class="dropdown-item" href="#"> {{$r->name}} </a>
@@ -50,12 +47,14 @@
                 </div>
             </div>
         </div>
+        <div class="error-container"> </div>
         <button id="update"> UPDATE </button>
     </form>
 </div>
 <meta name="csrf" content="{{csrf_token()}}">
 <meta name="userId" content="{{$user->name}}">
-<meta name="color" content="{{$color}}">
+<meta name="color" content="{{$settings->color}}">
+<meta name="username-length" content="{{$settings->profile_name_length}}">
 <script src="{{asset('js/app.js')}}" charset="utf-8"></script>
 <script src="{{asset('js/profile_edit.js')}}"> </script>
 @else
