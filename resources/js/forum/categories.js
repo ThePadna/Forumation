@@ -161,7 +161,7 @@ function registerEditFormSubmitListener() {
 /**
  * Open category creator form on button press.
  */
-$("#addCategory").on("click", e => {
+$("#add-category").on("click", e => {
     $(".wrapper").append(addCategoryFormHTML);
     registerFormExitHandler();
     initForms();
@@ -312,7 +312,7 @@ updateColorScheme($('meta[name="color"]').attr('content'));
  */
 function updateColorScheme(color) {
     $('#header, .popup-form').css('background', color);
-    $('.recentPoster, .col-1>p, #addCategory>*').css('color', color);
+    $('.recentPoster, .col-1>p, #add-category>*').css('color', color);
 }
 $(document).on('mouseover', '.form-exit', (e) => {
    $(e.target).css({

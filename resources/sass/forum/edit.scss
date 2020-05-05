@@ -1,24 +1,33 @@
 @import '../libs';
 #container {
+    width: 30vw;
+    min-width: 500px;
+    min-height: 500px;
+    position: relative;
+    transform: translateX(-50%);
+    left: 50%;
     #avatar, #avatar-input, #update {
         display: block;
         position: relative;
         left: 50%;
         transform: translateX(-50%);
     }
+    #avatar-input {
+        min-width: 200px;
+    }
     #avatar {
         border: 1px solid black;
+        min-height: 300px;
+        min-width: 300px;
         height: 30vh;
         width: 30vh;
-    }
-    #update {
-        margin-top: 1%;
     }
     input[type="file"] {
         margin-top: 0.5vh;
         width: 11vw;
     }
     #name-changer {
+        min-width: 200px;
         margin-top: 1%;
         display: inline-block;
         position: relative;
@@ -54,17 +63,18 @@
 }
 #settings {
     .option {
-        width: 12vw;
-        font-size: 3vh;
+        min-width: 125px;
+        width: 7vw;
+        font-size: 1.2rem;
     }
     .value {
-        width: 13vw;
+        min-width: 125px;
+        width: 1.2rem;
     }
 }
 #update {
-    top: 20vh;
-    width: 10vw;
-    height: 4vh;
+    width: 100px;
+    height: 30px;
     color: white;
     background: #6c757d;
     border-radius: 0.25rem;

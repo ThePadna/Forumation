@@ -17,7 +17,7 @@ $rank = App\Models\Rank::find($default);
 }
 }
 if($rank != null) {
-$rank = App\Models\Rank::find($rank);
+$rank = App\Models\Rank::find($rank)->first();
 $perms = unserialize($rank->permissions);
 if(in_array('categoryswitch', $perms)) $switch = true;
 if(in_array('categoryadd', $perms)) $add = true;
@@ -39,7 +39,11 @@ if(in_array('categoryedit', $perms)) $edit = true;
         @foreach($categories as $c)
         <div class="row">
             <div id="title" class="col-5">
-                <div class="editor-btn">
+                <a href="/forum/category/{{str_replace(' ', '-', $c->name)}}/1" class="data-title"
+                    ondragover="event.preventDefault()" categoryId='{{$c->id}}'>
+                    <h1 class="title"> {{$c->name}} </h1>
+                    <h1 class="desc"> {{$c->desc}} </h1>
+                    <div class="editor-btn">
                 @if($switch)
                     <div class="switch-btn">
                         <i id="up" class="up-arrow fas fa-arrow-up" categoryId='{{$c->id}}'
@@ -59,10 +63,6 @@ if(in_array('categoryedit', $perms)) $edit = true;
                             @endif
                     </div>
                 </div>
-                <a href="/forum/category/{{str_replace(' ', '-', $c->name)}}/1" class="data-title"
-                    ondragover="event.preventDefault()" categoryId='{{$c->id}}'>
-                    <h1 class="title"> {{$c->name}} </h1>
-                    <h1 class="desc"> {{$c->desc}} </h1>
                 </a>
             </div>
             @php
@@ -107,9 +107,8 @@ if(in_array('categoryedit', $perms)) $edit = true;
 </div>
 @endif
 @if($add)
-<div id="addCategory">
-    <i class="fas fa-plus"></i>
-    <h1> Add Category </h1>
+<div id="add-category">
+<a>    <h1> Add New Category </h1></a>
 </div>
 @endif
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>

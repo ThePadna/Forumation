@@ -10876,49 +10876,36 @@ a.text-dark:focus {
   }
 }
 
-#addCategory {
-  position: absolute;
-  left: 2vw;
-  top: 18vh;
+.wrapper {
+  width: 100vw;
 }
 
-#addCategory * {
-  color: white;
-  opacity: 0.7;
-}
-
-#addCategory h1 {
+#add-category {
   text-align: center;
-  font-size: 3vh;
-  transition: opacity 1s;
-  opacity: 0;
 }
 
-#addCategory i {
-  left: 50%;
-  position: relative;
-  transform: translateX(-50%);
-  font-size: 4vh;
-  opacity: 0.5;
-  transition: opacity 1s;
+#add-category h1 {
+  font-size: 1rem;
 }
 
-#addCategory:hover {
+#add-category a {
+  text-decoration: underline;
+}
+
+#add-category:hover {
   cursor: pointer;
 }
 
-#addCategory:hover h1 {
-  transition: opacity 1s;
-  opacity: 1;
-}
-
-#addCategory:hover i {
-  transition: opacity 1s;
-  opacity: 1;
+i {
+  margin-left: 1px;
 }
 
 a {
-  text-decoration: none !important;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 #table-header * {
@@ -10975,24 +10962,20 @@ a {
 }
 
 .row .editor-btn {
-  width: 10vw;
-  position: absolute;
-  display: inline-block;
   color: black;
-  font-size: 175%;
-  top: 45%;
-  right: 30vw;
+  display: inline-block;
+  font-size: 1.5rem;
   cursor: pointer;
 }
 
 .row .editor-btn * {
   display: inline-block;
   float: left;
-  margin-right: 0.1vw;
+  margin-right: 0.5vw;
 }
 
 .row .editor-btn .switch-btn {
-  margin-right: 1vw;
+  margin-right: 2vw;
 }
 
 .category {
