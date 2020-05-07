@@ -10940,7 +10940,7 @@ hr {
 
 .option,
 .value {
-  width: 15vw;
+  width: 200px;
   display: inline-block;
   font-size: 1.5em;
 }
@@ -10949,8 +10949,8 @@ hr {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  width: 10vw;
-  height: 4vh;
+  width: 100px;
+  height: 30px;
   background: gray;
   color: white;
   margin-top: 10vh;

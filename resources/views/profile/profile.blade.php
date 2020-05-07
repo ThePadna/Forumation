@@ -13,7 +13,7 @@
     if($rank == null) {
     if($settings != null) {
     $default = $settings->default_rank;
-    $rank = App\Models\Rank::find($default);
+    $rank = App\Models\Rank::find($default)->first();
     }
     }
     if($rank != null) {
@@ -28,7 +28,7 @@
     if($profileRank == null) {
     if($settings != null) {
     $default = $settings->default_rank;
-    $profileRank = App\Models\Rank::find($default);
+    $profileRank = App\Models\Rank::find($default)->first();
     }
     }
     @endphp

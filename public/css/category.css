@@ -10876,41 +10876,38 @@ a.text-dark:focus {
   }
 }
 
-#postThread {
-  position: absolute;
-  left: 1vw;
-  top: 18vh;
+input::-webkit-input-placeholder,
+input:-moz-placeholder {
+  color: black;
 }
 
-#postThread * {
-  color: white;
-  opacity: 0.7;
+#add-thread {
+  margin-bottom: 2%;
 }
 
-#postThread h1 {
-  text-align: center;
-  font-size: 3vh;
-  transition: opacity 1s;
-  opacity: 0;
+#add-thread * {
+  position: relative;
 }
 
-#postThread i {
-  font-size: 4vh;
+#add-thread input {
+  background: gray;
   opacity: 0.5;
-  transition: opacity 1s;
+  border: 1px solid #6c757d;
+  width: 25%;
+  height: 35px;
+  border-radius: 1px;
 }
 
-#postThread:hover h1 {
-  transition: opacity 1s;
-  opacity: 1;
-}
-
-#postThread:hover i {
-  transition: opacity 1s;
-  opacity: 1;
+#add-thread img {
+  margin-right: 1%;
+  border-radius: 50%;
+  top: 0;
+  width: 50px;
+  height: 50px;
 }
 
 #del {
+  font-size: 1.5rem;
   cursor: pointer;
 }
 
@@ -10961,6 +10958,10 @@ a:hover {
   font-size: 2vh;
 }
 
+.row {
+  min-width: 750px !important;
+}
+
 .row hr {
   border-bottom: 0.1vh solid black;
   width: 75%;
@@ -10971,12 +10972,12 @@ a:hover {
 }
 
 .row h1 {
-  font-size: 2.5vh;
+  font-size: 1rem;
 }
 
 .row p {
   color: white;
-  font-size: 2vh;
+  font-size: 1rem;
 }
 
 .thread {
@@ -10985,7 +10986,7 @@ a:hover {
 
 .thread .edit-btn {
   font-size: 3.5vh;
-  left: 30vh;
+  left: 200px;
   top: 50%;
   transform: translateY(-50%);
   position: absolute;

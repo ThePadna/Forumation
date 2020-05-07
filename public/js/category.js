@@ -96,6 +96,10 @@
 var delThreadFormHTML = "<div id=\"delThreadForm\" class=\"popup-form\">\n<div class=\"form-header\">\n    <div class=\"form-exit\">\n        <i id=\"exit-icon\" class=\"fas fa-times\"></i>\n    </div>\n    <h1> Delete Thread </h1>\n</div>\n<div class=\"form-container\">\n    <form>\n        <h2> Delete Thread '%t'? </h2>\n        <button id=\"categoryFormCloser\"> Confirm Deletion </button>\n    </form>\n</div>\n</div>";
 var $prevClickedDelThreadName, $prevClickedDelThreadId;
 updateColorScheme($('meta[name="color"]').attr('content'));
+$('#post-thread-input').on('click', function (e) {
+  console.log("ho");
+  window.location = "/forum/category/" + $('meta[name="category"]').attr('content') + "/post";
+});
 /**
  * Change colour to forum's color scheme on hover.
  */

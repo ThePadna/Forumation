@@ -6,12 +6,14 @@ $create = false;
 $delete = false;
 $rank = null;
 if(Auth::check()) {
-$rank = Auth::user()->rank;
+$rankId = Auth::user()->rank;
+$rank = App\Models\Rank::find($rankId);
 if($rank == null) {
 $settings = App\Models\Settings::first();
 if($settings != null) {
 $default = $settings->default_rank;
 $rank = App\Models\Rank::find($default);
+}
 }
 if($rank != null) {
 $perms = unserialize($rank->permissions);
@@ -19,9 +21,18 @@ if(in_array('threadcreate', $perms)) $create = true;
 if(in_array('threaddelete', $perms)) $delete = true;
 }
 }
+$avatar = asset('default_avatar.png');
+if(Auth::check() && Auth::user()->avatar != null) {
+    $avatar = base64_decode(Auth::user()->avatar);
 }
 @endphp
 <div id="wrapper">
+    @if($create)
+    <div id="add-thread">
+        <img id="add-thread-avatar" src="{{$avatar}}" />
+        <input id="post-thread-input" placeholder="Post New Thread" />
+    </div>
+    @endif
     <div id="threads">
         @foreach($threads as $t)
         <a href="thread/{{str_replace(' ', '-', substr($t->title, 0, 20))}}-{{$t->id}}/1">
@@ -59,11 +70,12 @@ if(in_array('threaddelete', $perms)) $delete = true;
                             @endphp
                             @if(sizeof($posts) != 0)
                             <h5>
-                            <span style="color:{{$color}}; font-style: normal;"> Latest post by </span> &nbsp; <i
-                                class="far fa-user"></i>
-                            <a href="/forum/profile/{{App\User::find($t->op)->name}}">
-                                <span style="color:black;">{{App\User::find($t->op)->name}}</span> </a>
-                            <span style="color:{{$color}}; font-style: normal;"> {{$timeDisplay->format('%' . $formatAs) . $suffix}} ago </span>
+                                <span style="color:{{$color}}; font-style: normal;"> Latest post by </span> &nbsp; <i
+                                    class="far fa-user"></i>
+                                <a href="/forum/profile/{{App\User::find($t->op)->name}}">
+                                    <span style="color:black;">{{App\User::find($t->op)->name}}</span> </a>
+                                <span style="color:{{$color}}; font-style: normal;">
+                                    {{$timeDisplay->format('%' . $formatAs) . $suffix}} ago </span>
                             </h5>
                             @else
                             <p> This thread has no posts yet </p>
@@ -90,14 +102,6 @@ if(in_array('threaddelete', $perms)) $delete = true;
         </a>
         @endforeach
     </div>
-    @if($create)
-    <a href="post">
-        <div id="postThread">
-            <i class="fas fa-plus"></i>
-            <h1> Create Thread </h1>
-        </div>
-    </a>
-    @endif
     @if($page > 1)
     <a href="{{$page < 2 ? 1 : $page - 1}}">
         <div id="prevpage">
@@ -114,6 +118,7 @@ if(in_array('threaddelete', $perms)) $delete = true;
     @endif
 </div>
 <meta name="color" content="{{$color}}">
+<meta name="category" content="{{$category->name}}">
 <meta name="csrf" content="{{csrf_token()}}">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 <script src="{{asset('js/category.js')}}"> </script>
