@@ -10877,23 +10877,24 @@ a.text-dark:focus {
 }
 
 table {
+  border: 1px solid red;
   width: 100vw;
   text-align: center;
 }
 
 table th {
   width: 25vw;
-  font-size: 4.5vh;
+  font-size: 2rem;
 }
 
 table td {
   padding: 1vh;
-  font-size: 2.5vh;
+  font-size: 1rem;
 }
 
 table input {
   width: auto;
-  height: 3.5vh;
+  height: 1.5rem;
   padding: 0;
   border: none;
   position: relative;
@@ -10902,7 +10903,7 @@ table input {
 
 table .namecell {
   position: relative;
-  left: 10vh;
+  left: 80px;
 }
 
 table .dropdown {
@@ -10945,25 +10946,35 @@ table .dropdown-menu {
 }
 
 #menu {
-  position: absolute;
-  top: 15vh;
-  left: 1.5vw;
+  margin-top: 10vh;
+  position: relative !important;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 350px;
 }
 
 #menu * {
   text-align: center;
-  font-size: 2vh;
+  font-size: 1rem;
 }
 
-#menu .add i,
-#menu .save svg {
-  cursor: pointer;
-  margin-top: 5vh;
-  font-size: 10vh;
+#menu i,
+#menu svg {
+  font-size: 6rem;
 }
 
+#menu .add,
+#menu .save,
 #menu .default {
-  margin-top: 15vh;
+  margin-right: 50px;
+  display: inline-block;
+}
+
+#menu .add:hover,
+#menu .save:hover,
+#menu .default:hover {
+  cursor: pointer;
 }
 
 .trash:hover {

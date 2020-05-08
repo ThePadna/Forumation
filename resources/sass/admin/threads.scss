@@ -1,14 +1,15 @@
 @import '../libs';
 
 table {
+    min-width: 600px;
     width: 100vw;
     text-align: center;
     th {
         width: 25vw;
-        font-size: 4.5vh;
+        font-size: 1.5rem;
     }
     td {
-        font-size: 2.5vh;
+        font-size: 1.5rem;
     }
 }
 #prevpage,
@@ -23,8 +24,16 @@ table {
 }
 
 #user-search {
-    font-size: 1vw;
-    margin-left: 10vw;
+    min-width: 300px;
+    input {
+    height: 30px;
+    width: 200px;
+    margin-left: 40px;
+    }
+    i {
+        width: 40px;
+        height: 40px;
+    }
 }
 
 #prevpage {

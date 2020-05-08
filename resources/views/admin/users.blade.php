@@ -3,11 +3,13 @@
 <head>
     <link rel="stylesheet" href="{{asset('css/users.css')}}">
 </head>
-<div id="user-search">
+<table>
+  <tr>
+  <th> <div id="user-search">
 <input id="search-box">
 <i class="fas fa-search"></i>
-</div>
-<table>
+</div> </th>
+  </tr>
   <tr>
     <th>Username</th>
     <th>Registered</th>

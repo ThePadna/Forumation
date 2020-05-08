@@ -10916,7 +10916,7 @@ a:hover {
 
 #title-container {
   color: gray;
-  height: 10%;
+  min-width: 800px;
   width: 50%;
   display: inline-block;
   position: relative;
@@ -10924,12 +10924,10 @@ a:hover {
   transform: translateX(-50%);
 }
 
-#title-container .thread-title-wrapper {
-  height: 70%;
-}
-
 #title-container .thread-detail-wrapper {
-  height: 30%;
+  height: 3vh;
+  min-height: 30px;
+  border-radius: 5px;
 }
 
 #title-container .thread-detail {
@@ -10940,7 +10938,8 @@ a:hover {
 }
 
 #title-container #thread-title {
-  font-size: 4vh;
+  color: rgba(39, 38, 38, 0.828);
+  font-size: 1.5rem;
   text-align: center;
 }
 
@@ -11047,6 +11046,10 @@ a:hover {
   font-size: 4vh;
 }
 
+#replyForm {
+  margin-top: 2vh;
+}
+
 #replyForm * {
   position: relative;
   left: 50%;
@@ -11056,14 +11059,16 @@ a:hover {
 #replyForm textarea {
   margin-bottom: 2%;
   width: 35vw;
+  min-width: 400px;
+  min-height: 100px;
   height: 20vh;
 }
 
 #replyForm button {
   display: block;
   color: gray;
-  width: 4vw;
-  height: 4vh;
+  width: 100px;
+  height: 35px;
 }
 
 #prevpage,

@@ -205,7 +205,7 @@ class ForumController extends Controller
           $settings = Settings::first();
           $text = $request->input('text');
           $threadId = $request->input('thread');
-          if($settings->thread_post_length <= strlen($text)) {
+          if($settings->thread_post_length < strlen($text)) {
               return false;
           }
           if(Thread::find($threadId) == null) {

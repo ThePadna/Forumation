@@ -1,19 +1,20 @@
 @import '../libs';
 
 table {
+    border: 1px solid red;
     width: 100vw;
     text-align: center;
     th {
         width: 25vw;
-        font-size: 4.5vh;
+        font-size: 2rem;
     }
     td {
         padding: 1vh;
-        font-size: 2.5vh;
+        font-size: 1rem;
     }
     input {
         width: auto;
-        height: 3.5vh;
+        height: 1.5rem;
         padding: 0;
         border: none;
         position: relative;
@@ -21,7 +22,7 @@ table {
     }
     .namecell {
         position: relative;
-        left: 10vh;
+        left: 80px;
     }
 
     .dropdown {
@@ -60,20 +61,25 @@ table {
 }
 
 #menu {
-    position: absolute;
-    top: 15vh;
-    left: 1.5vw;
+    margin-top: 10vh;
+    position: relative !important;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 350px;
     * {
         text-align: center;
-        font-size: 2vh;
+        font-size: 1rem;
     }
-    .add i, .save svg {
+    i, svg {
+        font-size: 6rem;
+    }
+    .add, .save, .default {
+        margin-right: 50px;
+        display: inline-block;
+    }
+    .add:hover, .save:hover, .default:hover {
         cursor: pointer;
-        margin-top: 5vh;
-        font-size: 10vh;
-    }
-    .default {
-        margin-top: 15vh;
     }
 }
 
