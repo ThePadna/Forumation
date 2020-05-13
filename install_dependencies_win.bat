@@ -1,1 +1,1 @@
-composer install & composer update & php artisan key:generate
+composer install & php artisan key:generate
