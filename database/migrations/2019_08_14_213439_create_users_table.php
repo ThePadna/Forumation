@@ -13,6 +13,7 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {   
+        DB::statement("CREATE DATABASE `forumation`");
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('email', 320)->unique();
