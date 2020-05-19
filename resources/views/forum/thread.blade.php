@@ -183,8 +183,7 @@ $user = App\User::find($p->user);
                         </p>
                     </div>
                     <div class="post-footer-wrapper">
-                        <p class="post-footer"> Post by <a href="/forum/profile/{{App\User::find($p->user)->name}}">
-                                {{App\User::find($p->user)->name}} </a> on {{$p->created_at}} </p>
+                        <p class="post-footer"> Posted on {{$p->created_at}} </p>
                     </div>
                     @endif
                 </div>
