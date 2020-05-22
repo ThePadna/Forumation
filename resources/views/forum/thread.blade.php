@@ -1,44 +1,12 @@
 @extends('layouts/forum_layout')
 @section('content')
-@auth
 @php
-$viewed_by = $thread->viewed_by;
-$users = unserialize($viewed_by);
-$id = Auth::user()->id;
-if($users == null) {
-$users = Array($id);
-$thread->viewed_by = serialize($users);
-$thread->save();
-} else {
-if(!in_array($id, $users)) array_push($users, $id);
-$thread->viewed_by = serialize($users);
-$thread->save();
-}
-@endphp
-@endauth
-@php
-$star = false;
-$erase = false;
-$eraseSelf = false;
-$create = false;
-$rank = null;
-if(Auth::check()) {
-$rank = Auth::user()->rank;
-$rank = App\Models\Rank::find($rank);
-if($rank == null) {
 $settings = App\Models\Settings::first();
-if($settings != null) {
 $default = $settings->default_rank;
 $rank = App\Models\Rank::find($default);
-}
-}
-if($rank != null) {
-$perms = unserialize($rank->permissions);
-if(in_array('poststar', $perms)) $star = true;
-if(in_array('postcreate', $perms)) $create = true;
-if(in_array('posteraseself', $perms)) $eraseSelf = true;
-if(in_array('posterase', $perms)) $erase = true;
-}
+if(Auth::check()) {
+    $rank = Auth::user()->getRank();
+    $thread->markViewer(Auth::user());
 }
 $category = App\Models\Category::find($thread->categoryId);
 $op = App\User::find($thread->op);
@@ -46,7 +14,7 @@ $op = App\User::find($thread->op);
 <link rel="stylesheet" href="{{asset('css/thread.css')}}">
 <div id="wrapper">
     @auth
-    @if(Auth::user()->role == "admin")
+    @if($rank->hasPerm("threadedit"))
     <div class="edit-btn">
         <!-- <i class="edit-category far fa-edit edit" threadId='{{$thread->id}}'></i> -->
         <i class="del-category fas fa-trash del" threadId='{{$thread->id}}'></i>
@@ -97,13 +65,13 @@ $user = App\User::find($p->user);
                 @endphp
                 @if(!$p->erased)
                 @if(!$isLikedByUser)
-                @if($star)
+                @if($rank->hasPerm("poststar"))
                 <i class="far fa-star star-symbol" post="{{$p->id}}"></i>
                 @else
                 <i class="far fa-star star-symbol-disabled" post="{{$p->id}}"></i>
                 @endif
                 @else
-                @if($star)
+                @if($rank->hasPerm("poststar"))
                 <i class="fas fa-star star-symbol" post="{{$p->id}}"></i>
                 @else
                 <i class="fas fa-star star-symbol-disabled" post="{{$p->id}}"></i>

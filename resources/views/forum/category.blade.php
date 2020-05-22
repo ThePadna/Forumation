@@ -2,41 +2,40 @@
 @section('content')
 <link rel="stylesheet" href="{{asset('css/category.css')}}">
 @php
-$create = false;
-$delete = false;
-$rank = null;
-if(Auth::check()) {
-$rankId = Auth::user()->rank;
-$rank = App\Models\Rank::find($rankId);
-if($rank == null) {
 $settings = App\Models\Settings::first();
-if($settings != null) {
 $default = $settings->default_rank;
 $rank = App\Models\Rank::find($default);
-}
-}
-if($rank != null) {
-$perms = unserialize($rank->permissions);
-if(in_array('threadcreate', $perms)) $create = true;
-if(in_array('threaddelete', $perms)) $delete = true;
-}
+if(Auth::check()) {
+    $rank = Auth::user()->getRank();
 }
 $avatar = asset('default_avatar.png');
 if(Auth::check() && Auth::user()->avatar != null) {
     $avatar = base64_decode(Auth::user()->avatar);
 }
 @endphp
+@if(file_exists(public_path() . '/img/category_background.png'))
+<body style="background: url('{{asset('img/category_background.png')}}')">
+@else
+<body style="background: url('{{asset('img/category_background.jpg')}}')">
+@endif
 <div id="wrapper">
-    @if($create)
+    @if($rank->hasPerm("threadcreate"))
     <div id="add-thread">
         <img id="add-thread-avatar" src="{{$avatar}}" />
         <input id="post-thread-input" placeholder="Post New Thread" />
     </div>
     @endif
+    @if(sizeof($threads) == 0)
+    <div id="no-threads">
+        <i class="fas fa-frown"></i>
+        <h1> No threads have been posted yet in this Category. </h1>
+    </div>
+    @else
     <div id="threads">
         @foreach($threads as $t)
         <a href="thread/{{str_replace(' ', '-', substr($t->title, 0, 20))}}-{{$t->id}}/1">
             <div class="thread">
+            <hr />
                 <div class="row">
                     <div id="posts" class="col-sm-8">
                         @if($t->locked)
@@ -89,20 +88,21 @@ if(Auth::check() && Auth::user()->avatar != null) {
                     <div id="score" class="col-sm-1">
                         <h1 class="title"> Viewed </h1>
                         <p class="counter"> {{$viewed}} Times </p>
-                        @if($delete)
+                        @if($rank->hasPerm("threaddelete"))
                         <div class="edit-btn">
                             <i id="del" class="del-thread fas fa-trash" threadId='{{$t->id}}'
                                 threadName='{{$t->title}}'></i>
                         </div>
                         @endif
                     </div>
-                    <hr />
                 </div>
             </div>
         </a>
         @endforeach
     </div>
-    @if($page > 1)
+    @endif
+</div>
+@if($page > 1)
     <a href="{{$page < 2 ? 1 : $page - 1}}">
         <div id="prevpage">
             <i class="fas fa-long-arrow-alt-left"></i>
@@ -116,7 +116,6 @@ if(Auth::check() && Auth::user()->avatar != null) {
         </div>
     </a>
     @endif
-</div>
 <meta name="color" content="{{$color}}">
 <meta name="category" content="{{$category->name}}">
 <meta name="csrf" content="{{csrf_token()}}">

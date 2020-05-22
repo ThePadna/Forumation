@@ -1,10 +1,39 @@
 @import '../libs';
+body {
+}
+#wrapper {
+    padding: 0;
+    position: relative;
+    background: white;
+    width: 65vw;
+    min-width: 800px;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#no-threads {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    h1 {
+        margin-top: 2px;
+        font-size: 1.5rem;
+    }
+    i {
+        font-size: 5rem;
+    }
+}
+#threads {
+    margin : 0;
+    padding: 0;
+    background: white;
+}
 input::-webkit-input-placeholder, input:-moz-placeholder {
     color: black;
   }
 #add-thread {
-    margin-bottom: 2%;
     * {
+        margin-top: 10px;
         position: relative;
     }
     input {
@@ -25,6 +54,8 @@ input::-webkit-input-placeholder, input:-moz-placeholder {
 }
 
 #del {
+    position: relative;
+    margin-right: 2vw;
     font-size: 1.5rem;
     cursor: pointer;
 }
@@ -35,7 +66,7 @@ input::-webkit-input-placeholder, input:-moz-placeholder {
     top: 50%;
     transform: translateY(-50%);
     position: fixed;
-    opacity: 0.8;
+    opacity: 1;
     color: #0a0f0f;
     font-size: 100px;
 }
@@ -77,7 +108,12 @@ a:hover {
 }
 
 .row {
+    width: 70vw;
     min-width: 750px !important;
+    min-height: 92px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
     hr {
         border-bottom: 0.1vh solid black;
         width: 75%;
@@ -95,10 +131,9 @@ a:hover {
 }
 
 .thread {
-    margin-bottom: 15px;
     .edit-btn {
         font-size: 3.5vh;
-        left: 200px;
+        left: 160px;
         top: 50%;
         transform: translateY(-50%);
         position: absolute;

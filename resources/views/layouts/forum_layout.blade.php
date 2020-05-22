@@ -55,8 +55,5 @@
         @endguest
     </div>
 </head>
-<div id="container">
-    @yield('content')
-</div>
-
+@yield('content')
 </html>

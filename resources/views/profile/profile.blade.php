@@ -42,7 +42,7 @@
     @endif
     <div id="avatar-container">
         @if($user->avatar == null)
-        <img id="avatar" src="{{asset('default_avatar.png')}}" />
+        <img id="avatar" src="{{asset('img/default_avatar.png')}}" />
         @else
         <img id="avatar" src="{{base64_decode($user->avatar)}}" />
         @endif

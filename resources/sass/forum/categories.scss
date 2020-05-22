@@ -1,11 +1,29 @@
 @import '../libs';
 @import url('https://fonts.googleapis.com/css?family=Alegreya|Grenze&display=swap');
+html,body{
+    height: 100%;
+    width: 100%;
+}
+#categories {
+    background: white;
+}
+body {
+    background: url('https://i2.wp.com/jamtechcomms.co.uk/wp-content/uploads/2016/09/Grey-website-background.png?ssl=1') fixed;
+}
 .wrapper {
-    width: 100vw;
+    position: relative;
+    background: white;
+    width: 65vw;
+    min-width: 800px;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 #add-category {
+    margin-bottom: 0 !important;
     text-align: center;
     h1 {
+        margin-bottom: 0 !important;
     font-size: 1rem;
     }
 }
@@ -44,7 +62,7 @@ a:hover {
     }
     hr {
         border-bottom: 0.1vh solid black;
-        width: 125%;
+        width: 85%;
     }
     h1 {
         top: 1em;
@@ -66,7 +84,7 @@ a:hover {
         * {
             font-size: 1.5em;
             left: 50%;
-            top: 50%;
+            top: 70%;
             transform: translate(-50%, -50%);
         }
     }
@@ -79,7 +97,6 @@ a:hover {
     .editor-btn {
         * {
             display: inline-block;
-            float: left;
             margin-right: 0.5vw;
         }
         .switch-btn {
@@ -90,9 +107,6 @@ a:hover {
         font-size: 1.5rem;
         cursor: pointer;
     }
-}
-.category {
-    margin-bottom: 15px;
 }
 #categoryFormOpener:hover {
     cursor: pointer;

@@ -40,14 +40,8 @@ a:hover {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    a {
-
-    }
-    .thread-title-wrapper {
-    }
     .thread-detail-wrapper {
-        height: 3vh;
-        min-height: 30px;
+        min-height: 25px;
         border-radius: 5px;
     }
     .thread-detail {
@@ -59,6 +53,7 @@ a:hover {
     #thread-title {
         color: rgba(39, 38, 38, 0.828);
         font-size: 1.5rem;
+        font-weight: 650;
         text-align: center;
     }
 }

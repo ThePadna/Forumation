@@ -2,31 +2,16 @@
 @section('content')
 <link rel="stylesheet" href="{{asset('css/categories.css')}}">
 @php
-$rank = null;
-$switch = false;
-$add = false;
-$delete = false;
-$edit = false;
-if(Auth::check()) {
-$rank = Auth::user()->rank;
-if($rank == null) {
 $settings = App\Models\Settings::first();
-if($settings != null) {
 $default = $settings->default_rank;
 $rank = App\Models\Rank::find($default);
-}
-}
-if($rank != null) {
-$rank = App\Models\Rank::find($rank)->first();
-$perms = unserialize($rank->permissions);
-if(in_array('categoryswitch', $perms)) $switch = true;
-if(in_array('categoryadd', $perms)) $add = true;
-if(in_array('categorydelete', $perms)) $delete = true;
-if(in_array('categoryedit', $perms)) $edit = true;
-}
+if(Auth::check()) {
+    $rank = Auth::user()->getRank();
 }
 @endphp
+<body>
 <div class="wrapper">
+<div id="categories">
     @if(sizeof($categories) < 1) <h1 style="text-align: center;"> No Categories found. </h1>
         @else
         <div id="table-header" class="row">
@@ -37,6 +22,7 @@ if(in_array('categoryedit', $perms)) $edit = true;
         <br />
         <br />
         @foreach($categories as $c)
+        <hr />
         <div class="row">
             <div id="title" class="col-5">
                 <a href="/forum/category/{{str_replace(' ', '-', $c->name)}}/1" class="data-title"
@@ -44,7 +30,7 @@ if(in_array('categoryedit', $perms)) $edit = true;
                     <h1 class="title"> {{$c->name}} </h1>
                     <h1 class="desc"> {{$c->desc}} </h1>
                     <div class="editor-btn">
-                @if($switch)
+                    @if($rank->hasPerm("categoryswitch"))
                     <div class="switch-btn">
                         <i id="up" class="up-arrow fas fa-arrow-up" categoryId='{{$c->id}}'
                             categoryName='{{$c->name}}'></i>
@@ -53,14 +39,14 @@ if(in_array('categoryedit', $perms)) $edit = true;
                     </div>
                     @endif
                     <div class="edit-btn">
-                    @if($edit)
+                    @if($rank->hasPerm("categoryedit"))
                         <i id="edit" class="edit-category far fa-edit" categoryId='{{$c->id}}'
                             categoryName='{{$c->name}}' categoryDesc='{{$c->desc}}'></i>
-                            @endif
-                            @if($delete)
+                    @endif
+                    @if($rank->hasPerm("categorydelete"))
                         <i id="del" class="del-category fas fa-trash" categoryId='{{$c->id}}'
                             categoryName='{{$c->name}}' categoryDesc='{{$c->desc}}'></i>
-                            @endif
+                    @endif
                     </div>
                 </div>
                 </a>
@@ -91,7 +77,7 @@ if(in_array('categoryedit', $perms)) $edit = true;
                 @endphp
                 <p class="recentTitle">{{$title}}</p>
                 <p class="recentPoster" style="white-space: no-wrap; overflow: hidden;"> <a
-                        href="forum/profile/{{$name}}" style=" color:{{$color}}"> by <span
+                        href="forum/profile/{{$name}}" style=" color:{{$color}}"> <span
                             style="color:black; font-style: italic;"><i class="far fa-user"></i> {{$name}} </span></a>,
                     {{$timeDisplay->format('%' . $formatAs)}}{{$suffix}} ago </p>
                 @endif
@@ -101,16 +87,17 @@ if(in_array('categoryedit', $perms)) $edit = true;
                     <p class="thread-count"> {{$threadCount}}</p>
                 </div>
             </div>
-            <hr />
         </div>
         @endforeach
-</div>
 @endif
-@if($add)
+@if($rank->hasPerm("categoryadd"))
 <div id="add-category">
 <a>    <h1> Add New Category </h1></a>
 </div>
 @endif
+</div>
+</div>
+</div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 <meta name="csrf" content="{{csrf_token()}}">
 <meta name="color" content="{{$color}}">
