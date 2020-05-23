@@ -108,5 +108,13 @@ $(document).on('mouseout', '.form-exit', (e) => {
  */
 function updateColorScheme(color) {
     $('#header, .popup-form').css('background', color);
-    $('#prevpage, #nextpage, #postThread>*, p').css('color', color);
+    $('#prevpage, #nextpage, #postThread>*').css('color', color);
+}
+
+if($('meta[name="editor-mode"]').attr('content') == 0) removeEditorElements();
+function removeEditorElements() {
+    let EDITOR_ELEMENTS = [$('.del-thread')];
+    EDITOR_ELEMENTS.forEach($e => {
+        $e.remove();
+    });
 }

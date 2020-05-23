@@ -35,4 +35,10 @@ class User extends Authenticatable
     public function getRank() {
         return Rank::find($this->rank);
     }
-}
+
+    public function getAvatar() {
+        $avatar = asset('default_avatar.png');
+        if($this->avatar != null) $avatar = $this->avatar;
+        return $avatar;
+    }
+ }

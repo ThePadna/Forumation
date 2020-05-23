@@ -39,7 +39,7 @@ class ForumController extends Controller
                 } else $posts[$id] = $p;
             }
         }
-        return view("forum/category", ["category" => Category::All()->firstWhere('id', $categoryId), "threads" => $threads, "page" => $page, "posts" => $posts, "now" => Carbon::now(), "color" => Settings::first()->color]);
+        return view("forum/category", ["category" => Category::All()->firstWhere('id', $categoryId), "threads" => $threads, "page" => $page, "posts" => $posts, "now" => Carbon::now(), "settings" => Settings::first()]);
     }
 
      /**

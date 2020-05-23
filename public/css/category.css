@@ -10928,9 +10928,7 @@ a.text-dark:focus {
 }
 
 #wrapper {
-  padding: 0;
   position: relative;
-  background: white;
   width: 65vw;
   min-width: 800px;
   height: 100%;
@@ -10945,7 +10943,6 @@ a.text-dark:focus {
 }
 
 #no-threads h1 {
-  margin-top: 2px;
   font-size: 1.5rem;
 }
 
@@ -10953,10 +10950,19 @@ a.text-dark:focus {
   font-size: 5rem;
 }
 
-#threads {
-  margin: 0;
-  padding: 0;
-  background: white;
+#threads * {
+  color: #E8E7E7;
+}
+
+#threads .thread {
+  margin-top: 15px;
+  background: #172221;
+}
+
+#threads .latest-post-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
 }
 
 input::-webkit-input-placeholder,
@@ -11016,15 +11022,8 @@ input:-moz-placeholder {
   color: white;
 }
 
-span {
-  font-style: italic;
-}
-
-body {
-  background-color: white;
-}
-
 a {
+  outline: 0;
   text-decoration: none;
 }
 
@@ -11034,28 +11033,36 @@ a:hover {
 
 #wrapper {
   text-align: center;
+  background: rgba(0, 0, 0, 0.5);
 }
 
-.op > p {
-  font-size: 2vh;
+h1 {
+  margin-bottom: 0 !important;
 }
 
 .row {
-  width: 70vw;
+  width: 55vw;
   min-width: 750px !important;
-  min-height: 92px;
+  min-height: 70px;
   position: relative;
+  margin-bottom: 5px;
   left: 50%;
   transform: translateX(-50%);
 }
 
-.row hr {
-  border-bottom: 0.1vh solid black;
-  width: 75%;
+.row .posts-content {
+  height: 90%;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-.row * {
-  color: black;
+.row .threads-content,
+.row .score-content {
+  height: 70%;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .row h1 {
@@ -11073,10 +11080,6 @@ a:hover {
   top: 50%;
   transform: translateY(-50%);
   position: absolute;
-}
-
-.post-by {
-  color: red;
 }
 
 .popup-form {

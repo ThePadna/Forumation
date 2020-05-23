@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\User;
 use Eloquent;
 
 class Thread extends Eloquent {
@@ -18,5 +19,14 @@ class Thread extends Eloquent {
             $this->viewed_by = serialize($users);
             $this->save();
         }
+    }
+
+    public function getOP() {
+        return User::find($this->op);
+    }
+
+    public function getMostRecentPost() {
+        $posts = Post::where('thread', $this->id)->get();
+        return $posts->last();
     }
 }

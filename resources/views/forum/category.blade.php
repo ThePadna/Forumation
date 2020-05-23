@@ -8,23 +8,25 @@ $rank = App\Models\Rank::find($default);
 if(Auth::check()) {
     $rank = Auth::user()->getRank();
 }
-$avatar = asset('default_avatar.png');
-if(Auth::check() && Auth::user()->avatar != null) {
-    $avatar = base64_decode(Auth::user()->avatar);
-}
 @endphp
-@if(file_exists(public_path() . '/img/category_background.png'))
-<body style="background: url('{{asset('img/category_background.png')}}')">
-@else
-<body style="background: url('{{asset('img/category_background.jpg')}}')">
+@if(file_exists(public_path() . '/img/category_bg.png'))
+<body style="background: url('{{asset('img/category_bg.png')}}')">
+@endif
+@if(file_exists(public_path() . '/img/category_bg.jpg'))
+<body style="background: url('{{asset('img/category_bg.jpg')}}')">
+@endif
+@if(file_exists(public_path() . '/img/category_bg.webp'))
+<body style="background: url('{{asset('img/category_bg.webp')}}')">
 @endif
 <div id="wrapper">
+    @auth
     @if($rank->hasPerm("threadcreate"))
     <div id="add-thread">
-        <img id="add-thread-avatar" src="{{$avatar}}" />
+        <img id="add-thread-avatar" src="{{base64_decode(Auth::user()->getAvatar())}}" />
         <input id="post-thread-input" placeholder="Post New Thread" />
     </div>
     @endif
+    @endauth
     @if(sizeof($threads) == 0)
     <div id="no-threads">
         <i class="fas fa-frown"></i>
@@ -33,11 +35,10 @@ if(Auth::check() && Auth::user()->avatar != null) {
     @else
     <div id="threads">
         @foreach($threads as $t)
-        <a href="thread/{{str_replace(' ', '-', substr($t->title, 0, 20))}}-{{$t->id}}/1">
             <div class="thread">
-            <hr />
                 <div class="row">
-                    <div id="posts" class="col-sm-8">
+                    <div class="col-8">
+                        <div class="posts-content">
                         @if($t->locked)
                         <h1 class="title"> <i class="fas fa-lock"></i> {{$t->title}} </h1>
                         @else
@@ -68,36 +69,42 @@ if(Auth::check() && Auth::user()->avatar != null) {
                             }
                             @endphp
                             @if(sizeof($posts) != 0)
+                            @php
+                            $user = App\User::find($t->op);
+                            @endphp
                             <h5>
-                                <span style="color:{{$color}}; font-style: normal;"> Latest post by </span> &nbsp; <i
-                                    class="far fa-user"></i>
+                                Latest post by &nbsp;
                                 <a href="/forum/profile/{{App\User::find($t->op)->name}}">
-                                    <span style="color:black;">{{App\User::find($t->op)->name}}</span> </a>
-                                <span style="color:{{$color}}; font-style: normal;">
-                                    {{$timeDisplay->format('%' . $formatAs) . $suffix}} ago </span>
+                                <img class="latest-post-img" src="{{base64_decode($user->getAvatar())}}" />
+                                {{$user->name}} </a>
+                                {{$timeDisplay->format('%' . $formatAs) . $suffix}} ago 
                             </h5>
                             @else
                             <p> This thread has no posts yet </p>
                             @endif
                         </div>
+                        </div>
                     </div>
-                    <div id="threads" class="col-sm-1">
+                    <div id="threads" class="col-1">
+                        <div class="threads-content">
                         <h1 class="title"> Posts </h1>
-                        <p class="counter"> {{$replies}} </p>
+                        <p class="counter" style="color: #C5C3C3;"> {{$replies}} </p>
+                        </div>
                     </div>
-                    <div id="score" class="col-sm-1">
+                    <div id="score" class="col-2">
+                        <div class="score-content">
                         <h1 class="title"> Viewed </h1>
-                        <p class="counter"> {{$viewed}} Times </p>
+                        <p class="counter" style="color: #C5C3C3;"> {{$viewed}} Times </p>
                         @if($rank->hasPerm("threaddelete"))
                         <div class="edit-btn">
-                            <i id="del" class="del-thread fas fa-trash" threadId='{{$t->id}}'
+                            <i class="del-thread fas fa-trash" threadId='{{$t->id}}'
                                 threadName='{{$t->title}}'></i>
                         </div>
                         @endif
+                        </div>
                     </div>
                 </div>
             </div>
-        </a>
         @endforeach
     </div>
     @endif
@@ -116,9 +123,11 @@ if(Auth::check() && Auth::user()->avatar != null) {
         </div>
     </a>
     @endif
-<meta name="color" content="{{$color}}">
+</body>
+<meta name="color" content="{{$settings->color}}">
 <meta name="category" content="{{$category->name}}">
 <meta name="csrf" content="{{csrf_token()}}">
+<meta name="editor-mode" content="{{$settings->editormode}}">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 <script src="{{asset('js/category.js')}}"> </script>
 @stop

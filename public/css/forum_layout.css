@@ -10927,12 +10927,6 @@ a.text-dark:focus {
   }
 }
 
-html,
-body {
-  height: 100%;
-  width: 100%;
-}
-
 #important-notice {
   position: absolute;
   color: white;
@@ -10946,7 +10940,7 @@ body {
   display: block;
   background-color: white;
   height: 100px;
-  width: 100vw;
+  width: 100%;
   text-align: center;
 }
 

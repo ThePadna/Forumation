@@ -9,22 +9,29 @@ if(Auth::check()) {
     $rank = Auth::user()->getRank();
 }
 @endphp
-<body>
-<div class="wrapper">
+@if(file_exists(public_path() . '/img/categories_bg.png'))
+<body style="background: url('{{asset('img/categories_bg.png')}}') fixed;">
+@endif
+@if(file_exists(public_path() . '/img/categories_bg.jpg'))
+<body style="background: url('{{asset('img/categories_bg.jpg')}}') fixed;">
+@endif
+@if(file_exists(public_path() . '/img/categories_bg.webp'))
+<body style="background: url('{{asset('img/categories_bg.webp')}}') fixed;">
+@endif
+<div id="wrapper">
 <div id="categories">
     @if(sizeof($categories) < 1) <h1 style="text-align: center;"> No Categories found. </h1>
         @else
         <div id="table-header" class="row">
             <h1 class="col-5"> Category </h1>
-            <h1 class="col-2"> Latest </h1>
+            <h1 class="col-3"> Latest </h1>
             <h1 id="threads" class="col-1"> Threads </h1>
         </div>
-        <br />
-        <br />
         @foreach($categories as $c)
-        <hr />
+        <div class="category">
         <div class="row">
             <div id="title" class="col-5">
+                <div class="title-content">
                 <a href="/forum/category/{{str_replace(' ', '-', $c->name)}}/1" class="data-title"
                     ondragover="event.preventDefault()" categoryId='{{$c->id}}'>
                     <h1 class="title"> {{$c->name}} </h1>
@@ -50,16 +57,18 @@ if(Auth::check()) {
                     </div>
                 </div>
                 </a>
+                </div>
             </div>
             @php
             $threads = App\Models\Thread::where('categoryId', $c->id)->get();
             $recentThread = $threads->last();
             $threadCount = sizeof($threads);
             @endphp
-            <div class="col-2">
+            <div class="col-3">
+            <div class="recent-thread-content">
                 @if($recentThread == null)
-                <p class="recentTitle"> No threads for this category.</p>
-                <p class="recentPoster"> <i class="far fa-user"></i> Bot, just now </p>
+                <p class="recent-title"> No threads for this category.</p>
+                <p class="recent-poster"> <i class="far fa-user"></i> Bot, just now </p>
                 @else
                 @php
                 $time = \Carbon\Carbon::createFromTimeStamp(strtotime($recentThread->created_at));
@@ -71,23 +80,25 @@ if(Auth::check()) {
                 if($timeDisplay->d != 0) $formatAs = "d";
                 $suffix = $formatAs;
                 if($formatAs == "i") $suffix = "m";
-                $name = App\User::find($recentThread->op)->name;
+                $op = $recentThread->getOP();
+                $name = $op->name;
                 $title = strlen($recentThread->title) >= 30 ? substr($recentThread->title, 0, 30) . '..' :
                 $recentThread->title;
                 @endphp
-                <p class="recentTitle">{{$title}}</p>
-                <p class="recentPoster" style="white-space: no-wrap; overflow: hidden;"> <a
-                        href="forum/profile/{{$name}}" style=" color:{{$color}}"> <span
-                            style="color:black; font-style: italic;"><i class="far fa-user"></i> {{$name}} </span></a>,
+                <p class="recent-title">{{$title}}</p>
+                <p class="recent-poster"> <a
+                        href="forum/profile/{{$name}}"> <img class="recent-poster-avatar" src="{{base64_decode($op->avatar)}}"> {{$name}} </span></a>,
                     {{$timeDisplay->format('%' . $formatAs)}}{{$suffix}} ago </p>
                 @endif
             </div>
-            <div id="threads" class="col-1">
-                <div class="col-1">
-                    <p class="thread-count"> {{$threadCount}}</p>
-                </div>
             </div>
+            <div id="threads" class="col-1">
+                    <div class="thread-count-content">
+                    <p class="thread-count"> {{$threadCount}}</p>
+                    </div>
+                </div>
         </div>
+</div>
         @endforeach
 @endif
 @if($rank->hasPerm("categoryadd"))
@@ -98,6 +109,7 @@ if(Auth::check()) {
 </div>
 </div>
 </div>
+</body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 <meta name="csrf" content="{{csrf_token()}}">
 <meta name="color" content="{{$color}}">

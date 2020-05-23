@@ -194,7 +194,16 @@ $(document).on('mouseout', '.form-exit', function (e) {
 
 function updateColorScheme(color) {
   $('#header, .popup-form').css('background', color);
-  $('#prevpage, #nextpage, #postThread>*, p').css('color', color);
+  $('#prevpage, #nextpage, #postThread>*').css('color', color);
+}
+
+if ($('meta[name="editor-mode"]').attr('content') == 0) removeEditorElements();
+
+function removeEditorElements() {
+  var EDITOR_ELEMENTS = [$('.del-thread')];
+  EDITOR_ELEMENTS.forEach(function ($e) {
+    $e.remove();
+  });
 }
 
 /***/ }),

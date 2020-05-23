@@ -10927,23 +10927,19 @@ a.text-dark:focus {
   }
 }
 
-html,
-body {
-  height: 100%;
-  width: 100%;
-}
-
 #categories {
-  background: white;
+  background: rgba(0, 0, 0, 0.5);
+  margin: 0;
+  padding: 0;
 }
 
-body {
-  background: url("https://i2.wp.com/jamtechcomms.co.uk/wp-content/uploads/2016/09/Grey-website-background.png?ssl=1") fixed;
+#categories .category {
+  margin-top: 15px;
+  background: #172221;
 }
 
-.wrapper {
+#wrapper {
   position: relative;
-  background: white;
   width: 65vw;
   min-width: 800px;
   height: 100%;
@@ -10974,6 +10970,7 @@ i {
 }
 
 a {
+  outline: 0;
   text-decoration: none;
 }
 
@@ -10986,7 +10983,7 @@ a:hover {
 }
 
 .row {
-  width: 70vw;
+  width: 55vw;
   min-width: 750px !important;
   min-height: 92px;
   position: relative;
@@ -10994,27 +10991,54 @@ a:hover {
   transform: translateX(-50%);
 }
 
+.row .thread-count-content {
+  font-size: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.row .title-content,
+.row .recent-thread-content,
+.row .thread-count-content {
+  height: 70%;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.row .recent-poster {
+  width: 100%;
+  font-size: 0.7em;
+  color: #C5C3C3;
+}
+
+.row .recent-title {
+  color: white;
+}
+
+.row .thread-count {
+  color: #C5C3C3;
+}
+
+.row .recent-poster-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
 .row * {
   text-align: center;
 }
 
-.row hr {
-  border-bottom: 0.1vh solid black;
-  width: 85%;
-}
-
 .row h1 {
-  top: 1em;
   font-size: 2em;
-  color: black;
 }
 
 .row p {
-  color: black;
   font-size: 1em;
 }
 
-.row .col-2 {
+.row .col-3 {
   margin-left: 12.5vw;
 }
 
@@ -11022,16 +11046,13 @@ a:hover {
   margin-left: 5vw;
 }
 
-.row .col-1 * {
-  font-size: 1.5em;
-  left: 50%;
-  top: 70%;
-  transform: translate(-50%, -50%);
+.row .desc {
+  color: #C5C3C3;
+  font-size: 1.25rem;
 }
 
-.row .desc {
-  color: gray;
-  font-size: 1.5em;
+.row .title {
+  color: white;
 }
 
 .row .editor-btn {
