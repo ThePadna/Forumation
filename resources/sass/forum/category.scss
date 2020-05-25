@@ -23,6 +23,7 @@
         color: #E8E7E7;
     }
     .thread {
+        min-height: 75px;
         margin-top: 15px;
         background: rgb(23, 34, 33);
     }
@@ -100,8 +101,8 @@ a:hover {
     text-align: center;
     background: rgba(0, 0, 0, 0.5);
 }
-h1 {
-    margin-bottom: 0 !important;
+.op {
+    margin-top: 1px;
 }
 
 .row {
@@ -109,7 +110,6 @@ h1 {
     min-width: 750px !important;
     min-height: 70px;
     position: relative;
-    margin-bottom: 5px;
     left: 50%;
     transform: translateX(-50%);
     .posts-content {

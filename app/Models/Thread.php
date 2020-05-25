@@ -29,4 +29,10 @@ class Thread extends Eloquent {
         $posts = Post::where('thread', $this->id)->get();
         return $posts->last();
     }
+
+    public function getURI() {
+        $category = Category::find($this->categoryId);
+        $uri = "/forum/category/" . str_replace(' ', '-', $category->name) . "/thread" . "/" .  str_replace(' ', '-', substr($this->title, 0, 20)) . "-" . $this->id . "/1";
+        return $uri;
+    }
 }

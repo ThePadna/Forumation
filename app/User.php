@@ -32,13 +32,27 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Return rank of User.
+     */
     public function getRank() {
         return Rank::find($this->rank);
     }
 
+    /**
+     * Return Avatar of User.
+     * If Avatar is null, return default_avatar.png.
+     */
     public function getAvatar() {
         $avatar = asset('default_avatar.png');
         if($this->avatar != null) $avatar = $this->avatar;
         return $avatar;
+    }
+
+    /**
+     * Return URI of user profile.
+     */
+    public function getURI() {
+        return "/forum/profile/" . $this->name;
     }
  }

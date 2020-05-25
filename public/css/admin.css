@@ -10947,6 +10947,10 @@ a {
   transform: translateX(-50%);
 }
 
+#menu {
+  margin-top: 10px;
+}
+
 #menu * {
   display: block;
   text-align: center;

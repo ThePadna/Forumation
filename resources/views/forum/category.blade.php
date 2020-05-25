@@ -35,7 +35,7 @@ if(Auth::check()) {
     @else
     <div id="threads">
         @foreach($threads as $t)
-            <div class="thread">
+            <div class="thread" onclick="window.location='{{$t->getURI()}}'" style="cursor: pointer;" tabindex="1">
                 <div class="row">
                     <div class="col-8">
                         <div class="posts-content">
@@ -72,13 +72,14 @@ if(Auth::check()) {
                             @php
                             $user = App\User::find($t->op);
                             @endphp
-                            <h5>
+                            <p>
                                 Latest post by &nbsp;
-                                <a href="/forum/profile/{{App\User::find($t->op)->name}}">
+                                <a href="{{$user->getURI()}}"> 
                                 <img class="latest-post-img" src="{{base64_decode($user->getAvatar())}}" />
-                                {{$user->name}} </a>
+                                {{$user->name}}
+                                </a>
                                 {{$timeDisplay->format('%' . $formatAs) . $suffix}} ago 
-                            </h5>
+                            </p>
                             @else
                             <p> This thread has no posts yet </p>
                             @endif

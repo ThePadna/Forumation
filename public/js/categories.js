@@ -110,27 +110,10 @@ function initForms() {
   $editCategoryForm = $("#editCategoryForm");
 }
 /**
- * Change colour to forum's color scheme on hover.
- */
-
-
-$('#up, #down, #edit, #del').on('mouseover', function (e) {
-  console.log("hi");
-  $(e.target).css({
-    color: $('meta[name="color"]').attr('content'),
-    transition: 'color 1s'
-  });
-});
-$('#up, #down, #edit, #del').on('mouseout', function (e) {
-  $(e.target).css({
-    color: 'black',
-    transition: 'color 1s'
-  });
-});
-/**
  * Listen for form submission
  * Request to post new category when form is submitted.
  */
+
 
 function registerAddFormSubmitListener() {
   $addCategoryForm.submit(function (e) {
@@ -336,7 +319,7 @@ $(".del-category").on("click", function (e) {
   e.preventDefault();
   $prevClickedDelCategoryName = $(e.target).attr('categoryName');
   $prevClickedDelCategoryId = $(e.target).attr('categoryId');
-  $(".wrapper").append(delCategoryFormHTML.replace("%c", $prevClickedDelCategoryName.trim()));
+  $("#wrapper").append(delCategoryFormHTML.replace("%c", $prevClickedDelCategoryName.trim()));
   registerFormExitHandler();
   initForms();
   registerDelFormSubmitListener();
@@ -351,7 +334,7 @@ $(".edit-category").on("click", function (e) {
   $prevClickedDelCategoryName = $(e.target).attr('categoryName');
   $prevClickedEditCategoryDesc = $(e.target).attr('categoryDesc');
   $prevClickedDelCategoryId = $(e.target).attr('categoryId');
-  $(".wrapper").append(editCategoryFormHTML.replace("%c", $prevClickedDelCategoryName.trim()).replace("%d", $prevClickedEditCategoryDesc.trim()));
+  $("#wrapper").append(editCategoryFormHTML.replace("%c", $prevClickedDelCategoryName.trim()).replace("%d", $prevClickedEditCategoryDesc.trim()));
   registerFormExitHandler();
   initForms();
   registerEditFormSubmitListener();
@@ -380,7 +363,12 @@ $(document).on('mouseout', '.form-exit', function (e) {
     transition: 'color 1s'
   });
 });
-if ($('meta[name="editor-mode"]').attr('content') == 0) removeEditorElements();
+
+if ($('meta[name="editor-mode"]').attr('content') == 0) {
+  removeEditorElements();
+} else {
+  $('.category').css("min-height", "125px");
+}
 
 function removeEditorElements() {
   var EDITOR_ELEMENTS = [$('.del-category'), $('.edit-category'), $('.switch-btn')];

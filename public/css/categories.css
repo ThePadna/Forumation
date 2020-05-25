@@ -10927,6 +10927,16 @@ a.text-dark:focus {
   }
 }
 
+.category-link {
+  height: auto;
+  display: block;
+  border: 1px solid red;
+}
+
+h1 {
+  margin-bottom: 0 !important;
+}
+
 #categories {
   background: rgba(0, 0, 0, 0.5);
   margin: 0;
@@ -10934,6 +10944,7 @@ a.text-dark:focus {
 }
 
 #categories .category {
+  min-height: 100px;
   margin-top: 15px;
   background: #172221;
 }
@@ -11013,7 +11024,7 @@ a:hover {
 }
 
 .row .recent-title {
-  color: white;
+  color: #C5C3C3;
 }
 
 .row .thread-count {
@@ -11056,19 +11067,15 @@ a:hover {
 }
 
 .row .editor-btn {
-  color: black;
-  display: inline-block;
+  position: relative;
+  color: white;
   font-size: 1.5rem;
   cursor: pointer;
 }
 
 .row .editor-btn * {
-  display: inline-block;
+  display: inline;
   margin-right: 0.5vw;
-}
-
-.row .editor-btn .switch-btn {
-  margin-right: 2vw;
 }
 
 #categoryFormOpener:hover {

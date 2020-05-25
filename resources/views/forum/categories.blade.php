@@ -6,7 +6,7 @@ $settings = App\Models\Settings::first();
 $default = $settings->default_rank;
 $rank = App\Models\Rank::find($default);
 if(Auth::check()) {
-    $rank = Auth::user()->getRank();
+$rank = Auth::user()->getRank();
 }
 @endphp
 @if(file_exists(public_path() . '/img/categories_bg.png'))
@@ -18,54 +18,54 @@ if(Auth::check()) {
 @if(file_exists(public_path() . '/img/categories_bg.webp'))
 <body style="background: url('{{asset('img/categories_bg.webp')}}') fixed;">
 @endif
+<body>
 <div id="wrapper">
-<div id="categories">
-    @if(sizeof($categories) < 1) <h1 style="text-align: center;"> No Categories found. </h1>
-        @else
-        <div id="table-header" class="row">
-            <h1 class="col-5"> Category </h1>
-            <h1 class="col-3"> Latest </h1>
-            <h1 id="threads" class="col-1"> Threads </h1>
-        </div>
-        @foreach($categories as $c)
-        <div class="category">
-        <div class="row">
-            <div id="title" class="col-5">
-                <div class="title-content">
-                <a href="/forum/category/{{str_replace(' ', '-', $c->name)}}/1" class="data-title"
-                    ondragover="event.preventDefault()" categoryId='{{$c->id}}'>
-                    <h1 class="title"> {{$c->name}} </h1>
-                    <h1 class="desc"> {{$c->desc}} </h1>
-                    <div class="editor-btn">
-                    @if($rank->hasPerm("categoryswitch"))
-                    <div class="switch-btn">
-                        <i id="up" class="up-arrow fas fa-arrow-up" categoryId='{{$c->id}}'
-                            categoryName='{{$c->name}}'></i>
-                        <i id="down" class="down-arrow fas fa-arrow-down" categoryId='{{$c->id}}'
-                            categoryName='{{$c->name}}'></i>
-                    </div>
-                    @endif
-                    <div class="edit-btn">
-                    @if($rank->hasPerm("categoryedit"))
-                        <i id="edit" class="edit-category far fa-edit" categoryId='{{$c->id}}'
-                            categoryName='{{$c->name}}' categoryDesc='{{$c->desc}}'></i>
-                    @endif
-                    @if($rank->hasPerm("categorydelete"))
-                        <i id="del" class="del-category fas fa-trash" categoryId='{{$c->id}}'
-                            categoryName='{{$c->name}}' categoryDesc='{{$c->desc}}'></i>
-                    @endif
-                    </div>
-                </div>
-                </a>
-                </div>
+    <div id="categories">
+        @if(sizeof($categories) < 1) <h1 style="text-align: center;"> No Categories found. </h1>
+            @else
+            <div id="table-header" class="row">
+                <h1 class="col-5"> Category </h1>
+                <h1 class="col-3"> Latest </h1>
+                <h1 id="threads" class="col-1"> Threads </h1>
             </div>
-            @php
-            $threads = App\Models\Thread::where('categoryId', $c->id)->get();
-            $recentThread = $threads->last();
-            $threadCount = sizeof($threads);
-            @endphp
-            <div class="col-3">
-            <div class="recent-thread-content">
+                @foreach($categories as $c)
+                <div class="category" onclick="window.location='/forum/category/{{str_replace(' ', '-', $c->name)}}/1'" style="cursor: pointer;" tabindex="1">
+                    <div class="row">
+                        <!-- Title -->
+                        <div id="title" class="col-5">
+                            <div class="title-content">
+                            <h1 class="title"> {{$c->name}} </h1>
+                            <h1 class="desc"> {{$c->desc}} </h1>
+                            <div class="editor-btn">
+                            @if($rank->hasPerm("categoryswitch"))
+                            <div class="switch-btn">
+                                <i id="up" class="up-arrow fas fa-arrow-up" categoryId='{{$c->id}}'
+                                    categoryName='{{$c->name}}'></i>
+                                <i id="down" class="down-arrow fas fa-arrow-down" categoryId='{{$c->id}}'
+                                    categoryName='{{$c->name}}'></i>
+                            </div>
+                            @endif
+                            <div class="edit-btn">
+                            @if($rank->hasPerm("categoryedit"))
+                                <i id="edit" class="edit-category far fa-edit" categoryId='{{$c->id}}'
+                                categoryName='{{$c->name}}' categoryDesc='{{$c->desc}}'></i>
+                            @endif
+                            @if($rank->hasPerm("categorydelete"))
+                                <i id="del" class="del-category fas fa-trash" categoryId='{{$c->id}}'
+                                categoryName='{{$c->name}}' categoryDesc='{{$c->desc}}'></i>
+                            @endif
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                        <!-- Title -->
+                        @php
+                            $threads = App\Models\Thread::where('categoryId', $c->id)->get();
+                            $recentThread = $threads->last();
+                            $threadCount = sizeof($threads);
+                        @endphp
+                        <div class="col-3">
+                        <div class="recent-thread-content">
                 @if($recentThread == null)
                 <p class="recent-title"> No threads for this category.</p>
                 <p class="recent-poster"> <i class="far fa-user"></i> Bot, just now </p>
@@ -85,28 +85,31 @@ if(Auth::check()) {
                 $title = strlen($recentThread->title) >= 30 ? substr($recentThread->title, 0, 30) . '..' :
                 $recentThread->title;
                 @endphp
-                <p class="recent-title">{{$title}}</p>
+                <a href="{{$recentThread->getURI()}}"><p class="recent-title">{{$title}}</p></a>
                 <p class="recent-poster"> <a
                         href="forum/profile/{{$name}}"> <img class="recent-poster-avatar" src="{{base64_decode($op->avatar)}}"> {{$name}} </span></a>,
                     {{$timeDisplay->format('%' . $formatAs)}}{{$suffix}} ago </p>
                 @endif
             </div>
-            </div>
-            <div id="threads" class="col-1">
-                    <div class="thread-count-content">
-                    <p class="thread-count"> {{$threadCount}}</p>
+                        </div>
+                        <!-- Recent Thread -->
+                        <div id="threads" class="col-1">
+                            <div class="thread-count-content">
+                            <p class="thread-count"> {{$threadCount}}</p>
+                        </div>
+                    </div>
                     </div>
                 </div>
-        </div>
-</div>
-        @endforeach
-@endif
-@if($rank->hasPerm("categoryadd"))
-<div id="add-category">
-<a>    <h1> Add New Category </h1></a>
-</div>
-@endif
-</div>
+                @endforeach
+            @endif
+            @if($rank->hasPerm("categoryadd"))
+            <div id="add-category">
+                <a>
+                    <h1> Add New Category </h1>
+                </a>
+            </div>
+            @endif
+    </div>
 </div>
 </div>
 </body>

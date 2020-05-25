@@ -55,22 +55,6 @@ function initForms() {
     $editCategoryForm = $("#editCategoryForm");
 }
 /**
- * Change colour to forum's color scheme on hover.
- */
-$('#up, #down, #edit, #del').on('mouseover', (e) => {
-    console.log("hi");
-    $(e.target).css({
-        color: $('meta[name="color"]').attr('content'),
-        transition: 'color 1s'
-    });
-});
-$('#up, #down, #edit, #del').on('mouseout', (e) => {
-    $(e.target).css({
-        color: 'black',
-        transition: 'color 1s'
-    });
-});
-/**
  * Listen for form submission
  * Request to post new category when form is submitted.
  */
@@ -270,7 +254,7 @@ $(".del-category").on("click", e => {
     e.preventDefault();
     $prevClickedDelCategoryName = $(e.target).attr('categoryName');
     $prevClickedDelCategoryId = $(e.target).attr('categoryId');
-    $(".wrapper").append(
+    $("#wrapper").append(
         delCategoryFormHTML.replace(
             "%c",
             $prevClickedDelCategoryName.trim()
@@ -290,7 +274,7 @@ $(".edit-category").on("click", e => {
     $prevClickedDelCategoryName = $(e.target).attr('categoryName');
     $prevClickedEditCategoryDesc = $(e.target).attr('categoryDesc');
     $prevClickedDelCategoryId = $(e.target).attr('categoryId');
-    $(".wrapper").append(
+    $("#wrapper").append(
         editCategoryFormHTML.replace(
             "%c",
             $prevClickedDelCategoryName.trim()
@@ -325,7 +309,11 @@ $(document).on('mouseout', '.form-exit', (e) => {
        transition: 'color 1s'
    });
 });
-if($('meta[name="editor-mode"]').attr('content') == 0) removeEditorElements();
+if($('meta[name="editor-mode"]').attr('content') == 0) {
+    removeEditorElements();
+} else {
+    $('.category').css("min-height", "125px");
+}
 function removeEditorElements() {
     let EDITOR_ELEMENTS = [$('.del-category'), $('.edit-category'), $('.switch-btn')];
     EDITOR_ELEMENTS.forEach($e => {

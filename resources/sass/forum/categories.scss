@@ -1,11 +1,20 @@
 @import '../libs';
 @import url('https://fonts.googleapis.com/css?family=Alegreya|Grenze&display=swap');
+.category-link {
+    height: auto;
+    display: block;
+    border: 1px solid red;
+}
+h1 {
+    margin-bottom: 0 !important;
+}
 #categories {
     background: rgba(0, 0, 0, 0.5);
     margin : 0;
     padding: 0;
 
     .category {
+        min-height: 100px;
         margin-top: 15px;
         background: rgb(23, 34, 33);
     }
@@ -62,7 +71,7 @@ a:hover {
         left: 50%;
         transform: translateX(-50%);
     }
-    .title-content, .recent-thread-content, .thread-count-content {
+    .title-content, .recent-thread-content, .thread-count-content { 
         height: 70%;
         position: relative;
         top: 50%;
@@ -74,7 +83,7 @@ a:hover {
         color: #C5C3C3;
     }
     .recent-title {
-        color: white;
+        color: #C5C3C3;
     }
     .thread-count {
         color: #C5C3C3;
@@ -107,15 +116,12 @@ a:hover {
         color: white;
     }
     .editor-btn {
+        position: relative;
         * {
-            display: inline-block;
+            display: inline;
             margin-right: 0.5vw;
         }
-        .switch-btn {
-            margin-right: 2vw;
-        }
-        color: black;
-        display: inline-block;
+        color: white;
         font-size: 1.5rem;
         cursor: pointer;
     }

@@ -1,14 +1,15 @@
 <html>
 
 <head>
-    <link href="{{ asset('bootstrap.min.css') }}" rel="stylesheet" />
+    <script href="js/app.js"> </script>
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/forum_layout.css')}}">
     <div id="header">
-    <a href="/forum">
-        <div class="title-container" href="/forum">
-            <h1 id="important-notice"> </h1>
-            <h1 id="title"> Forumation </h1>
-        </div>
+        <a href="/forum">
+            <div class="title-container" href="/forum">
+                <h1 id="important-notice"> </h1>
+                <h1 id="title"> Forumation </h1>
+            </div>
         </a>
         @guest
         <p class="auth">
@@ -38,7 +39,7 @@
         }
         @endphp
         @if($admin)
-        <a id="admin" style="color:white; position:absolute; top:1vh; left:1vh;" href="/forum/admin"> <i
+        <a id="admin" style="color:white; position:absolute; top:5px; left:5px;" href="/forum/admin"> <i
                 class="admin-icon fas fa-cog"></i></a>
         @endif
         <div class="auth">
