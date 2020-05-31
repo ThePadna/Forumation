@@ -2,6 +2,7 @@
 namespace App;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Rank;
+use App\Models\Settings;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
@@ -34,9 +35,22 @@ class User extends Authenticatable
 
     /**
      * Return rank of User.
+     * If Rank is null, return default rank.
      */
     public function getRank() {
-        return Rank::find($this->rank);
+        $rank = Rank::find($this->rank);
+        if($rank == null) {
+            $settings = Settings::first();
+            $rank = Rank::find($settings->default_rank);
+        }
+        return $rank;
+    }
+
+    /**
+     * Returns false only if user doesn't have rank and there is no default set.
+     */
+    public function hasRank() {
+        return $this->getRank() == null ? false : true;
     }
 
     /**

@@ -36,68 +36,34 @@ $op = App\User::find($thread->op);
         @php
         $category = App\Models\Category::find($thread->categoryId);
         @endphp
-        <div class="thread-detail-wrapper">
+        <a href="/forum/category/{{$category->name}}/thread/{{str_replace(' ', '-', substr($thread->title, 0, 20))}}-{{$thread->id}}/1">
+            <div class="thread-title-wrapper">
+            <p id="thread-title"> {{$thread->title}} </p>
+            </div>
+        </a>
+    <div class="thread-detail-wrapper">
         <p class="thread-detail"> Thread in <a href="/forum/category/{{$category->name}}/1"> {{$category->name}}
             </a> by
             <a href="/forum/profile/{{$op->name}}"> {{$op->name}} </a> </p>
-         </div>
-            <a href="/forum/category/{{$category->name}}/thread/{{str_replace(' ', '-', substr($thread->title, 0, 20))}}-{{$thread->id}}/1">
-            </a>
+    </div>
     @if($thread->locked)
     <div class="thread-title-wrapper">
         <p style="color:red; font-size: 2vh;"> <i class="fas fa-lock"></i> This thread has been locked. </h1>
     </div>
     @endif
 </div>
-<div id="container"> 
-    @php
-    $i = 0;
-    @endphp
-    @foreach($posts as $p)
-    @php
-    $i++;
-    $user = App\User::find($p->user);
-    $even = ($i % 2 == 0);
-    @endphp
+@php
+$i = 0;
+@endphp
+@foreach($posts as $p)
+@php
+$i++;
+$user = App\User::find($p->user);
+@endphp
+<div id="container">
     <div class="row">
-    @php
-    $avatar = base64_decode($user->getAvatar());
-    $name = $user->name;
-    $rank = $user->getRank();
-    if($p->erased) {
-        $avatar = asset('default_avatar.png');
-        $name = "Removed";
-        $rank = null;
-    }
-    @endphp
-            <div class="reply-counter">
-                <h1 class="reply-count"> #{{$i}} </h1>
-            </div>  
-            <div class="profile-box">
-                <div class="avatar-container">
-                    <img class="avatar" src="{{$avatar}}"> </img>
-                </div>
-                <div class="username-container">
-                    <div class="username-wrapper">
-                        <p class="username"> {{$name}} </p>
-                    </div>
-                </div>
-                @if($rank != null)
-                <div class="rank-container">
-                    <div class="ribbon" style="background:{{$rank->color}}">
-                        <div class="rank-wrapper">
-                            <p class="rank" style="color:white"> {{$rank->name}} </p>
-                        </div>
-                    </div>
-                </div>
-                @endif
-            </div>
-            <div class="post-bubble">
-                <div class="post-content-wrapper post-content-right">
-                    <p class="post-content"> {{$p->contents}} </p>
-                </div>
-            </div>
-            <div class="star star-right">
+        <div class="col-1">
+            <div class="star">
                 @php
                 $users_liked = unserialize($p->liked_by);
                 $likeCount = 0;
@@ -124,9 +90,85 @@ $op = App\User::find($thread->op);
                 <p class="star-count">{{$likeCount}}</p>
                 @endif
             </div>
+        </div>
+        @if($p->erased)
+        <a style="text-decoration: none; color: inherit;">
+            @else
+            <a href="/forum/profile/{{$user->name}}" style="text-decoration: none; color: inherit;">
+                @endif
+                <div class="col-4">
+                    @if($p->erased)
+                    <img id="profilepic" src="{{asset('default_avatar.png')}}">
+                    <p> Removed </p>
+                    <div id="stats">
+                        <p> 0 <i style="color: {{$color}}" class="fas fa-star"></i>
+                            0 <i style="color: {{$color}}" class="fas fa-comments"></i></p>
+                    </div>
+                    @else
+                    @if($user->avatar == null)
+                    <img class="avatar" src="{{asset('default_avatar.png')}}" />
+                    @else
+                    <img class="avatar" src="{{base64_decode($user->avatar)}}" />
+                    @endif
+                    <div class="stats">
+                        @php
+                        $posts1 = App\Models\Post::where('user', $user->id)->get();
+                        $score = 0;
+                        foreach($posts1 as $p1) {
+                        if($p1->liked_by != '') {
+                        $score += sizeof(unserialize($p1->liked_by));
+                        }
+                        }
+                        $comments = sizeof($posts1);
+                        @endphp
+                        <p> {{$score}} <i style="color: {{$color}}" class="fas fa-star"></i>
+                            {{$comments}} <i style="color: {{$color}}" class="fas fa-comments"></i></p>
+                    </div>
+                    <div class="username-wrapper">
+                        <p class="username"> {{$user->name}} </p>
+                    </div>
+                    @php
+                    $rankId = $user->rank;
+                    $rank = App\Models\Rank::find($rankId);
+                    $rankName = "";
+                    $rankColor = "#00000";
+                    if($rank != null) {
+                    $rankName = $rank->name;
+                    $rankColor = $rank->color;
+                    } else {
+                    $default = $settings->default_rank;
+                    $rank = App\Models\Rank::find($default);
+                    if($rank != null) {
+                    $rankName = $rank->name;
+                    $rankColor = $rank->color;
+                    }
+                    }
+                    @endphp
+                    <div class="rank-container">
+                        <p class="rank" style="color:{{$rankColor}};"> {{$rankName}} </p>
+                    </div>
+                    @endif
+                </div>
+            </a>
+            <div class="col-6">
+                <div class="post-wrapper">
+                    @if($p->erased)
+                    <p style="color:red">This post has been erased.</p>
+                    @else
+                    <div class="post-content-wrapper">
+                        <p class="post-content">
+                            {{$p->contents}}
+                        </p>
+                    </div>
+                    <div class="post-footer-wrapper">
+                        <p class="post-footer"> Posted on {{$p->created_at}} </p>
+                    </div>
+                    @endif
+                </div>
+            </div>
     </div>
-    @endforeach
 </div>
+@endforeach
 @if($empty)
 <p id="empty"> There are no new posts at this time on this topic. :( </p>
 @endif

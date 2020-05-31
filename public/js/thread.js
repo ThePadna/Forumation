@@ -358,7 +358,7 @@ updateColorScheme($('meta[name="color"]').attr('content'));
 
 function updateColorScheme(color) {
   $('#header, .popup-form, .thread-detail-wrapper').css('background', color);
-  $('.star-symbol-disabled, .star-symbol, .star-count, #nextpage, #prevpage, #lastpage').css('color', color);
+  $('#nextpage, #prevpage, #lastpage').css('color', color);
 }
 
 /***/ }),
