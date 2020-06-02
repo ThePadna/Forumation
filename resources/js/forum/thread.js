@@ -279,5 +279,4 @@ updateColorScheme($('meta[name="color"]').attr('content'));
  */
 function updateColorScheme(color) {
   $('#header, .popup-form, .thread-detail-wrapper').css('background', color);
-  $('#nextpage, #prevpage, #lastpage').css('color', color);
 }

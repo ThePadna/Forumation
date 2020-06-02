@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Baskerville');
 @import '../libs';
-html, body {
+body {
     min-height: 100%;
-    overflow-y: scroll;
 }
 #wrapper {
     position: relative;
@@ -31,7 +30,7 @@ a:hover {
     text-decoration: none;
 }
 .row {
-    margin-top: 5vh;
+    margin-bottom: 30px;
     min-height: 18vh;
     width: 75%;
     min-width: 815px;
@@ -44,17 +43,11 @@ a:hover {
     * {
     display: inline-block;
     font-size: 2rem;
+    color: white;
     }
     position: absolute;
     top: calc(50% - (20% / 2));
     height: 20%;
-}
-
-.star-right {
-    right: 0;
-}
-.star-left {
-    left: 0;
 }
 .reply-counter {
     h1 {
@@ -66,8 +59,22 @@ a:hover {
     color: white;
 }
 .post-bubble {
+    .post-title {
+        color: white;
+        font-size: 1.1rem;
+        text-align: left;
+    }
+    .post-footer {
+        position: absolute;
+        bottom: 0;
+        font-size: 0.7rem;
+        color: rgb(194, 192, 192);
+        bottom: 0;
+        right: 10%;
+    }
+    box-shadow: 11px 10px 5px 0px rgba(0,0,0,0.75);
     background: #212529;
-    min-height: 200px;
+    min-height: 180px;
     width: 55%;
     min-width: 300px;
     display: block;
@@ -82,10 +89,11 @@ a:hover {
     .post-content {
         text-align: left;
         color: rgb(153, 152, 152);
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 }
 .profile-box {
+    box-shadow: 11px 10px 5px 0px rgba(0,0,0,0.75);
     border: 1px solid black;
     z-index: 100;
     min-width: 175px;
@@ -171,8 +179,24 @@ a:hover {
         height: 25px;
         width: 100%;
         background: #212529 !important;
+        .prev-page {
+            position: absolute;
+            left: 10px;
+            top: 0;
+            font-size: 0.9rem;
+        }
+        .next-page {
+            position: absolute;
+            right: 10px;
+            top: 0;
+            font-size: 0.9rem;
+        }
     }
     .thread-detail {
+        width: 50%;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
         font-size: 1em;
         color: gray;
         text-align: center;
@@ -210,39 +234,6 @@ a:hover {
         height: 35px;
     }
 }
-#prevpage,
-#nextpage,
-#lastpage {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    position: fixed;
-    opacity: 0.8;
-    color: white;
-    font-size: 10vh;
-}
-
-#prevpage {
-    left: 50px;
-}
-
-
-#lastpage {
-    top: 60% !important;
-    right: 50px;
-    font-size: 5vh !important;
-}
-
-#nextpage {
-    right: 50px;
-}
-
-#empty {
-    text-align: center;
-    font-size: 5vh;
-    color: white;
-}
-
 .increase-size {
     font-size: 3rem;
     transition: font-size 0.25s;

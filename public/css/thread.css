@@ -10927,10 +10927,8 @@ a.text-dark:focus {
   }
 }
 
-html,
 body {
   min-height: 100%;
-  overflow-y: scroll;
 }
 
 #wrapper {
@@ -10965,7 +10963,7 @@ a:hover {
 }
 
 .row {
-  margin-top: 5vh;
+  margin-bottom: 30px;
   min-height: 18vh;
   width: 75%;
   min-width: 815px;
@@ -10984,14 +10982,7 @@ a:hover {
 .star * {
   display: inline-block;
   font-size: 2rem;
-}
-
-.star-right {
-  right: 0;
-}
-
-.star-left {
-  left: 0;
+  color: white;
 }
 
 .reply-counter {
@@ -11006,8 +10997,9 @@ a:hover {
 }
 
 .post-bubble {
+  box-shadow: 11px 10px 5px 0px rgba(0, 0, 0, 0.75);
   background: #212529;
-  min-height: 200px;
+  min-height: 180px;
   width: 55%;
   min-width: 300px;
   display: block;
@@ -11018,6 +11010,21 @@ a:hover {
   text-align: center;
 }
 
+.post-bubble .post-title {
+  color: white;
+  font-size: 1.1rem;
+  text-align: left;
+}
+
+.post-bubble .post-footer {
+  position: absolute;
+  bottom: 0;
+  font-size: 0.7rem;
+  color: #c2c0c0;
+  bottom: 0;
+  right: 10%;
+}
+
 .post-bubble .post-content-wrapper {
   margin-left: 3px;
 }
@@ -11025,10 +11032,11 @@ a:hover {
 .post-bubble .post-content {
   text-align: left;
   color: #999898;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .profile-box {
+  box-shadow: 11px 10px 5px 0px rgba(0, 0, 0, 0.75);
   border: 1px solid black;
   z-index: 100;
   min-width: 175px;
@@ -11131,7 +11139,25 @@ a:hover {
   background: #212529 !important;
 }
 
+#title-container .thread-detail-wrapper .prev-page {
+  position: absolute;
+  left: 10px;
+  top: 0;
+  font-size: 0.9rem;
+}
+
+#title-container .thread-detail-wrapper .next-page {
+  position: absolute;
+  right: 10px;
+  top: 0;
+  font-size: 0.9rem;
+}
+
 #title-container .thread-detail {
+  width: 50%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 1em;
   color: gray;
   text-align: center;
@@ -11171,38 +11197,6 @@ a:hover {
   color: white;
   width: 100px;
   height: 35px;
-}
-
-#prevpage,
-#nextpage,
-#lastpage {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  position: fixed;
-  opacity: 0.8;
-  color: white;
-  font-size: 10vh;
-}
-
-#prevpage {
-  left: 50px;
-}
-
-#lastpage {
-  top: 60% !important;
-  right: 50px;
-  font-size: 5vh !important;
-}
-
-#nextpage {
-  right: 50px;
-}
-
-#empty {
-  text-align: center;
-  font-size: 5vh;
-  color: white;
 }
 
 .increase-size {

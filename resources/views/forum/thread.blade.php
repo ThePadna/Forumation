@@ -19,7 +19,7 @@ $op = App\User::find($thread->op);
 <body style="background: url('{{asset('img/categories_bg.jpg')}}') fixed;">
 @endif
 @if(file_exists(public_path() . '/img/categories_bg.webp'))
-<body style="background: url('{{asset('img/categories_bg.webp')}}') fixed;">
+<body style="background: url('{{asset('img/categories_bg.webp')}}') no-repeat center center fixed;">
 @endif
 <body>
 <div id="wrapper">
@@ -37,27 +37,39 @@ $op = App\User::find($thread->op);
         $category = App\Models\Category::find($thread->categoryId);
         @endphp
         <div class="thread-detail-wrapper">
-        <p class="thread-detail"> Thread in <a href="/forum/category/{{$category->name}}/1"> {{$category->name}}
-            </a> by
-            <a href="/forum/profile/{{$op->name}}"> {{$op->name}} </a> </p>
+            <a href="/"><p class="prev-page"> Prev Page </p></a>
+            <p class="thread-detail"> Thread in 
+                <a href="/forum/category/{{$category->name}}/1"> {{$category->name}}
+                </a> by
+                <a href="/forum/profile/{{$op->name}}"> {{$op->name}} </a> 
+            </p>
+            <a href="/"><p class="next-page"> Next Page </p></a>
          </div>
-            <a href="/forum/category/{{$category->name}}/thread/{{str_replace(' ', '-', substr($thread->title, 0, 20))}}-{{$thread->id}}/1">
-            </a>
     @if($thread->locked)
     <div class="thread-title-wrapper">
         <p style="color:red; font-size: 2vh;"> <i class="fas fa-lock"></i> This thread has been locked. </h1>
     </div>
     @endif
 </div>
-<div id="container"> 
+<div id="container">
     @php
-    $i = 0;
+    $startAt = $page - 1;
+    $i = $page > 1 ?  $startAt * 9 : 0;
     @endphp
+    <!-- Page selector -->
+    @if($page > 1)
+    <div class="page-selector">
+    @for($x = 1; $x <= $page; $x++)
+    <p class="selector"> {{$x}} </p>
+    @endfor
+    </div>
+    @endif
+    <!-- Page selector -->
+    <!-- Start posts loop -->
     @foreach($posts as $p)
     @php
     $i++;
     $user = App\User::find($p->user);
-    $even = ($i % 2 == 0);
     @endphp
     <div class="row">
     @php
@@ -94,7 +106,12 @@ $op = App\User::find($thread->op);
             </div>
             <div class="post-bubble">
                 <div class="post-content-wrapper post-content-right">
+                    @if($i == 1)
+                    <p class="post-title"> {{$thread->title}} </p>
+                    <hr/>
+                    @endif
                     <p class="post-content"> {{$p->contents}} </p>
+                    <p class="post-footer"> Posted on {{$p->created_at}} </p>
                 </div>
             </div>
             <div class="star star-right">
@@ -138,6 +155,7 @@ $op = App\User::find($thread->op);
 </form>
 @endif
 @endauth
+</div>
 @if($page > 1)
 <a href="{{$page < 2 ? 1 : $page - 1}}">
     <div id="prevpage">
@@ -157,7 +175,6 @@ $op = App\User::find($thread->op);
     </div>
 </a>
 @endif
-</div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 <meta name="csrf" content="{{csrf_token()}}">
 <meta name="thread" content="{{$thread->id}}">
