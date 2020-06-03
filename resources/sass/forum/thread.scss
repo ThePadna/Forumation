@@ -31,12 +31,43 @@ a:hover {
 }
 .row {
     margin-bottom: 30px;
-    min-height: 18vh;
+    min-height: 14vh;
     width: 75%;
     min-width: 815px;
     left: 50%;
     position: relative;
     transform: translateX(-50%);
+}
+.page-selector {
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 30px;
+    width: 100%;
+    .page-info {
+        color: white;
+        text-align: center;
+    }
+    .selectors {
+        position: relative;
+        display: inline-block;
+        left: 50%;
+        transform: translateX(-50%);
+        .selector-wrapper {
+            position: relative;
+            background: #212529;
+            margin-right: 5px;
+            width: 25px;
+            height: 25px;
+            display: inline-block;
+            * {
+                text-align: center;
+                color: white;
+                font-size: 1rem;
+            }
+        }
+    }
 }
 .star {
     cursor: pointer;
@@ -59,30 +90,27 @@ a:hover {
     color: white;
 }
 .post-bubble {
+    margin-top: 5px;
+    position: relative;
+    border: 1px solid black;
+    min-height: 200px;
+    display: table;
+    box-shadow: 11px 10px 5px 0px rgba(0,0,0,0.75);
+    background: #212529;
+    margin: 0 auto;
+    width: 55%;
     .post-title {
         color: white;
         font-size: 1.1rem;
         text-align: left;
     }
     .post-footer {
-        position: absolute;
-        bottom: 0;
+        text-shadow: 2px 2px black;
+        float: right;
+        margin-right: 20px;
         font-size: 0.7rem;
         color: rgb(194, 192, 192);
-        bottom: 0;
-        right: 10%;
     }
-    box-shadow: 11px 10px 5px 0px rgba(0,0,0,0.75);
-    background: #212529;
-    min-height: 180px;
-    width: 55%;
-    min-width: 300px;
-    display: block;
-    margin: 0 auto;
-    border: 1px solid black;
-    border-radius: 5px;
-    font-size: 200px;
-    text-align: center;
     .post-content-wrapper {
         margin-left: 3px;
     }
@@ -110,8 +138,8 @@ a:hover {
             position: relative;
             top: 50%;
             transform: translateY(-50%);
-            width: 165px;
-            height: 165px;
+            width: 160px;
+            height: 160px;
         }
     }
     .username-container {

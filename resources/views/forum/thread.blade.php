@@ -37,13 +37,11 @@ $op = App\User::find($thread->op);
         $category = App\Models\Category::find($thread->categoryId);
         @endphp
         <div class="thread-detail-wrapper">
-            <a href="/"><p class="prev-page"> Prev Page </p></a>
             <p class="thread-detail"> Thread in 
                 <a href="/forum/category/{{$category->name}}/1"> {{$category->name}}
                 </a> by
                 <a href="/forum/profile/{{$op->name}}"> {{$op->name}} </a> 
             </p>
-            <a href="/"><p class="next-page"> Next Page </p></a>
          </div>
     @if($thread->locked)
     <div class="thread-title-wrapper">
@@ -55,13 +53,43 @@ $op = App\User::find($thread->op);
     @php
     $startAt = $page - 1;
     $i = $page > 1 ?  $startAt * 9 : 0;
+    $displayNumbers = array();
+    for($x = $page - 2; $x <= $page + 2; $x++) {
+        if($x > $lastPage || $x <= 0) continue;
+        $displayNumbers[$x] = $x;
+    }
     @endphp
     <!-- Page selector -->
-    @if($page > 1)
+    @if($page > 0)
     <div class="page-selector">
-    @for($x = 1; $x <= $page; $x++)
-    <p class="selector"> {{$x}} </p>
-    @endfor
+    <p class="page-info"> Page {{$page}} of {{$lastPage}} </p>
+    <div class="selectors">
+    @if($lastPage > 3)
+    <a href="{{$thread->getURI(1)}}">
+    <div class="selector-wrapper">
+        <h1 class="selector"> < </h1>
+    </div>
+    </a>
+    @endif
+    @foreach($displayNumbers as $num)
+        @if($page == $num)
+        <div class="selector-wrapper" style="border: 1px solid #007bff;">
+        @else
+        <a href="{{$thread->getURI($num)}}"> 
+        <div class="selector-wrapper">
+        @endif
+            <h1 class="selector"> {{$num}} </h1>
+        </div>
+        </a>
+    @endforeach
+    @if($lastPage > 3)
+    <a href="{{$thread->getURI($lastPage)}}">
+    <div class="selector-wrapper">
+        <h1 class="selector"> > </h1>
+    </div>
+    </a>
+    @endif
+    </div>
     </div>
     @endif
     <!-- Page selector -->
@@ -155,26 +183,41 @@ $op = App\User::find($thread->op);
 </form>
 @endif
 @endauth
+ <!-- Page selector -->
+ @if($page > 0)
+    <div class="page-selector">
+    <p class="page-info"> Page {{$page}} of {{$lastPage}} </p>
+    <div class="selectors">
+    @if($lastPage > 3)
+    <a href="{{$thread->getURI(1)}}">
+    <div class="selector-wrapper">
+        <h1 class="selector"> < </h1>
+    </div>
+    </a>
+    @endif
+    @foreach($displayNumbers as $num)
+        @if($page == $num)
+        <div class="selector-wrapper" style="border: 1px solid #007bff;">
+        @else
+        <a href="{{$thread->getURI($num)}}"> 
+        <div class="selector-wrapper">
+        @endif
+            <h1 class="selector"> {{$num}} </h1>
+        </div>
+        </a>
+    @endforeach
+    @if($lastPage > 3)
+    <a href="{{$thread->getURI($lastPage)}}">
+    <div class="selector-wrapper">
+        <h1 class="selector"> > </h1>
+    </div>
+    </a>
+    @endif
+    </div>
+    </div>
+    @endif
+    <!-- Page selector -->
 </div>
-@if($page > 1)
-<a href="{{$page < 2 ? 1 : $page - 1}}">
-    <div id="prevpage">
-        <i class="fas fa-long-arrow-alt-left"></i>
-    </div>
-</a>
-@endif
-@if(!$isLastPage)
-<a href="{{$page + 1}}">
-    <div id="nextpage">
-        <i class="fas fa-long-arrow-alt-right"></i>
-    </div>
-</a>
-<a href="{{$lastPage}}">
-    <div id="lastpage">
-        <i class="fas fa-fast-forward"></i>
-    </div>
-</a>
-@endif
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 <meta name="csrf" content="{{csrf_token()}}">
 <meta name="thread" content="{{$thread->id}}">

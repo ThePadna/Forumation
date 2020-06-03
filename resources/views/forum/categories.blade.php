@@ -85,7 +85,7 @@ $rank = Auth::user()->getRank();
                 $title = strlen($recentThread->title) >= 30 ? substr($recentThread->title, 0, 30) . '..' :
                 $recentThread->title;
                 @endphp
-                <a href="{{$recentThread->getURI()}}"><p class="recent-title">{{$title}}</p></a>
+                <a href="{{$recentThread->getURI(1)}}"><p class="recent-title">{{$title}}</p></a>
                 <p class="recent-poster"> <a
                         href="forum/profile/{{$name}}"> <img class="recent-poster-avatar" src="{{base64_decode($op->avatar)}}"> {{$name}} </span></a>,
                     {{$timeDisplay->format('%' . $formatAs)}}{{$suffix}} ago </p>

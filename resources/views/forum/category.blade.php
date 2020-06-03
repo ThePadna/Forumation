@@ -35,7 +35,7 @@ if(Auth::check()) {
     @else
     <div id="threads">
         @foreach($threads as $t)
-            <div class="thread" onclick="window.location='{{$t->getURI()}}'" style="cursor: pointer;" tabindex="1">
+            <div class="thread" onclick="window.location='{{$t->getURI(1)}}'" style="cursor: pointer;" tabindex="1">
                 <div class="row">
                     <div class="col-8">
                         <div class="posts-content">
@@ -74,7 +74,7 @@ if(Auth::check()) {
                             @endphp
                             <p>
                                 Latest post by &nbsp;
-                                <a href="{{$user->getURI()}}"> 
+                                <a href="{{$user->getURI(1)}}"> 
                                 <img class="latest-post-img" src="{{base64_decode($user->getAvatar())}}" />
                                 {{$user->name}}
                                 </a>
