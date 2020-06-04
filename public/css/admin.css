@@ -66,13 +66,17 @@ hr {
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
-.thread-settings-wrapper {
-  margin-left: 1vh;
+.value {
+  box-shadow: 2px 2px 2px 2px black;
+}
+
+.option {
+  color: white;
 }
 
 .option,
 .value {
-  width: 200px;
+  width: 250px;
   display: inline-block;
   font-size: 1.5em;
 }
@@ -81,11 +85,12 @@ hr {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  width: 100px;
-  height: 30px;
+  width: 150px;
+  height: 40px;
   background: gray;
   color: white;
   margin-top: 10vh;
+  box-shadow: 2px 2px 2px 2px black;
 }
 
 #result-placement {
