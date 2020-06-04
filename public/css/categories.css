@@ -10957,12 +10957,10 @@ h1 {
 }
 
 #add-category {
-  margin-bottom: 0 !important;
   text-align: center;
 }
 
 #add-category h1 {
-  margin-bottom: 0 !important;
   font-size: 1rem;
 }
 
@@ -10979,7 +10977,6 @@ i {
 }
 
 a {
-  outline: 0;
   text-decoration: none;
 }
 

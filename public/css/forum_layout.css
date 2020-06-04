@@ -10927,6 +10927,15 @@ a.text-dark:focus {
   }
 }
 
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.title-container > h1 {
+  margin-bottom: 0 !important;
+}
+
 #header {
   border: 1px solid green;
   display: block;
@@ -10945,15 +10954,18 @@ a.text-dark:focus {
 }
 
 #header #title {
+  display: inline-block;
+  border: 1px solid pink;
   color: white;
   position: relative;
   font-family: "Yellowtail", cursive;
 }
 
 #header .auth {
-  border: 1px solid red;
   position: relative;
-  opacity: 0.5;
+  display: inline-block;
+  border: 1px solid red;
+  opacity: 0.8;
   font-size: 1rem;
 }
 
