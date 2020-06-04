@@ -1,5 +1,10 @@
 @import '../libs';
 
+body {
+  background: #212529;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
 #ranks-link {
   font-size: 10vh;
 }
@@ -30,14 +35,14 @@ a {
     }
 }
 p {
-    color: black;
+    color: white;
     font-size: 3vh;
 }
 #color-state {
   color: gray;
 }
 hr {
-  border: 1px solid black;
+  border: 1px solid white;
   margin-bottom: 10vh;
 }
 .toggle input {

@@ -1,9 +1,12 @@
 @import '../libs';
 @import url('https://fonts.googleapis.com/css?family=Alegreya|Grenze&display=swap');
+#header {
+    padding: 0 !important;
+    margin: 0 !important;
+}
 .category-link {
     height: auto;
     display: block;
-    border: 1px solid red;
 }
 h1 {
     margin-bottom: 0 !important;

@@ -1,16 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Yellowtail|Saira+Stencil+One&display=swap');
 @import '../libs';
-body {
+#header {
+    * {
     margin: 0 !important;
-    padding: 0 !important;
-}
-.title-container>h1 {
-    margin-bottom: 0 !important;
+    }
 }
 #header {
-    border: 1px solid green;
-    display: block;
-    background-color: white;
     height: 100px;
     width: 100%;
     text-align: center;
@@ -21,16 +16,12 @@ body {
         text-decoration: none;
     }
     #title {
-        display: inline-block;
-        border: 1px solid pink;
         color: white;
         position: relative;
         font-family: 'Yellowtail', cursive;
     }
     .auth {
         position: relative;
-        display: inline-block;
-        border: 1px solid red;
         #username {
             color: white !important;
         }
