@@ -38,7 +38,7 @@ function fillPermissions(perms, id) {
                     {{sizeof(unserialize($r->permissions))}}
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="color: white !important;">
-                    <p id="usereditownprofile" class="permission unselected"> Edit Own Profile </p>
+                    <p id="editownprofile" class="permission unselected"> Edit Own Profile </p>
                     <p id="postcreate" class="permission unselected"> Create Post </p>
                     <p id="poststar" class="permission unselected"> Star Post </p>
                     <p id="posteraseself" class="permission unselected"> Erase Own Post </p>
@@ -47,7 +47,7 @@ function fillPermissions(perms, id) {
                     <p id="threaddelete" class="permission unselected"> Delete Thread </p>
                     <p id="posterase" class="permission unselected"> Erase Post </p>
                     <p id="editotherprofile" class="permission unselected"> Edit Any Profile </p>
-                    <p id="banuserprofile" class="permission unselected"> Ban Users </p>
+                    <p id="ban" class="permission unselected"> Ban Users </p>
                     <p id="categoryedit" class="permission unselected"> Edit Category </p>
                     <p id="categorydelete" class="permission unselected"> Delete Category </p>
                     <p id="categoryswitch" class="permission unselected"> Switch Category </p>

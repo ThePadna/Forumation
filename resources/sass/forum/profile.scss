@@ -1,4 +1,9 @@
 @import '../libs';
+body {
+    background: #212529;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
 #profile-header {
     margin-bottom: 20vh;
     display: inline-block;
@@ -6,10 +11,12 @@
     left: 50%;
     transform: translateX(-50%);
     #avatar {
+        margin-top: 50px;
         min-height: 200px;
         min-width: 200px;
         height: 25vh;
         width: 25vh;
+        border-radius: 50%;
     }
     #edit-btn {
         text-align: center;
@@ -19,6 +26,7 @@
             font-weight: 650;
             font-size: 7.5vh;
             text-align: center;
+            color: white;
         }
         display: block;
         position: relative;
@@ -43,7 +51,8 @@
         min-height: 3rem;
         height: 5vh;
         #profile-name {
-            font-size: 2.5em;
+            color: white;
+            font-size: 2em;
         }
     }
     * {
@@ -63,6 +72,9 @@
 
 .row {
     div {
+        .title {
+            color: white;
+        }
         height: 40vh;
         p {
             font-size: 800%;

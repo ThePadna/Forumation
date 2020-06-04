@@ -10927,6 +10927,12 @@ a.text-dark:focus {
   }
 }
 
+body {
+  background: #212529;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
 #profile-header {
   margin-bottom: 20vh;
   display: inline-block;
@@ -10936,10 +10942,12 @@ a.text-dark:focus {
 }
 
 #profile-header #avatar {
+  margin-top: 50px;
   min-height: 200px;
   min-width: 200px;
   height: 25vh;
   width: 25vh;
+  border-radius: 50%;
 }
 
 #profile-header #edit-btn {
@@ -10959,6 +10967,7 @@ a.text-dark:focus {
   font-weight: 650;
   font-size: 7.5vh;
   text-align: center;
+  color: white;
 }
 
 #profile-header input[type=file] {
@@ -10982,7 +10991,8 @@ a.text-dark:focus {
 }
 
 #profile-header #profile-name-container #profile-name {
-  font-size: 2.5em;
+  color: white;
+  font-size: 2em;
 }
 
 #profile-header * {
@@ -11003,6 +11013,10 @@ a.text-dark:focus {
 
 .row div {
   height: 40vh;
+}
+
+.row div .title {
+  color: white;
 }
 
 .row div p {

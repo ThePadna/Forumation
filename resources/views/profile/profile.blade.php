@@ -3,27 +3,10 @@
 <link rel="stylesheet" href="{{asset('css/profile.css')}}">
 <div id="profile-header">
     @php
-    $rank = null;
-    $ban = false;
-    $edit = false;
-    $editown = false;
     $settings = App\Models\Settings::first();
-    if(Auth::check()) {
-    $rank = Auth::user()->rank;
-    if($rank == null) {
-    if($settings != null) {
     $default = $settings->default_rank;
-    $rank = App\Models\Rank::find($default)->first();
-    }
-    }
-    if($rank != null) {
-    $rank = App\Models\Rank::find($rank);
-    $perms = unserialize($rank->permissions);
-    if(in_array('editotherprofile', $perms)) $edit = true;
-    if(in_array('banuserprofile', $perms)) $ban = true;
-    if(in_array('usereditownprofile', $perms)) $editown = true;
-    }
-    }
+    $rank = null;
+    if(Auth::check()) $rank = Auth::user()->getRank();
     $profileRank = App\Models\Rank::find($user->rank);
     if($profileRank == null) {
     if($settings != null) {
@@ -32,10 +15,10 @@
     }
     }
     @endphp
-    @if($ban && Auth::user()->id != $user->id)
+    @if($rank != null && $rank->hasPerm("ban") && Auth::user()->id != $user->id)
     <p id="ban-btn"> <i class="fas fa-ban"></i> Ban User </p>
     @endif
-    @if($edit || $editown)
+    @if($rank != null && $rank->hasPerm("editotherprofile") || $rank->hasPerm("editownprofile"))
     <a href="/forum/profile/{{$user->name}}/edit">
         <p id="edit-btn"> [Edit Profile] </p>
     </a>

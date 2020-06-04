@@ -37,7 +37,7 @@ $rank = Auth::user()->getRank();
                             <h1 class="title"> {{$c->name}} </h1>
                             <h1 class="desc"> {{$c->desc}} </h1>
                             <div class="editor-btn">
-                            @if($rank->hasPerm("categoryswitch"))
+                            @if($rank != null && $rank->hasPerm("categoryswitch"))
                             <div class="switch-btn">
                                 <i id="up" class="up-arrow fas fa-arrow-up" categoryId='{{$c->id}}'
                                     categoryName='{{$c->name}}'></i>
@@ -46,11 +46,11 @@ $rank = Auth::user()->getRank();
                             </div>
                             @endif
                             <div class="edit-btn">
-                            @if($rank->hasPerm("categoryedit"))
+                            @if($rank != null && $rank->hasPerm("categoryedit"))
                                 <i id="edit" class="edit-category far fa-edit" categoryId='{{$c->id}}'
                                 categoryName='{{$c->name}}' categoryDesc='{{$c->desc}}'></i>
                             @endif
-                            @if($rank->hasPerm("categorydelete"))
+                            @if($rank != null && $rank->hasPerm("categorydelete"))
                                 <i id="del" class="del-category fas fa-trash" categoryId='{{$c->id}}'
                                 categoryName='{{$c->name}}' categoryDesc='{{$c->desc}}'></i>
                             @endif
@@ -102,7 +102,7 @@ $rank = Auth::user()->getRank();
                 </div>
                 @endforeach
             @endif
-            @if($rank->hasPerm("categoryadd"))
+            @if($rank != null && $rank->hasPerm("categoryadd"))
             <div id="add-category">
                 <a>
                     <h1> Add New Category </h1>

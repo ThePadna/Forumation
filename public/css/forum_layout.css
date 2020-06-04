@@ -10927,16 +10927,8 @@ a.text-dark:focus {
   }
 }
 
-#important-notice {
-  position: absolute;
-  color: white;
-  left: 15%;
-  font-size: 2vh;
-  top: 6.5vh;
-}
-
 #header {
-  min-height: 100px;
+  border: 1px solid green;
   display: block;
   background-color: white;
   height: 100px;
@@ -10959,10 +10951,10 @@ a.text-dark:focus {
 }
 
 #header .auth {
+  border: 1px solid red;
   position: relative;
   opacity: 0.5;
-  position: relative;
-  font-size: 1em;
+  font-size: 1rem;
 }
 
 #header .auth #username {
@@ -10971,7 +10963,7 @@ a.text-dark:focus {
 
 #header .title-container {
   position: relative;
-  top: 7.5px;
+  margin-top: 7.5px;
 }
 
 .admin-icon {

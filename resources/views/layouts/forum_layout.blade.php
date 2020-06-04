@@ -19,26 +19,10 @@
         @endif
         @else
         @php
-        $admin = false;
-        if(Auth::check()) {
-        $rank = App\Models\Rank::find(Auth::user()->rank);
-        if($rank != null) {
-        $perms = unserialize($rank->permissions);
-        if(in_array("admin", $perms)) $admin = true;
-        } else {
-        $settings = App\Models\Settings::first();
-        if($settings != null) {
-        $default = $settings->default_rank;
-        $rank = App\Models\Rank::find($default);
-        if($rank != null) {
-        $perms = unserialize($rank->permissions);
-        if(in_array("admin", $perms)) $admin = true;
-        }
-        }
-        }
-        }
+        $rank = null;
+        if(Auth::check()) $rank = Auth::user()->getRank();
         @endphp
-        @if($admin)
+        @if($rank != null && $rank->hasPerm("admin"))
         <a id="admin" style="color:white; position:absolute; top:5px; left:5px;" href="/forum/admin"> <i
                 class="admin-icon fas fa-cog"></i></a>
         @endif
