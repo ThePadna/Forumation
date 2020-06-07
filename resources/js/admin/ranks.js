@@ -3,18 +3,6 @@ import Pickr from '@simonwep/pickr';
 $('.trash').on('click', (e) => {
     $(e.target).parent().parent().parent().remove();
 });
-$(document).on('mouseover', '.save, .add, .trash', (e) => {
-    $(e.target).css({
-        color: $('meta[name="color"]').attr('content'),
-        transition: 'color 1s'
-    });
- });
- $(document).on('mouseout', '.save, .add, .trash', (e) => {
-    $(e.target).css({
-        color: '#212529',
-        transition: 'color 1s'
-    });
- });
  $('.add').on('click', e => {
     $.ajax({
         type: "POST",
@@ -148,4 +136,5 @@ updateColorScheme($('meta[name="color"]').attr('content'));
  */
 function updateColorScheme(color) {
     $('#header').css('background', color);
+    $('.add>i, svg').css("color", color);
 }

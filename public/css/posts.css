@@ -1,27 +1,58 @@
-@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);table {
+@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);body {
+  background: #212529;
+}
+
+table {
   min-width: 600px;
   width: 100vw;
   text-align: center;
 }
 
 table th {
+  color: white;
   width: 25vw;
   font-size: 1.5rem;
 }
 
 table td {
+  color: white;
   font-size: 1.5rem;
 }
 
-#prevpage,
-#nextpage {
+.page-selector {
   position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  position: fixed;
-  opacity: 0.8;
-  color: #0a0f0f;
-  font-size: 100px;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.page-selector .page-info {
+  color: white;
+  text-align: center;
+}
+
+.page-selector .selectors {
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.page-selector .selectors .selector-wrapper {
+  position: relative;
+  background: #212529;
+  margin-right: 5px;
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+}
+
+.page-selector .selectors .selector-wrapper * {
+  text-align: center;
+  color: white;
+  font-size: 1rem;
 }
 
 #user-search {

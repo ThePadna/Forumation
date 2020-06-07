@@ -1,6 +1,26 @@
-@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);table {
+@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);body {
+  background: #212529;
+}
+
+p {
+  color: white;
+}
+
+.pcr-button {
+  box-shadow: 2px 2px 2px 2px black;
+}
+
+table {
   width: 100vw;
   text-align: center;
+}
+
+table i {
+  color: white;
+}
+
+table tr th {
+  color: white;
 }
 
 table th {
@@ -83,11 +103,13 @@ table .dropdown-menu {
 #menu i,
 #menu svg {
   font-size: 6rem;
+  color: white;
 }
 
 #menu .add,
 #menu .save,
 #menu .default {
+  color: white;
   margin-right: 50px;
   display: inline-block;
 }

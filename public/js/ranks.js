@@ -762,18 +762,6 @@ __webpack_require__.r(__webpack_exports__);
 $('.trash').on('click', function (e) {
   $(e.target).parent().parent().parent().remove();
 });
-$(document).on('mouseover', '.save, .add, .trash', function (e) {
-  $(e.target).css({
-    color: $('meta[name="color"]').attr('content'),
-    transition: 'color 1s'
-  });
-});
-$(document).on('mouseout', '.save, .add, .trash', function (e) {
-  $(e.target).css({
-    color: '#212529',
-    transition: 'color 1s'
-  });
-});
 $('.add').on('click', function (e) {
   $.ajax({
     type: "POST",
@@ -897,6 +885,7 @@ updateColorScheme($('meta[name="color"]').attr('content'));
 
 function updateColorScheme(color) {
   $('#header').css('background', color);
+  $('.add>i, svg').css("color", color);
 }
 
 /***/ }),

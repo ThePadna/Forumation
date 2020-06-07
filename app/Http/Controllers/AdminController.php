@@ -38,8 +38,9 @@ class AdminController extends Controller
         $RESULTS_PER_PAGE = 20;
         $skipAmt = $page > 1 ? ($page * $RESULTS_PER_PAGE) - $RESULTS_PER_PAGE : 0;
         $users = User::latest()->skip($skipAmt)->take($RESULTS_PER_PAGE)->get();
+        $lastPage = ceil((sizeof($users) / 9));
         $settings = Settings::first();
-        return view('admin/users', ["page" => $page, "users" => $users, "settings" => $settings]);
+        return view('admin/users', ["page" => $page, "users" => $users, "settings" => $settings, "lastPage" => $lastPage]);
       }
       /**
        * Show admin threads page.
@@ -53,8 +54,9 @@ class AdminController extends Controller
         $RESULTS_PER_PAGE = 20;
         $skipAmt = $page > 1 ? ($page * $RESULTS_PER_PAGE) - $RESULTS_PER_PAGE : 0;
         $threads = Thread::latest()->skip($skipAmt)->take($RESULTS_PER_PAGE)->get();
+        $lastPage = ceil((sizeof($threads) / 9));
         $settings = Settings::first();
-        return view('admin/threads', ["page" => $page, "threads" => $threads, "settings" => $settings]);
+        return view('admin/threads', ["page" => $page, "threads" => $threads, "settings" => $settings, "lastPage" => $lastPage]);
       }
       /**
        * Show admin posts page.
@@ -68,8 +70,9 @@ class AdminController extends Controller
         $RESULTS_PER_PAGE = 20;
         $skipAmt = $page > 1 ? ($page * $RESULTS_PER_PAGE) - $RESULTS_PER_PAGE : 0;
         $posts = Post::latest()->skip($skipAmt)->take($RESULTS_PER_PAGE)->get();
+        $lastPage = ceil((sizeof($posts) / 9));
         $settings = Settings::first();
-        return view('admin/posts', ["page" => $page, "posts" => $posts, "settings" => $settings]);
+        return view('admin/posts', ["page" => $page, "posts" => $posts, "settings" => $settings, "lastPage" => $lastPage]);
       }
 
     /**

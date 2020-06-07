@@ -51,8 +51,6 @@ $op = App\User::find($thread->op);
 </div>
 <div id="container">
     @php
-    $startAt = $page - 1;
-    $i = $page > 1 ?  $startAt * 9 : 0;
     $displayNumbers = array();
     for($x = $page - 2; $x <= $page + 2; $x++) {
         if($x > $lastPage || $x <= 0) continue;

@@ -43,21 +43,49 @@
         <td>{{$p->updated_at}}</td>
     </tr>
     @endforeach
-    @if($page > 1)
-    <a href="{{$page < 2 ? 1 : $page - 1}}">
-        <div id="prevpage">
-            <i class="fas fa-long-arrow-alt-left"></i>
-        </div>
-    </a>
-    @endif
-    @if(sizeof($posts) >= 20)
-    <a href="{{$page + 1}}">
-        <div id="nextpage">
-            <i class="fas fa-long-arrow-alt-right"></i>
-        </div>
-    </a>
-    @endif
 </table>
+<!-- Page selector -->
+@php
+  $displayNumbers = array();
+  for($x = $page - 2; $x <= $page + 2; $x++) {
+      if($x > $lastPage || $x <= 0) continue;
+      $displayNumbers[$x] = $x;
+  }
+  $uri = "/forum/admin/datamanagement/posts/";
+@endphp
+@if($page > 0)
+<div class="page-selector">
+  <p class="page-info"> Page {{$page}} of {{$lastPage}} </p>
+  <div class="selectors">
+  @if($lastPage > 3)
+  <a href="{{$uri . 1}}">
+  <div class="selector-wrapper">
+      <h1 class="selector"> < </h1>
+  </div>
+  </a>
+  @endif
+  @foreach($displayNumbers as $num)
+      @if($page == $num)
+      <div class="selector-wrapper" style="border: 1px solid #007bff;">
+      @else
+      <a href="{{$uri . $num}}"> 
+      <div class="selector-wrapper">
+      @endif
+          <h1 class="selector"> {{$num}} </h1>
+      </div>
+      </a>
+  @endforeach
+  @if($lastPage > 3)
+  <a href="{{$uri . $lastPage}}">
+  <div class="selector-wrapper">
+      <h1 class="selector"> > </h1>
+  </div>
+  </a>
+  @endif
+  </div>
+  </div>
+  @endif
+  <!-- Page selector -->
 <meta name="color" content="{{$settings->color}}">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 <script src="{{asset('js/posts.js')}}"> </script>

@@ -1,5 +1,41 @@
 @import '../libs';
 
+body {
+    background: #212529;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+.page-selector {
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 30px;
+    width: 100%;
+    .page-info {
+        color: white;
+        text-align: center;
+    }
+    .selectors {
+        position: relative;
+        display: inline-block;
+        left: 50%;
+        transform: translateX(-50%);
+        .selector-wrapper {
+            position: relative;
+            background: #212529;
+            margin-right: 5px;
+            width: 25px;
+            height: 25px;
+            display: inline-block;
+            * {
+                text-align: center;
+                color: white;
+                font-size: 1rem;
+            }
+        }
+    }
+}
 table {
     min-width: 600px;
     width: 100vw;
@@ -7,9 +43,11 @@ table {
     th {
         width: 25vw;
         font-size: 1.5rem;
+        color: white;
     }
     td {
         font-size: 1.5rem;
+        color: white;
     }
 }
 #prevpage,

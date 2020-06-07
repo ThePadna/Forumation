@@ -1,8 +1,26 @@
 @import '../libs';
+body {
+    background: #212529;
+}
 
+p {
+    color: white;
+}
+
+.pcr-button {
+    box-shadow: 2px 2px 2px 2px black;
+}
 table {
     width: 100vw;
     text-align: center;
+    i {
+        color: white;
+    }
+    tr {
+        th {
+            color: white;
+        }
+    }
     th {
         width: 25vw;
         font-size: 2rem;
@@ -72,8 +90,10 @@ table {
     }
     i, svg {
         font-size: 6rem;
+        color: white;
     }
     .add, .save, .default {
+        color: white;
         margin-right: 50px;
         display: inline-block;
     }

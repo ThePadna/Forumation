@@ -1,4 +1,10 @@
-@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);a,
+@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);body {
+  background: #212529;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+a,
 a:hover {
   text-decoration: none !important;
   color: black;
@@ -16,6 +22,10 @@ a:hover {
   transform: translateX(-50%);
 }
 
+a {
+  outline: 0;
+}
+
 .menu {
   margin-top: 10vh;
 }
@@ -30,7 +40,7 @@ a:hover {
 }
 
 p {
-  color: black;
+  color: white;
   font-size: 3vh;
 }
 

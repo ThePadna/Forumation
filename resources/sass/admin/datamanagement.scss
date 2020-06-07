@@ -1,5 +1,11 @@
 @import '../libs';
 
+body {
+    background: #212529;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
 a,a:hover {
     text-decoration: none !important;
     color: black;
@@ -13,6 +19,9 @@ a,a:hover {
         transform: translateX(-50%);
     }
 }
+a {
+    outline: 0;
+}
 .menu {
     margin-top: 10vh;
     * {
@@ -24,6 +33,6 @@ a,a:hover {
     }
 }
 p {
-    color: black;
+    color: white;
     font-size: 3vh;
 }
