@@ -1,13 +1,25 @@
 
-$('#search-box').val("");
-$("#search-box").on("change keyup paste", function() {
+/**
+ * Listen for search-box input, query DB for threads if conditions are met.
+ */
+$('.search-box').val("");
+$(".search-box").on("change keyup paste", function() {
     $('.temp').remove();
+    if($(this).val().length < 1) {
+        $('.content').show();
+    }
     if($(this).val().length >= 3) {
-        queryUsersDB($(this).val());
+        queryThreadsDB($(this).val());
     }
 })
+updateColorScheme($('meta[name="color"]').attr('content'));
 
-function queryUsersDB(val) {
+/**
+ * Query database for threads containing string val
+ * 
+ * @param {String} val
+ */
+function queryThreadsDB(val) {
     $.ajax({
         type: "POST",
         url: '/querythreads',
@@ -19,11 +31,11 @@ function queryUsersDB(val) {
                 console.log($jsonResult);
                 $jsonResult.forEach(r => {
                     let html = `<tr class="temp">
-                    <td> <i class="fas fa-search"></i> ` + `<a href="/forum/profile/ ` + r[0] + `">` + r[0] + `</a> </td>
+                    <td> <i class="fas fa-search"></i> ` + `<a href="/forum/category/ ` + r[0] + `">` + r[0] + `</a> </td>
                     <td> ` + r[1] + ` </td>
                     <td> ` + r[2] + ` </td>
                     </tr>`;
-                    $(html).appendTo('table');
+                    $(html).prependTo('table');
                 });
             }
         },
@@ -32,11 +44,10 @@ function queryUsersDB(val) {
         },
     });
 }
-updateColorScheme($('meta[name="color"]').attr('content'));
 /**
  * Updates color scheme on present selectors.
  * 
- * @param {*} color 
+ * @param {String} (hex) color 
  */
 function updateColorScheme(color) {
     console.log(color);

@@ -759,9 +759,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _simonwep_pickr__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_simonwep_pickr__WEBPACK_IMPORTED_MODULE_1__);
 
 
+/**
+ * Listener for deleting ranks (client side).
+ */
+
 $('.trash').on('click', function (e) {
   $(e.target).parent().parent().parent().remove();
 });
+/**
+ * Listener for adding ranks.
+ */
+
 $('.add').on('click', function (e) {
   $.ajax({
     type: "POST",
@@ -778,6 +786,10 @@ $('.add').on('click', function (e) {
     }
   });
 });
+/**
+ * Dropdown permission selector listeners
+ */
+
 $(".dropdown-menu p").click(function (e) {
   e.stopPropagation();
   var $ele = $(e.target);
@@ -793,6 +805,17 @@ $(".dropdown-menu p").mouseout(function (e) {
   var $ele = $(e.target);
   $ele.text($ele.text().replace(new RegExp("[-+]"), ""));
 });
+$('.dropdown-item').on('click', function (e) {
+  var $rId = $(e.target).attr('id');
+  var $rName = $(e.target).text();
+  $('.selected-rank').attr('rankId', $rId);
+  $('.selected-rank').text($rName);
+});
+updateColorScheme($('meta[name="color"]').attr('content'));
+/**
+ * Create new Pickr objects based on saved colors.
+ */
+
 $('.color').each(function (i, obj) {
   var $id = $(obj).attr('id');
   var $HEXcolor = $(obj).attr('hex');
@@ -827,6 +850,10 @@ $('.color').each(function (i, obj) {
     });
   }, 25);
 });
+/**
+ * Listen for ranks save.
+ */
+
 $('.save').on('click', function (e) {
   var $ranksJson = [];
   $('.rank').each(function (i, e) {
@@ -870,17 +897,10 @@ $('.save').on('click', function (e) {
     $('.result').show();
   }, 3000);
 });
-$('.dropdown-item').on('click', function (e) {
-  var $rId = $(e.target).attr('id');
-  var $rName = $(e.target).text();
-  $('.selected-rank').attr('rankId', $rId);
-  $('.selected-rank').text($rName);
-});
-updateColorScheme($('meta[name="color"]').attr('content'));
 /**
  * Updates color scheme on present selectors.
  * 
- * @param {*} color 
+ * @param {String} (hex) color 
  */
 
 function updateColorScheme(color) {

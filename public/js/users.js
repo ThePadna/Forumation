@@ -93,14 +93,27 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-$('#search-box').val("");
-$("#search-box").on("change keyup paste", function () {
+/**
+ * Listen for search-box input, query DB for posts if conditions are met.
+ */
+$('.search-box').val("");
+$(".search-box").on("change keyup paste", function () {
   $('.temp').remove();
+
+  if ($(this).val().length < 1) {
+    $('.content').show();
+  }
 
   if ($(this).val().length >= 3) {
     queryUsersDB($(this).val());
   }
 });
+updateColorScheme($('meta[name="color"]').attr('content'));
+/**
+ * Query database for users containing string val
+ * 
+ * @param {String} val
+ */
 
 function queryUsersDB(val) {
   $.ajax({
@@ -118,7 +131,7 @@ function queryUsersDB(val) {
         console.log($jsonResult);
         $jsonResult.forEach(function (r) {
           var html = "<tr class=\"temp\">\n                    <td> <i class=\"fas fa-search\"></i> " + "<a href=\"/forum/profile/ " + r[0] + "\">" + r[0] + "</a> </td>\n                    <td> " + r[1] + " </td>\n                    <td> " + r[2] + " </td>\n                    </tr>";
-          $(html).appendTo('table');
+          $(html).prependTo('table');
         });
       }
     },
@@ -127,17 +140,15 @@ function queryUsersDB(val) {
     }
   });
 }
-
-updateColorScheme($('meta[name="color"]').attr('content'));
 /**
  * Updates color scheme on present selectors.
  * 
- * @param {*} color 
+ * @param {String} (hex) color 
  */
+
 
 function updateColorScheme(color) {
   $('#header').css('background', color);
-  $('#prevpage, #nextpage').css('color', color);
 }
 
 /***/ }),

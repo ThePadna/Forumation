@@ -3,26 +3,6 @@
 <head>
     <link rel="stylesheet" href="{{asset('css/users.css')}}">
 </head>
-<table>
-  <tr>
-  <th> <div id="user-search">
-<input id="search-box">
-<i class="fas fa-search"></i>
-</div> </th>
-  </tr>
-  <tr>
-    <th>Username</th>
-    <th>Registered</th>
-    <th>Last Login</th>
-  </tr>
-  @foreach($users as $u)
-  <tr>
-    <td> <a class="username" href="/forum/profile/{{$u->name}}">{{$u->name}} </a> </td>
-    <td>{{$u->created_at}}</td>
-    <td>{{$u->last_login}}</td>
-  </tr>
-  @endforeach
-</table> 
 <!-- Page selector -->
 @php
   $displayNumbers = array();
@@ -63,8 +43,30 @@
   @endif
   </div>
   </div>
-  @endif
-  <!-- Page selector -->
+@endif
+<!-- Page selector -->
+
+<!-- Search Box -->
+<div id="search-wrapper">
+    <input class="search-box">
+    <i class="fas fa-search"></i>
+</div>
+<!-- Search Box -->
+
+<table>
+  <tr>
+    <th>Username</th>
+    <th>Registered</th>
+    <th>Last Login</th>
+  </tr>
+  @foreach($users as $u)
+  <tr class="content">
+    <td> <a class="username" href="/forum/profile/{{$u->name}}">{{$u->name}} </a> </td>
+    <td>{{$u->created_at}}</td>
+    <td>{{$u->last_login}}</td>
+  </tr>
+  @endforeach
+</table> 
 <meta name="color" content="{{$settings->color}}">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 <script src="{{asset('js/users.js')}}"> </script>

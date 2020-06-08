@@ -759,6 +759,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _simonwep_pickr__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_simonwep_pickr__WEBPACK_IMPORTED_MODULE_1__);
 
 
+/**
+ * Create Color Scheme Pickr object.
+ */
+
 var pickr = _simonwep_pickr__WEBPACK_IMPORTED_MODULE_1___default.a.create({
   el: '.pickr',
   theme: 'nano',
@@ -782,11 +786,19 @@ var pickr = _simonwep_pickr__WEBPACK_IMPORTED_MODULE_1___default.a.create({
     }
   }
 });
+/**
+ * Listener for editor-state toggle button.
+ */
+
 $("#toggle").change(function () {
   saveEditorMode(this.checked);
   $('#editor-state').text(this.checked == 0 ? "OFF" : "ON");
   if (this.checked == 1) $('#editor-state').css('color', 'green');else $('#editor-state').css('color', 'red');
 });
+/**
+ * Listener for settings save button.
+ */
+
 pickr.on('save', function (hco, instance) {
   var color = hco.toHEXA().toString();
   saveColor(color);
@@ -794,10 +806,19 @@ pickr.on('save', function (hco, instance) {
   updateColorScheme(color);
   pickr.hide();
 });
+/**
+ * Listener for Pickr initialization, load admin properties
+ */
+
 pickr.on('init', function (instance) {
   loadProperties(null);
 });
 loadProperties();
+/**
+ * Load admin properties.
+ * 
+ * @param {boolean} toggle 
+ */
 
 function loadProperties(toggle) {
   var $color = $('meta[name="color-scheme"]').attr("content");
@@ -818,6 +839,12 @@ function loadProperties(toggle) {
 
   updateColorScheme($color);
 }
+/**
+ * Save color theme to DB.
+ * 
+ * @param {String} color 
+ */
+
 
 function saveColor(color) {
   $.ajax({
@@ -835,6 +862,12 @@ function saveColor(color) {
     }
   });
 }
+/**
+ * Save editor mode as toggled true or false.
+ * 
+ * @param {boolean} toggle 
+ */
+
 
 function saveEditorMode(toggle) {
   var boolAsNum = toggle ? 1 : 0;
@@ -853,6 +886,10 @@ function saveEditorMode(toggle) {
     }
   });
 }
+/**
+ * Submit settings.
+ */
+
 
 $('.submit-settings').on('click', function (e) {
   var $threadTitleLen = $('#thread-title-input').val();
@@ -895,7 +932,7 @@ $('.submit-settings').on('click', function (e) {
 /**
  * Updates color scheme on present selectors.
  * 
- * @param {*} color 
+ * @param {String} (hex) color 
  */
 
 function updateColorScheme(color) {

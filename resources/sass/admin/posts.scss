@@ -3,6 +3,16 @@
 body {
     background: #212529;
 }
+
+#search-wrapper {
+    position: relative;
+    margin: 0 auto;
+    width: 12%;
+    i {
+        color: white;
+    }
+}
+
 table {
     min-width: 600px;
     width: 100vw;

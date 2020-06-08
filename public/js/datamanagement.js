@@ -97,7 +97,7 @@ updateColorScheme($('meta[name="color"]').attr('content'));
 /**
  * Updates color scheme on present selectors.
  * 
- * @param {*} color 
+ * @param {String} (hex) color 
  */
 
 function updateColorScheme(color) {

@@ -93,16 +93,29 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-$('#search-box').val("");
-$("#search-box").on("change keyup paste", function () {
+/**
+ * Listen for search-box input, query DB for threads if conditions are met.
+ */
+$('.search-box').val("");
+$(".search-box").on("change keyup paste", function () {
   $('.temp').remove();
 
+  if ($(this).val().length < 1) {
+    $('.content').show();
+  }
+
   if ($(this).val().length >= 3) {
-    queryUsersDB($(this).val());
+    queryThreadsDB($(this).val());
   }
 });
+updateColorScheme($('meta[name="color"]').attr('content'));
+/**
+ * Query database for threads containing string val
+ * 
+ * @param {String} val
+ */
 
-function queryUsersDB(val) {
+function queryThreadsDB(val) {
   $.ajax({
     type: "POST",
     url: '/querythreads',
@@ -117,8 +130,8 @@ function queryUsersDB(val) {
         $jsonResult = JSON.parse(res);
         console.log($jsonResult);
         $jsonResult.forEach(function (r) {
-          var html = "<tr class=\"temp\">\n                    <td> <i class=\"fas fa-search\"></i> " + "<a href=\"/forum/profile/ " + r[0] + "\">" + r[0] + "</a> </td>\n                    <td> " + r[1] + " </td>\n                    <td> " + r[2] + " </td>\n                    </tr>";
-          $(html).appendTo('table');
+          var html = "<tr class=\"temp\">\n                    <td> <i class=\"fas fa-search\"></i> " + "<a href=\"/forum/category/ " + r[0] + "\">" + r[0] + "</a> </td>\n                    <td> " + r[1] + " </td>\n                    <td> " + r[2] + " </td>\n                    </tr>";
+          $(html).prependTo('table');
         });
       }
     },
@@ -127,13 +140,12 @@ function queryUsersDB(val) {
     }
   });
 }
-
-updateColorScheme($('meta[name="color"]').attr('content'));
 /**
  * Updates color scheme on present selectors.
  * 
- * @param {*} color 
+ * @param {String} (hex) color 
  */
+
 
 function updateColorScheme(color) {
   console.log(color);

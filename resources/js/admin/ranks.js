@@ -1,8 +1,16 @@
 import '@simonwep/pickr/dist/themes/nano.min.css';
 import Pickr from '@simonwep/pickr';
+
+/**
+ * Listener for deleting ranks (client side).
+ */
 $('.trash').on('click', (e) => {
     $(e.target).parent().parent().parent().remove();
 });
+
+/**
+ * Listener for adding ranks.
+ */
  $('.add').on('click', e => {
     $.ajax({
         type: "POST",
@@ -17,6 +25,10 @@ $('.trash').on('click', (e) => {
         },
     });
  });
+
+/**
+ * Dropdown permission selector listeners
+ */
 $(".dropdown-menu p").click((e) => {
     e.stopPropagation();
     let $ele = $(e.target);
@@ -32,6 +44,18 @@ $(".dropdown-menu p").mouseout(e => {
     let $ele = $(e.target);
     $ele.text($ele.text().replace(new RegExp("[-+]"), ""));
 });
+$('.dropdown-item').on('click', e => {
+    let $rId = $(e.target).attr('id');
+    let $rName = $(e.target).text();
+    $('.selected-rank').attr('rankId', $rId);
+    $('.selected-rank').text($rName);
+});
+
+updateColorScheme($('meta[name="color"]').attr('content'));
+
+/**
+ * Create new Pickr objects based on saved colors.
+ */
 $('.color').each(function(i, obj) {
     let $id = $(obj).attr('id');
     let $HEXcolor = $(obj).attr('hex');
@@ -84,6 +108,10 @@ $('.color').each(function(i, obj) {
         });
     }, 25);
 });
+
+/**
+ * Listen for ranks save.
+ */
 $('.save').on('click', e => {
     let $ranksJson = [];
     $('.rank').each((i, e) => {
@@ -122,17 +150,11 @@ $('.save').on('click', e => {
         $('.result').show();
     }, 3000);
 });
-$('.dropdown-item').on('click', e => {
-    let $rId = $(e.target).attr('id');
-    let $rName = $(e.target).text();
-    $('.selected-rank').attr('rankId', $rId);
-    $('.selected-rank').text($rName);
-});
-updateColorScheme($('meta[name="color"]').attr('content'));
+
 /**
  * Updates color scheme on present selectors.
  * 
- * @param {*} color 
+ * @param {String} (hex) color 
  */
 function updateColorScheme(color) {
     $('#header').css('background', color);

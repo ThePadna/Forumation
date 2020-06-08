@@ -3,28 +3,6 @@
 <head>
     <link rel="stylesheet" href="{{asset('css/posts.css')}}">
 </head>
-<table>
-    <tr>
-        <th>
-            <div id="user-search">
-                <input id="search-box">
-                <i class="fas fa-search"></i>
-            </div>
-        </th>
-    </tr>
-    <tr>
-        <th>Username</th>
-        <th>Registered</th>
-        <th>Last Login</th>
-    </tr>
-    @foreach($threads as $t)
-    <tr>
-        <td> <a href="/forum/category/{{App\Models\Category::find($t->categoryId)}}/thread/{{str_replace(' ', '-', substr($t->title, 0, 20))}}-{{$t->id}}/{{$page}}">{{$t->title}} </a> </td>
-        <td>{{$t->created_at}}</td>
-        <td>{{$t->updated_at}}</td>
-    </tr>
-    @endforeach
-</table>
 <!-- Page selector -->
 @php
   $displayNumbers = array();
@@ -64,9 +42,31 @@
   </a>
   @endif
   </div>
-  </div>
-  @endif
-  <!-- Page selector -->
+</div>
+@endif
+<!-- Page selector -->
+
+<!-- Search Box -->
+<div id="search-wrapper">
+    <input class="search-box">
+    <i class="fas fa-search"></i>
+</div>
+<!-- Search Box -->
+
+<table>
+    <tr>
+        <th>Username</th>
+        <th>Registered</th>
+        <th>Last Login</th>
+    </tr>
+    @foreach($threads as $t)
+    <tr class="content">
+        <td> <a href="/forum/category/{{App\Models\Category::find($t->categoryId)}}/thread/{{str_replace(' ', '-', substr($t->title, 0, 20))}}-{{$t->id}}/{{$page}}">{{$t->title}} </a> </td>
+        <td>{{$t->created_at}}</td>
+        <td>{{$t->updated_at}}</td>
+    </tr>
+    @endforeach
+</table>
 <meta name="color" content="{{$settings->color}}">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 <script src="{{asset('js/posts.js')}}"> </script>

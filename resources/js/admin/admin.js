@@ -1,6 +1,10 @@
 
 import '@simonwep/pickr/dist/themes/nano.min.css';
 import Pickr from '@simonwep/pickr';
+
+/**
+ * Create Color Scheme Pickr object.
+ */
 const pickr = Pickr.create({
     el: '.pickr',
     theme: 'nano', // or 'monolith', or 'nano'
@@ -42,12 +46,19 @@ const pickr = Pickr.create({
         }
     }
 });
+/**
+ * Listener for editor-state toggle button.
+ */
 $("#toggle").change(function() {
     saveEditorMode(this.checked);
     $('#editor-state').text(this.checked == 0 ? "OFF" : "ON");
     if(this.checked == 1) $('#editor-state').css('color', 'green');
     else $('#editor-state').css('color', 'red');
 });
+
+/**
+ * Listener for settings save button.
+ */
 pickr.on('save', (hco, instance) => {
     let color = hco.toHEXA().toString();
     saveColor(color);
@@ -55,10 +66,20 @@ pickr.on('save', (hco, instance) => {
     updateColorScheme(color);
     pickr.hide();
 });
+
+/**
+ * Listener for Pickr initialization, load admin properties
+ */
 pickr.on('init', instance => {
     loadProperties(null);
 });
 loadProperties();
+
+/**
+ * Load admin properties.
+ * 
+ * @param {boolean} toggle 
+ */
 function loadProperties(toggle) {
     let $color = $('meta[name="color-scheme"]').attr("content");
     let $editormode = $('meta[name="editor-mode"]').attr("content");
@@ -76,6 +97,11 @@ function loadProperties(toggle) {
     }
     updateColorScheme($color);
 }
+/**
+ * Save color theme to DB.
+ * 
+ * @param {String} color 
+ */
 function saveColor(color) {
     $.ajax({
         type: "POST",
@@ -92,6 +118,12 @@ function saveColor(color) {
         }
     });
 }
+
+/**
+ * Save editor mode as toggled true or false.
+ * 
+ * @param {boolean} toggle 
+ */
 function saveEditorMode(toggle) {
     let boolAsNum = toggle ? 1 : 0;
     $.ajax({
@@ -109,6 +141,9 @@ function saveEditorMode(toggle) {
         }
     });
 }
+/**
+ * Submit settings.
+ */
 $('.submit-settings').on('click', e => {
     let $threadTitleLen = $('#thread-title-input').val();
     let $threadOPLen = $('#thread-op-input').val();
@@ -145,7 +180,7 @@ $('.submit-settings').on('click', e => {
 /**
  * Updates color scheme on present selectors.
  * 
- * @param {*} color 
+ * @param {String} (hex) color 
  */
 function updateColorScheme(color) {
     $('#header').css('background', color);
