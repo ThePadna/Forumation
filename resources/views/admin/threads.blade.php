@@ -69,6 +69,6 @@
 </table>
 <meta name="color" content="{{$settings->color}}">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
-<script src="{{asset('js/posts.js')}}"> </script>
+<script src="{{asset('js/threads.js')}}"> </script>
 <meta name="csrf" content="{{csrf_token()}}">
 @stop

@@ -57,41 +57,13 @@ table td {
   color: white;
 }
 
-#prevpage,
-#nextpage {
+#search-wrapper {
   position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  position: fixed;
-  opacity: 0.8;
-  color: #0a0f0f;
-  font-size: 100px;
+  margin: 0 auto;
+  width: 12%;
 }
 
-#user-search {
-  min-width: 300px;
-}
-
-#user-search input {
-  height: 30px;
-  width: 200px;
-  margin-left: 40px;
-}
-
-#user-search i {
-  width: 40px;
-  height: 40px;
-}
-
-#prevpage {
-  left: 50px;
-  font-size: 100px;
-  color: white;
-}
-
-#nextpage {
-  right: 50px;
-  font-size: 100px;
+#search-wrapper i {
   color: white;
 }
 

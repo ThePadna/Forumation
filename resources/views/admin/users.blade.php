@@ -42,7 +42,7 @@
   </a>
   @endif
   </div>
-  </div>
+</div>
 @endif
 <!-- Page selector -->
 

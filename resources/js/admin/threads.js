@@ -28,14 +28,14 @@ function queryThreadsDB(val) {
         success: function(res) {
             if(res != '') {
                 $jsonResult = JSON.parse(res);
-                console.log($jsonResult);
+                $('.content').hide();
                 $jsonResult.forEach(r => {
                     let html = `<tr class="temp">
                     <td> <i class="fas fa-search"></i> ` + `<a href="/forum/category/ ` + r[0] + `">` + r[0] + `</a> </td>
                     <td> ` + r[1] + ` </td>
                     <td> ` + r[2] + ` </td>
                     </tr>`;
-                    $(html).prependTo('table');
+                    $(html).appendTo('table');
                 });
             }
         },

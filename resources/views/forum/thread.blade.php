@@ -92,6 +92,9 @@ $op = App\User::find($thread->op);
     @endif
     <!-- Page selector -->
     <!-- Start posts loop -->
+    @php
+    $i = 0;
+    @endphp
     @foreach($posts as $p)
     @php
     $i++;
