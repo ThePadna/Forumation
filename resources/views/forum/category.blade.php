@@ -19,6 +19,51 @@ if(Auth::check()) {
 <body style="background: url('{{asset('img/category_bg.webp')}}')">
 @endif
 <div id="wrapper">
+@if($lastPage != 1)
+    @php
+    $displayNumbers = array();
+    for($x = $page - 2; $x <= $page + 2; $x++) {
+        if($x > $lastPage || $x <= 0) continue;
+        $displayNumbers[$x] = $x;
+    }
+    @endphp
+    <!-- Page selector -->
+    <div class="page-selector">
+    <p class="page-info"> Page {{$page}} of {{$lastPage}} </p>
+    <div class="selectors">
+    @if($lastPage > 3)
+    <a href="{{$thread->getURI(1)}}">
+    <div class="selector-wrapper">
+        <h1 class="selector"> < </h1>
+    </div>
+    </a>
+    @endif
+    @if($lastPage != 1)
+    @foreach($displayNumbers as $num)
+        @if($page == $num)
+        <div class="selector-wrapper" style="border: 1px solid #007bff;">
+        @else
+        <a href="{{$thread->getURI($num)}}"> 
+        <div class="selector-wrapper">
+        @endif
+            <h1 class="selector"> {{$num}} </h1>
+        </div>
+        </a>
+    @endforeach
+    @endif
+    @if($lastPage > 3)
+    <a href="{{$thread->getURI($lastPage)}}">
+    <div class="selector-wrapper">
+        <h1 class="selector"> > </h1>
+    </div>
+    </a>
+    @endif
+    </div>
+    </div>
+    @else
+    <p class="page-info"> Page {{$page}} of {{$lastPage}} </p>
+    @endif
+    <!-- Page selector -->
     @auth
     @if($rank->hasPerm("threadcreate"))
     <div id="add-thread">
@@ -109,22 +154,45 @@ if(Auth::check()) {
         @endforeach
     </div>
     @endif
+    @if($lastPage != 1)
+    <!-- Page selector -->
+    <div class="page-selector">
+    <p class="page-info"> Page {{$page}} of {{$lastPage}} </p>
+    <div class="selectors">
+    @if($lastPage > 3)
+    <a href="{{$thread->getURI(1)}}">
+    <div class="selector-wrapper">
+        <h1 class="selector"> < </h1>
+    </div>
+    </a>
+    @endif
+    @if($lastPage != 1)
+    @foreach($displayNumbers as $num)
+        @if($page == $num)
+        <div class="selector-wrapper" style="border: 1px solid #007bff;">
+        @else
+        <a href="{{$thread->getURI($num)}}"> 
+        <div class="selector-wrapper">
+        @endif
+            <h1 class="selector"> {{$num}} </h1>
+        </div>
+        </a>
+    @endforeach
+    @endif
+    @if($lastPage > 3)
+    <a href="{{$thread->getURI($lastPage)}}">
+    <div class="selector-wrapper">
+        <h1 class="selector"> > </h1>
+    </div>
+    </a>
+    @endif
+    </div>
+    </div>
+    @else
+    <p class="page-info"> Page {{$page}} of {{$lastPage}} </p>
+    @endif
+    <!-- Page selector -->
 </div>
-@if($page > 1)
-    <a href="{{$page < 2 ? 1 : $page - 1}}">
-        <div id="prevpage">
-            <i class="fas fa-long-arrow-alt-left"></i>
-        </div>
-    </a>
-    @endif
-    @if(sizeof($threads) >= 9)
-    <a href="{{$page + 1}}">
-        <div id="nextpage">
-            <i class="fas fa-long-arrow-alt-right"></i>
-        </div>
-    </a>
-    @endif
-</body>
 <meta name="color" content="{{$settings->color}}">
 <meta name="category" content="{{$category->name}}">
 <meta name="csrf" content="{{csrf_token()}}">

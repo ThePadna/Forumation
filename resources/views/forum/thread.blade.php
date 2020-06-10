@@ -50,6 +50,7 @@ $op = App\User::find($thread->op);
     @endif
 </div>
 <div id="container">
+    @if($lastPage != 1)
     @php
     $displayNumbers = array();
     for($x = $page - 2; $x <= $page + 2; $x++) {
@@ -58,7 +59,6 @@ $op = App\User::find($thread->op);
     }
     @endphp
     <!-- Page selector -->
-    @if($page > 0)
     <div class="page-selector">
     <p class="page-info"> Page {{$page}} of {{$lastPage}} </p>
     <div class="selectors">
@@ -89,6 +89,8 @@ $op = App\User::find($thread->op);
     @endif
     </div>
     </div>
+    @else
+    <p class="page-info"> Page {{$page}} of {{$lastPage}} </p>
     @endif
     <!-- Page selector -->
     <!-- Start posts loop -->
@@ -184,22 +186,23 @@ $op = App\User::find($thread->op);
 </form>
 @endif
 @endauth
- <!-- Page selector -->
- @if($page > 0)
-    <div class="page-selector">
-    <p class="page-info"> Page {{$page}} of {{$lastPage}} </p>
-    <div class="selectors">
-    @if($lastPage > 3)
-    <a href="{{$thread->getURI(1)}}">
-    <div class="selector-wrapper">
-        <h1 class="selector"> < </h1>
-    </div>
-    </a>
-    @endif
-    @foreach($displayNumbers as $num)
-        @if($page == $num)
-        <div class="selector-wrapper" style="border: 1px solid #007bff;">
-        @else
+<!-- Page selector -->
+@if($lastPage != 1)
+<div class="page-selector">
+<p class="page-info"> Page {{$page}} of {{$lastPage}} </p>
+<div class="selectors">
+@if($lastPage > 3)
+<a href="{{$thread->getURI(1)}}">
+<div class="selector-wrapper">
+    <h1 class="selector"> < </h1>
+</div>
+</a>
+@endif
+@if($lastPage != 1)
+@foreach($displayNumbers as $num)
+    @if($page == $num)
+    <div class="selector-wrapper" style="border: 1px solid #007bff;">
+    @else
         <a href="{{$thread->getURI($num)}}"> 
         <div class="selector-wrapper">
         @endif
@@ -207,17 +210,20 @@ $op = App\User::find($thread->op);
         </div>
         </a>
     @endforeach
+    @endif
     @if($lastPage > 3)
     <a href="{{$thread->getURI($lastPage)}}">
-    <div class="selector-wrapper">
-        <h1 class="selector"> > </h1>
-    </div>
+        <div class="selector-wrapper">
+            <h1 class="selector"> > </h1>
+        </div>
     </a>
-    @endif
+@endif
     </div>
-    </div>
-    @endif
-    <!-- Page selector -->
+</div>
+@else
+<p class="page-info"> Page {{$page}} of {{$lastPage}} </p>
+@endif
+<!-- Page selector -->
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 <meta name="csrf" content="{{csrf_token()}}">

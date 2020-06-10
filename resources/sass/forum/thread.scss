@@ -45,10 +45,6 @@ a:hover {
     transform: translateX(-50%);
     margin-bottom: 30px;
     width: 100%;
-    .page-info {
-        color: white;
-        text-align: center;
-    }
     .selectors {
         position: relative;
         display: inline-block;
@@ -68,6 +64,10 @@ a:hover {
             }
         }
     }
+}
+.page-info {
+    color: white;
+    text-align: center;
 }
 .star {
     cursor: pointer;

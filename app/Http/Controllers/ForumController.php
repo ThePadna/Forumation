@@ -27,6 +27,7 @@ class ForumController extends Controller
         $skipAmt = $page > 1 ? ($page * $RESULTS_PER_PAGE) - $RESULTS_PER_PAGE : 0;
         $categoryId = Category::where('name', str_replace('-', " ", $category))->first()->id;
         $threads = Thread::latest()->where('categoryId', $categoryId)->skip($skipAmt)->take($RESULTS_PER_PAGE)->get();
+        $lastPage = ceil((sizeof($threads) / 9));
         $posts = [];
         foreach($threads as $t) {
             $id = $t->id;
@@ -39,7 +40,7 @@ class ForumController extends Controller
                 } else $posts[$id] = $p;
             }
         }
-        return view("forum/category", ["category" => Category::All()->firstWhere('id', $categoryId), "threads" => $threads, "page" => $page, "posts" => $posts, "now" => Carbon::now(), "settings" => Settings::first()]);
+        return view("forum/category", ["lastPage" => $lastPage, "category" => Category::All()->firstWhere('id', $categoryId), "threads" => $threads, "page" => $page, "posts" => $posts, "now" => Carbon::now(), "settings" => Settings::first()]);
     }
 
      /**
