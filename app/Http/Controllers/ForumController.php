@@ -138,6 +138,7 @@ class ForumController extends Controller
         $title = $request->input('threadTitle');
         $text = $request->input('threadText');
         $category = $request->input('categoryId');
+        $BANNED_CHARS = array("/", "\\", "#", "@", "~");
         if(Category::find($category) == null) {
             return false;
         }
@@ -148,7 +149,13 @@ class ForumController extends Controller
         if(strlen($title) >= $settings->thread_title_length) {
             return false;
         }
-        if($title != null && $text != null && $category != null) {
+        $titleContainsBannedChars = false;
+        foreach($BANNED_CHARS as $c) {
+            if(strpos($title, $c) !== false) {
+                $titleContainsBannedChars = true;
+            }
+        }
+        if($title != null && $text != null && $category != null && !$titleContainsBannedChars) {
             $userId = Auth::user()->id;
             $thread = new Thread();
             $thread->title = $title;
