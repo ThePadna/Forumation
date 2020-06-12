@@ -101,22 +101,6 @@ $('#post-thread-input').on('click', function (e) {
   window.location = "/forum/category/" + $('meta[name="category"]').attr('content') + "/post";
 });
 /**
- * Change colour to forum's color scheme on hover.
- */
-
-$('.edit-btn').on('mouseover', function (e) {
-  $(e.target).css({
-    color: $('meta[name="color"]').attr('content'),
-    transition: 'color 1s'
-  });
-});
-$('.edit-btn').on('mouseout', function (e) {
-  $(e.target).css({
-    color: 'black',
-    transition: 'color 1s'
-  });
-});
-/**
  * Initialize forms that are used when a 'popup-form' is needed.
  */
 

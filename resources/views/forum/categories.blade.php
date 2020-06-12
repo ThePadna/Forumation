@@ -38,14 +38,14 @@ $rank = Auth::user()->getRank();
                             <h1 class="desc"> {{$c->desc}} </h1>
                             <div class="editor-btn">
                             @if($rank != null && $rank->hasPerm("categoryswitch"))
-                            <div class="switch-btn">
+                            <div class="switch-btn" onclick="event.stopPropagation();">
                                 <i id="up" class="up-arrow fas fa-arrow-up" categoryId='{{$c->id}}'
                                     categoryName='{{$c->name}}'></i>
                                 <i id="down" class="down-arrow fas fa-arrow-down" categoryId='{{$c->id}}'
                                     categoryName='{{$c->name}}'></i>
                             </div>
                             @endif
-                            <div class="edit-btn">
+                            <div class="edit-btn" onclick="event.stopPropagation();">
                             @if($rank != null && $rank->hasPerm("categoryedit"))
                                 <i id="edit" class="edit-category far fa-edit" categoryId='{{$c->id}}'
                                 categoryName='{{$c->name}}' categoryDesc='{{$c->desc}}'></i>

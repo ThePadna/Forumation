@@ -89,6 +89,7 @@ body {
     border: 1px solid black;
     height: 20vh;
     width: 30vw;
+    min-width: 470px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -98,10 +99,10 @@ body {
     .form-exit {
         float: right;
         position: relative;
-        font-size: 3vh;
-        top: 1vh;
-        right: 1vh;
-        color: gray;
+        font-size: 2rem;
+        top: 5px;
+        right: 5px;
+        color: gray !important;
     }
     .form-exit:hover {
         cursor: pointer;
@@ -110,10 +111,10 @@ body {
         border: 1px solid black;
         width: 100%;
         height: 30%;
-        opacity: 1s;
         background: white;
         h1 {
-            font-size: 4vh;
+            font-size: 2rem;
+            color: gray;
         }
     }
     .form-container {
@@ -121,7 +122,7 @@ body {
         width: 100%;
         form {
             h2 {
-                font-size: 2.5vh;
+                font-size: 1rem;
                 color: white;
             }
             input {
@@ -133,8 +134,10 @@ body {
                 border: 1px solid black;
                 width: 30%;
                 height: 30%;
+                min-width: 130px;
                 margin-top: 3%;
                 border-radius: 5px;
+                font-size: 1rem;
             }
             position: relative;
             top: 50%;

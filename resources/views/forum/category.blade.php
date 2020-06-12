@@ -142,7 +142,7 @@ if(Auth::check()) {
                         <h1 class="title"> Viewed </h1>
                         <p class="counter" style="color: #C5C3C3;"> {{$viewed}} Times </p>
                         @if($rank->hasPerm("threaddelete"))
-                        <div class="edit-btn">
+                        <div class="edit-btn" onclick="event.stopPropagation();">
                             <i class="del-thread fas fa-trash" threadId='{{$t->id}}'
                                 threadName='{{$t->title}}'></i>
                         </div>

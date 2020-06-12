@@ -275,18 +275,20 @@ a:hover {
     border: 1px solid black;
     height: 20vh;
     width: 30vw;
+    min-width: 470px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    background-color: white;
     text-align: center;
     .form-exit {
         float: right;
         position: relative;
-        font-size: 3vh;
-        top: 1vh;
-        right: 1vh;
-        color: gray;
+        font-size: 2rem;
+        top: 5px;
+        right: 5px;
+        color: gray !important;
     }
     .form-exit:hover {
         cursor: pointer;
@@ -295,18 +297,18 @@ a:hover {
         border: 1px solid black;
         width: 100%;
         height: 30%;
-        opacity: 1;
         background: white;
         h1 {
-            font-size: 4vh;
+            font-size: 2rem;
+            color: gray;
         }
     }
     .form-container {
         height: 70%;
         width: 100%;
         form {
-            p {
-                font-size: 2.5vh;
+            h2 {
+                font-size: 1rem;
                 color: white;
             }
             input {
@@ -318,8 +320,10 @@ a:hover {
                 border: 1px solid black;
                 width: 30%;
                 height: 30%;
+                min-width: 130px;
                 margin-top: 3%;
                 border-radius: 5px;
+                font-size: 1rem;
             }
             position: relative;
             top: 50%;
