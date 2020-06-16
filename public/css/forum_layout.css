@@ -2,6 +2,15 @@
   margin: 0 !important;
 }
 
+.inbox {
+  position: absolute;
+  color: white;
+  font-size: 2rem;
+  right: 50px;
+  top: calc(50px - 1rem);
+  cursor: pointer;
+}
+
 #header {
   height: 100px;
   width: 100%;
@@ -17,12 +26,14 @@
 }
 
 #header #title {
+  justify-self: center;
   color: white;
   position: relative;
   font-family: "Yellowtail", cursive;
 }
 
 #header .auth {
+  justify-self: center;
   position: relative;
   opacity: 0.8;
   font-size: 1rem;

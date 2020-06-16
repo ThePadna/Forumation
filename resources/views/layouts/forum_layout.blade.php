@@ -7,7 +7,7 @@
     <div id="header">
         <a href="/forum">
             <div class="title-container">
-                <h1 id="title"> Forumation </h1>
+                <h1 id="title"> Forumation 1 </h1>
             </div>
         </a>
         @guest
@@ -37,6 +37,9 @@
             @csrf
         </form>
         @endguest
+        <div class="inbox">
+            <i class="fas fa-inbox"></i>
+        </div>
     </div>
 </head>
 @yield('content')

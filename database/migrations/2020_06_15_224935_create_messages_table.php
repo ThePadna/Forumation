@@ -17,6 +17,7 @@ class CreateMessagesTable extends Migration
             $table->string("contents", 5000);
             $table->integer("recipient");
             $table->integer("sender");
+            $table->boolean("read")->default(0);
         });
     }
 

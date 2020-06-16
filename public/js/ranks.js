@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 10);
+/******/ 	return __webpack_require__(__webpack_require__.s = 11);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -107,7 +107,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../css-loader??ref--19-1!../../../../postcss-loader/src??ref--19-2!./nano.min.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/@simonwep/pickr/dist/themes/nano.min.css");
+var content = __webpack_require__(/*! !../../../../css-loader??ref--20-1!../../../../postcss-loader/src??ref--20-2!./nano.min.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/@simonwep/pickr/dist/themes/nano.min.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -131,7 +131,7 @@ if(false) {}
 
 /***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/@simonwep/pickr/dist/themes/nano.min.css":
 /*!*************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--19-1!./node_modules/postcss-loader/src??ref--19-2!./node_modules/@simonwep/pickr/dist/themes/nano.min.css ***!
+  !*** ./node_modules/css-loader??ref--20-1!./node_modules/postcss-loader/src??ref--20-2!./node_modules/@simonwep/pickr/dist/themes/nano.min.css ***!
   \*************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -910,7 +910,7 @@ function updateColorScheme(color) {
 
 /***/ }),
 
-/***/ 10:
+/***/ 11:
 /*!*******************************************!*\
   !*** multi ./resources/js/admin/ranks.js ***!
   \*******************************************/

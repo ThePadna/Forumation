@@ -5,6 +5,14 @@
     margin: 0 !important;
     }
 }
+.inbox {
+    position: absolute;
+    color: white;
+    font-size: 2rem;
+    right: 50px;
+    top: calc(50px - 1rem);
+    cursor: pointer;
+}
 #header {
     height: 100px;
     width: 100%;
@@ -16,11 +24,13 @@
         text-decoration: none;
     }
     #title {
+        justify-self: center;
         color: white;
         position: relative;
         font-family: 'Yellowtail', cursive;
     }
     .auth {
+        justify-self: center;
         position: relative;
         #username {
             color: white !important;
