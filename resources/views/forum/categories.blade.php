@@ -113,7 +113,6 @@ $rank = Auth::user()->getRank();
 </div>
 </div>
 </body>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 <meta name="csrf" content="{{csrf_token()}}">
 <meta name="color" content="{{$color}}">
 <meta name="editor-mode" content="{{$editormode}}">

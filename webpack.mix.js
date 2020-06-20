@@ -38,4 +38,4 @@ mix.sass('resources/sass/forum/categories.scss', 'public/css')
 .js('resources/js/admin/threads.js', 'public/js/threads.js')
 .js('resources/js/admin/posts.js', 'public/js/posts.js')
 .js('resources/js/admin/ranks.js', 'public/js/ranks.js')
-.js('resources/js/forum/profile', 'public/js/profile.js');
+.js('resources/js/forum/profile.js', 'public/js/profile.js');

@@ -106,7 +106,7 @@ function saveColor(color) {
     $.ajax({
         type: "POST",
         url: "/postColorUpdate",
-        headers: { "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content") },
+        headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content") },
         data: { color: color },
         success: function(res) {
         },
@@ -129,7 +129,7 @@ function saveEditorMode(toggle) {
     $.ajax({
         type: "POST",
         url: "/postEditorModeUpdate",
-        headers: { "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content") },
+        headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content") },
         data: { toggle:boolAsNum },
         success: function(res) {
         },
@@ -161,7 +161,7 @@ $('.submit-settings').on('click', e => {
     $.ajax({
         type: "POST",
         url: "/updatesettings",
-        headers: { "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content") },
+        headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content") },
         data: { titleLength:$threadTitleLen, opLength:$threadOPLen, postLength:$threadPostLen, profileNameLen:$profileNameLen },
         success: function(res) {
             $('.result-msg').remove();

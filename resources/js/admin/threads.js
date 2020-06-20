@@ -1,4 +1,3 @@
-
 /**
  * Listen for search-box input, query DB for threads if conditions are met.
  */
@@ -23,7 +22,7 @@ function queryThreadsDB(val) {
     $.ajax({
         type: "POST",
         url: '/querythreads',
-        headers: {'X-CSRF-TOKEN' : $('meta[name="csrf"]').attr('content')},
+        headers: {'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')},
         data: {"val" : val},
         success: function(res) {
             if(res != '') {

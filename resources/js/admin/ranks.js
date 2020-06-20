@@ -15,7 +15,7 @@ $('.trash').on('click', (e) => {
     $.ajax({
         type: "POST",
         url: '/addrank',
-        headers: {'X-CSRF-TOKEN' : $('meta[name="csrf"]').attr('content')},
+        headers: {'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')},
         data: {},
         success: function(res) {
             window.location.reload();
@@ -133,7 +133,7 @@ $('.save').on('click', e => {
     $.ajax({
         type: "POST",
         url: '/updateranks',
-        headers: {'X-CSRF-TOKEN' : $('meta[name="csrf"]').attr('content')},
+        headers: {'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')},
         data: {"ranks" : JSON.stringify($ranksJson), "default": $('.selected-rank').attr('rankId')},
         success: function(res) {
             $('.result').html('<span style="color:green"> Saved. </span>');

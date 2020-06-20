@@ -23,7 +23,7 @@ function queryUsersDB(val) {
     $.ajax({
         type: "POST",
         url: '/queryusers',
-        headers: {'X-CSRF-TOKEN' : $('meta[name="csrf"]').attr('content')},
+        headers: {'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')},
         data: {"val" : val},
         success: function(res) {
             if(res != '') {
@@ -51,5 +51,5 @@ function queryUsersDB(val) {
  * @param {String} (hex) color 
  */
 function updateColorScheme(color) {
-    $('#header').css('background', color);
+    $('#header, #messages').css('background', color);
 }

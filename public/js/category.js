@@ -123,7 +123,7 @@ function registerDelFormSubmitListener() {
       type: "POST",
       url: "/delthread",
       headers: {
-        "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
+        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
       },
       data: {
         id: $prevClickedDelThreadId.trim()

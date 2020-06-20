@@ -71,7 +71,7 @@ $replyForm.submit((e) => {
     $.ajax({
         type: "POST",
         url: '/postreply',
-        headers: {'X-CSRF-TOKEN': $('meta[name="csrf"]').attr('content')},
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
         data: {'text': $text, 'thread': $('meta[name="thread"]').attr('content')},
         success: function(res) {
           window.location.reload();
@@ -137,7 +137,7 @@ function registerErasePostSubmitListener() {
       $.ajax({
           type: "POST",
           url: "/erasepost",
-          headers: { "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content") },
+          headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content") },
           data: { id: $prevClickedIconPostId},
           success: function(res) {
               window.location.reload();
@@ -161,7 +161,7 @@ function registerDelThreadSubmitListener() {
       $.ajax({
           type: "POST",
           url: "/delthread",
-          headers: { "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content") },
+          headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content") },
           data: {id: $('meta[name="thread"]').attr('content')},
           success: function(res) {
               window.location = "/forum/category/" + $('meta[name="category"]').attr('content') + "/1";
@@ -185,7 +185,7 @@ function registerLockThreadSubmitListener() {
       $.ajax({
           type: "POST",
           url: "/lockthread",
-          headers: { "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content") },
+          headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content") },
           data: {id: $('meta[name="thread"]').attr('content')},
           success: function(res) {
               window.location.reload();
@@ -257,7 +257,7 @@ function likePost($star, id, liked) {
   $.ajax({
     type: "POST",
     url: '/likepost',
-    headers: {'X-CSRF-TOKEN' : $('meta[name="csrf"]').attr('content')},
+    headers: {'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')},
     data: {
       id:id,
       liked:liked

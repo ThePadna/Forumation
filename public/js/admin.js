@@ -851,7 +851,7 @@ function saveColor(color) {
     type: "POST",
     url: "/postColorUpdate",
     headers: {
-      "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
+      "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
     },
     data: {
       color: color
@@ -875,7 +875,7 @@ function saveEditorMode(toggle) {
     type: "POST",
     url: "/postEditorModeUpdate",
     headers: {
-      "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
+      "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
     },
     data: {
       toggle: boolAsNum
@@ -910,7 +910,7 @@ $('.submit-settings').on('click', function (e) {
       type: "POST",
       url: "/updatesettings",
       headers: {
-        "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
+        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
       },
       data: {
         titleLength: $threadTitleLen,

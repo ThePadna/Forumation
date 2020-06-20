@@ -36,7 +36,7 @@ function registerDelFormSubmitListener() {
         $.ajax({
             type: "POST",
             url: "/delthread",
-            headers: { "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content") },
+            headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content") },
             data: { id: $prevClickedDelThreadId.trim() },
             success: function(res) {
                 window.location.reload();

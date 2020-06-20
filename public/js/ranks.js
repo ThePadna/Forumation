@@ -775,7 +775,7 @@ $('.add').on('click', function (e) {
     type: "POST",
     url: '/addrank',
     headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf"]').attr('content')
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     },
     data: {},
     success: function success(res) {
@@ -876,7 +876,7 @@ $('.save').on('click', function (e) {
     type: "POST",
     url: '/updateranks',
     headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf"]').attr('content')
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     },
     data: {
       "ranks": JSON.stringify($ranksJson),

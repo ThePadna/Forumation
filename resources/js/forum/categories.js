@@ -44,6 +44,14 @@ let delCategoryFormHTML = `<div id="delCategoryForm" class="popup-form">
     </form>
 </div>
 </div>`;
+$('.message-popup').hide();
+/**
+ * Listen for click on messages icon, toggle vision
+ */
+$('.inbox>i').on('click', () => {
+    $('.message-popup').toggle();
+});
+
 /**
  * Gain reference to forms and hide them in anticipation for button press.
  * Initialize them with #initForms before submission
@@ -66,7 +74,7 @@ function registerAddFormSubmitListener() {
         $.ajax({
             type: "POST",
             url: "/postcategory",
-            headers: { "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content") },
+            headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content") },
             data: { categoryTitle: $title, categoryDesc: $desc },
             success: function(res) {
                 window.location.reload();
@@ -91,7 +99,7 @@ function registerDelFormSubmitListener() {
         $.ajax({
             type: "POST",
             url: "/delcategory",
-            headers: { "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content") },
+            headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content") },
             data: { id: $prevClickedDelCategoryId },
             success: function(res) {
                 window.location.reload();
@@ -123,7 +131,7 @@ function registerEditFormSubmitListener() {
         $.ajax({
             type: "POST",
             url: "/editcategory",
-            headers: { "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content") },
+            headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content") },
             data: {
                 id: $prevClickedDelCategoryId,
                 description: $description,
@@ -173,7 +181,7 @@ $('.up-arrow').on('click', e => {
             type: "POST",
             url: "/categoryswitchid",
             headers: {
-                "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
             },
             data: {
                 draggedId: clickedId,
@@ -204,7 +212,7 @@ $('.down-arrow').on('click', e => {
             type: "POST",
             url: "/categoryswitchid",
             headers: {
-                "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
             },
             data: {
                 draggedId: clickedId,
@@ -295,7 +303,7 @@ updateColorScheme($('meta[name="color"]').attr('content'));
  * @param {*} color 
  */
 function updateColorScheme(color) {
-    $('#header, .popup-form').css('background', color);
+    $('#header, .popup-form, .message-popup').css('background', color);
 }
 $(document).on('mouseover', '.form-exit', (e) => {
    $(e.target).css({

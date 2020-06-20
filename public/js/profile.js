@@ -111,7 +111,7 @@ displayStats();
 /**
  * Updates color scheme on present selectors.
  * 
- * @param {*} color 
+ * @param {String} (hex) color 
  */
 
 function updateColorScheme(color) {
@@ -142,7 +142,7 @@ function registerBanUserSubmitListener() {
       type: "POST",
       url: "/banuser",
       headers: {
-        "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
+        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
       },
       data: {
         user: $('meta[name="user"]').attr("content"),
@@ -233,13 +233,13 @@ function animateCounting($obj, count) {
 /***/ }),
 
 /***/ 12:
-/*!******************************************!*\
-  !*** multi ./resources/js/forum/profile ***!
-  \******************************************/
+/*!*********************************************!*\
+  !*** multi ./resources/js/forum/profile.js ***!
+  \*********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\js\forum\profile */"./resources/js/forum/profile.js");
+module.exports = __webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\js\forum\profile.js */"./resources/js/forum/profile.js");
 
 
 /***/ })

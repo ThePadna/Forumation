@@ -119,7 +119,7 @@ function queryPostsDB(val) {
     type: "POST",
     url: '/queryposts',
     headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf"]').attr('content')
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     },
     data: {
       "val": val

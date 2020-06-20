@@ -120,7 +120,7 @@ function queryUsersDB(val) {
     type: "POST",
     url: '/queryusers',
     headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf"]').attr('content')
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     },
     data: {
       "val": val
@@ -148,7 +148,7 @@ function queryUsersDB(val) {
 
 
 function updateColorScheme(color) {
-  $('#header').css('background', color);
+  $('#header, #messages').css('background', color);
 }
 
 /***/ }),

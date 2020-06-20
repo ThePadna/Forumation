@@ -22,7 +22,7 @@ function queryPostsDB(val) {
     $.ajax({
         type: "POST",
         url: '/queryposts',
-        headers: {'X-CSRF-TOKEN' : $('meta[name="csrf"]').attr('content')},
+        headers: {'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')},
         data: {"val" : val},
         success: function(res) {
             if(res != '') {

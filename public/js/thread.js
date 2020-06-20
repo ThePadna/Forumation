@@ -132,7 +132,7 @@ $replyForm.submit(function (e) {
     type: "POST",
     url: '/postreply',
     headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf"]').attr('content')
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     },
     data: {
       'text': $text,
@@ -202,7 +202,7 @@ function registerErasePostSubmitListener() {
       type: "POST",
       url: "/erasepost",
       headers: {
-        "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
+        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
       },
       data: {
         id: $prevClickedIconPostId
@@ -229,7 +229,7 @@ function registerDelThreadSubmitListener() {
       type: "POST",
       url: "/delthread",
       headers: {
-        "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
+        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
       },
       data: {
         id: $('meta[name="thread"]').attr('content')
@@ -256,7 +256,7 @@ function registerLockThreadSubmitListener() {
       type: "POST",
       url: "/lockthread",
       headers: {
-        "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
+        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
       },
       data: {
         id: $('meta[name="thread"]').attr('content')
@@ -333,7 +333,7 @@ function likePost($star, id, liked) {
     type: "POST",
     url: '/likepost',
     headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf"]').attr('content')
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     },
     data: {
       id: id,

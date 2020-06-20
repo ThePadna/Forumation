@@ -131,7 +131,7 @@ $('form').submit(function (e) {
     type: "POST",
     url: '/forum/profile/' + $('meta[name="userId"]').attr('content') + '/edit/updateprofile',
     headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf"]').attr('content')
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     },
     data: formData,
     processData: false,

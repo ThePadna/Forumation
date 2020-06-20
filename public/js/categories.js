@@ -97,6 +97,14 @@ var $prevClickedEditCategoryDesc, $prevClickedDelCategoryName, $prevClickedDelCa
 var addCategoryFormHTML = "<div id=\"addCategoryForm\" class=\"popup-form\">\n<div class=\"form-header\">\n    <div class=\"form-exit\">\n        <i id=\"exit-icon\" class=\"fas fa-times\"></i>\n    </div>\n    <h1> New Category </h1>\n</div>\n<div class=\"form-container\">\n    <form>\n        <input id=\"categoryTitle\" type=\"text\" name=\"categoryTitle\" placeholder=\"Category Name\">\n        <input id=\"categoryDesc\" type=\"text\" name=\"categoryDesc\" placeholder=\"Description\" />\n        <button id=\"categoryFormCloser\"> Add Category </button>\n    </form>\n</div>\n</div>";
 var editCategoryFormHTML = "<div id=\"editCategoryForm\" class=\"popup-form\">\n<div class=\"form-header\">\n    <div class=\"form-exit\">\n        <i id=\"exit-icon\" class=\"fas fa-times\"></i>\n    </div>\n    <h1> Edit Category </h1>\n</div>\n<div class=\"form-container\">\n    <form>\n        <input type=\"text\" name=\"categoryname\" value=\"%c\" />\n        <input type=\"text\" name=\"description\" value=\"%d\" />\n        <button id=\"categoryFormCloser\"> Confirm Edit </button>\n    </form>\n</div>\n</div>";
 var delCategoryFormHTML = "<div id=\"delCategoryForm\" class=\"popup-form\">\n<div class=\"form-header\">\n    <div class=\"form-exit\">\n        <i id=\"exit-icon\" class=\"fas fa-times\"></i>\n    </div>\n    <h1> Delete Category </h1>\n</div>\n<div class=\"form-container\">\n    <form>\n        <h2> Delete Category '%c'? </h2>\n        <button id=\"categoryFormCloser\"> Confirm Deletion </button>\n    </form>\n</div>\n</div>";
+$('.message-popup').hide();
+/**
+ * Listen for click on messages icon, toggle vision
+ */
+
+$('.inbox>i').on('click', function () {
+  $('.message-popup').toggle();
+});
 /**
  * Gain reference to forms and hide them in anticipation for button press.
  * Initialize them with #initForms before submission
@@ -124,7 +132,7 @@ function registerAddFormSubmitListener() {
       type: "POST",
       url: "/postcategory",
       headers: {
-        "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
+        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
       },
       data: {
         categoryTitle: $title,
@@ -153,7 +161,7 @@ function registerDelFormSubmitListener() {
       type: "POST",
       url: "/delcategory",
       headers: {
-        "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
+        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
       },
       data: {
         id: $prevClickedDelCategoryId
@@ -182,7 +190,7 @@ function registerEditFormSubmitListener() {
       type: "POST",
       url: "/editcategory",
       headers: {
-        "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
+        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
       },
       data: {
         id: $prevClickedDelCategoryId,
@@ -235,7 +243,7 @@ $('.up-arrow').on('click', function (e) {
       type: "POST",
       url: "/categoryswitchid",
       headers: {
-        "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
+        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
       },
       data: {
         draggedId: clickedId,
@@ -265,7 +273,7 @@ $('.down-arrow').on('click', function (e) {
       type: "POST",
       url: "/categoryswitchid",
       headers: {
-        "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content")
+        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
       },
       data: {
         draggedId: clickedId,
@@ -348,7 +356,7 @@ updateColorScheme($('meta[name="color"]').attr('content'));
  */
 
 function updateColorScheme(color) {
-  $('#header, .popup-form').css('background', color);
+  $('#header, .popup-form, .message-popup').css('background', color);
 }
 
 $(document).on('mouseover', '.form-exit', function (e) {

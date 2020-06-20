@@ -27,15 +27,17 @@ $(document).on('mouseover', '.form-exit', (e) => {
     });
  });
 displayStats();
+
 /**
  * Updates color scheme on present selectors.
  * 
- * @param {*} color 
+ * @param {String} (hex) color 
  */
 function updateColorScheme(color) {
     $('#header, .popup-form').css('background', color);
     $('p').css('color', color);
 }
+
 /**
  * Initialize forms that are used when a 'popup-form' is needed.
  */
@@ -43,6 +45,7 @@ let $banUserForm;
 function initForms() {
     $banUserForm = $("#banUserForm");
 }
+
 /**
  * Listen for form submission
  * Request to post new category when form is submitted.
@@ -54,7 +57,7 @@ function registerBanUserSubmitListener() {
         $.ajax({
             type: "POST",
             url: "/banuser",
-            headers: { "X-CSRF-TOKEN": $('meta[name="csrf"]').attr("content") },
+            headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content") },
             data: { user:  $('meta[name="user"]').attr("content"), cause: $cause },
             success: function(res) {
                 window.location.reload();
@@ -68,6 +71,7 @@ function registerBanUserSubmitListener() {
         });
     });
 }
+
 /**
  * Register click handler every time we append form to DOM.
  */
@@ -87,6 +91,7 @@ $("#ban-btn").on("click", e => {
     registerBanUserSubmitListener();
     updateColorScheme($('meta[name="color"]').attr('content'));
 });
+
 /**
  * Load all Posts, Threads, and Scores for user
  * Increment them to retrieved value as a displaying animation
