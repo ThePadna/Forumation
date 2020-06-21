@@ -1,5 +1,6 @@
 # Forumation
 An extremely easy to use, fully featured forum software with built-in control panel and data management.
+(Demo website coming soon)
 
 ## Prerequisites
 - Forumation clone
