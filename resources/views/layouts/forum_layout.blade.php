@@ -41,11 +41,15 @@
             @csrf
         </form>
         @endguest
+        @auth
         <div class="inbox">
             <i class="fas fa-inbox"></i>
         </div>
+        @endauth
     </div>
+    @auth
     <div id="messages" class="message-popup">
+        @foreach($conversations as $c)
         <div class="conversation">
             <div class="avatar">
                 <img src="{{base64_decode(Auth::user()->getAvatar())}}" />
@@ -54,7 +58,9 @@
                 Lorem Ipsum..
             </div>
         </div>
+        @endforeach
     </div>
+    @endauth
 </head>
 @yield('content')
 </html>

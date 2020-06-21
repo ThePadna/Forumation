@@ -3,6 +3,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Rank;
 use App\Models\Settings;
+use App\Models\Message;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
@@ -68,5 +69,13 @@ class User extends Authenticatable
      */
     public function getURI() {
         return "/forum/profile/" . $this->name;
+    }
+
+    /**
+     * Return all Message results for user (outgoing & incoming)
+     */
+    public function getConversations() {
+        $conversations = [];
+        $messages = 
     }
  }
