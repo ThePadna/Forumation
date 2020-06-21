@@ -46,8 +46,15 @@
         </div>
     </div>
     <div id="messages" class="message-popup">
-            <p> User </p>
+        <div class="conversation">
+            <div class="avatar">
+                <img src="{{base64_decode(Auth::user()->getAvatar())}}" />
             </div>
+            <div class="content">
+                Lorem Ipsum..
+            </div>
+        </div>
+    </div>
 </head>
 @yield('content')
 </html>
