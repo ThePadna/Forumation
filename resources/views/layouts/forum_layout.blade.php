@@ -49,13 +49,13 @@
     </div>
     @auth
     <div id="messages" class="message-popup">
-        @foreach($conversations as $c)
+        @foreach(Auth::user()->getConversations() as $c)
         <div class="conversation">
             <div class="avatar">
                 <img src="{{base64_decode(Auth::user()->getAvatar())}}" />
             </div>
             <div class="content">
-                Lorem Ipsum..
+                {{$c->getLatest()->contents}}
             </div>
         </div>
         @endforeach

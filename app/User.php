@@ -4,6 +4,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Models\Rank;
 use App\Models\Settings;
 use App\Models\Message;
+use App\Models\Conversation;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
@@ -76,6 +77,18 @@ class User extends Authenticatable
      */
     public function getConversations() {
         $conversations = [];
-        $messages = 
+        $users = [];
+        $messages = Message::where('sender', $this->id)->orWhere('recipient', $this->id)->get();
+        foreach($messages as $m) {
+            $user = $m->sender === $this->id ? $m->recipient : $m->sender;
+            if(!in_array($user, $users)) array_push($users, $user);
+        }
+        foreach($users as $u) {
+            array_push($conversations, new Conversation($this->id, $u, []));
+        }
+        foreach($messages as $m) {
+            Conversation::addMessageToReleventConversation($m, $conversations);
+        }
+        return $conversations;
     }
  }
