@@ -44,5 +44,6 @@ Route::get('/forum/profile/{user}/edit', 'UserController@editProfile');
 Route::get('/forum/category/{category}/thread/{thread}/{page}', 'ForumController@showThread');
 Route::get('/forum/category/{category}/post', 'ForumController@showThreadPostForm');
 Route::get('/forum/category/{category}/{page}', 'ForumController@showCategory');
+Route::post('/queryconversation', 'ForumController@queryConversation');
 Route::get('/forum', 'ForumController@showCategories');
 Auth::routes();

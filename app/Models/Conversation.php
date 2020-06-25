@@ -1,13 +1,16 @@
 <?php
 
 namespace App\Models;
+use App\Models\Message;
+use App\User;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Wrapper class for user conversation data.
  */
 class Conversation {
 
-    private $messages = [];
+    private $messages = null;
     private $user1 = null;
     private $user2 = null;
 
@@ -15,6 +18,15 @@ class Conversation {
         $this->user1 = $m1;
         $this->user2 = $m2;
         $this->messages = $messages;
+    }
+
+    public function __toString() {
+        $string = "";
+        foreach($this->messages as $m) {
+            Log::debug($m);
+            $string .= User::find($m['sender'])->name . ":" . $m['contents'] . ",";
+        }
+        return $string;
     }
 
     public function getUser1() {

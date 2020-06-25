@@ -50,7 +50,7 @@
     @auth
     <div id="messages" class="message-popup">
         @foreach(Auth::user()->getConversations() as $c)
-        <div class="conversation">
+        <div class="conversation" user-1="{{$c->getUser1()}}" user-2="{{$c->getUser2()}}">
             <div class="avatar">
                 <img src="{{base64_decode(Auth::user()->getAvatar())}}" />
             </div>
@@ -61,6 +61,7 @@
         @endforeach
     </div>
     @endauth
+    <script src="{{asset('js/forum_layout.js')}}"> </script>
 </head>
 @yield('content')
 </html>

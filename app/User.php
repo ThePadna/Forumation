@@ -91,4 +91,15 @@ class User extends Authenticatable
         }
         return $conversations;
     }
+
+    /**
+     * Return conversation between user and $userId
+     * 
+     * @param {int} $userId
+     */
+    public function getConversation($userId) {
+        $messages = Message::where('sender', $this->id)->where('recipient', $userId)->get();
+        $messages2 = Message::where('recipient', $this->id)->where('sender', $userId)->get();
+        return new Conversation($this->id, $userId, array_merge($messages->toArray(), $messages2->toArray()));
+    }
  }

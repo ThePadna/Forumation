@@ -19,6 +19,7 @@
     "/js/categories.js": "/js/categories.js",
     "/js/category.js": "/js/category.js",
     "/js/datamanagement.js": "/js/datamanagement.js",
+    "/js/forum_layout.js": "/js/forum_layout.js",
     "/js/messages.js": "/js/messages.js",
     "/js/posts.js": "/js/posts.js",
     "/js/profile.js": "/js/profile.js",

@@ -302,30 +302,46 @@ class ForumController extends Controller
           $post->save();
           }
       }
-      /**
-       * Set locked on thread's properties to !value.
-       * 
-       * @param Request $request
-       */
-      public function lockThread(Request $request) {
-          $id = $request->id;
-          $thread = Thread::find($id);
-          if($thread != null) {
-          $thread->locked = !$thread->locked;
-          $thread->save();
-          }
-      }
-      /**
-       * Ban user.
-       * 
-       * @param Request $request
-       */
-      public function banUser(Request $request) {
+    /**
+    * Set locked on thread's properties to !value.
+    * 
+    * @param Request $request
+    */
+    public function lockThread(Request $request) {
+        $id = $request->id;
+        $thread = Thread::find($id);
+        if($thread != null) {
+        $thread->locked = !$thread->locked;
+        $thread->save();
+        }
+    }
+    /**
+    * Ban user.
+    * 
+    * @param Request $request
+    */
+    public function banUser(Request $request) {
         $name = $request->user;
         $user = User::where('name', $name)->first();
         if($user != null) {
-        $user->banned = 1;
-        $user->save();
+            $user->banned = 1;
+            $user->save();
         }
+    }
+
+    /**
+     * Query DB for conversation between 2 users.
+     * 
+     * @param Request $request
+     */
+    public function queryConversation(Request $request) {
+        $u1 = $request->user1;
+        $u2 = $request->user2;
+        $u1Obj = User::find($u1);
+        $u2Obj = User::find($u2);
+        if($u1Obj == null || $u2Obj == null) {
+            return null;
+        }
+        return $u1Obj->getConversation($u2);
     }
 }

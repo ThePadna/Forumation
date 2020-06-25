@@ -81,88 +81,52 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 10);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/admin/threads.js":
-/*!***************************************!*\
-  !*** ./resources/js/admin/threads.js ***!
-  \***************************************/
+/***/ "./resources/js/forum/forum_layout.js":
+/*!********************************************!*\
+  !*** ./resources/js/forum/forum_layout.js ***!
+  \********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-/**
- * Listen for search-box input, query DB for threads if conditions are met.
- */
-$('.search-box').val("");
-$(".search-box").on("change keyup paste", function () {
-  $('.temp').remove();
-
-  if ($(this).val().length < 1) {
-    $('.content').show();
-  }
-
-  if ($(this).val().length >= 3) {
-    queryThreadsDB($(this).val());
-  }
-});
-updateColorScheme($('meta[name="color"]').attr('content'));
-/**
- * Query database for threads containing string val
- * 
- * @param {String} val
- */
-
-function queryThreadsDB(val) {
+$('.conversation').on('click', function (e) {
+  $('.conversation').hide();
+  var $u1 = $(e.target.parentElement).attr('user-1'),
+      $u2 = $(e.target.parentElement).attr('user-2');
+  console.log($u2);
   $.ajax({
     type: "POST",
-    url: '/querythreads',
+    url: "/queryconversation",
     headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
     },
     data: {
-      "val": val
+      user1: $u1,
+      user2: $u2
     },
     success: function success(res) {
-      if (res != '') {
-        $jsonResult = JSON.parse(res);
-        $('.content').hide();
-        $jsonResult.forEach(function (r) {
-          var html = "<tr class=\"temp\">\n                    <td> <i class=\"fas fa-search\"></i> " + "<a href=\"/forum/category/ " + r[0] + "\">" + r[0] + "</a> </td>\n                    <td> " + r[1] + " </td>\n                    <td> " + r[2] + " </td>\n                    </tr>";
-          $(html).appendTo('table');
-        });
-      }
+      console.log(res); //update panel
     },
     error: function error(xhr, ajaxOptions, thrownError) {
       console.log("Error occured during AJAX request, error code: " + xhr.status);
     }
   });
-}
-/**
- * Updates color scheme on present selectors.
- * 
- * @param {String} (hex) color 
- */
-
-
-function updateColorScheme(color) {
-  console.log(color);
-  $('#header').css('background', color);
-  $('#prevpage, #nextpage').css('color', color);
-}
+});
 
 /***/ }),
 
-/***/ 10:
-/*!*********************************************!*\
-  !*** multi ./resources/js/admin/threads.js ***!
-  \*********************************************/
+/***/ 2:
+/*!**************************************************!*\
+  !*** multi ./resources/js/forum/forum_layout.js ***!
+  \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\js\admin\threads.js */"./resources/js/admin/threads.js");
+module.exports = __webpack_require__(/*! C:\xamppy\htdocs\Forumation\resources\js\forum\forum_layout.js */"./resources/js/forum/forum_layout.js");
 
 
 /***/ })

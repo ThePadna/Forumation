@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -97,7 +97,6 @@ var delThreadFormHTML = "<div id=\"delThreadForm\" class=\"popup-form\">\n<div c
 var $prevClickedDelThreadName, $prevClickedDelThreadId;
 updateColorScheme($('meta[name="color"]').attr('content'));
 $('#post-thread-input').on('click', function (e) {
-  console.log("ho");
   window.location = "/forum/category/" + $('meta[name="category"]').attr('content') + "/post";
 });
 /**
@@ -192,7 +191,7 @@ function removeEditorElements() {
 
 /***/ }),
 
-/***/ 6:
+/***/ 7:
 /*!**********************************************!*\
   !*** multi ./resources/js/forum/category.js ***!
   \**********************************************/
