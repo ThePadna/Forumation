@@ -23,9 +23,10 @@ class Conversation {
     public function __toString() {
         $string = "";
         foreach($this->messages as $m) {
-            Log::debug($m);
             $string .= User::find($m['sender'])->name . ":" . $m['contents'] . ",";
         }
+        $len = strlen($string);
+        if($len > 0) $string = substr($string, 0, $len - 1);
         return $string;
     }
 

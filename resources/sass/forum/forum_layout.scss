@@ -16,7 +16,7 @@
     width: 350px;
     height: 50%;
     overflow-y: scroll;
-    .conversation {
+    .conversation, .message {
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
@@ -34,6 +34,12 @@
             color: white;
             font-size: .8rem;
         }
+    }
+    .user {
+        flex-direction: row-reverse;
+    }
+    .message {
+        margin-bottom: 5px;
     }
 }
 

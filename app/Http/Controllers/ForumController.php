@@ -11,7 +11,7 @@ use App\Models\Post;
 use App\Models\Settings;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\Log;
 
 class ForumController extends Controller
 {

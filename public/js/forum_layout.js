@@ -97,6 +97,9 @@ $('.conversation').on('click', function (e) {
   $('.conversation').hide();
   var $u1 = $(e.target.parentElement).attr('user-1'),
       $u2 = $(e.target.parentElement).attr('user-2');
+  var $userImage = $(e.target.parentElement).find('img').attr('src');
+  var yourImage = $('meta[name="avatar"]').attr('content');
+  var yourName = $('meta[name="username"]').attr('content');
   console.log($u2);
   $.ajax({
     type: "POST",
@@ -109,7 +112,13 @@ $('.conversation').on('click', function (e) {
       user2: $u2
     },
     success: function success(res) {
-      console.log(res); //update panel
+      $('.message-popup').append("<div class=\"messages\"> </div>");
+      var messages = res.split(",");
+      messages.forEach(function (e) {
+        var info = e.split(":");
+        var sentBy = info[0].localeCompare(yourName) == 0 ? "user" : "you";
+        $('.messages').append("<div class=\"message " + sentBy + "\"> <div class=\"avatar\"> <img src=\"" + yourImage + "\" /> </div> <div class=\"content\"> <p> " + info[1] + " </p> </div> </div>");
+      });
     },
     error: function error(xhr, ajaxOptions, thrownError) {
       console.log("Error occured during AJAX request, error code: " + xhr.status);
