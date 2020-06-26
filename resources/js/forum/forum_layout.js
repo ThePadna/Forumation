@@ -11,7 +11,9 @@ $('.conversation').on('click', e => {
         headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")},
         data: {user1: $u1, user2: $u2},
         success: function(res) {
-            $('.message-popup').append(`<div class="messages"> </div>`);
+            $('.message-popup').append('<div class="messages"> </div>');
+            $('.messages').append('<div class="return-btn"> <i class="fas fa-long-arrow-alt-left"></i> </div>')
+            registerReturnListener();
             let messages = res.split(",");
             messages.forEach((e) => {
                 let info = e.split(":");
@@ -27,3 +29,9 @@ $('.conversation').on('click', e => {
         }
     });
 });
+function registerReturnListener() {
+    $('.return-btn').on('click', () => {
+        $('.messages').remove();
+        $('.conversation').show();
+    });
+}

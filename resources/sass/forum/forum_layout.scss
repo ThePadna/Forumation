@@ -16,6 +16,9 @@
     width: 350px;
     height: 50%;
     overflow-y: scroll;
+    .conversation {
+        cursor: pointer;
+    }
     .conversation, .message {
         display: flex;
         flex-direction: row;
@@ -40,6 +43,13 @@
     }
     .message {
         margin-bottom: 5px;
+    }
+    .return-btn {
+        cursor: pointer;
+        font-size: 3rem;
+        color: white;
+        justify-content: center;
+        text-align: center;
     }
 }
 

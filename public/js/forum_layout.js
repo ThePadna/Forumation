@@ -112,7 +112,9 @@ $('.conversation').on('click', function (e) {
       user2: $u2
     },
     success: function success(res) {
-      $('.message-popup').append("<div class=\"messages\"> </div>");
+      $('.message-popup').append('<div class="messages"> </div>');
+      $('.messages').append('<div class="return-btn"> <i class="fas fa-long-arrow-alt-left"></i> </div>');
+      registerReturnListener();
       var messages = res.split(",");
       messages.forEach(function (e) {
         var info = e.split(":");
@@ -125,6 +127,13 @@ $('.conversation').on('click', function (e) {
     }
   });
 });
+
+function registerReturnListener() {
+  $('.return-btn').on('click', function () {
+    $('.messages').remove();
+    $('.conversation').show();
+  });
+}
 
 /***/ }),
 

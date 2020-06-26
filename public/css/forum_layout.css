@@ -15,6 +15,10 @@
   overflow-y: scroll;
 }
 
+.message-popup .conversation {
+  cursor: pointer;
+}
+
 .message-popup .conversation,
 .message-popup .message {
   display: flex;
@@ -48,6 +52,14 @@
 
 .message-popup .message {
   margin-bottom: 5px;
+}
+
+.message-popup .return-btn {
+  cursor: pointer;
+  font-size: 3rem;
+  color: white;
+  justify-content: center;
+  text-align: center;
 }
 
 #header {
