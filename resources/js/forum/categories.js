@@ -44,13 +44,6 @@ let delCategoryFormHTML = `<div id="delCategoryForm" class="popup-form">
     </form>
 </div>
 </div>`;
-$('.message-popup').hide();
-/**
- * Listen for click on messages icon, toggle vision
- */
-$('.inbox>i').on('click', () => {
-    $('.message-popup').toggle();
-});
 
 /**
  * Gain reference to forms and hide them in anticipation for button press.

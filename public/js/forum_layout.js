@@ -93,6 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+$('.message-popup').hide();
 $('.conversation').on('click', function (e) {
   $('.conversation').hide();
   var $u1 = $(e.target.parentElement).attr('user-1'),
@@ -119,7 +120,8 @@ $('.conversation').on('click', function (e) {
       messages.forEach(function (e) {
         var info = e.split(":");
         var sentBy = info[0].localeCompare(yourName) == 0 ? "user" : "you";
-        $('.messages').append("<div class=\"message " + sentBy + "\"> <div class=\"avatar\"> <img src=\"" + yourImage + "\" /> </div> <div class=\"content\"> <p> " + info[1] + " </p> </div> </div>");
+        var imageToUse = sentBy.localeCompare(yourName) == 0 ? yourImage : $userImage;
+        $('.messages').append("<div class=\"message " + sentBy + "\"> <div class=\"avatar\"> <img src=\"" + imageToUse + "\" /> </div> <div class=\"content\"> <p> " + info[1] + " </p> </div> </div>");
       });
     },
     error: function error(xhr, ajaxOptions, thrownError) {
@@ -134,6 +136,10 @@ function registerReturnListener() {
     $('.conversation').show();
   });
 }
+
+$('.inbox').on('click', function () {
+  if ($('.message-popup').is(':hidden')) $('.message-popup').slideDown();else $('.message-popup').slideUp();
+});
 
 /***/ }),
 

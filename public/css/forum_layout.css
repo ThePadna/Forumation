@@ -11,8 +11,8 @@
   right: 0;
   background: red;
   width: 350px;
-  height: 50%;
   overflow-y: scroll;
+  height: 50%;
 }
 
 .message-popup .conversation {
@@ -135,6 +135,42 @@
 @keyframes rotate {
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes slide-up {
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@-webkit-keyframes slide-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-500px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-500px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
