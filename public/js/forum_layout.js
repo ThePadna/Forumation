@@ -119,9 +119,9 @@ $('.conversation').on('click', function (e) {
       var messages = res.split(",");
       messages.forEach(function (e) {
         var info = e.split(":");
-        var sentBy = info[0].localeCompare(yourName) == 0 ? "user" : "you";
-        var imageToUse = sentBy.localeCompare(yourName) == 0 ? yourImage : $userImage;
-        $('.messages').append("<div class=\"message " + sentBy + "\"> <div class=\"avatar\"> <img src=\"" + imageToUse + "\" /> </div> <div class=\"content\"> <p> " + info[1] + " </p> </div> </div>");
+        var sentBy = info[0].localeCompare(yourName) == 0 ? "you" : "user";
+        var imageToUse = sentBy.localeCompare("you") == 0 ? yourImage : $userImage;
+        $('.messages').append("<div class=\"message " + sentBy + "\"> <div class=\"avatar\"> <img src=\"" + imageToUse + "\" /> </div> <div class=\"content\"> <p> " + sentBy + info[1] + " </p> </div> </div>");
       });
     },
     error: function error(xhr, ajaxOptions, thrownError) {

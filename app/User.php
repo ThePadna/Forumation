@@ -60,8 +60,8 @@ class User extends Authenticatable
      * If Avatar is null, return default_avatar.png.
      */
     public function getAvatar() {
-        $avatar = asset('default_avatar.png');
-        if($this->avatar != null) $avatar = $this->avatar;
+        $avatar = asset('img/default_avatar.png');
+        if($this->avatar != null) $avatar = base64_decode($this->avatar);
         return $avatar;
     }
 

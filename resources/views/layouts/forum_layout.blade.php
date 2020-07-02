@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{asset('css/forum_layout.css')}}">
     <meta name="csrf-token" content="{{csrf_token()}}">
     @auth
-    <meta name="avatar" content="{{base64_decode(Auth::user()->getAvatar())}}">
+    <meta name="avatar" content="{{Auth::user()->getAvatar()}}">
     <meta name="username" content="{{Auth::user()->name}}">
     @endauth
     <script src="{{asset('js/app.js')}}"> </script>
@@ -56,7 +56,12 @@
         @foreach(Auth::user()->getConversations() as $c)
         <div class="conversation" user-1="{{$c->getUser1()}}" user-2="{{$c->getUser2()}}">
             <div class="avatar">
-                <img src="{{base64_decode(Auth::user()->getAvatar())}}" />
+                @php
+                $sender = $c->getLatest()->getSender();
+                $user = App\User::find($sender);
+                $avatar = $user->getAvatar();
+                @endphp
+                <img src="{{$avatar}}" />
             </div>
             <div class="content">
                 {{$c->getLatest()->contents}}
