@@ -34,8 +34,8 @@
 
 .message-popup .conversation .avatar > img,
 .message-popup .message .avatar > img {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
 }
 
@@ -50,8 +50,20 @@
   flex-direction: row-reverse;
 }
 
+.message-popup .messages {
+  flex-direction: row;
+  justify-content: center;
+  border: 1px solid red;
+}
+
 .message-popup .message {
+  width: 90%;
+  align-self: center;
   margin-bottom: 5px;
+}
+
+.message-popup .message .content {
+  background: #212529;
 }
 
 .message-popup .return-btn {

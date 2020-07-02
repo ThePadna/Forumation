@@ -12,15 +12,14 @@ $('.conversation').on('click', e => {
         headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")},
         data: {user1: $u1, user2: $u2},
         success: function(res) {
-            $('.message-popup').append('<div class="messages"> </div>');
-            $('.messages').append('<div class="return-btn"> <i class="fas fa-long-arrow-alt-left"></i> </div>')
+            $('.message-popup').append('<div class="return-btn"> <i class="fas fa-long-arrow-alt-left"></i> </div>')
             registerReturnListener();
             let messages = res.split(",");
             messages.forEach((e) => {
                 let info = e.split(":");
                 let sentBy = info[0].localeCompare(yourName) == 0 ? "you" : "user";
                 let imageToUse = sentBy.localeCompare("you") == 0 ? yourImage : $userImage;
-                $('.messages').append(`<div class="message ` + sentBy + `"> <div class="avatar"> <img src="` + imageToUse + `" /> </div> <div class="content"> <p> ` + sentBy + info[1] + ` </p> </div> </div>`);
+                $('.message-popup').append(`<div class="message ` + sentBy + `"> <div class="avatar"> <img src="` + imageToUse + `" /> </div> <div class="content"> <p> ` + info[1] + ` </p> </div> </div>`);
             });
         },
         error: function(xhr, ajaxOptions, thrownError) {
@@ -33,7 +32,8 @@ $('.conversation').on('click', e => {
 });
 function registerReturnListener() {
     $('.return-btn').on('click', () => {
-        $('.messages').remove();
+        $('.message').remove();
+        $('.return-btn').remove();
         $('.conversation').show();
     });
 }

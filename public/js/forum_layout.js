@@ -113,15 +113,14 @@ $('.conversation').on('click', function (e) {
       user2: $u2
     },
     success: function success(res) {
-      $('.message-popup').append('<div class="messages"> </div>');
-      $('.messages').append('<div class="return-btn"> <i class="fas fa-long-arrow-alt-left"></i> </div>');
+      $('.message-popup').append('<div class="return-btn"> <i class="fas fa-long-arrow-alt-left"></i> </div>');
       registerReturnListener();
       var messages = res.split(",");
       messages.forEach(function (e) {
         var info = e.split(":");
         var sentBy = info[0].localeCompare(yourName) == 0 ? "you" : "user";
         var imageToUse = sentBy.localeCompare("you") == 0 ? yourImage : $userImage;
-        $('.messages').append("<div class=\"message " + sentBy + "\"> <div class=\"avatar\"> <img src=\"" + imageToUse + "\" /> </div> <div class=\"content\"> <p> " + sentBy + info[1] + " </p> </div> </div>");
+        $('.message-popup').append("<div class=\"message " + sentBy + "\"> <div class=\"avatar\"> <img src=\"" + imageToUse + "\" /> </div> <div class=\"content\"> <p> " + info[1] + " </p> </div> </div>");
       });
     },
     error: function error(xhr, ajaxOptions, thrownError) {
@@ -132,7 +131,8 @@ $('.conversation').on('click', function (e) {
 
 function registerReturnListener() {
   $('.return-btn').on('click', function () {
-    $('.messages').remove();
+    $('.message').remove();
+    $('.return-btn').remove();
     $('.conversation').show();
   });
 }
