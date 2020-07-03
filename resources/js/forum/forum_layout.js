@@ -1,4 +1,5 @@
 $('.message-popup').hide();
+$('.scroll-up').hide();
 $('.conversation').on('click', e => {
     $('.conversation').hide();
     let $u1 = $(e.target.parentElement).attr('user-1'), $u2 = $(e.target.parentElement).attr('user-2');
@@ -37,7 +38,17 @@ function registerReturnListener() {
         $('.conversation').show();
     });
 }
-$('.inbox').on('click', () => {
-    if($('.message-popup').is(':hidden')) $('.message-popup').slideDown();
-    else $('.message-popup').slideUp();
+function slide(dir) {
+    if(dir) {
+        $('.message-popup').slideDown(250, () => {
+            $('.scroll-up').show();
+        });
+    } else {
+        $('.scroll-up').hide();
+        $('.message-popup').slideUp(250);
+    }
+}
+$('.inbox, .scroll-up').on('click', () => {
+    if($('.message-popup').is(':hidden')) slide(true);
+    else slide(false);
 });

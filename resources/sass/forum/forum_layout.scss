@@ -12,7 +12,6 @@
     position: absolute;
     z-index: 10;
     right: 0;
-    background: red;
     width: 350px;
     overflow-y: scroll;
     height: 50%;
@@ -53,6 +52,14 @@
         .content {
             background: #212529;
         }
+    }
+    .scroll-up {
+        align-self: center;
+        font-size: 2.5rem;
+        cursor: pointer;
+        position: absolute;
+        bottom: 0;
+        color: white;
     }
     .return-btn {
         cursor: pointer;

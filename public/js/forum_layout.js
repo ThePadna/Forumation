@@ -94,6 +94,7 @@
 /***/ (function(module, exports) {
 
 $('.message-popup').hide();
+$('.scroll-up').hide();
 $('.conversation').on('click', function (e) {
   $('.conversation').hide();
   var $u1 = $(e.target.parentElement).attr('user-1'),
@@ -137,8 +138,19 @@ function registerReturnListener() {
   });
 }
 
-$('.inbox').on('click', function () {
-  if ($('.message-popup').is(':hidden')) $('.message-popup').slideDown();else $('.message-popup').slideUp();
+function slide(dir) {
+  if (dir) {
+    $('.message-popup').slideDown(250, function () {
+      $('.scroll-up').show();
+    });
+  } else {
+    $('.scroll-up').hide();
+    $('.message-popup').slideUp(250);
+  }
+}
+
+$('.inbox, .scroll-up').on('click', function () {
+  if ($('.message-popup').is(':hidden')) slide(true);else slide(false);
 });
 
 /***/ }),

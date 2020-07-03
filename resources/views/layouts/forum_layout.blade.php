@@ -68,6 +68,9 @@
             </div>
         </div>
         @endforeach
+        <div class="scroll-up">
+            <i class="fas fa-chevron-up"></i>
+        </div>
     </div>
     @endauth
     <script src="{{asset('js/forum_layout.js')}}"> </script>
