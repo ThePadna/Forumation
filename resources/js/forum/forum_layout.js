@@ -1,12 +1,19 @@
+/**
+ * Hide messaging popup contents and set unread message notification value.
+ */
 $('.message-popup').hide();
 $('.scroll-up').hide();
+$('.notifications').text($('meta[name="unread"]').attr('content'));
+
+/**
+ * Listen for conversation click, replace conversation list with new messages list
+ */
 $('.conversation').on('click', e => {
     $('.conversation').hide();
     let $u1 = $(e.target.parentElement).attr('user-1'), $u2 = $(e.target.parentElement).attr('user-2');
     let $userImage = $(e.target.parentElement).find('img').attr('src');
     let yourImage = $('meta[name="avatar"]').attr('content');
     let yourName = $('meta[name="username"]').attr('content');
-    console.log($u2)
     $.ajax({
         type: "POST",
         url: "/queryconversation",
@@ -31,6 +38,10 @@ $('.conversation').on('click', e => {
         }
     });
 });
+
+/**
+ * Register listeners for exiting the message popup.
+ */
 function registerReturnListener() {
     $('.return-btn').on('click', () => {
         $('.message').remove();
@@ -38,6 +49,11 @@ function registerReturnListener() {
         $('.conversation').show();
     });
 }
+
+/**
+ * Slide the message popup up or down depending on dir's value (down = true, up = false).
+ * @param {boolean} dir 
+ */
 function slide(dir) {
     if(dir) {
         $('.message-popup').slideDown(250, () => {
@@ -48,6 +64,10 @@ function slide(dir) {
         $('.message-popup').slideUp(250);
     }
 }
+
+/**
+ * Listen for message popup buttons.
+ */
 $('.inbox, .scroll-up').on('click', () => {
     if($('.message-popup').is(':hidden')) slide(true);
     else slide(false);

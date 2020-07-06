@@ -93,8 +93,16 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+/**
+ * Hide messaging popup contents and set unread message notification value.
+ */
 $('.message-popup').hide();
 $('.scroll-up').hide();
+$('.notifications').text($('meta[name="unread"]').attr('content'));
+/**
+ * Listen for conversation click, replace conversation list with new messages list
+ */
+
 $('.conversation').on('click', function (e) {
   $('.conversation').hide();
   var $u1 = $(e.target.parentElement).attr('user-1'),
@@ -102,7 +110,6 @@ $('.conversation').on('click', function (e) {
   var $userImage = $(e.target.parentElement).find('img').attr('src');
   var yourImage = $('meta[name="avatar"]').attr('content');
   var yourName = $('meta[name="username"]').attr('content');
-  console.log($u2);
   $.ajax({
     type: "POST",
     url: "/queryconversation",
@@ -129,6 +136,9 @@ $('.conversation').on('click', function (e) {
     }
   });
 });
+/**
+ * Register listeners for exiting the message popup.
+ */
 
 function registerReturnListener() {
   $('.return-btn').on('click', function () {
@@ -137,6 +147,11 @@ function registerReturnListener() {
     $('.conversation').show();
   });
 }
+/**
+ * Slide the message popup up or down depending on dir's value (down = true, up = false).
+ * @param {boolean} dir 
+ */
+
 
 function slide(dir) {
   if (dir) {
@@ -148,6 +163,10 @@ function slide(dir) {
     $('.message-popup').slideUp(250);
   }
 }
+/**
+ * Listen for message popup buttons.
+ */
+
 
 $('.inbox, .scroll-up').on('click', function () {
   if ($('.message-popup').is(':hidden')) slide(true);else slide(false);

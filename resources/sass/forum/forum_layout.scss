@@ -18,6 +18,11 @@
     .conversation {
         cursor: pointer;
     }
+    .unread {
+        .avatar>img {
+            animation: rotate 2s infinite;
+        }
+    }
     .conversation, .message {
         display: flex;
         flex-direction: row;
@@ -43,7 +48,6 @@
     .messages {
         flex-direction: row;
         justify-content: center;
-        border: 1px solid red;
     }
     .message {
         width: 90%;
@@ -91,12 +95,25 @@
         font-family: 'Yellowtail', cursive;
     }
     .inbox {
+        margin-right: 100px;
         position: relative;
-        width: 250px;
+        width: 200px;
         font-size: 2rem;
         float: right;
         color: white;
         cursor: pointer;
+        .notification-circle {
+            position: absolute;
+            top: 20px;
+            right: 65px;
+            background: red;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            .notifications {
+                font-size: 1rem;
+            }
+        }
     }
     .auth {
         position: relative;
@@ -112,19 +129,36 @@
     }
     .admin {
         position: relative;
-        width: 250px;
+        width: 200px;
         height: 100px;
     }
     .admin-icon {
         font-size: 3rem;
     }
-    
-    #admin:hover {
+    .admin-icon:hover {
         animation: rotate 1s;
     }    
 }
 @keyframes rotate {
     100% {
         transform: rotate(360deg);
+    }
+}
+@keyframes unread {
+    25% {
+        border-bottom: transparent;
+        border-top: 1px solid red;
+    }
+    50% {
+        border-right: 1px solid red;
+        border-top: transparent;
+    }
+    75% {
+        border-bottom: 1px solid red;
+        border-right: transparent;
+    }
+    100% {
+        border-left: 1px solid red;
+        border-bottom: transparent;
     }
 }

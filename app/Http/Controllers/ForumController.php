@@ -344,4 +344,12 @@ class ForumController extends Controller
         }
         return $u1Obj->getConversation($u2);
     }
+
+    /**
+     * Mark Messages as read.
+     * 
+     * @param Request $request
+     */
+    public function markMessagesAsRead(Request $request) {
+    }
 }

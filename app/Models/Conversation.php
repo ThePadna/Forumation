@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Log;
  */
 class Conversation {
 
-    private $messages = null;
+    private $messages = [];
     private $user1 = null;
     private $user2 = null;
 
@@ -28,6 +28,14 @@ class Conversation {
         $len = strlen($string);
         if($len > 0) $string = substr($string, 0, $len - 1);
         return $string;
+    }
+
+    public function getUnread() {
+        $counter = 0;
+        foreach($this->messages as $m) {
+            if($m->recipientRead() == 0) $counter++;
+        }
+        return $counter;
     }
 
     public function getUser1() {

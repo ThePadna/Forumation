@@ -45,18 +45,29 @@
             @csrf
         </form>
         @endguest
+        @php 
+        $unread = 0;
+        @endphp
         @auth
         <div class="inbox">
             <i class="fas fa-inbox"></i>
+            <div class="notification-circle">
+                <p class="notifications"> {{$unread}} </p>
+            </div>
         </div>
         @endauth
     </div>
     @auth
     <div id="messages" class="message-popup">
         @foreach(Auth::user()->getConversations() as $c)
+        @if($c->getUnread() > 0)
+        <div class="conversation unread" user-1="{{$c->getUser1()}}" user-2="{{$c->getUser2()}}">
+        @else 
         <div class="conversation" user-1="{{$c->getUser1()}}" user-2="{{$c->getUser2()}}">
+        @endif
             <div class="avatar">
                 @php
+                if($c->getUnread() > 0) $unread++;
                 $sender = $c->getLatest()->getSender();
                 $user = App\User::find($sender);
                 $avatar = $user->getAvatar();
@@ -73,6 +84,7 @@
         </div>
     </div>
     @endauth
+    <meta name="unread" content="{{$unread}}">
     <script src="{{asset('js/forum_layout.js')}}"> </script>
 </head>
 @yield('content')

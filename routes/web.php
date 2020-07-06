@@ -32,6 +32,7 @@ Route::post('/queryusers', 'AdminController@queryUsers');
 Route::post('/querythreads', 'AdminController@queryThreads');
 Route::post('/queryposts', 'AdminController@queryPosts');
 Route::post('/banuser', 'ForumController@banUser');
+Route::post('/markmessagesread', 'ForumController@markMessagesAsRead');
 Route::get('/forum/admin', 'AdminController@showCtrlPanel');
 Route::get('/forum/admin/datamanagement/ranks', 'AdminController@showRanks');
 Route::post('/forum/profile/{user}/edit/updateprofile', 'UserController@updateProfile');
