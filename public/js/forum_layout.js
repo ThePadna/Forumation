@@ -124,11 +124,25 @@ $('.conversation').on('click', function (e) {
       $('.message-popup').append('<div class="return-btn"> <i class="fas fa-long-arrow-alt-left"></i> </div>');
       registerReturnListener();
       var messages = res.split(",");
+      var messageIDList = [];
       messages.forEach(function (e) {
         var info = e.split(":");
+        messageIDList.push(info[2]);
         var sentBy = info[0].localeCompare(yourName) == 0 ? "you" : "user";
         var imageToUse = sentBy.localeCompare("you") == 0 ? yourImage : $userImage;
         $('.message-popup').append("<div class=\"message " + sentBy + "\"> <div class=\"avatar\"> <img src=\"" + imageToUse + "\" /> </div> <div class=\"content\"> <p> " + info[1] + " </p> </div> </div>");
+      });
+      var json = JSON.stringify(messageIDList);
+      $.ajax({
+        type: "POST",
+        url: "/markmessagesread",
+        headers: {
+          "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        data: json,
+        error: function error(xhr, ajaxOptions, thrownError) {
+          console.log("Error occured during AJAX request, error code: " + xhr.status);
+        }
       });
     },
     error: function error(xhr, ajaxOptions, thrownError) {

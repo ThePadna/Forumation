@@ -14,6 +14,7 @@ class CreateMessagesTable extends Migration
     public function up()
     {
         Schema::create('messages', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->string("contents", 5000);
             $table->integer("recipient");
             $table->integer("sender");

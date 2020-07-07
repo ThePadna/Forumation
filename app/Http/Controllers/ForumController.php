@@ -351,5 +351,11 @@ class ForumController extends Controller
      * @param Request $request
      */
     public function markMessagesAsRead(Request $request) {
+        $messages = json_decode($request);
+        $conditions = [];
+        foreach($messages as $m) {
+            array_push($conditions, ["id", "=", $m]);
+        }
+        Message::where($conditions)->update(['read' => '1']);
     }
 }
