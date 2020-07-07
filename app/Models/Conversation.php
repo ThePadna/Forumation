@@ -23,7 +23,7 @@ class Conversation {
     public function __toString() {
         $string = "";
         foreach($this->messages as $m) {
-            $string .= User::find($m['sender'])->name . ":" . $m['contents'] . $m['id'] . ",";
+            $string .= User::find($m['sender'])->name . ":" . $m['contents'] . ":" . $m['id'] . ",";
         }
         $len = strlen($string);
         if($len > 0) $string = substr($string, 0, $len - 1);
@@ -55,7 +55,8 @@ class Conversation {
     }
 
     public function getLatest() {
-        return $this->messages[sizeof($this->messages) - 1];
+        if(sizeof($this->messages) > 0) return $this->messages[sizeof($this->messages) - 1];
+        else return null;
     }
 
     public static function addMessageToReleventConversation($m, $conversations) {

@@ -9,6 +9,7 @@ use App\Models\Thread;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Settings;
+use App\Models\Message;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
@@ -351,10 +352,10 @@ class ForumController extends Controller
      * @param Request $request
      */
     public function markMessagesAsRead(Request $request) {
-        $messages = json_decode($request);
+        $messageIDs = $request->json()->all();
         $conditions = [];
-        foreach($messages as $m) {
-            array_push($conditions, ["id", "=", $m]);
+        foreach($messageIDs as $id) {
+            array_push($conditions, ["id", "=", $id]);
         }
         Message::where($conditions)->update(['read' => '1']);
     }

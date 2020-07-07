@@ -23,7 +23,8 @@ $('.conversation').on('click', e => {
             $('.message-popup').append('<div class="return-btn"> <i class="fas fa-long-arrow-alt-left"></i> </div>')
             registerReturnListener();
             let messages = res.split(",");
-            let messageIDList = [];
+            let messageIDList = Array();
+            console.log(messages)
             messages.forEach((e) => {
                 let info = e.split(":");
                 messageIDList.push(info[2]);
@@ -32,6 +33,7 @@ $('.conversation').on('click', e => {
                 $('.message-popup').append(`<div class="message ` + sentBy + `"> <div class="avatar"> <img src="` + imageToUse + `" /> </div> <div class="content"> <p> ` + info[1] + ` </p> </div> </div>`);
             });
             let json = JSON.stringify(messageIDList);
+            console.log(json);
             $.ajax({
                 type: "POST",
                 url: "/markmessagesread",

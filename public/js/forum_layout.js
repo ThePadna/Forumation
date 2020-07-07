@@ -124,7 +124,8 @@ $('.conversation').on('click', function (e) {
       $('.message-popup').append('<div class="return-btn"> <i class="fas fa-long-arrow-alt-left"></i> </div>');
       registerReturnListener();
       var messages = res.split(",");
-      var messageIDList = [];
+      var messageIDList = Array();
+      console.log(messages);
       messages.forEach(function (e) {
         var info = e.split(":");
         messageIDList.push(info[2]);
@@ -133,6 +134,7 @@ $('.conversation').on('click', function (e) {
         $('.message-popup').append("<div class=\"message " + sentBy + "\"> <div class=\"avatar\"> <img src=\"" + imageToUse + "\" /> </div> <div class=\"content\"> <p> " + info[1] + " </p> </div> </div>");
       });
       var json = JSON.stringify(messageIDList);
+      console.log(json);
       $.ajax({
         type: "POST",
         url: "/markmessagesread",
