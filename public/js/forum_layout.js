@@ -98,10 +98,15 @@
  */
 $('.message-popup').hide();
 $('.scroll-up').hide();
-$('.notifications').text($('meta[name="unread"]').attr('content'));
+var unread = $('meta[name="unread"]').attr('content');
+
+if (unread == 0) {
+  $('.notification-circle').remove();
+} else $('.notifications').text($('meta[name="unread"]').attr('content'));
 /**
  * Listen for conversation click, replace conversation list with new messages list
  */
+
 
 $('.conversation').on('click', function (e) {
   $('.conversation').hide();

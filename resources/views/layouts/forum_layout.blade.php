@@ -52,7 +52,7 @@
         <div class="inbox">
             <i class="fas fa-inbox"></i>
             <div class="notification-circle">
-                <p class="notifications"> {{$unread}} </p>
+                <p class="notifications"> </p>
             </div>
         </div>
         @endauth
