@@ -38,6 +38,7 @@ function fillPermissions(perms, id) {
                     {{sizeof(unserialize($r->permissions))}}
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="color: white !important;">
+                    <p id="sendmessage" class="permission unselected"> Send Message </p>
                     <p id="editownprofile" class="permission unselected"> Edit Own Profile </p>
                     <p id="postcreate" class="permission unselected"> Create Post </p>
                     <p id="poststar" class="permission unselected"> Star Post </p>

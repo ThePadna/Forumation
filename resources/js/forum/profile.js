@@ -35,7 +35,6 @@ displayStats();
  */
 function updateColorScheme(color) {
     $('#header, .popup-form').css('background', color);
-    $('p').css('color', color);
 }
 
 /**

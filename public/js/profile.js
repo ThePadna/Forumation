@@ -116,7 +116,6 @@ displayStats();
 
 function updateColorScheme(color) {
   $('#header, .popup-form').css('background', color);
-  $('p').css('color', color);
 }
 /**
  * Initialize forms that are used when a 'popup-form' is needed.
