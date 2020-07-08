@@ -58,7 +58,7 @@
         @endauth
     </div>
     @auth
-    <div id="messages" class="message-popup">
+    <div id="messages" class="message-popup" style="background: {{App\Models\Settings::first()->color}}">
         @foreach(Auth::user()->getConversations() as $c)
         @if($c->getUnread() > 0)
         <div class="conversation unread" user-1="{{$c->getUser1()}}" user-2="{{$c->getUser2()}}">

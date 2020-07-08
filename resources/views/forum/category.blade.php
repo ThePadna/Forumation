@@ -67,7 +67,7 @@ if(Auth::check()) {
     @auth
     @if($rank->hasPerm("threadcreate"))
     <div id="add-thread">
-        <img id="add-thread-avatar" src="{{base64_decode(Auth::user()->getAvatar())}}" />
+        <img id="add-thread-avatar" src="{{Auth::user()->getAvatar()}}" />
         <input id="post-thread-input" placeholder="Post New Thread" />
     </div>
     @endif
