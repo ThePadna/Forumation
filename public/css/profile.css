@@ -12,6 +12,15 @@
   transform: translateX(-50%);
 }
 
+#profile-header #send-message * {
+  color: white;
+}
+
+#profile-header #send-message .send-message-btn {
+  color: white;
+  font-size: 1rem;
+}
+
 #profile-header #avatar {
   margin-top: 50px;
   min-height: 200px;

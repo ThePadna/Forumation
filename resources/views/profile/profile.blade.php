@@ -38,9 +38,10 @@
         <p id="rank" style="color: {{$profileRank->color}}"> {{$profileRank->name}} </p>
     </div>
     @endif
-    @if($rank != null && $rank->hasPerm("sendmessage") && Auth::user()->id != $user->id)
+    @if($rank != null && $rank->hasPerm("sendmessage"))
     <div id="send-message">
-        <button class="send-message-btn"> SEND MESSAGE </button>
+        <i class="send-message-btn fas fa-paper-plane"></i>
+        <p class="send-message-header"> Message </p>
     </div>
     @endif
 </div>

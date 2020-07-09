@@ -258,6 +258,10 @@ class AdminController extends Controller
       if(!$this->canAccess()) return view('errors/noaccess');
       return view('admin/ranks', ['settings' => Settings::first(), 'ranks' => Rank::all()]);
     }
+
+    /**
+     * Check if user can access admin controls.
+     */
     public function canAccess() {
       if(!Auth::check()) return false;
       $rank = Rank::find(Auth::user()->rank);

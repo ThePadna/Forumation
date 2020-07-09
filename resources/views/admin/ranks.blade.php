@@ -3,7 +3,6 @@
 
 <head>
     <link rel="stylesheet" href="{{asset('css/ranks.css')}}">
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 </head>
 <script>
 function fillPermissions(perms, id) {

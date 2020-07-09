@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -191,7 +191,7 @@ function removeEditorElements() {
 
 /***/ }),
 
-/***/ 7:
+/***/ 6:
 /*!**********************************************!*\
   !*** multi ./resources/js/forum/category.js ***!
   \**********************************************/

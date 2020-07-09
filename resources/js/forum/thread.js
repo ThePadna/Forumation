@@ -259,8 +259,8 @@ function likePost($star, id, liked) {
     url: '/likepost',
     headers: {'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')},
     data: {
-      id:id,
-      liked:liked
+      id: id,
+      liked: liked
     },
     success: function(res) {
       starAnim($star);

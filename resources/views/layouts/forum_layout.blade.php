@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <script href="js/app.js"> </script>
+    <script href="js/bootstrap.js"> </script>
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/forum_layout.css')}}">
     <meta name="csrf-token" content="{{csrf_token()}}">
