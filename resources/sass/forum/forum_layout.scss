@@ -9,19 +9,32 @@
 .message-popup {
     display: flex;
     flex-direction: column;
-    flex: 1;
+    height: 50%;
+    width: 350px;
     position: absolute;
     z-index: 10;
+    flex: 1;
     right: 0;
-    width: 350px;
-    overflow-y: scroll;
-    height: 50%;
+    .conversations {
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+        height: 85%;
+    }
     .conversation {
         cursor: pointer;
     }
     .unread {
         .avatar>img {
-            animation: rotate 2s infinite;
+            border: 0.5px solid black;
+        }
+    }
+    .compose {
+        cursor: pointer;
+        bottom: 25px;
+        align-self: center;
+        * {
+            color: white;
         }
     }
     .conversation, .message {

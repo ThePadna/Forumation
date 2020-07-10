@@ -359,4 +359,13 @@ class ForumController extends Controller
         }
         Message::where($conditions)->update(['read' => '1']);
     }
+
+    /**
+     * Send a message
+     * 
+     * @param Request $request
+     */
+    public function sendMessage(Request $request) {
+        
+    }
 }

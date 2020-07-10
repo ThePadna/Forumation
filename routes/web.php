@@ -1,15 +1,4 @@
 <?php
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 Route::get('/', function () {
     return view('home');
 });
@@ -33,6 +22,7 @@ Route::post('/querythreads', 'AdminController@queryThreads');
 Route::post('/queryposts', 'AdminController@queryPosts');
 Route::post('/banuser', 'ForumController@banUser');
 Route::post('/markmessagesread', 'ForumController@markMessagesAsRead');
+Route::post('/sendmessage', 'ForumController@sendMessage');
 Route::get('/forum/admin', 'AdminController@showCtrlPanel');
 Route::get('/forum/admin/datamanagement/ranks', 'AdminController@showRanks');
 Route::post('/forum/profile/{user}/edit/updateprofile', 'UserController@updateProfile');
