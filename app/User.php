@@ -4,6 +4,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Models\Rank;
 use App\Models\Settings;
 use App\Models\Message;
+use Carbon\Carbon;
 use App\Models\Conversation;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -16,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password'
+        'name', 'email', 'password', 'last_online'
     ];
     /**
      * The attributes that should be hidden for arrays.
@@ -34,6 +35,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Update last_online of user.
+     */
+    public function updateActivity() {
+        $this->last_online = Carbon::now();
+    }
 
     /**
      * Return rank of User.

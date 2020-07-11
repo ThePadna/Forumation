@@ -60,8 +60,10 @@
         flex-direction: row-reverse;
     }
     .messages {
-        flex-direction: row;
-        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+        height: 85%;
     }
     .message {
         width: 90%;

@@ -18,7 +18,6 @@ if(unread == 0) {
  * Listen for conversation click, replace conversation list with new messages list
  */
 $('.conversation').on('click', e => {
-    $('.conversation').hide();
     let $u1 = $(e.target.parentElement).attr('user-1'), $u2 = $(e.target.parentElement).attr('user-2');
     let $userImage = $(e.target.parentElement).find('img').attr('src');
     let yourImage = $('meta[name="avatar"]').attr('content');
@@ -30,6 +29,9 @@ $('.conversation').on('click', e => {
         data: {user1: $u1, user2: $u2},
         success: (res) => {
             $('.message-popup').append('<div class="return-btn"> <i class="fas fa-long-arrow-alt-left"></i> </div>')
+            .append('<div class="messages"> </div>');
+            $('.conversations').hide();
+            
             registerReturnListener();
             let messages = res.split(",");
             let messageIDList = Array();
@@ -39,7 +41,7 @@ $('.conversation').on('click', e => {
                 messageIDList.push(info[2]);
                 let sentBy = info[0].localeCompare(yourName) == 0 ? "you" : "user";
                 let imageToUse = sentBy.localeCompare("you") == 0 ? yourImage : $userImage;
-                $('.message-popup').append(`<div class="message ` + sentBy + `"> <div class="avatar"> <img src="` + imageToUse + `" /> </div> <div class="content"> <p> ` + info[1] + ` </p> </div> </div>`);
+                $('.messages').append(`<div class="message ` + sentBy + `"> <div class="avatar"> <img src="` + imageToUse + `" /> </div> <div class="content"> <p> ` + info[1] + ` </p> </div> </div>`);
             });
             let json = JSON.stringify(messageIDList);
             console.log(json);
@@ -70,9 +72,9 @@ $('.conversation').on('click', e => {
  */
 function registerReturnListener() {
     $('.return-btn').on('click', () => {
-        $('.message').remove();
+        $('.messages').remove();
         $('.return-btn').remove();
-        $('.conversation').show();
+        $('.conversations').show();
     });
 }
 

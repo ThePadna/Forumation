@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class AuthAdmin
+class UpdateLastLogin
 {
     /**
      * Handle an incoming request.
@@ -15,9 +15,7 @@ class AuthAdmin
      */
     public function handle($request, Closure $next)
     {
-        if($request->user() && $request->user()->role != 'admin') {
-            return new Response();
-        }
+        if($request->user()) $request->user()->updateActivity();
         return $next($request);
     }
 }

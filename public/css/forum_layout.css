@@ -10999,8 +10999,10 @@ a.text-dark:focus {
 }
 
 .message-popup .messages {
-  flex-direction: row;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  height: 85%;
 }
 
 .message-popup .message {

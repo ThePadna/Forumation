@@ -18092,7 +18092,6 @@ if (unread == 0) {
 
 
 $('.conversation').on('click', function (e) {
-  $('.conversation').hide();
   var $u1 = $(e.target.parentElement).attr('user-1'),
       $u2 = $(e.target.parentElement).attr('user-2');
   var $userImage = $(e.target.parentElement).find('img').attr('src');
@@ -18109,7 +18108,8 @@ $('.conversation').on('click', function (e) {
       user2: $u2
     },
     success: function success(res) {
-      $('.message-popup').append('<div class="return-btn"> <i class="fas fa-long-arrow-alt-left"></i> </div>');
+      $('.message-popup').append('<div class="return-btn"> <i class="fas fa-long-arrow-alt-left"></i> </div>').append('<div class="messages"> </div>');
+      $('.conversations').hide();
       registerReturnListener();
       var messages = res.split(",");
       var messageIDList = Array();
@@ -18119,7 +18119,7 @@ $('.conversation').on('click', function (e) {
         messageIDList.push(info[2]);
         var sentBy = info[0].localeCompare(yourName) == 0 ? "you" : "user";
         var imageToUse = sentBy.localeCompare("you") == 0 ? yourImage : $userImage;
-        $('.message-popup').append("<div class=\"message " + sentBy + "\"> <div class=\"avatar\"> <img src=\"" + imageToUse + "\" /> </div> <div class=\"content\"> <p> " + info[1] + " </p> </div> </div>");
+        $('.messages').append("<div class=\"message " + sentBy + "\"> <div class=\"avatar\"> <img src=\"" + imageToUse + "\" /> </div> <div class=\"content\"> <p> " + info[1] + " </p> </div> </div>");
       });
       var json = JSON.stringify(messageIDList);
       console.log(json);
@@ -18146,9 +18146,9 @@ $('.conversation').on('click', function (e) {
 
 function registerReturnListener() {
   $('.return-btn').on('click', function () {
-    $('.message').remove();
+    $('.messages').remove();
     $('.return-btn').remove();
-    $('.conversation').show();
+    $('.conversations').show();
   });
 }
 /**
