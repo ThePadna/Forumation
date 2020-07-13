@@ -59,7 +59,7 @@
     </div>
     @auth
     <div id="messages" class="message-popup">
-    <div class="compose">
+        <div class="compose">
             <p class="compose-header"> <i class="far fa-envelope"></i> Compose </p>
         </div>
         <div class="conversations"  style="background: {{App\Models\Settings::first()->color}}">
@@ -75,7 +75,9 @@
                 $sender = $c->getLatest()->getSender();
                 $user = App\User::find($sender);
                 $avatar = $user->getAvatar();
+                $status = $user->isOnline() ? 'green' : 'red';
                 @endphp
+                <div class="status" style="background: {{$status}}"> </div>
                 <img src="{{$avatar}}" />
             </div>
             <div class="content">

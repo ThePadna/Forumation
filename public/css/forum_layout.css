@@ -10953,10 +10953,6 @@ a.text-dark:focus {
   cursor: pointer;
 }
 
-.message-popup .unread .avatar > img {
-  border: 0.5px solid black;
-}
-
 .message-popup .compose {
   cursor: pointer;
   bottom: 25px;
@@ -10969,6 +10965,7 @@ a.text-dark:focus {
 
 .message-popup .conversation,
 .message-popup .message {
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -10978,6 +10975,16 @@ a.text-dark:focus {
 .message-popup .conversation *,
 .message-popup .message * {
   padding: 5px;
+}
+
+.message-popup .conversation .status,
+.message-popup .message .status {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
 }
 
 .message-popup .conversation .avatar > img,
@@ -11120,50 +11127,6 @@ a.text-dark:focus {
 @keyframes rotate {
   100% {
     transform: rotate(360deg);
-  }
-}
-
-@-webkit-keyframes unread {
-  25% {
-    border-bottom: transparent;
-    border-top: 1px solid red;
-  }
-
-  50% {
-    border-right: 1px solid red;
-    border-top: transparent;
-  }
-
-  75% {
-    border-bottom: 1px solid red;
-    border-right: transparent;
-  }
-
-  100% {
-    border-left: 1px solid red;
-    border-bottom: transparent;
-  }
-}
-
-@keyframes unread {
-  25% {
-    border-bottom: transparent;
-    border-top: 1px solid red;
-  }
-
-  50% {
-    border-right: 1px solid red;
-    border-top: transparent;
-  }
-
-  75% {
-    border-bottom: 1px solid red;
-    border-right: transparent;
-  }
-
-  100% {
-    border-left: 1px solid red;
-    border-bottom: transparent;
   }
 }
 
