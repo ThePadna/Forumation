@@ -35,6 +35,7 @@ displayStats();
  */
 function updateColorScheme(color) {
     $('#header, .popup-form').css('background', color);
+    $('.profile-header').css('background', 'linear-gradient(to bottom, ' + color + ', #212529)');
 }
 
 /**

@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Log;
 
 class ForumController extends Controller
 {
+
+    public function __construct() {
+        $this->middleware('update.last.login');
+    }
+
     /**
      * Show threads of category by $categoryName and the $page of that category.
      * 

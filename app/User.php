@@ -12,6 +12,10 @@ class User extends Authenticatable
 {
     use Notifiable;
     /**
+     * Minutes of inactivity before user is marked as offline
+     */
+    private $MINUTES_BEFORE_INACTIVE = 10;
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -41,6 +45,14 @@ class User extends Authenticatable
      */
     public function updateActivity() {
         $this->last_online = Carbon::now();
+        $this->save();
+    }
+
+    /**
+     * Check if user has been active in the past 10 minutes.
+     */
+    public function isOnline() {
+        return Carbon::createFromDate($this->last_online)->diffInMinutes(Carbon::now()) < $this->MINUTES_BEFORE_INACTIVE;
     }
 
     /**

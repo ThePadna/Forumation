@@ -4,7 +4,8 @@ body {
     overflow-y: hidden;
     overflow-x: hidden;
 }
-#profile-header {
+.profile-header {
+    width: 100%;
     margin-bottom: 20vh;
     display: inline-block;
     position: relative;        
@@ -19,13 +20,25 @@ body {
             font-size: 1rem;
         }
     }
-    #avatar {
-        margin-top: 50px;
-        min-height: 200px;
-        min-width: 200px;
-        height: 25vh;
-        width: 25vh;
-        border-radius: 50%;
+    .avatar-container {
+        display: inline-block;
+        .status {
+            position: absolute;
+            left: 30px;
+            top: 30px;
+            background: green;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            z-index: 5;
+        }
+        .avatar {
+            min-height: 200px;
+            min-width: 200px;
+            height: 25vh;
+            width: 25vh;
+            border-radius: 50%;
+        }
     }
     #edit-btn {
         text-align: center;
@@ -79,17 +92,14 @@ body {
     color:red;
 }
 
-.row {
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     div {
-        .title {
-            color: white;
-        }
-        height: 40vh;
-        p {
-            font-size: 800%;
-            color: white;
-        }
         * {
+            color: white;
+            font-size: 4rem;
             text-align: center;
         }
     }

@@ -1,7 +1,7 @@
 @extends('layouts/forum_layout')
 @section('content')
 <link rel="stylesheet" href="{{asset('css/profile.css')}}">
-<div id="profile-header">
+<div class="profile-header">
     @php
     $settings = App\Models\Settings::first();
     $default = $settings->default_rank;
@@ -23,11 +23,15 @@
         <p id="edit-btn"> [Edit Profile] </p>
     </a>
     @endif
-    <div id="avatar-container">
+    <div class="avatar-container">
+        @php 
+        $status = $user->isOnline() ? 'green' : 'red';
+        @endphp
+        <div class="status" style="background: {{$status}}"> </div>
         @if($user->avatar == null)
-        <img id="avatar" src="{{asset('img/default_avatar.png')}}" />
+        <img class="avatar" src="{{asset('img/default_avatar.png')}}" />
         @else
-        <img id="avatar" src="{{base64_decode($user->avatar)}}" />
+        <img class="avatar" src="{{base64_decode($user->avatar)}}" />
         @endif
     </div>
     <div id="profile-name-container">
@@ -45,20 +49,18 @@
     </div>
     @endif
 </div>
-<div id="container">
-    <div class="row">
-        <div id="posts" class="col-sm-4">
-            <h1 class="title"> Posts </h1>
-            <p id="posts-counter" class="counter"> {{$posts}} </p>
-        </div>
-        <div id="threads" class="col-sm-4">
-            <h1 class="title"> Threads </h1>
-            <p id="threads-counter" class="counter"> {{$threads}} </p>
-        </div>
-        <div id="score" class="col-sm-4">
-            <h1 class="title"> Score </h1>
-            <p id="score-counter" class="counter"> {{$score}} </p>
-        </div>
+<div class="container">
+    <div class="posts">
+        <h1 class="title"> Posts </h1>
+        <p id="posts-counter" class="counter"> {{$posts}} </p>
+    </div>
+    <div class="threads">
+        <h1 class="title"> Threads </h1>
+        <p id="threads-counter" class="counter"> {{$threads}} </p>
+    </div>
+    <div class="score">
+        <h1 class="title"> Score </h1>
+        <p id="score-counter" class="counter"> {{$score}} </p>
     </div>
 </div>
 <meta name="color" content="{{$color}}">
@@ -66,6 +68,5 @@
 <meta name="posts" content="{{$posts}}">
 <meta name="score" content="{{$score}}">
 <meta name="user" content="{{$user->name}}">
-<script src="{{asset('js/app.js')}}" charset="utf-8"></script>
 <script src="{{asset('js/profile.js')}}"> </script>
 @stop

@@ -4,7 +4,8 @@
   overflow-x: hidden;
 }
 
-#profile-header {
+.profile-header {
+  width: 100%;
   margin-bottom: 20vh;
   display: inline-block;
   position: relative;
@@ -12,17 +13,31 @@
   transform: translateX(-50%);
 }
 
-#profile-header #send-message * {
+.profile-header #send-message * {
   color: white;
 }
 
-#profile-header #send-message .send-message-btn {
+.profile-header #send-message .send-message-btn {
   color: white;
   font-size: 1rem;
 }
 
-#profile-header #avatar {
-  margin-top: 50px;
+.profile-header .avatar-container {
+  display: inline-block;
+}
+
+.profile-header .avatar-container .status {
+  position: absolute;
+  left: 30px;
+  top: 30px;
+  background: green;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  z-index: 5;
+}
+
+.profile-header .avatar-container .avatar {
   min-height: 200px;
   min-width: 200px;
   height: 25vh;
@@ -30,11 +45,11 @@
   border-radius: 50%;
 }
 
-#profile-header #edit-btn {
+.profile-header #edit-btn {
   text-align: center;
 }
 
-#profile-header * {
+.profile-header * {
   display: block;
   position: relative;
   margin: 0;
@@ -43,39 +58,39 @@
   transform: translateX(-50%);
 }
 
-#profile-header * h1 {
+.profile-header * h1 {
   font-weight: 650;
   font-size: 7.5vh;
   text-align: center;
   color: white;
 }
 
-#profile-header input[type=file] {
+.profile-header input[type=file] {
   width: 75%;
 }
 
-#profile-header #rank-container {
+.profile-header #rank-container {
   position: relative;
   min-height: 2.5rem;
   height: 5vh;
 }
 
-#profile-header #rank-container #rank {
+.profile-header #rank-container #rank {
   font-size: 1.5em;
 }
 
-#profile-header #profile-name-container {
+.profile-header #profile-name-container {
   position: relative;
   min-height: 3rem;
   height: 5vh;
 }
 
-#profile-header #profile-name-container #profile-name {
+.profile-header #profile-name-container #profile-name {
   color: white;
   font-size: 2em;
 }
 
-#profile-header * {
+.profile-header * {
   text-align: center;
 }
 
@@ -91,20 +106,15 @@
   color: red;
 }
 
-.row div {
-  height: 40vh;
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.row div .title {
+.container div * {
   color: white;
-}
-
-.row div p {
-  font-size: 800%;
-  color: white;
-}
-
-.row div * {
+  font-size: 4rem;
   text-align: center;
 }
 
