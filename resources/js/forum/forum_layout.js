@@ -41,7 +41,7 @@ $('.conversation').on('click', e => {
                 messageIDList.push(info[2]);
                 let sentBy = info[0].localeCompare(yourName) == 0 ? "you" : "user";
                 let imageToUse = sentBy.localeCompare("you") == 0 ? yourImage : $userImage;
-                $('.messages').append(`<div class="message ` + sentBy + `"> <div class="avatar"> <img src="` + imageToUse + `" /> </div> <div class="content"> <p> ` + info[1] + ` </p> </div> </div>`);
+                $('.messages').append(`<div class="message ` + sentBy + `"> <div class="avatar-wrapper"> <div class="avatar"> </div>s <img src="` + imageToUse + `" /> </div> <div class="content"> <p> ` + info[1] + ` </p> </div> </div>`);
             });
             let json = JSON.stringify(messageIDList);
             console.log(json);

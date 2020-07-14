@@ -18119,7 +18119,7 @@ $('.conversation').on('click', function (e) {
         messageIDList.push(info[2]);
         var sentBy = info[0].localeCompare(yourName) == 0 ? "you" : "user";
         var imageToUse = sentBy.localeCompare("you") == 0 ? yourImage : $userImage;
-        $('.messages').append("<div class=\"message " + sentBy + "\"> <div class=\"avatar\"> <img src=\"" + imageToUse + "\" /> </div> <div class=\"content\"> <p> " + info[1] + " </p> </div> </div>");
+        $('.messages').append("<div class=\"message " + sentBy + "\"> <div class=\"avatar-wrapper\"> <div class=\"avatar\"> </div>s <img src=\"" + imageToUse + "\" /> </div> <div class=\"content\"> <p> " + info[1] + " </p> </div> </div>");
       });
       var json = JSON.stringify(messageIDList);
       console.log(json);

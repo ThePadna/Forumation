@@ -78,7 +78,9 @@
                 $status = $user->isOnline() ? 'green' : 'red';
                 @endphp
                 <div class="status" style="background: {{$status}}"> </div>
+                <div class="avatar-wrapper">
                 <img src="{{$avatar}}" />
+                </div>
             </div>
             <div class="content">
                 {{$c->getLatest()->contents}}

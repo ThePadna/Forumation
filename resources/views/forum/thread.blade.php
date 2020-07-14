@@ -104,7 +104,7 @@ $op = App\User::find($thread->op);
     @endphp
     <div class="row">
     @php
-    $avatar = base64_decode($user->getAvatar());
+    $avatar = $user->getAvatar();
     $name = $user->name;
     $rank = $user->getRank();
     if($p->erased) {

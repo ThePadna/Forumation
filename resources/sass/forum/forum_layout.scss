@@ -25,7 +25,7 @@
         cursor: pointer;
     }
     .unread {
-        .avatar>img {
+        .avatar-wrapper>img {
         }
     }
     .compose {
@@ -42,7 +42,7 @@
         flex-direction: row;
         justify-content: space-evenly;
         align-items: center;
-        * {
+        div {
             padding: 5px;
         }
         .status {
@@ -53,10 +53,13 @@
             height: 12px;
             border-radius: 50%;
         }
-        .avatar>img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
+        .avatar-wrapper {
+            img {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                box-shadow: 0 0 10px 2px black;
+            }
         }
         .content {
             flex: 1;

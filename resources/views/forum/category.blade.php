@@ -120,7 +120,7 @@ if(Auth::check()) {
                             <p>
                                 Latest post by &nbsp;
                                 <a href="{{$user->getURI(1)}}"> 
-                                <img class="latest-post-img" src="{{base64_decode($user->getAvatar())}}" />
+                                <img class="latest-post-img" src="{{$user->getAvatar()}}" />
                                 {{$user->name}}
                                 </a>
                                 {{$timeDisplay->format('%' . $formatAs) . $suffix}} ago 

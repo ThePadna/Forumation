@@ -10972,8 +10972,8 @@ a.text-dark:focus {
   align-items: center;
 }
 
-.message-popup .conversation *,
-.message-popup .message * {
+.message-popup .conversation div,
+.message-popup .message div {
   padding: 5px;
 }
 
@@ -10987,11 +10987,12 @@ a.text-dark:focus {
   border-radius: 50%;
 }
 
-.message-popup .conversation .avatar > img,
-.message-popup .message .avatar > img {
+.message-popup .conversation .avatar-wrapper img,
+.message-popup .message .avatar-wrapper img {
   width: 60px;
   height: 60px;
   border-radius: 50%;
+  box-shadow: 0 0 10px 2px black;
 }
 
 .message-popup .conversation .content,
