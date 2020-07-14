@@ -105,6 +105,7 @@ $op = App\User::find($thread->op);
     <div class="row">
     @php
     $avatar = $user->getAvatar();
+    $status = $user->isOnline() ? 'green' : 'red';
     $name = $user->name;
     $rank = $user->getRank();
     if($p->erased) {
@@ -122,6 +123,7 @@ $op = App\User::find($thread->op);
                 </div>
                 <div class="username-container">
                     <div class="username-wrapper">
+                        <div class="status" style="background: {{$status}}"> </div>
                         <p class="username"> {{$name}} </p>
                     </div>
                 </div>

@@ -179,6 +179,16 @@ a:hover {
   color: white;
 }
 
+.profile-box .username-container .status {
+  position: absolute;
+  left: 25px;
+  top: 8px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  z-index: 20;
+}
+
 .profile-box .rank-container {
   position: relative;
   display: inline-block;
