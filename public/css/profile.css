@@ -27,6 +27,7 @@
 }
 
 .profile-header .avatar-container .status {
+  border: 1px solid black;
   position: absolute;
   left: 30px;
   top: 30px;
@@ -38,6 +39,7 @@
 }
 
 .profile-header .avatar-container .avatar {
+  border: 1px solid black;
   min-height: 200px;
   min-width: 200px;
   height: 25vh;
@@ -107,6 +109,9 @@
 }
 
 .container {
+  background: #212529;
+  border-top: 1px solid white;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

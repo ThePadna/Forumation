@@ -25,7 +25,10 @@
         cursor: pointer;
     }
     .unread {
-        .avatar-wrapper>img {
+        order: -1;
+        .content>p {
+            font-size: .9rem;
+            color: white;
         }
     }
     .compose {
@@ -52,6 +55,7 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
+            border: 1px solid black;
         }
         .avatar-wrapper {
             img {
@@ -63,7 +67,7 @@
         }
         .content {
             flex: 1;
-            color: white;
+            color: gray;
             font-size: .8rem;
         }
     }

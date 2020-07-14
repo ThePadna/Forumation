@@ -10953,6 +10953,15 @@ a.text-dark:focus {
   cursor: pointer;
 }
 
+.message-popup .unread {
+  order: -1;
+}
+
+.message-popup .unread .content > p {
+  font-size: 0.9rem;
+  color: white;
+}
+
 .message-popup .compose {
   cursor: pointer;
   bottom: 25px;
@@ -10985,6 +10994,7 @@ a.text-dark:focus {
   width: 12px;
   height: 12px;
   border-radius: 50%;
+  border: 1px solid black;
 }
 
 .message-popup .conversation .avatar-wrapper img,
@@ -10998,7 +11008,7 @@ a.text-dark:focus {
 .message-popup .conversation .content,
 .message-popup .message .content {
   flex: 1;
-  color: white;
+  color: gray;
   font-size: 0.8rem;
 }
 

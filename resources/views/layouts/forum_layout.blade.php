@@ -58,11 +58,11 @@
         @endauth
     </div>
     @auth
-    <div id="messages" class="message-popup">
+    <div id="messages" class="message-popup" style="background: {{App\Models\Settings::first()->color}}">
         <div class="compose">
             <p class="compose-header"> <i class="far fa-envelope"></i> Compose </p>
         </div>
-        <div class="conversations"  style="background: {{App\Models\Settings::first()->color}}">
+        <div class="conversations">
         @foreach(Auth::user()->getConversations() as $c)
         @if($c->getUnread() > 0)
         <div class="conversation unread" user-1="{{$c->getUser1()}}" user-2="{{$c->getUser2()}}">
@@ -83,7 +83,7 @@
                 </div>
             </div>
             <div class="content">
-                {{$c->getLatest()->contents}}
+                <p> {{$c->getLatest()->contents}} </p>
             </div>
         </div>
         @endforeach
