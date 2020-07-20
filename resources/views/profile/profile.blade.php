@@ -1,6 +1,7 @@
 @extends('layouts/forum_layout')
 @section('content')
 <link rel="stylesheet" href="{{asset('css/profile.css')}}">
+<div class="profile-container">
 <div class="profile-header">
     @php
     $settings = App\Models\Settings::first();
@@ -16,7 +17,7 @@
     }
     @endphp
     @if($rank != null && $rank->hasPerm("ban") && Auth::user()->id != $user->id)
-    <p id="ban-btn"> <i class="fas fa-ban"></i> Ban User </p>
+    <p class="ban-btn"> <i class="fas fa-ban"></i> Ban User </p>
     @endif
     @if($rank != null && $rank->hasPerm("editotherprofile") || $rank->hasPerm("editownprofile"))
     <a href="/forum/profile/{{$user->name}}/edit">
@@ -34,20 +35,21 @@
         <img class="avatar" src="{{base64_decode($user->avatar)}}" />
         @endif
     </div>
-    <div id="profile-name-container">
-        <h1 id="profile-name"> {{$user->name}} </h1>
+    <div class="profile-name-container">
+    @if($rank != null && $rank->hasPerm("sendmessage"))
+        <i class="send-message-btn fas fa-paper-plane"></i>
+    @endif
+        <h1 class="profile-name"> {{$user->name}} </h1>
     </div>
     @if($profileRank != null)
-    <div id="rank-container">
-        <p id="rank" style="color: {{$profileRank->color}}"> {{$profileRank->name}} </p>
+    <div class="rank-container">
+        <h1 class="rank"> {{strtoupper($profileRank->name)}} </p>
     </div>
     @endif
-    @if($rank != null && $rank->hasPerm("sendmessage"))
-    <div id="send-message">
-        <i class="send-message-btn fas fa-paper-plane"></i>
-        <p class="send-message-header"> Message </p>
+    <div class="user-since">
+        <h1> User since {{Carbon\Carbon::parse($user->created_at)->format('d-m-y')}} </p>
     </div>
-    @endif
+</div>
 </div>
 <div class="container">
     <div class="posts">
