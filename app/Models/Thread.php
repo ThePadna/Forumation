@@ -32,7 +32,7 @@ class Thread extends Eloquent {
 
     public function getURI($page) {
         $category = Category::find($this->categoryId);
-        $uri = "/forum/category/" . str_replace(' ', '-', $category->name) . "/thread" . "/" .  str_replace(' ', '-', substr($this->title, 0, 20)) . "-" . $this->id . "/" . $page;
+        $uri = asset("/category/" . str_replace(' ', '-', $category->name) . "/thread" . "/" .  str_replace(' ', '-', substr($this->title, 0, 20)) . "-" . $this->id . "/" . $page);
         return $uri;
     }
 }

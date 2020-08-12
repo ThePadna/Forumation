@@ -1,5 +1,5 @@
-@import 'variables';
-@import 'libs';
+@import url('https://use.fontawesome.com/releases/v5.0.1/css/all.css');
+@import '~bootstrap/scss/bootstrap';
 @import url('https://fonts.googleapis.com/css?family=Yellowtail|Saira+Stencil+One&display=swap');
 html,
 body {
@@ -7,7 +7,6 @@ body {
     width: 100vw;
     overflow-x: hidden;
     overflow-y: hidden; 
-    background-color: white;
 }
 
 #header {
@@ -16,8 +15,7 @@ body {
     width: 100vw;
     text-align: center;
     #title {
-        background-color: white;
-        color: white;
+        color: black;
         font-size: 10vh;
         text-align: center;
         position: relative;
@@ -29,7 +27,6 @@ body {
 #footer {
     height: 25vh;
     width: 100vw;
-    background-color: white;
     .row {
         position: relative;
         top: 50%;
@@ -42,7 +39,6 @@ body {
     }
     
     .col-sm-3 {
-        color: white;
         text-align: center;
         font-family: 'Yellowtail', cursive;
         font-weight: bold;
@@ -53,10 +49,16 @@ body {
         text-decoration: none;
     }  
 }
-
+.carousel-wrapper {
+    box-shadow: 0 0 15px black;
+    background: #212529;
+    width: 100%;
+}
 #carousel {
+    left: 50%;
+    transform: translateX(-50%);
     position: relative;
-    width: 100vw;
+    width: 50vw;
     height: 50vh;
     .carousel-item img {
         max-height: 50vh;

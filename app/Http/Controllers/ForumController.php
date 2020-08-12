@@ -54,8 +54,9 @@ class ForumController extends Controller
      * 
      * @return Response
      */
-    public function showCategories() {
+    public static function showCategories() {
         $settings = Settings::first();
+        Log::warning(asset('js'));
         return view("forum/categories", ["categories" => Category::All(), "color" => $settings->color, "editormode" => $settings->editormode]);
     }
 

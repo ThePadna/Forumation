@@ -29,7 +29,7 @@ $rank = Auth::user()->getRank();
                 <h1 id="threads" class="col-1"> Threads </h1>
             </div>
                 @foreach($categories as $c)
-                <div class="category" onclick="window.location='/forum/category/{{str_replace(' ', '-', $c->name)}}/1'" style="cursor: pointer;" tabindex="1">
+                <div class="category" onclick="window.location='{{asset('/category/' . str_replace(' ', '-', $c->name) . '/1')}}'" style="cursor: pointer;" tabindex="1">
                     <div class="row">
                         <!-- Title -->
                         <div id="title" class="col-5">
@@ -87,7 +87,7 @@ $rank = Auth::user()->getRank();
                 @endphp
                 <a href="{{$recentThread->getURI(1)}}"><p class="recent-title">{{$title}}</p></a>
                 <p class="recent-poster"> <a
-                        href="forum/profile/{{$name}}"> <img class="recent-poster-avatar" src="{{base64_decode($op->avatar)}}"> {{$name}} </span></a>,
+                        href="{{asset('/profile/' . $name)}}"> <img class="recent-poster-avatar" src="{{base64_decode($op->avatar)}}"> {{$name}} </span></a>,
                     {{$timeDisplay->format('%' . $formatAs)}}{{$suffix}} ago </p>
                 @endif
             </div>

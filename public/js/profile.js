@@ -116,7 +116,7 @@ displayStats();
 
 function updateColorScheme(color) {
   $('#header, .popup-form').css('background', color);
-  $('.profile-header').css('background', 'linear-gradient(to bottom, ' + color + ', #212529)');
+  $('.gradient').css('background', 'linear-gradient(to bottom, #212529, ' + color + ')');
 }
 /**
  * Initialize forms that are used when a 'popup-form' is needed.

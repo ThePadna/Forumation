@@ -197,6 +197,5 @@ if(Auth::check()) {
 <meta name="category" content="{{$category->name}}">
 <meta name="csrf" content="{{csrf_token()}}">
 <meta name="editor-mode" content="{{$settings->editormode}}">
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 <script src="{{asset('js/category.js')}}"> </script>
 @stop

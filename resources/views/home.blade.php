@@ -2,10 +2,12 @@
 
 <head>
     <link rel="stylesheet" href="{{asset('css/home.css')}}">
+    <script src="{{asset('js/forum_layout.js')}}"> </script>
 </head>
 <div id="header">
     <h1 id="title"> Forumation </h1>
 </div>
+<div class="carousel-wrapper">
 <div id="carousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -14,19 +16,19 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="{{URL::to('/')}}/img/image1.jpg" class="d-block w-100 img-fluid" alt="...">
+            <img src="{{asset('img/untitled.png')}}" class="d-block w-100 img-fluid" alt="...">
             <div class="carousel-caption d-none d-md-block">
                 <h5 style="color: white;">Elegance</h5>
             </div>
         </div>
         <div class="carousel-item">
-            <img src="{{URL::to('/')}}/img/image2.jpg" class="d-block w-100 img-fluid" alt="...">
+            <img src="{{asset('img/untitled.png')}}" class="d-block w-100 img-fluid" alt="...">
             <div class="carousel-caption d-none d-md-block">
                 <h5>Highly Customizable</h5>
             </div>
         </div>
         <div class="carousel-item">
-            <img src="{{URL::to('/')}}/img/image3.jpg" class="d-block w-100 img-fluid" alt="...">
+            <img src="{{asset('img/untitled.png')}}" class="d-block w-100 img-fluid" alt="...">
             <div class="carousel-caption d-none d-md-block">
                 <h5>Completely Free</h5>
             </div>
@@ -40,6 +42,7 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
     </a>
+</div>
 </div>
 <div id="footer">
     <div class="row">

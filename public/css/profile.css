@@ -1,4 +1,4 @@
-@import url(https://use.fontawesome.com/releases/v5.0.1/css/all.css);body {
+body {
   background: #212529;
   overflow-y: hidden;
   overflow-x: hidden;
@@ -10,6 +10,8 @@
 }
 
 .profile-container .profile-header {
+  margin-top: 15px;
+  box-shadow: 1px 1px 5px 0px black;
   width: 500px;
   display: flex;
   flex-direction: column;
@@ -79,11 +81,17 @@
 }
 
 .container {
+  margin-top: 150px;
   background: #212529;
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.container div {
+  width: 300px;
+  box-shadow: 1px 1px 5px black;
 }
 
 .container div h1 {

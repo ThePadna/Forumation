@@ -1,15 +1,12 @@
 <html>
 
 <head>
-    <script href="js/bootstrap.js"> </script>
-    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/forum_layout.css')}}">
     <meta name="csrf-token" content="{{csrf_token()}}">
     @auth
     <meta name="avatar" content="{{Auth::user()->getAvatar()}}">
     <meta name="username" content="{{Auth::user()->name}}">
     @endauth
-    <script src="{{asset('js/app.js')}}"> </script>
     <div id="header">
         @guest
         <div class="auth">

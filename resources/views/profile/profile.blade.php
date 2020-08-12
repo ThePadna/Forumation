@@ -2,7 +2,7 @@
 @section('content')
 <link rel="stylesheet" href="{{asset('css/profile.css')}}">
 <div class="profile-container">
-<div class="profile-header">
+<div class="profile-header gradient">
     @php
     $settings = App\Models\Settings::first();
     $default = $settings->default_rank;
@@ -52,15 +52,15 @@
 </div>
 </div>
 <div class="container">
-    <div class="posts">
+    <div class="posts gradient">
         <h1 class="title"> Posts </h1>
         <p id="posts-counter" class="counter"> {{$posts}} </p>
     </div>
-    <div class="threads">
+    <div class="threads gradient">
         <h1 class="title"> Threads </h1>
         <p id="threads-counter" class="counter"> {{$threads}} </p>
     </div>
-    <div class="score">
+    <div class="score gradient">
         <h1 class="title"> Score </h1>
         <p id="score-counter" class="counter"> {{$score}} </p>
     </div>
