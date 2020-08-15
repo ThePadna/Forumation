@@ -14,7 +14,7 @@ class AddLastOnlineToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dateTime('last_online');
+            $table->dateTime('last_online')->default(Carbon\Carbon::now());
         });
     }
 

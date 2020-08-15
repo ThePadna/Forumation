@@ -21,17 +21,17 @@
         @endphp
         @if($rank != null && $rank->hasPerm("admin"))
         <div class="admin">
-        <a style="color:white; position:absolute; top:5px; left:5px;" href="/forum/admin"> <i
+        <a style="color:white; position:absolute; top:5px; left:5px;" href="{{asset('/admin')}}"> <i
                 class="admin-icon fas fa-cog"></i></a>
         </div>
         @endif
         <div class="title-container">
-            <a href="/forum">
+            <a href="{{asset('/')}}">
                 <h1 id="title"> Forumation 1 </h1>
             </a>
         <div class="auth">
             <a id="username" style="color:white;"
-                href="/forum/profile/{{Auth::user()->name}}">{{ Auth::user()->name }}</a>
+                href="{{asset('/profile/' . Auth::user()->name)}}">{{ Auth::user()->name }}</a>
             <a id="logout" href="{{ route('logout') }}"
                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 {{ __('logout') }}

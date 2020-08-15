@@ -13,7 +13,6 @@ const mix = require('laravel-mix');
 
 mix.sass('resources/sass/forum/categories.scss', 'public/css')
 .sass('resources/sass/forum/forum_layout.scss', 'public/css')
-.sass('resources/sass/home.scss', 'public/css')
 .sass('resources/sass/forum/category.scss', 'public/css')
 .sass('resources/sass/forum/post.scss', 'public/css')
 .sass('resources/sass/forum/thread.scss', 'public/css')

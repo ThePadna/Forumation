@@ -10,7 +10,7 @@
       if($x > $lastPage || $x <= 0) continue;
       $displayNumbers[$x] = $x;
   }
-  $uri = "/forum/admin/datamanagement/users/";
+  $uri = asset('/admin/datamanagement/users/');
 @endphp
 @if($page > 0)
 <div class="page-selector">

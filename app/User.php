@@ -89,7 +89,7 @@ class User extends Authenticatable
      * Return URI of user profile.
      */
     public function getURI() {
-        return "/forum/profile/" . $this->name;
+        return asset('/profile/' . $this->name);
     }
 
     /**

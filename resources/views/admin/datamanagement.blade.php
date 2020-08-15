@@ -6,21 +6,21 @@
 </head>
 <div id="container">
     <div class="row menu">
-        <a href="/forum/admin/datamanagement/users/1" class="col-sm-4 menu-item">
+        <a href="{{asset('/admin/datamanagement/users/1')}}" class="col-sm-4 menu-item">
             <i class="fas fa-users"></i>
             <p> Users </p>
         </a>
-        <a href="/forum/admin/datamanagement/threads/1" class="col-sm-4 menu-item">
+        <a href="{{asset('/admin/datamanagement/threads/1')}}" class="col-sm-4 menu-item">
             <i class="fas fa-comments"></i>
             <p> Threads </p>
         </a>
-        <a href="/forum/admin/datamanagement/posts/1" class="col-sm-4 menu-item">
+        <a href="{{asset('/admin/datamanagement/posts/1')}}" class="col-sm-4 menu-item">
             <i class="far fa-address-card"></i>
             <p> Posts </p>
         </a>
     </div>
     <div class="row menu">
-        <a href="/forum/admin/datamanagement/ranks" class="col-sm-4 menu-item">
+        <a href="{{asset('/admin/datamanagement/ranks')}}" class="col-sm-4 menu-item">
                 <i class="fas fa-pencil-alt"></i>
                 <p> Ranks </p>
         </a>

@@ -2,7 +2,7 @@
 @section('content')
 
 <head>
-    <link rel="stylesheet" href="{{asset('css/ranks.css')}}">
+<link rel="stylesheet" href="{{asset('css/ranks.css')}}">
 </head>
 <script>
 function fillPermissions(perms, id) {
@@ -14,7 +14,7 @@ function fillPermissions(perms, id) {
     }
 }
 </script>
-<table>
+<table class="ranks-display">
     <tr>
         <th>Rank</th>
         <th>Color</th>

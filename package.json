@@ -11,19 +11,20 @@
     },
     "devDependencies": {
         "axios": "^0.19.2",
-        "bootstrap": "^4.0.0",
+        "bootstrap": "^4.5.2",
         "cross-env": "^5.1",
         "jquery": "^3.5.1",
         "laravel-mix": "^4.0.7",
-        "lodash": "^4.17.13",
+        "lodash": "^4.17.20",
         "popper.js": "^1.12",
         "resolve-url-loader": "^2.3.1",
-        "sass": "^1.26.5",
+        "sass": "^1.26.10",
         "sass-loader": "^7.1.0",
         "vue": "^2.6.11",
         "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
-        "@simonwep/pickr": "^1.6.0"
+        "@simonwep/pickr": "^1.7.2",
+        "caniuse-lite": "^1.0.30001113"
     }
 }

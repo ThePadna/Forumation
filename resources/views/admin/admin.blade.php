@@ -6,7 +6,7 @@
 </head>
 <div id="container">
     <div id="menu" class="row">
-        <a style="color: black; text-decoration: none;" href="/forum/admin/datamanagement" class="col-sm-4">
+        <a style="color: black; text-decoration: none;" href="{{asset('/admin/datamanagement')}}" class="col-sm-4">
             <div id="data-mgmt">
                 <i class="fas fa-database"></i>
                 <p> Data Management </p>
