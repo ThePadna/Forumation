@@ -18,7 +18,7 @@
                     @php
                     $display = "";
                     $id = -1;
-                    $rank = App\Models\Rank::find($user->rank);
+                    $rank = $user->getRank();
                     if($rank != null) {
                     $display = $rank->name;
                     $id = $rank->id;

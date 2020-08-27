@@ -19,8 +19,8 @@
     @if($rank != null && $rank->hasPerm("ban") && Auth::user()->id != $user->id)
     <p class="ban-btn"> <i class="fas fa-ban"></i> Ban User </p>
     @endif
-    @if($rank != null && $rank->hasPerm("editotherprofile") || $rank->hasPerm("editownprofile"))
-    <a href="/forum/profile/{{$user->name}}/edit">
+    @if($rank != null && $rank->hasPerm("editotherprofile") || $rank != null && $rank->hasPerm("editownprofile"))
+    <a href="{{asset('/profile/' . $user->name . '/edit')}}">
         <p id="edit-btn"> [Edit Profile] </p>
     </a>
     @endif

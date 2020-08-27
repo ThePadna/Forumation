@@ -38,9 +38,9 @@ $op = App\User::find($thread->op);
         @endphp
         <div class="thread-detail-wrapper">
             <p class="thread-detail"> Thread in 
-                <a href="/forum/category/{{$category->name}}/1"> {{$category->name}}
+                <a href="{{asset('/category/' . $category->name . '/1')}}"> {{$category->name}}
                 </a> by
-                <a href="/forum/profile/{{$op->name}}"> {{$op->name}} </a> 
+                <a href="{{asset('/profile/' . $op->name)}}"> {{$op->name}} </a> 
             </p>
          </div>
     @if($thread->locked)
