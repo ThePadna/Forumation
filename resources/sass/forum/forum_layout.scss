@@ -39,6 +39,7 @@ body {
         align-self: center;
         * {
             color: white;
+            display: inline-block;
         }
     }
     .conversation, .message {
@@ -98,12 +99,28 @@ body {
         bottom: 0;
         color: white;
     }
-    .return-btn {
+    .return-btn, .compose-item {
         cursor: pointer;
         font-size: 3rem;
         color: white;
         justify-content: center;
         text-align: center;
+    }
+    .user-input {
+        height: 10%;
+        input {
+            font-size: 1rem;
+            width: 90%;
+        }
+    }
+    .message-input {
+        height: 70%;
+        margin-bottom: 40px;
+        textarea {
+            width: 90%;
+            height: 100%;
+            font-size: 1rem;
+        }
     }
 }
 

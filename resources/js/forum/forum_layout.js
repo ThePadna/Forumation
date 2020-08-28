@@ -15,6 +15,19 @@ if(unread == 0) {
 } else $('.notifications').text($('meta[name="unread"]').attr('content'));
 
 /**
+ * Listen for compose button click, replace conversation list with composer prompt
+ */
+$('.compose').on('click', e => {
+    $('.message-popup')
+    .append('<div class="return-btn"> <i class="fas fa-long-arrow-alt-left"></i> </div>')
+    .append('<div class="compose-item user-input"> <input type="text" placeholder="Recipient Username"> </input> </div>')
+    .append('<div class="compose-item message-input"> <textarea placeholder="What is your message?"></textarea> </div>');
+    $('.compose-text').text("Send");
+    $('.conversations').hide();
+    registerReturnListener();
+});
+
+/**
  * Listen for conversation click, replace conversation list with new messages list
  */
 $('.conversation').on('click', e => {
@@ -28,7 +41,8 @@ $('.conversation').on('click', e => {
         headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")},
         data: {user1: $u1, user2: $u2},
         success: (res) => {
-            $('.message-popup').append('<div class="return-btn"> <i class="fas fa-long-arrow-alt-left"></i> </div>')
+            $('.message-popup')
+            .append('<div class="return-btn"> <i class="fas fa-long-arrow-alt-left"></i> </div>')
             .append('<div class="messages"> </div>');
             $('.conversations').hide();
             
@@ -74,7 +88,9 @@ function registerReturnListener() {
     $('.return-btn').on('click', () => {
         $('.messages').remove();
         $('.return-btn').remove();
+        $('.compose-item').remove();
         $('.conversations').show();
+        $('.compose-text').text("Compose");
     });
 }
 

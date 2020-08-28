@@ -57,7 +57,7 @@
     @auth
     <div id="messages" class="message-popup" style="background: {{App\Models\Settings::first()->color}}">
         <div class="compose">
-            <p class="compose-header"> <i class="far fa-envelope"></i> Compose </p>
+            <i class="far fa-envelope"></i> <p class="compose-text"> Compose </p>
         </div>
         <div class="conversations">
         @foreach(Auth::user()->getConversations() as $c)
