@@ -20,15 +20,28 @@ if(unread == 0) {
 $('.compose').on('click', e => {
     console.log($('.compose-text').text());
     if($('.compose-text').text().trim().localeCompare("Compose") == 0) {
-    $('.message-popup')
-    .append('<div class="return-btn"> <i class="fas fa-long-arrow-alt-left"></i> </div>')
-    .append('<div class="compose-item user-input"> <input type="text" placeholder="Recipient Username"> </input> </div>')
-    .append('<div class="compose-item message-input"> <textarea placeholder="What is your message?"></textarea> </div>');
-    $('.compose-text').text("Send");
-    $('.conversations').hide();
-    registerReturnListener();
+        $('.message-popup')
+        .append('<div class="return-btn"> <i class="fas fa-long-arrow-alt-left"></i> </div>')
+        .append('<div class="compose-item user-input"> <input type="text" placeholder="Recipient Username"> </input> </div>')
+        .append('<div class="compose-item message-input"> <textarea placeholder="What is your message?"></textarea> </div>');
+        $('.compose-text').text("Send");
+        $('.conversations').hide();
+        registerReturnListener();
     } else {
-       //send
+        $.ajax({
+            type: "POST",
+            url: "/sendmessage",
+            headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")},
+            data: {user: $u1, message: $u2},
+            success: (res) => {
+            },
+            error: (xhr, ajaxOptions, thrownError) => {
+                console.log(
+                    "Error occured during AJAX request, error code: " +
+                        xhr.status
+                );
+            }
+        });
     }
 });
 

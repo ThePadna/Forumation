@@ -19,6 +19,7 @@ class ForumController extends Controller
 
     public function __construct() {
         $this->middleware('update.last.login');
+        $this->settings = Settings::first();
     }
 
     /**
@@ -372,6 +373,11 @@ class ForumController extends Controller
      * @param Request $request
      */
     public function sendMessage(Request $request) {
-        
+        if(!Auth::check()) return false;
+        $userId = $request->user;
+        $message = $request->message;
+        $user = User::where('name', $userId)->first();
+        if($user == null) return false;
+       // $this->settings->
     }
 }

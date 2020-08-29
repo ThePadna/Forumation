@@ -61,6 +61,16 @@
                 </div>
             </div>
         </div>
+        <div class="col-sm-4">
+            <div class="messaging-settings-wrapper">
+                <h1 class="settings-title"> Messages </h1>
+                <div class="setting">
+                    <h1 id="message-length" class="option"> Message length </h1>
+                    <input class="value" id="profile-name-input" value="{{$settings->message_length}}"
+                        id="message-length-input" />
+                </div>
+            </div>
+        </div>
     </div>
     <div class="footer">
         <div id="result-placement"> </div>
