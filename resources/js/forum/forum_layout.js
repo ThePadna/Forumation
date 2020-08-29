@@ -18,6 +18,8 @@ if(unread == 0) {
  * Listen for compose button click, replace conversation list with composer prompt
  */
 $('.compose').on('click', e => {
+    console.log($('.compose-text').text());
+    if($('.compose-text').text().trim().localeCompare("Compose") == 0) {
     $('.message-popup')
     .append('<div class="return-btn"> <i class="fas fa-long-arrow-alt-left"></i> </div>')
     .append('<div class="compose-item user-input"> <input type="text" placeholder="Recipient Username"> </input> </div>')
@@ -25,6 +27,9 @@ $('.compose').on('click', e => {
     $('.compose-text').text("Send");
     $('.conversations').hide();
     registerReturnListener();
+    } else {
+       //send
+    }
 });
 
 /**
