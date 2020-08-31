@@ -1,11 +1,15 @@
 <html>
-
+@php
+$settings = App\Models\Settings::first();
+@endphp
 <head>
     <link rel="stylesheet" href="{{asset('css/forum_layout.css')}}">
     <meta name="csrf-token" content="{{csrf_token()}}">
     @auth
     <meta name="avatar" content="{{Auth::user()->getAvatar()}}">
     <meta name="username" content="{{Auth::user()->name}}">
+    <meta name="message-length" content="{{$settings->message_length}}">
+    <meta name="predict-username" content="{{$settings->predict_user_field}}">
     @endauth
     <div id="header">
         @guest

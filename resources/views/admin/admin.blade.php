@@ -22,9 +22,8 @@
                 <label class="toggle">
                     <input id="toggle" type="checkbox" />
                     <span class="slider"></span>
+                </label>
             </div>
-            </label>
-            </label>
             <p> Editor Mode </p>
             <p id="editor-state" class="state"> </p>
         </div>
@@ -35,17 +34,17 @@
             <div class="thread-settings-wrapper">
                 <h1 class="settings-title"> Thread </h1>
                 <div class="setting">
-                    <h1 id="thread-title-length" class="option"> Thread Title Length </h1>
+                    <div class="option"> <h1 id="thread-title-length" class="option"> Thread Title Length </h1> </div>
                     <input class="value" id="thread-title-input" value="{{$settings->thread_title_length}}"
                         id="thread-title-input" />
                 </div>
                 <div class="setting">
-                    <h1 id="thread-op-length" class="option"> Thread OP Post Length </h1>
+                    <div class="option"> <h1 id="thread-op-length" class="option"> Thread OP Post Length </h1> </div>
                     <input class="value" id="thread-op-input" value="{{$settings->thread_op_length}}"
                         id="thread-op-post-input" />
                 </div>
                 <div class="setting">
-                    <h1 id="thread-post-length" class="option"> Thread Post Length </h1>
+                    <div class="option"> <h1 id="thread-post-length" class="option"> Thread Post Length </h1> </div>
                     <input class="value" id="thread-post-input" value="{{$settings->thread_post_length}}"
                         id="thread-post-input" />
                 </div>
@@ -55,9 +54,9 @@
             <div class="profile-settings-wrapper">
                 <h1 class="settings-title"> Profile </h1>
                 <div class="setting">
-                    <h1 id="profile-name-length" class="option"> Username Length </h1>
-                    <input class="value" id="profile-name-input" value="{{$settings->profile_name_length}}"
-                        id="thread-title-input" />
+                    <div class="option"> <h1 id="profile-name-length" class="option"> Username Length </h1> </div>
+                    <div class="value"> <input class="value" id="profile-name-input" value="{{$settings->profile_name_length}}"
+                        id="thread-title-input" /> </div>
                 </div>
             </div>
         </div>
@@ -65,9 +64,18 @@
             <div class="messaging-settings-wrapper">
                 <h1 class="settings-title"> Messages </h1>
                 <div class="setting">
-                    <h1 id="message-length" class="option"> Message length </h1>
-                    <input class="value" id="profile-name-input" value="{{$settings->message_length}}"
-                        id="message-length-input" />
+                    <div class="option"> <h1 id="message-length" class="option"> Message Length </h1> </div>
+                    <div class="value"> <input class="value" id="message-length-input" value="{{$settings->message_length}}"
+                        id="message-length-input" /> </div>
+                </div>
+                <div class="setting">
+                    <div class="option" style="margin-top: -70px;"> <h1 id="predict-user" class="option"> Predict Username </h1></div>
+                    <div id="sliderDiv" class="value" style="box-shadow: 0 0 0 0 !important;">
+                        <label class="toggle">
+                        <input id="toggle" type="checkbox" />
+                        <span class="slider"></span>
+                    </label>
+                    </div>
                 </div>
             </div>
         </div>

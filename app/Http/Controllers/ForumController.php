@@ -378,6 +378,11 @@ class ForumController extends Controller
         $message = $request->message;
         $user = User::where('name', $userId)->first();
         if($user == null) return false;
-       // $this->settings->
+        if(strlen($message) > $this->settings->message_length) return false;
+        $message = new Message();
+        $message->sender = Auth::user()->id;
+        $message->recipient = $user->id;
+        $message->contents = $message;
+        $message->save();
     }
 }

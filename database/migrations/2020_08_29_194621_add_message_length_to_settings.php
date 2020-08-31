@@ -15,6 +15,7 @@ class AddMessageLengthToSettings extends Migration
     {
         Schema::table('settings', function (Blueprint $table) {
             $table->integer('message_length')->default(2000);
+            $table->boolean('predict_user_field')->default(1);
         });
     }
 
@@ -27,6 +28,7 @@ class AddMessageLengthToSettings extends Migration
     {
         Schema::table('settings', function (Blueprint $table) {
             $table->dropColumn('message_length');
+            $table->dropColumn('predict_user_field');
         });
     }
 }

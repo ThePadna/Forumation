@@ -58,11 +58,14 @@ hr {
 }
 .option {
   color: white;
+  h1 {
+    font-size: 1.5rem;
+  }
 }
 .option, .value {
   width: 250px;
+  height: 50px !important;
   display: inline-block;
-  font-size: 1.5em;
 }
 .submit-settings {
   position: relative;
@@ -84,8 +87,6 @@ hr {
   display: inline-block;
   width: 20vh;
   height: 5vh;
-  margin-top: 2.5vh;
-  margin-bottom: 2.5vh;
 }
 .slider {
   position: absolute;
@@ -93,7 +94,7 @@ hr {
   top: 0;
   left: 0;
   right: 0;
-   bottom: 0;
+  bottom: 0;
   background-color: #bc2612;
   border: 1px solid #aaa;
   border-radius: 5px;

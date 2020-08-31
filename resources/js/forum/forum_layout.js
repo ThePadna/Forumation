@@ -4,6 +4,9 @@ try {
 
     require('bootstrap');
 } catch (e) {}
+
+const MESSAGE_LENGTH = $('meta[name="message-length"]').attr('content');
+const PREDICT_USERNAME = $('meta[name="predict-username"]').attr('content');
 /**
  * Hide messaging popup contents and set unread message notification value.
  */
@@ -28,11 +31,21 @@ $('.compose').on('click', e => {
         $('.conversations').hide();
         registerReturnListener();
     } else {
+        let $message = $('.message-input>textarea').text();
+        let $user = $('.user-input>input').innerHTML;
+
+        console.log($message + $user)
+
+        if($message.length > MESSAGE_LENGTH) {
+            //ERROR
+            return;
+        }
+
         $.ajax({
             type: "POST",
             url: "/sendmessage",
             headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")},
-            data: {user: $u1, message: $u2},
+            data: {user: $user, message: $message},
             success: (res) => {
             },
             error: (xhr, ajaxOptions, thrownError) => {
