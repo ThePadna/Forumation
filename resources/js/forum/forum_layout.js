@@ -31,10 +31,16 @@ $('.compose').on('click', e => {
         $('.conversations').hide();
         registerReturnListener();
     } else {
-        let $message = $('.message-input>textarea').text();
-        let $user = $('.user-input>input').innerHTML;
+        let $message = $('.message-input>textarea').val();
+        let $user = $('.user-input>input').val();
 
-        console.log($message + $user)
+        console.log(userExists($user));
+        if(!userExists($user)) {
+            console.log("!exist")
+            return;
+        } else {
+            console.log("exist")
+        }
 
         if($message.length > MESSAGE_LENGTH) {
             //ERROR
@@ -47,6 +53,7 @@ $('.compose').on('click', e => {
             headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")},
             data: {user: $user, message: $message},
             success: (res) => {
+
             },
             error: (xhr, ajaxOptions, thrownError) => {
                 console.log(
@@ -57,6 +64,30 @@ $('.compose').on('click', e => {
         });
     }
 });
+
+/**
+ * Check if user by name exists via POST response
+ */
+function userExists(user) {
+    let result = false;
+    $.ajax({
+        type: "POST",
+        url: "/userexists",
+        headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")},
+        data: {username: user},
+        success: (res) => {
+            console.log(res + " == " + "true")
+            if(res.localeCompare("true") == 0) result = true;
+        },
+        error: (xhr, ajaxOptions, thrownError) => {
+            console.log(
+                "Error occured during AJAX request, error code: " +
+                    xhr.status
+            );
+        }
+    });
+    return result;
+}
 
 /**
  * Listen for conversation click, replace conversation list with new messages list

@@ -20,6 +20,7 @@ Route::post('/queryposts', 'AdminController@queryPosts');
 Route::post('/banuser', 'ForumController@banUser');
 Route::post('/markmessagesread', 'ForumController@markMessagesAsRead');
 Route::post('/sendmessage', 'ForumController@sendMessage');
+Route::post('/userexists', 'ForumController@userExists');
 Route::get('/admin', 'AdminController@showCtrlPanel');
 Route::get('/admin/datamanagement/ranks', 'AdminController@showRanks');
 Route::post('/profile/{user}/edit/updateprofile', 'UserController@updateProfile');

@@ -368,7 +368,7 @@ class ForumController extends Controller
     }
 
     /**
-     * Send a message
+     * Send a message.
      * 
      * @param Request $request
      */
@@ -384,5 +384,16 @@ class ForumController extends Controller
         $message->recipient = $user->id;
         $message->contents = $message;
         $message->save();
+    }
+
+    /**
+     * Check if user exists in DB.
+     * 
+     * @param Request $request
+     * 
+     */
+    public function userExists(Request $request) {
+        if(!User::where('name', $request->username)->exists()) return "false";
+        return "true";
     }
 }
