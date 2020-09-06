@@ -373,17 +373,19 @@ class ForumController extends Controller
      * @param Request $request
      */
     public function sendMessage(Request $request) {
-        if(!Auth::check()) return false;
-        $userId = $request->user;
-        $message = $request->message;
-        $user = User::where('name', $userId)->first();
-        if($user == null) return false;
-        if(strlen($message) > $this->settings->message_length) return false;
-        $message = new Message();
-        $message->sender = Auth::user()->id;
-        $message->recipient = $user->id;
-        $message->contents = $message;
-        $message->save();
+        if(Auth::check()) {
+            $userId = $request->user;
+            $contents = $request->message;
+            $user = User::where('name', $userId)->first();
+            if($user != null && strlen($message) <= $this->settings->message_length) {
+                $message = new Message();
+                $message->sender = Auth::user()->id;
+                $message->recipient = $user->id;
+                $message->contents = $contents;
+                $message->id = 44;
+                $message->save();
+            }
+        }
     }
 
     /**

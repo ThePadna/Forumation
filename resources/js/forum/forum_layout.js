@@ -53,7 +53,7 @@ $('.compose').on('click', e => {
             headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")},
             data: {user: $user, message: $message},
             success: (res) => {
-
+                console.log(res);
             },
             error: (xhr, ajaxOptions, thrownError) => {
                 console.log(
@@ -69,15 +69,16 @@ $('.compose').on('click', e => {
  * Check if user by name exists via POST response
  */
 function userExists(user) {
-    let result = false;
+    let result = true;
     $.ajax({
         type: "POST",
         url: "/userexists",
         headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")},
         data: {username: user},
         success: (res) => {
-            console.log(res + " == " + "true")
-            if(res.localeCompare("true") == 0) result = true;
+            if(res.localeCompare("true") == 0) {
+                result = true;
+            }
         },
         error: (xhr, ajaxOptions, thrownError) => {
             console.log(
