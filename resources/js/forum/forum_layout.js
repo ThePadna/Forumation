@@ -7,6 +7,7 @@ try {
 
 const MESSAGE_LENGTH = $('meta[name="message-length"]').attr('content');
 const PREDICT_USERNAME = $('meta[name="predict-username"]').attr('content');
+
 /**
  * Hide messaging popup contents and set unread message notification value.
  */
@@ -25,6 +26,7 @@ $('.compose').on('click', e => {
     if($('.compose-text').text().trim().localeCompare("Compose") == 0) {
         $('.message-popup')
         .append('<div class="return-btn"> <i class="fas fa-long-arrow-alt-left"></i> </div>')
+        .append('<div class="error-msg"> </div>')
         .append('<div class="compose-item user-input"> <input type="text" placeholder="Recipient Username"> </input> </div>')
         .append('<div class="compose-item message-input"> <textarea placeholder="What is your message?"></textarea> </div>');
         $('.compose-text').text("Send");
@@ -34,50 +36,59 @@ $('.compose').on('click', e => {
         let $message = $('.message-input>textarea').val();
         let $user = $('.user-input>input').val();
 
-        console.log(userExists($user));
-        if(!userExists($user)) {
-            console.log("!exist")
-            return;
-        } else {
-            console.log("exist")
-        }
-
-        if($message.length > MESSAGE_LENGTH) {
-            //ERROR
-            return;
-        }
-
-        $.ajax({
-            type: "POST",
-            url: "/sendmessage",
-            headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")},
-            data: {user: $user, message: $message},
-            success: (res) => {
-                console.log(res);
-            },
-            error: (xhr, ajaxOptions, thrownError) => {
-                console.log(
-                    "Error occured during AJAX request, error code: " +
-                        xhr.status
-                );
-            }
-        });
+        $('.message-length-error').remove();
+        $('.user-not-found').remove();
+        
+        userExists($user, $message, sendMessage);
     }
 });
 
 /**
- * Check if user by name exists via POST response
+ * Send a message via AJAX.
+ * 
+ * @param string user
+ * @param string message
  */
-function userExists(user) {
-    let result = true;
+function sendMessage(user, message) {
+    if(message.length > MESSAGE_LENGTH) {
+        $('.error-msg').append('<p class="message-length-error"> Message must be below ' + MESSAGE_LENGTH + ' characters!' + ' </p>');
+        return;
+    }
+    $.ajax({
+        type: "POST",
+        url: "/sendmessage",
+        headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")},
+        data: {user: user, message: message},
+        success: (res) => {
+            console.log(res);
+        },
+        error: (xhr, ajaxOptions, thrownError) => {
+            console.log(
+                "Error occured during AJAX request, error code: " +
+                    xhr.status
+            );
+        }
+    });
+}
+
+/**
+ * Check if user by name exists via POST response
+ * 
+ * @param string user
+ * @param function onExists
+ */
+function userExists(user, message, onExists) {
     $.ajax({
         type: "POST",
         url: "/userexists",
         headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")},
         data: {username: user},
         success: (res) => {
+            console.log(res);
             if(res.localeCompare("true") == 0) {
-                result = true;
+                onExists(user, message);
+            } else {
+                $('.error-msg').append('<p class="user-not-found"> User not found! </p>');
             }
         },
         error: (xhr, ajaxOptions, thrownError) => {
@@ -87,7 +98,6 @@ function userExists(user) {
             );
         }
     });
-    return result;
 }
 
 /**

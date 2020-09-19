@@ -60,11 +60,14 @@ class Conversation {
     }
 
     public static function addMessageToReleventConversation($m, $conversations) {
+        Log::info("Adding message: {" . $m->sender . " : " . $m->recipient . "}");
         foreach($conversations as $c) {
-            if($m->sender === $c->getUser1() || $m->sender === $c->getUser2()
-             && $m->recipient === $c->getUser1() || $m->recipient === $c->getUser2()) {
-                $c->push($m);
-                return true;
+            if($m->sender == $c->getUser2() || $m->recipient == $c->getUser2()) {
+                if($m->recipient == $c->getUser1() || $m->sender == $c->getUser1()) {
+                    Log::info("Adding message: {" . $m->sender . " : " . $m->recipient . "}" . "TO" . "conversation " . "{" . $c->getUser1() . " : " . $c->getUser2() . "}");
+                    $c->push($m);
+                    return true;
+                }
             }
         }
         return false;

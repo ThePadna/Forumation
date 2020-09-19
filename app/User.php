@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use App\Models\Conversation;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Log;
 class User extends Authenticatable
 {
     use Notifiable;
