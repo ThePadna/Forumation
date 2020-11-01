@@ -99,36 +99,42 @@ function userExists(user, message, onExists) {
         }
     });
 }
-
 /**
  * Listen for conversation click, replace conversation list with new messages list
  */
-$('.conversation').on('click', e => {
-    let $u1 = $(e.target.parentElement).attr('user-1'), $u2 = $(e.target.parentElement).attr('user-2');
-    let $userImage = $(e.target.parentElement).find('img').attr('src');
+$(document).on('click', '.conversation', (e) => {
+    let $user1 = $(e.currentTarget).attr('user-1'), $user2 = $(e.currentTarget).attr('user-2');
+    for(let i = 0; i < 3; i++) {
+        if(!$user1) {
+            $user1 = $user1.parentElement;
+            $user2 = $user2.parentElement;
+        } else break;
+    }
+    let $userImage = $(e.currentTarget).find('img').attr('src');
     let yourImage = $('meta[name="avatar"]').attr('content');
     let yourName = $('meta[name="username"]').attr('content');
+    console.log($user1 + " " + $user2);
+    console.log(e.currentTarget);
     $.ajax({
         type: "POST",
         url: "/queryconversation",
         headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")},
-        data: {user1: $u1, user2: $u2},
+        data: {user1: $user1, user2: $user2},
         success: (res) => {
             $('.message-popup')
             .append('<div class="return-btn"> <i class="fas fa-long-arrow-alt-left"></i> </div>')
             .append('<div class="messages"> </div>');
             $('.conversations').hide();
-            
             registerReturnListener();
             let messages = res.split(",");
             let messageIDList = Array();
-            console.log(messages)
+            console.log("res" + res)
             messages.forEach((e) => {
                 let info = e.split(":");
                 messageIDList.push(info[2]);
                 let sentBy = info[0].localeCompare(yourName) == 0 ? "you" : "user";
                 let imageToUse = sentBy.localeCompare("you") == 0 ? yourImage : $userImage;
-                $('.messages').append(`<div class="message ` + sentBy + `"> <div class="avatar-wrapper"> <div class="avatar"> </div>s <img src="` + imageToUse + `" /> </div> <div class="content"> <p> ` + info[1] + ` </p> </div> </div>`);
+                $('.messages').append(`<div class="message ` + sentBy + `"> <div class="avatar-wrapper"> <div class="avatar"> </div> <img src="` + imageToUse + `" /> </div> <div class="content"> <p> ` + info[1] + ` </p> </div> </div>`);
             });
             let json = JSON.stringify(messageIDList);
             console.log(json);

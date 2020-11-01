@@ -11,7 +11,7 @@ $settings = App\Models\Settings::first();
     <meta name="message-length" content="{{$settings->message_length}}">
     <meta name="predict-username" content="{{$settings->predict_user_field}}">
     @endauth
-    <div id="header">
+    <div id="header" class="header">
         @guest
         <div class="auth">
             <a href="{{ route('login') }}">{{ __('Login') }}</a>@if (Route::has('register')) | <a
