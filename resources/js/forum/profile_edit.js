@@ -1,5 +1,5 @@
 let $usernameInp = $('#usernameInput');
-let $picInp = $('#profilepic');
+let $picInp = $('#avatar-input');
 updateColorScheme($('meta[name="color"]').attr('content'));
 $usernameInp = $('#username-input');
 if($usernameInp != null) {
@@ -25,28 +25,28 @@ $('form').submit((e) => {
     let $rank = $('.selected-rank').attr('rankId');
     console.log("name;" + $name);
     if($name != null) formData.append("username", $name);
-    let $src = $picInp.attr('src');
+    let $src = $('#avatar').attr('src');
     if($src != null) formData.append("pic", $src);
     if($rank != -1) formData.append("rank", $rank);
     $.ajax({
         type: "POST",
-        url: '/forum/profile/' + $('meta[name="userId"]').attr('content') + '/edit/updateprofile',
+        url: '/profile/' + $('meta[name="userId"]').attr('content') + '/edit/updateprofile',
         headers: {'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')},
         data: formData,
         processData: false,
         contentType: false,
         success: function(res) {
-          window.location = "/forum/profile/" + res;
+          window.location = "/profile/" + res;
         },
         error: function(xhr, ajaxOptions, thrownError) {
           console.log("Error occured during AJAX request, error code: " + xhr.status);
         },
       });
 });
-$('#pic').change((e) => {
+$('#avatar-input').change((e) => {
   let reader = new FileReader();
   reader.onload = function(e) {
-      $('#profilepic').attr('src', e.target.result);
+      $('#avatar').attr('src', e.target.result);
   }
   reader.readAsDataURL(e.target.files[0]);
 });

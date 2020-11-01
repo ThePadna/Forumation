@@ -382,7 +382,6 @@ class ForumController extends Controller
                 $message->sender = Auth::user()->id;
                 $message->recipient = $user->id;
                 $message->contents = $contents;
-                $message->id = 44;
                 $message->save();
             }
         }

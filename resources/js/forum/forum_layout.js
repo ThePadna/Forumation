@@ -101,6 +101,8 @@ function userExists(user, message, onExists) {
 }
 /**
  * Listen for conversation click, replace conversation list with new messages list
+ * jQuery onclick captures random elements inside .conversation ?
+ * Using regular js dom for now
  */
 $(document).on('click', '.conversation', (e) => {
     let $user1 = $(e.currentTarget).attr('user-1'), $user2 = $(e.currentTarget).attr('user-2');
