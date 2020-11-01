@@ -73,7 +73,7 @@ $settings = App\Models\Settings::first();
             <div class="avatar">
                 @php
                 if($c->getUnread() > 0) $unread++;
-                $sender = $c->getLatest()->getSender();
+                $sender = $c->getLatest()->getRecipient();
                 $user = App\User::find($sender);
                 $avatar = $user->getAvatar();
                 $status = $user->isOnline() ? 'green' : 'red';

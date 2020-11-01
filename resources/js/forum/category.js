@@ -15,7 +15,7 @@ let delThreadFormHTML = `<div id="delThreadForm" class="popup-form">
 let $prevClickedDelThreadName, $prevClickedDelThreadId;
 updateColorScheme($('meta[name="color"]').attr('content'));
 $('#post-thread-input').on('click', e => {
-    window.location = "/forum/category/" + $('meta[name="category"]').attr('content') + "/post";
+    window.location = "/category/" + $('meta[name="category"]').attr('content') + "/post";
 });
 /**
  * Initialize forms that are used when a 'popup-form' is needed.

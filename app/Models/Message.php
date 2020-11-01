@@ -17,6 +17,10 @@ class Message extends Eloquent {
         return $this->contents;
     }
 
+    public function getRecipient() {
+        return $this->recipient;
+    }
+
     public function recipientRead() {
         return $this->read;
     }
