@@ -5,8 +5,9 @@ try {
     require('bootstrap');
 } catch (e) {}
 
-const MESSAGE_LENGTH = $('meta[name="message-length"]').attr('content');
-const PREDICT_USERNAME = $('meta[name="predict-username"]').attr('content');
+const $_MESSAGE_LENGTH = $('meta[name="message-length"]').attr('content');
+const $_PREDICT_USERNAME = $('meta[name="predict-username"]').attr('content');
+const $_USER = $('meta[name="username"]').attr('content');
 
 /**
  * Hide messaging popup contents and set unread message notification value.
@@ -50,8 +51,12 @@ $('.compose').on('click', e => {
  * @param string message
  */
 function sendMessage(user, message) {
-    if(message.length > MESSAGE_LENGTH) {
-        $('.error-msg').append('<p class="message-length-error"> Message must be below ' + MESSAGE_LENGTH + ' characters!' + ' </p>');
+    if(message.length > $_MESSAGE_LENGTH) {
+        $('.error-msg').append('<p class="message-length-error"> Message must be below ' + $_MESSAGE_LENGTH + ' characters!' + ' </p>');
+        return;
+    }
+    if(user.toUpperCase() == $_USER.toUpperCase()) {
+        $('.error-msg').append('<p class="message-length-error" style="color: crimson; text-align: center;"> You cannot message yourself o_o </p>');
         return;
     }
     $.ajax({

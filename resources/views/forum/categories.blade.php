@@ -21,7 +21,7 @@ $rank = Auth::user()->getRank();
 <body>
 <div id="wrapper">
     <div id="categories">
-        @if(sizeof($categories) < 1) <h1 style="text-align: center;"> No Categories found. </h1>
+        @if(sizeof($categories) < 1) <h1 style="text-align: center; color: white; opacity: 0.6;"> No Categories found. </h1>
             @else
             <div id="table-header" class="row">
                 <h1 class="col-5"> Category </h1>

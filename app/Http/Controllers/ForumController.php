@@ -375,6 +375,7 @@ class ForumController extends Controller
     public function sendMessage(Request $request) {
         if(Auth::check()) {
             $userId = $request->user;
+            if(strcasecmp($userId, Auth::user()->name) == 0) return;
             $contents = $request->message;
             $user = User::where('name', $userId)->first();
             if($user != null && strlen($contents) <= $this->settings->message_length) {
