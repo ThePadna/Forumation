@@ -167,8 +167,9 @@ body {
             }
         }
     }
-    .auth {
-        position: relative;
+    .authy {
+        margin-left: 100px;
+        border: 1px solid red;
         #username {
             color: white !important;
         }
@@ -176,11 +177,9 @@ body {
         font-size: 1rem;
     }
     .title-container {
-        position: relative;
         margin-top: 7.5px;
     }
     .admin {
-        position: relative;
         width: 200px;
         height: 100px;
     }

@@ -13,7 +13,7 @@ $settings = App\Models\Settings::first();
     @endauth
     <div id="header" class="header">
         @guest
-        <div class="auth">
+        <div class="authy">
             <a href="{{ route('login') }}">{{ __('Login') }}</a>@if (Route::has('register')) | <a
                 href="{{ route('register') }}">{{ __('Register') }}</a>
         </div>
@@ -65,14 +65,16 @@ $settings = App\Models\Settings::first();
         </div>
         <div class="conversations">
         @foreach(Auth::user()->getConversations() as $c)
-        @if($c->getUnread() > 0)
+        @if($c->getUnread() > 0 && $c->getLatest()->getSender() != Auth::user()->id)
+        @php 
+        $unread++;
+        @endphp
         <div class="conversation unread" user-1="{{$c->getUser1()}}" user-2="{{$c->getUser2()}}">
         @else 
         <div class="conversation" user-1="{{$c->getUser1()}}" user-2="{{$c->getUser2()}}">
         @endif
             <div class="avatar">
                 @php
-                if($c->getUnread() > 0) $unread++;
                 $sender = $c->getLatest()->getRecipient();
                 $user = App\User::find($sender);
                 $avatar = $user->getAvatar();
